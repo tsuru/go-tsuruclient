@@ -11,7 +11,6 @@ package tsuru
 
 // App plan
 type Plan struct {
-
 	Name string `json:"name,omitempty"`
 
 	Memory int64 `json:"memory,omitempty"`

@@ -10,7 +10,6 @@
 package tsuru
 
 type AppListResponseInner struct {
-
 	Name string `json:"name,omitempty"`
 
 	Pool string `json:"pool,omitempty"`

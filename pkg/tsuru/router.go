@@ -10,7 +10,6 @@
 package tsuru
 
 type Router struct {
-
 	Name string `json:"name,omitempty"`
 
 	Opts map[string]string `json:"opts,omitempty"`

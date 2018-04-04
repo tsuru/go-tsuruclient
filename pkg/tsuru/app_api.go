@@ -10,12 +10,12 @@
 package tsuru
 
 import (
-	"io/ioutil"
-	"net/url"
-	"net/http"
-	"strings"
-	"golang.org/x/net/context"
 	"encoding/json"
+	"golang.org/x/net/context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
+	"strings"
 )
 
 // Linger please
@@ -25,19 +25,18 @@ var (
 
 type AppApiService service
 
-
-/* AppApiService 
- create a new app
- * @param ctx context.Context for authentication, logging, tracing, etc.
- @param app 
- @return AppCreateResponse*/
-func (a *AppApiService) Create(ctx context.Context, app App) (AppCreateResponse,  *http.Response, error) {
+/* AppApiService
+create a new app
+* @param ctx context.Context for authentication, logging, tracing, etc.
+@param app
+@return AppCreateResponse*/
+func (a *AppApiService) Create(ctx context.Context, app App) (AppCreateResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  AppCreateResponse
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     AppCreateResponse
 	)
 
 	// create path and map variables
@@ -47,9 +46,8 @@ func (a *AppApiService) Create(ctx context.Context, app App) (AppCreateResponse,
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -60,7 +58,7 @@ func (a *AppApiService) Create(ctx context.Context, app App) (AppCreateResponse,
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -100,29 +98,28 @@ func (a *AppApiService) Create(ctx context.Context, app App) (AppCreateResponse,
 		return successPayload, localVarHttpResponse, err
 	}
 
-
 	return successPayload, localVarHttpResponse, err
 }
 
-/* AppApiService 
- list apps
- * @param ctx context.Context for authentication, logging, tracing, etc.
- @param optional (nil or map[string]interface{}) with one or more of:
-     @param "locked" (bool) Filter applications by lock status
-     @param "name" (string) Filter applications by name
-     @param "owner" (string) Filter applications by owner
-     @param "platform" (string) Filter applications by platform
-     @param "pool" (string) Filter applications by pool
-     @param "status" (string) Filter applications by unit status.
-     @param "tag" ([]string) Filter applications by tag.
-     @param "teamOwner" (string) Filter applications by team owner
- @return */
-func (a *AppApiService) List(ctx context.Context, localVarOptionals map[string]interface{}) ( *http.Response, error) {
+/* AppApiService
+list apps
+* @param ctx context.Context for authentication, logging, tracing, etc.
+@param optional (nil or map[string]interface{}) with one or more of:
+    @param "locked" (bool) Filter applications by lock status
+    @param "name" (string) Filter applications by name
+    @param "owner" (string) Filter applications by owner
+    @param "platform" (string) Filter applications by platform
+    @param "pool" (string) Filter applications by pool
+    @param "status" (string) Filter applications by unit status.
+    @param "tag" ([]string) Filter applications by tag.
+    @param "teamOwner" (string) Filter applications by team owner
+@return */
+func (a *AppApiService) List(ctx context.Context, localVarOptionals map[string]interface{}) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
 	)
 
 	// create path and map variables
@@ -179,7 +176,7 @@ func (a *AppApiService) List(ctx context.Context, localVarOptionals map[string]i
 		localVarQueryParams.Add("teamOwner", parameterToString(localVarTempParam, ""))
 	}
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -190,7 +187,7 @@ func (a *AppApiService) List(ctx context.Context, localVarOptionals map[string]i
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -226,4 +223,3 @@ func (a *AppApiService) List(ctx context.Context, localVarOptionals map[string]i
 
 	return localVarHttpResponse, err
 }
-
