@@ -1,0 +1,301 @@
+---
+swagger: "2.0"
+info:
+  description: "Open source, extensible and Docker-based Platform as a Service (PaaS)"
+  version: "1.6.0"
+  title: "Tsuru"
+schemes:
+- "http"
+paths:
+  /apps:
+    get:
+      tags:
+      - "app"
+      description: "list apps"
+      operationId: "List"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "locked"
+        in: "query"
+        description: "Filter applications by lock status"
+        required: false
+        type: "boolean"
+        x-exportParamName: "Locked"
+      - name: "name"
+        in: "query"
+        description: "Filter applications by name"
+        required: false
+        type: "string"
+        x-exportParamName: "Name"
+      - name: "owner"
+        in: "query"
+        description: "Filter applications by owner"
+        required: false
+        type: "string"
+        x-exportParamName: "Owner"
+      - name: "platform"
+        in: "query"
+        description: "Filter applications by platform"
+        required: false
+        type: "string"
+        x-exportParamName: "Platform"
+      - name: "pool"
+        in: "query"
+        description: "Filter applications by pool"
+        required: false
+        type: "string"
+        x-exportParamName: "Pool"
+      - name: "status"
+        in: "query"
+        description: "Filter applications by unit status."
+        required: false
+        type: "string"
+        x-exportParamName: "Status"
+      - name: "tag"
+        in: "query"
+        description: "Filter applications by tag."
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        x-exportParamName: "Tag"
+      - name: "teamOwner"
+        in: "query"
+        description: "Filter applications by team owner"
+        required: false
+        type: "string"
+        x-exportParamName: "TeamOwner"
+      responses:
+        200:
+          description: "List apps"
+        204:
+          description: "No content"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
+    post:
+      tags:
+      - "app"
+      description: "create a new app"
+      operationId: "Create"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "app"
+        required: true
+        schema:
+          $ref: "#/definitions/App"
+        x-exportParamName: "App"
+      responses:
+        201:
+          description: "App created"
+          schema:
+            $ref: "#/definitions/AppCreateResponse"
+        400:
+          description: "Invalid data"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        403:
+          description: "Quota exceeded"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        409:
+          description: "App already exists"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
+securityDefinitions:
+  Bearer:
+    type: "apiKey"
+    name: "Authorization"
+    in: "header"
+definitions:
+  ErrorMessage:
+    type: "string"
+    description: "Error message"
+  App:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      name:
+        type: "string"
+        description: "App name"
+      tag:
+        type: "array"
+        description: "App Tags"
+        items:
+          type: "string"
+      router:
+        type: "string"
+        description: "App router"
+      routeropts:
+        type: "object"
+        description: "Custom router options"
+        additionalProperties:
+          type: "string"
+      plan:
+        type: "string"
+        description: "App plan"
+      pool:
+        type: "string"
+        description: "App pool"
+      platform:
+        type: "string"
+        description: "App platform"
+      description:
+        type: "string"
+        description: "App description"
+      teamOwner:
+        type: "string"
+        description: "Team that owns the app"
+    description: "Tsuru app"
+    example:
+      teamOwner: "teamOwner"
+      router: "router"
+      name: "name"
+      pool: "pool"
+      routeropts:
+        key: "routeropts"
+      description: "description"
+      tag:
+      - "tag"
+      - "tag"
+      plan: "plan"
+      platform: "platform"
+  AppCreateResponse:
+    type: "object"
+    properties:
+      status:
+        type: "string"
+      repository_url:
+        type: "string"
+      ip:
+        type: "string"
+    description: "Newly created app information"
+    example:
+      ip: "ip"
+      repository_url: "repository_url"
+      status: "status"
+  AppListResponse:
+    type: "array"
+    description: "List containing minimal information about apps"
+    items:
+      $ref: "#/definitions/AppListResponse_inner"
+  Plan:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      memory:
+        type: "integer"
+        format: "int64"
+        minimum: 0
+      swap:
+        type: "integer"
+        format: "int64"
+        minimum: 0
+      cpushare:
+        type: "integer"
+        minimum: 0
+      default:
+        type: "boolean"
+    description: "App plan"
+  Unit:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      name:
+        type: "string"
+      appname:
+        type: "string"
+      processname:
+        type: "string"
+      type:
+        type: "string"
+      ip:
+        type: "string"
+      status:
+        type: "string"
+      address:
+        $ref: "#/definitions/URL"
+  Router:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      opts:
+        type: "object"
+        additionalProperties:
+          type: "string"
+      addres:
+        type: "string"
+      type:
+        type: "string"
+      status:
+        type: "string"
+      status-detail:
+        type: "string"
+  Lock:
+    type: "object"
+    properties:
+      locked:
+        type: "boolean"
+      reason:
+        type: "string"
+      owner:
+        type: "string"
+      acquireDate:
+        type: "string"
+  URL:
+    type: "object"
+    properties:
+      scheme:
+        type: "string"
+      host:
+        type: "string"
+  AppListResponse_inner:
+    properties:
+      name:
+        type: "string"
+      pool:
+        type: "string"
+      teamOwner:
+        type: "string"
+      plan:
+        $ref: "#/definitions/Plan"
+      units:
+        type: "array"
+        items:
+          $ref: "#/definitions/Unit"
+      cname:
+        type: "array"
+        items:
+          type: "string"
+      ip:
+        type: "string"
+      routers:
+        type: "array"
+        items:
+          $ref: "#/definitions/Router"
+      lock:
+        $ref: "#/definitions/Lock"
+      tags:
+        type: "array"
+        items:
+          type: "string"
+      error:
+        type: "string"
