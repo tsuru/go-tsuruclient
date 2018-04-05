@@ -15,7 +15,7 @@ import (
 var errUndefinedTarget = errors.New("undefined tsuru target")
 
 func getHome() string {
-	if u, err := user.Current(); err == nil {
+	if u, err := user.Current(); err == nil && u.HomeDir != "" {
 		return u.HomeDir
 	}
 	envs := []string{"HOME", "HOMEPATH"}

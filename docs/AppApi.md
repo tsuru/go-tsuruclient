@@ -37,7 +37,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **List**
-> List(ctx, optional)
+> AppListResponse List(ctx, optional)
 
 
 list apps
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**AppListResponse**](AppListResponse.md)
 
 ### Authorization
 

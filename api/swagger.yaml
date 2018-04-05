@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "Open source, extensible and Docker-based Platform as a Service (PaaS)"
-  version: "1.6.0"
+  version: "1.6"
   title: "Tsuru"
 schemes:
 - "http"
@@ -69,6 +69,8 @@ paths:
       responses:
         200:
           description: "List apps"
+          schema:
+            $ref: "#/definitions/AppListResponse"
         204:
           description: "No content"
         401:
