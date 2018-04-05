@@ -6,4 +6,3 @@ matrix:
     - master
 script:
   - go test ./...
-
