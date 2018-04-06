@@ -85,7 +85,7 @@ paths:
       tags:
       - "app"
       description: "Create a new app."
-      operationId: "Create"
+      operationId: "AppCreate"
       consumes:
       - "application/json"
       produces:
@@ -120,7 +120,78 @@ paths:
             $ref: "#/definitions/ErrorMessage"
       security:
       - Bearer: []
+  /1.0/apps/{app}:
+    delete:
+      tags:
+      - "app"
+      description: "Delete a tsuru app."
+      operationId: "AppDelete"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/x-json-stream"
+      parameters:
+      - name: "app"
+        in: "path"
+        description: "App name."
+        required: true
+        type: "string"
+        minLength: 1
+        x-exportParamName: "App"
+      responses:
+        200:
+          description: "App removed."
+        401:
+          description: "Unauthorized."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "App not found."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
   /1.0/apps/{app}/env:
+    get:
+      tags:
+      - "app"
+      description: "Get app environment variables."
+      operationId: "EnvGet"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "app"
+        in: "path"
+        description: "App name."
+        required: true
+        type: "string"
+        minLength: 1
+        x-exportParamName: "App"
+      - name: "env"
+        in: "query"
+        description: "Environment variable name."
+        required: false
+        type: "string"
+        x-exportParamName: "Env"
+      responses:
+        200:
+          description: "Environment variables"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Env"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "App not found"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
     post:
       tags:
       - "app"
@@ -154,10 +225,56 @@ paths:
           description: "Invalid data"
           schema:
             $ref: "#/definitions/ErrorMessage"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
         404:
           description: "App not found"
           schema:
             $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
+    delete:
+      tags:
+      - "app"
+      description: "Unset app environment variables."
+      operationId: "EnvUnset"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/x-json-stream"
+      parameters:
+      - name: "app"
+        in: "path"
+        description: "App name."
+        required: true
+        type: "string"
+        minLength: 1
+        x-exportParamName: "App"
+      - in: "body"
+        name: "unsetData"
+        required: false
+        schema:
+          $ref: "#/definitions/EnvUnsetData"
+        x-exportParamName: "UnsetData"
+      responses:
+        200:
+          description: "Envs deleted"
+        400:
+          description: "Invalid data"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "App not found"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
   /1.4/volumes:
     get:
       tags:
@@ -715,6 +832,21 @@ definitions:
     description: "Environment variables response information."
     items:
       $ref: "#/definitions/EnvSetResponse_inner"
+  EnvUnsetData:
+    type: "object"
+    properties:
+      env:
+        type: "array"
+        items:
+          type: "string"
+      norestart:
+        type: "boolean"
+    description: "Data sent to the environment unset endpoint."
+    example:
+      norestart: true
+      env:
+      - "env"
+      - "env"
   Unit:
     type: "object"
     properties:
