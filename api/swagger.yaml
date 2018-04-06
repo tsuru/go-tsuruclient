@@ -7,42 +7,42 @@ info:
 schemes:
 - "http"
 paths:
-  /apps:
+  /1.0/apps:
     get:
       tags:
       - "app"
-      description: "list apps"
-      operationId: "List"
+      description: "List apps."
+      operationId: "AppList"
       produces:
       - "application/json"
       parameters:
       - name: "locked"
         in: "query"
-        description: "Filter applications by lock status"
+        description: "Filter applications by lock status."
         required: false
         type: "boolean"
         x-exportParamName: "Locked"
       - name: "name"
         in: "query"
-        description: "Filter applications by name"
+        description: "Filter applications by name."
         required: false
         type: "string"
         x-exportParamName: "Name"
       - name: "owner"
         in: "query"
-        description: "Filter applications by owner"
+        description: "Filter applications by owner."
         required: false
         type: "string"
         x-exportParamName: "Owner"
       - name: "platform"
         in: "query"
-        description: "Filter applications by platform"
+        description: "Filter applications by platform."
         required: false
         type: "string"
         x-exportParamName: "Platform"
       - name: "pool"
         in: "query"
-        description: "Filter applications by pool"
+        description: "Filter applications by pool."
         required: false
         type: "string"
         x-exportParamName: "Pool"
@@ -62,7 +62,7 @@ paths:
         x-exportParamName: "Tag"
       - name: "teamOwner"
         in: "query"
-        description: "Filter applications by team owner"
+        description: "Filter applications by team owner."
         required: false
         type: "string"
         x-exportParamName: "TeamOwner"
@@ -70,7 +70,9 @@ paths:
         200:
           description: "List apps"
           schema:
-            $ref: "#/definitions/AppListResponse"
+            type: "array"
+            items:
+              $ref: "#/definitions/MiniApp"
         204:
           description: "No content"
         401:
@@ -82,7 +84,7 @@ paths:
     post:
       tags:
       - "app"
-      description: "create a new app"
+      description: "Create a new app."
       operationId: "Create"
       consumes:
       - "application/json"
@@ -118,6 +120,252 @@ paths:
             $ref: "#/definitions/ErrorMessage"
       security:
       - Bearer: []
+  /1.0/apps/{app}/env:
+    post:
+      tags:
+      - "app"
+      description: "Set new environment variable."
+      operationId: "EnvSet"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/x-json-stream"
+      parameters:
+      - name: "app"
+        in: "path"
+        description: "App name."
+        required: true
+        type: "string"
+        minLength: 1
+        x-exportParamName: "App"
+      - in: "body"
+        name: "envs"
+        description: "Environment variables."
+        required: true
+        schema:
+          $ref: "#/definitions/EnvSetData"
+        x-exportParamName: "Envs"
+      responses:
+        200:
+          description: "Envs updated"
+          schema:
+            $ref: "#/definitions/EnvSetResponse"
+        400:
+          description: "Invalid data"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "App not found"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+  /1.4/volumes:
+    get:
+      tags:
+      - "volume"
+      description: "List volumes."
+      operationId: "VolumeList"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "List volumes"
+          schema:
+            $ref: "#/definitions/VolumeListResponse"
+        204:
+          description: "No content"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
+  /1.4/volumes/{volume}:
+    get:
+      tags:
+      - "volume"
+      description: "Get a volume."
+      operationId: "VolumeGet"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "volume"
+        in: "path"
+        description: "Volume name."
+        required: true
+        type: "string"
+        minLength: 1
+        x-exportParamName: "Volume"
+      responses:
+        200:
+          description: "Volume"
+          schema:
+            $ref: "#/definitions/Volume"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        409:
+          description: "Volume already exists"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
+    post:
+      tags:
+      - "volume"
+      description: "Create volume."
+      operationId: "VolumeCreate"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "volume"
+        in: "path"
+        description: "Volume name."
+        required: true
+        type: "string"
+        minLength: 1
+        x-exportParamName: "Volume"
+      - in: "body"
+        name: "volumeData"
+        required: true
+        schema:
+          $ref: "#/definitions/Volume"
+        x-exportParamName: "VolumeData"
+      responses:
+        201:
+          description: "Volume created"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        409:
+          description: "Volume already exists"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
+    delete:
+      tags:
+      - "volume"
+      description: "Delete volume."
+      operationId: "VolumeDelete"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "volume"
+        in: "path"
+        description: "Volume name."
+        required: true
+        type: "string"
+        minLength: 1
+        x-exportParamName: "Volume"
+      responses:
+        200:
+          description: "Volume deleted"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "Volume not found"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
+  /1.4/volumes/{volume}/bind:
+    post:
+      tags:
+      - "volume"
+      description: "Bind volume."
+      operationId: "VolumeBind"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "volume"
+        in: "path"
+        description: "Volume name."
+        required: true
+        type: "string"
+        minLength: 1
+        x-exportParamName: "Volume"
+      - in: "body"
+        name: "BindData"
+        required: false
+        schema:
+          $ref: "#/definitions/VolumeBindData"
+        x-exportParamName: "BindData"
+      responses:
+        200:
+          description: "Volume bind"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "Volume not found"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        409:
+          description: "Volume bind already exists"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
+    delete:
+      tags:
+      - "volume"
+      description: "Unbind volume."
+      operationId: "VolumeUnbind"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "volume"
+        in: "path"
+        description: "Volume name."
+        required: true
+        type: "string"
+        minLength: 1
+        x-exportParamName: "Volume"
+      - in: "body"
+        name: "BindData"
+        required: false
+        schema:
+          $ref: "#/definitions/VolumeBindData"
+        x-exportParamName: "BindData"
+      responses:
+        200:
+          description: "Volume unbinded"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "Volume not found"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
+  /1.4/volumeplans:
+    get:
+      tags:
+      - "volume"
+      description: "List volume plans."
+      operationId: "VolumePlansList"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Volume plans list"
+          schema:
+            $ref: "#/definitions/VolumePlansListResponse"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
 securityDefinitions:
   Bearer:
     type: "apiKey"
@@ -126,7 +374,128 @@ securityDefinitions:
 definitions:
   ErrorMessage:
     type: "string"
-    description: "Error message"
+    description: "Error message."
+  VolumeListResponse:
+    type: "array"
+    description: "Response returned by Volume List."
+    items:
+      $ref: "#/definitions/Volume"
+  VolumePlansListResponse:
+    type: "object"
+    description: "Response returned by Volume Plans list."
+    additionalProperties:
+      $ref: "#/definitions/VolumePlan"
+  Volume:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        description: "Volume name."
+      pool:
+        type: "string"
+        description: "Volume pool."
+      teamOwner:
+        type: "string"
+        description: "Team that owns the volume."
+      status:
+        type: "string"
+        description: "Volume status."
+      plan:
+        description: "Volume plan."
+        $ref: "#/definitions/VolumePlan"
+      binds:
+        type: "array"
+        description: "Volume binds."
+        items:
+          $ref: "#/definitions/VolumeBind"
+      opts:
+        type: "object"
+        description: "Custom volume options."
+        additionalProperties:
+          type: "string"
+    description: "Volume"
+    example:
+      teamOwner: "teamOwner"
+      binds:
+      - readonly: true
+        id:
+          app: "app"
+          volume: "volume"
+          mountpoint: "mountpoint"
+      - readonly: true
+        id:
+          app: "app"
+          volume: "volume"
+          mountpoint: "mountpoint"
+      opts:
+        key: "opts"
+      name: "name"
+      pool: "pool"
+      plan:
+        opts:
+          key: "opts"
+        name: "name"
+      status: "status"
+  VolumePlan:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        description: "Volume plan name."
+      opts:
+        type: "object"
+        description: "Volume plan opts."
+        additionalProperties:
+          type: "string"
+    description: "Volume plan."
+    example:
+      opts:
+        key: "opts"
+      name: "name"
+  VolumeBind:
+    type: "object"
+    properties:
+      id:
+        description: "Volume bind ID."
+        $ref: "#/definitions/VolumeBindID"
+      readonly:
+        type: "boolean"
+        description: "Volume is read-only."
+    example:
+      readonly: true
+      id:
+        app: "app"
+        volume: "volume"
+        mountpoint: "mountpoint"
+  VolumeBindID:
+    type: "object"
+    properties:
+      app:
+        type: "string"
+        description: "App the volume is bound to."
+      mountpoint:
+        type: "string"
+        description: "Volume mountpoint."
+      volume:
+        type: "string"
+        description: "Volume name."
+    example:
+      app: "app"
+      volume: "volume"
+      mountpoint: "mountpoint"
+  VolumeBindData:
+    type: "object"
+    properties:
+      mountpoint:
+        type: "string"
+      norestart:
+        type: "boolean"
+      readonly:
+        type: "boolean"
+    example:
+      readonly: true
+      norestart: true
+      mountpoint: "mountpoint"
   App:
     type: "object"
     required:
@@ -134,36 +503,36 @@ definitions:
     properties:
       name:
         type: "string"
-        description: "App name"
+        description: "App name."
       tag:
         type: "array"
-        description: "App Tags"
+        description: "App tags."
         items:
           type: "string"
       router:
         type: "string"
-        description: "App router"
+        description: "App router."
       routeropts:
         type: "object"
-        description: "Custom router options"
+        description: "Custom router options."
         additionalProperties:
           type: "string"
       plan:
         type: "string"
-        description: "App plan"
+        description: "App plan."
       pool:
         type: "string"
-        description: "App pool"
+        description: "App pool."
       platform:
         type: "string"
-        description: "App platform"
+        description: "App platform."
       description:
         type: "string"
-        description: "App description"
+        description: "App description."
       teamOwner:
         type: "string"
-        description: "Team that owns the app"
-    description: "Tsuru app"
+        description: "Team that owns the app."
+    description: "Tsuru app."
     example:
       teamOwner: "teamOwner"
       router: "router"
@@ -186,90 +555,13 @@ definitions:
         type: "string"
       ip:
         type: "string"
-    description: "Newly created app information"
+    description: "Newly created app information."
     example:
       ip: "ip"
       repository_url: "repository_url"
       status: "status"
-  AppListResponse:
-    type: "array"
-    description: "List containing minimal information about apps"
-    items:
-      $ref: "#/definitions/AppListResponse_inner"
-  Plan:
+  MiniApp:
     type: "object"
-    properties:
-      name:
-        type: "string"
-      memory:
-        type: "integer"
-        format: "int64"
-        minimum: 0
-      swap:
-        type: "integer"
-        format: "int64"
-        minimum: 0
-      cpushare:
-        type: "integer"
-        minimum: 0
-      default:
-        type: "boolean"
-    description: "App plan"
-  Unit:
-    type: "object"
-    properties:
-      id:
-        type: "string"
-      name:
-        type: "string"
-      appname:
-        type: "string"
-      processname:
-        type: "string"
-      type:
-        type: "string"
-      ip:
-        type: "string"
-      status:
-        type: "string"
-      address:
-        $ref: "#/definitions/URL"
-  Router:
-    type: "object"
-    properties:
-      name:
-        type: "string"
-      opts:
-        type: "object"
-        additionalProperties:
-          type: "string"
-      addres:
-        type: "string"
-      type:
-        type: "string"
-      status:
-        type: "string"
-      status-detail:
-        type: "string"
-  Lock:
-    type: "object"
-    properties:
-      locked:
-        type: "boolean"
-      reason:
-        type: "string"
-      owner:
-        type: "string"
-      acquireDate:
-        type: "string"
-  URL:
-    type: "object"
-    properties:
-      scheme:
-        type: "string"
-      host:
-        type: "string"
-  AppListResponse_inner:
     properties:
       name:
         type: "string"
@@ -301,3 +593,214 @@ definitions:
           type: "string"
       error:
         type: "string"
+    description: "List containing minimal information about apps."
+    example:
+      teamOwner: "teamOwner"
+      ip: "ip"
+      name: "name"
+      pool: "pool"
+      cname:
+      - "cname"
+      - "cname"
+      lock:
+        owner: "owner"
+        reason: "reason"
+        acquireDate: "acquireDate"
+        locked: true
+      units:
+      - address:
+          scheme: "scheme"
+          host: "host"
+        appname: "appname"
+        processname: "processname"
+        ip: "ip"
+        name: "name"
+        id: "id"
+        type: "type"
+        status: "status"
+      - address:
+          scheme: "scheme"
+          host: "host"
+        appname: "appname"
+        processname: "processname"
+        ip: "ip"
+        name: "name"
+        id: "id"
+        type: "type"
+        status: "status"
+      error: "error"
+      plan:
+        default: true
+        memory: 0
+        swap: 0
+        name: "name"
+        cpushare: 0
+      routers:
+      - opts:
+          key: "opts"
+        status-detail: "status-detail"
+        name: "name"
+        addres: "addres"
+        type: "type"
+        status: "status"
+      - opts:
+          key: "opts"
+        status-detail: "status-detail"
+        name: "name"
+        addres: "addres"
+        type: "type"
+        status: "status"
+      tags:
+      - "tags"
+      - "tags"
+  Plan:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      memory:
+        type: "integer"
+        format: "int64"
+        minimum: 0
+      swap:
+        type: "integer"
+        format: "int64"
+        minimum: 0
+      cpushare:
+        type: "integer"
+        minimum: 0
+      default:
+        type: "boolean"
+    description: "App plan."
+    example:
+      default: true
+      memory: 0
+      swap: 0
+      name: "name"
+      cpushare: 0
+  Env:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      value:
+        type: "string"
+    description: "Environment variable."
+    example:
+      name: "name"
+      value: "value"
+  EnvSetData:
+    type: "object"
+    properties:
+      envs:
+        type: "array"
+        items:
+          $ref: "#/definitions/Env"
+        minItems: 1
+      norestart:
+        type: "boolean"
+      private:
+        type: "boolean"
+    description: "Data sent to the environment set endpoint."
+    example:
+      private: true
+      envs:
+      - name: "name"
+        value: "value"
+      - name: "name"
+        value: "value"
+      norestart: true
+  EnvSetResponse:
+    type: "array"
+    description: "Environment variables response information."
+    items:
+      $ref: "#/definitions/EnvSetResponse_inner"
+  Unit:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      name:
+        type: "string"
+      appname:
+        type: "string"
+      processname:
+        type: "string"
+      type:
+        type: "string"
+      ip:
+        type: "string"
+      status:
+        type: "string"
+      address:
+        $ref: "#/definitions/URL"
+    example:
+      address:
+        scheme: "scheme"
+        host: "host"
+      appname: "appname"
+      processname: "processname"
+      ip: "ip"
+      name: "name"
+      id: "id"
+      type: "type"
+      status: "status"
+  Router:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      opts:
+        type: "object"
+        additionalProperties:
+          type: "string"
+      addres:
+        type: "string"
+      type:
+        type: "string"
+      status:
+        type: "string"
+      status-detail:
+        type: "string"
+    example:
+      opts:
+        key: "opts"
+      status-detail: "status-detail"
+      name: "name"
+      addres: "addres"
+      type: "type"
+      status: "status"
+  Lock:
+    type: "object"
+    properties:
+      locked:
+        type: "boolean"
+      reason:
+        type: "string"
+      owner:
+        type: "string"
+      acquireDate:
+        type: "string"
+    example:
+      owner: "owner"
+      reason: "reason"
+      acquireDate: "acquireDate"
+      locked: true
+  URL:
+    type: "object"
+    properties:
+      scheme:
+        type: "string"
+      host:
+        type: "string"
+    example:
+      scheme: "scheme"
+      host: "host"
+  EnvSetResponse_inner:
+    properties:
+      name:
+        type: "string"
+      value:
+        type: "string"
+      public:
+        type: "boolean"

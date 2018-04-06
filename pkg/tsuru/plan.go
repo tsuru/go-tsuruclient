@@ -9,7 +9,7 @@
 
 package tsuru
 
-// App plan
+// App plan.
 type Plan struct {
 	Name string `json:"name,omitempty"`
 

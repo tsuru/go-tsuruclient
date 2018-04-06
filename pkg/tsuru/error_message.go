@@ -9,6 +9,6 @@
 
 package tsuru
 
-// Error message
+// Error message.
 type ErrorMessage struct {
 }

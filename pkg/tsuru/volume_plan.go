@@ -9,6 +9,12 @@
 
 package tsuru
 
-// List containing minimal information about apps
-type AppListResponse struct {
+// Volume plan.
+type VolumePlan struct {
+
+	// Volume plan name.
+	Name string `json:"name,omitempty"`
+
+	// Volume plan opts.
+	Opts map[string]string `json:"opts,omitempty"`
 }

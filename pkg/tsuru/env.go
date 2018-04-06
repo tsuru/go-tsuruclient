@@ -9,11 +9,9 @@
 
 package tsuru
 
-// Newly created app information.
-type AppCreateResponse struct {
-	Status string `json:"status,omitempty"`
+// Environment variable.
+type Env struct {
+	Name string `json:"name,omitempty"`
 
-	RepositoryUrl string `json:"repository_url,omitempty"`
-
-	Ip string `json:"ip,omitempty"`
+	Value string `json:"value,omitempty"`
 }

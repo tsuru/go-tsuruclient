@@ -9,11 +9,11 @@
 
 package tsuru
 
-// Newly created app information.
-type AppCreateResponse struct {
-	Status string `json:"status,omitempty"`
+// Data sent to the environment set endpoint.
+type EnvSetData struct {
+	Envs []Env `json:"envs,omitempty"`
 
-	RepositoryUrl string `json:"repository_url,omitempty"`
+	Norestart bool `json:"norestart,omitempty"`
 
-	Ip string `json:"ip,omitempty"`
+	Private bool `json:"private,omitempty"`
 }

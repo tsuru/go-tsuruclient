@@ -9,11 +9,11 @@
 
 package tsuru
 
-// Newly created app information.
-type AppCreateResponse struct {
-	Status string `json:"status,omitempty"`
+type VolumeBind struct {
 
-	RepositoryUrl string `json:"repository_url,omitempty"`
+	// Volume bind ID.
+	Id *VolumeBindId `json:"id,omitempty"`
 
-	Ip string `json:"ip,omitempty"`
+	// Volume is read-only.
+	Readonly bool `json:"readonly,omitempty"`
 }

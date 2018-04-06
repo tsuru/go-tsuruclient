@@ -9,7 +9,8 @@
 
 package tsuru
 
-type AppListResponseInner struct {
+// List containing minimal information about apps.
+type MiniApp struct {
 	Name string `json:"name,omitempty"`
 
 	Pool string `json:"pool,omitempty"`

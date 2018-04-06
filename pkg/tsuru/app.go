@@ -9,33 +9,33 @@
 
 package tsuru
 
-// Tsuru app
+// Tsuru app.
 type App struct {
 
-	// App name
+	// App name.
 	Name string `json:"name"`
 
-	// App Tags
+	// App tags.
 	Tag []string `json:"tag,omitempty"`
 
-	// App router
+	// App router.
 	Router string `json:"router,omitempty"`
 
-	// Custom router options
+	// Custom router options.
 	Routeropts map[string]string `json:"routeropts,omitempty"`
 
-	// App plan
+	// App plan.
 	Plan string `json:"plan,omitempty"`
 
-	// App pool
+	// App pool.
 	Pool string `json:"pool,omitempty"`
 
-	// App platform
+	// App platform.
 	Platform string `json:"platform,omitempty"`
 
-	// App description
+	// App description.
 	Description string `json:"description,omitempty"`
 
-	// Team that owns the app
+	// Team that owns the app.
 	TeamOwner string `json:"teamOwner,omitempty"`
 }

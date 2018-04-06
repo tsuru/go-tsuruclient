@@ -21,22 +21,40 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AppApi* | [**Create**](docs/AppApi.md#create) | **Post** /apps | 
-*AppApi* | [**List**](docs/AppApi.md#list) | **Get** /apps | 
+*AppApi* | [**AppList**](docs/AppApi.md#applist) | **Get** /1.0/apps | 
+*AppApi* | [**Create**](docs/AppApi.md#create) | **Post** /1.0/apps | 
+*AppApi* | [**EnvSet**](docs/AppApi.md#envset) | **Post** /1.0/apps/{app}/env | 
+*VolumeApi* | [**VolumeBind**](docs/VolumeApi.md#volumebind) | **Post** /1.4/volumes/{volume}/bind | 
+*VolumeApi* | [**VolumeCreate**](docs/VolumeApi.md#volumecreate) | **Post** /1.4/volumes/{volume} | 
+*VolumeApi* | [**VolumeDelete**](docs/VolumeApi.md#volumedelete) | **Delete** /1.4/volumes/{volume} | 
+*VolumeApi* | [**VolumeGet**](docs/VolumeApi.md#volumeget) | **Get** /1.4/volumes/{volume} | 
+*VolumeApi* | [**VolumeList**](docs/VolumeApi.md#volumelist) | **Get** /1.4/volumes | 
+*VolumeApi* | [**VolumePlansList**](docs/VolumeApi.md#volumeplanslist) | **Get** /1.4/volumeplans | 
+*VolumeApi* | [**VolumeUnbind**](docs/VolumeApi.md#volumeunbind) | **Delete** /1.4/volumes/{volume}/bind | 
 
 
 ## Documentation For Models
 
  - [App](docs/App.md)
  - [AppCreateResponse](docs/AppCreateResponse.md)
- - [AppListResponse](docs/AppListResponse.md)
- - [AppListResponseInner](docs/AppListResponseInner.md)
+ - [Env](docs/Env.md)
+ - [EnvSetData](docs/EnvSetData.md)
+ - [EnvSetResponse](docs/EnvSetResponse.md)
+ - [EnvSetResponseInner](docs/EnvSetResponseInner.md)
  - [ErrorMessage](docs/ErrorMessage.md)
  - [Lock](docs/Lock.md)
+ - [MiniApp](docs/MiniApp.md)
  - [Plan](docs/Plan.md)
  - [Router](docs/Router.md)
  - [Unit](docs/Unit.md)
  - [Url](docs/Url.md)
+ - [Volume](docs/Volume.md)
+ - [VolumeBind](docs/VolumeBind.md)
+ - [VolumeBindData](docs/VolumeBindData.md)
+ - [VolumeBindId](docs/VolumeBindId.md)
+ - [VolumeListResponse](docs/VolumeListResponse.md)
+ - [VolumePlan](docs/VolumePlan.md)
+ - [VolumePlansListResponse](docs/VolumePlansListResponse.md)
 
 
 ## Documentation For Authorization

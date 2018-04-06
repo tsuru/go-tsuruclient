@@ -9,11 +9,10 @@
 
 package tsuru
 
-// Newly created app information.
-type AppCreateResponse struct {
-	Status string `json:"status,omitempty"`
+type VolumeBindData struct {
+	Mountpoint string `json:"mountpoint,omitempty"`
 
-	RepositoryUrl string `json:"repository_url,omitempty"`
+	Norestart bool `json:"norestart,omitempty"`
 
-	Ip string `json:"ip,omitempty"`
+	Readonly bool `json:"readonly,omitempty"`
 }

@@ -9,11 +9,6 @@
 
 package tsuru
 
-// Newly created app information.
-type AppCreateResponse struct {
-	Status string `json:"status,omitempty"`
-
-	RepositoryUrl string `json:"repository_url,omitempty"`
-
-	Ip string `json:"ip,omitempty"`
+// Response returned by Volume List.
+type VolumeListResponse struct {
 }
