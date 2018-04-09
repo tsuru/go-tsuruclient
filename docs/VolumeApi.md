@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**VolumeBind**](VolumeApi.md#VolumeBind) | **Post** /1.4/volumes/{volume}/bind | 
-[**VolumeCreate**](VolumeApi.md#VolumeCreate) | **Post** /1.4/volumes/{volume} | 
+[**VolumeCreate**](VolumeApi.md#VolumeCreate) | **Post** /1.4/volumes | 
 [**VolumeDelete**](VolumeApi.md#VolumeDelete) | **Delete** /1.4/volumes/{volume} | 
 [**VolumeGet**](VolumeApi.md#VolumeGet) | **Get** /1.4/volumes/{volume} | 
 [**VolumeList**](VolumeApi.md#VolumeList) | **Get** /1.4/volumes | 
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **VolumeCreate**
-> VolumeCreate(ctx, volume, volumeData)
+> VolumeCreate(ctx, volumeData)
 
 
 Create volume.
@@ -61,7 +61,6 @@ Create volume.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **volume** | **string**| Volume name. | 
   **volumeData** | [**Volume**](Volume.md)|  | 
 
 ### Return type

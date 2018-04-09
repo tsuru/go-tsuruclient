@@ -459,6 +459,33 @@ paths:
             $ref: "#/definitions/ErrorMessage"
       security:
       - Bearer: []
+    post:
+      tags:
+      - "volume"
+      description: "Create volume."
+      operationId: "VolumeCreate"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "volumeData"
+        required: true
+        schema:
+          $ref: "#/definitions/Volume"
+        x-exportParamName: "VolumeData"
+      responses:
+        201:
+          description: "Volume created"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        409:
+          description: "Volume already exists"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
   /1.4/volumes/{volume}:
     get:
       tags:
@@ -480,40 +507,6 @@ paths:
           description: "Volume"
           schema:
             $ref: "#/definitions/Volume"
-        401:
-          description: "Unauthorized"
-          schema:
-            $ref: "#/definitions/ErrorMessage"
-        409:
-          description: "Volume already exists"
-          schema:
-            $ref: "#/definitions/ErrorMessage"
-      security:
-      - Bearer: []
-    post:
-      tags:
-      - "volume"
-      description: "Create volume."
-      operationId: "VolumeCreate"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "volume"
-        in: "path"
-        description: "Volume name."
-        required: true
-        type: "string"
-        minLength: 1
-        x-exportParamName: "Volume"
-      - in: "body"
-        name: "volumeData"
-        required: true
-        schema:
-          $ref: "#/definitions/Volume"
-        x-exportParamName: "VolumeData"
-      responses:
-        201:
-          description: "Volume created"
         401:
           description: "Unauthorized"
           schema:

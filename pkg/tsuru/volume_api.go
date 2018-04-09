@@ -105,10 +105,9 @@ func (a *VolumeApiService) VolumeBind(ctx context.Context, volume string, localV
 /* VolumeApiService
 Create volume.
  * @param ctx context.Context for authentication, logging, tracing, etc.
-@param volume Volume name.
 @param volumeData
 @return */
-func (a *VolumeApiService) VolumeCreate(ctx context.Context, volume string, volumeData Volume) (*http.Response, error) {
+func (a *VolumeApiService) VolumeCreate(ctx context.Context, volumeData Volume) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -117,15 +116,11 @@ func (a *VolumeApiService) VolumeCreate(ctx context.Context, volume string, volu
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.4/volumes/{volume}"
-	localVarPath = strings.Replace(localVarPath, "{"+"volume"+"}", fmt.Sprintf("%v", volume), -1)
+	localVarPath := a.client.cfg.BasePath + "/1.4/volumes"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(volume) < 1 {
-		return nil, reportError("volume must have at least 1 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}

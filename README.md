@@ -33,7 +33,7 @@ Class | Method | HTTP request | Description
 *NodeApi* | [**NodeGet**](docs/NodeApi.md#nodeget) | **Get** /1.2/node/{address} | 
 *NodeApi* | [**NodeUpdate**](docs/NodeApi.md#nodeupdate) | **Put** /1.2/node | 
 *VolumeApi* | [**VolumeBind**](docs/VolumeApi.md#volumebind) | **Post** /1.4/volumes/{volume}/bind | 
-*VolumeApi* | [**VolumeCreate**](docs/VolumeApi.md#volumecreate) | **Post** /1.4/volumes/{volume} | 
+*VolumeApi* | [**VolumeCreate**](docs/VolumeApi.md#volumecreate) | **Post** /1.4/volumes | 
 *VolumeApi* | [**VolumeDelete**](docs/VolumeApi.md#volumedelete) | **Delete** /1.4/volumes/{volume} | 
 *VolumeApi* | [**VolumeGet**](docs/VolumeApi.md#volumeget) | **Get** /1.4/volumes/{volume} | 
 *VolumeApi* | [**VolumeList**](docs/VolumeApi.md#volumelist) | **Get** /1.4/volumes | 
