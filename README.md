@@ -23,10 +23,15 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AppApi* | [**AppCreate**](docs/AppApi.md#appcreate) | **Post** /1.0/apps | 
 *AppApi* | [**AppDelete**](docs/AppApi.md#appdelete) | **Delete** /1.0/apps/{app} | 
+*AppApi* | [**AppGet**](docs/AppApi.md#appget) | **Get** /1.0/apps/{app} | 
 *AppApi* | [**AppList**](docs/AppApi.md#applist) | **Get** /1.0/apps | 
 *AppApi* | [**EnvGet**](docs/AppApi.md#envget) | **Get** /1.0/apps/{app}/env | 
 *AppApi* | [**EnvSet**](docs/AppApi.md#envset) | **Post** /1.0/apps/{app}/env | 
 *AppApi* | [**EnvUnset**](docs/AppApi.md#envunset) | **Delete** /1.0/apps/{app}/env | 
+*NodeApi* | [**NodeAdd**](docs/NodeApi.md#nodeadd) | **Post** /1.2/node | 
+*NodeApi* | [**NodeDelete**](docs/NodeApi.md#nodedelete) | **Delete** /1.2/node/{address} | 
+*NodeApi* | [**NodeGet**](docs/NodeApi.md#nodeget) | **Get** /1.2/node/{address} | 
+*NodeApi* | [**NodeUpdate**](docs/NodeApi.md#nodeupdate) | **Put** /1.2/node | 
 *VolumeApi* | [**VolumeBind**](docs/VolumeApi.md#volumebind) | **Post** /1.4/volumes/{volume}/bind | 
 *VolumeApi* | [**VolumeCreate**](docs/VolumeApi.md#volumecreate) | **Post** /1.4/volumes/{volume} | 
 *VolumeApi* | [**VolumeDelete**](docs/VolumeApi.md#volumedelete) | **Delete** /1.4/volumes/{volume} | 
@@ -44,10 +49,16 @@ Class | Method | HTTP request | Description
  - [EnvSetData](docs/EnvSetData.md)
  - [EnvSetResponse](docs/EnvSetResponse.md)
  - [EnvSetResponseInner](docs/EnvSetResponseInner.md)
- - [EnvUnsetData](docs/EnvUnsetData.md)
  - [ErrorMessage](docs/ErrorMessage.md)
  - [Lock](docs/Lock.md)
  - [MiniApp](docs/MiniApp.md)
+ - [Node](docs/Node.md)
+ - [NodeAddData](docs/NodeAddData.md)
+ - [NodeCheck](docs/NodeCheck.md)
+ - [NodeCheckResult](docs/NodeCheckResult.md)
+ - [NodeGetResponse](docs/NodeGetResponse.md)
+ - [NodeStatus](docs/NodeStatus.md)
+ - [NodeUpdateData](docs/NodeUpdateData.md)
  - [Plan](docs/Plan.md)
  - [Router](docs/Router.md)
  - [Unit](docs/Unit.md)

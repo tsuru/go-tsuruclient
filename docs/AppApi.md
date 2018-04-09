@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AppCreate**](AppApi.md#AppCreate) | **Post** /1.0/apps | 
 [**AppDelete**](AppApi.md#AppDelete) | **Delete** /1.0/apps/{app} | 
+[**AppGet**](AppApi.md#AppGet) | **Get** /1.0/apps/{app} | 
 [**AppList**](AppApi.md#AppList) | **Get** /1.0/apps | 
 [**EnvGet**](AppApi.md#EnvGet) | **Get** /1.0/apps/{app}/env | 
 [**EnvSet**](AppApi.md#EnvSet) | **Post** /1.0/apps/{app}/env | 
@@ -63,8 +64,36 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/x-json-stream
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AppGet**
+> App AppGet(ctx, app)
+
+
+Get info about a tsuru app.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **app** | **string**| Appname. | 
+
+### Return type
+
+[**App**](App.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -142,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -177,7 +206,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EnvUnset**
-> EnvUnset(ctx, app, optional)
+> EnvUnset(ctx, app, env, norestart)
 
 
 Unset app environment variables.
@@ -188,15 +217,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **app** | **string**| App name. | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **app** | **string**| App name. | 
- **unsetData** | [**EnvUnsetData**](EnvUnsetData.md)|  | 
+  **env** | [**[]string**](string.md)|  | 
+  **norestart** | **bool**|  | 
 
 ### Return type
 
@@ -208,7 +230,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/x-json-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

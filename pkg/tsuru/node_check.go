@@ -9,9 +9,12 @@
 
 package tsuru
 
-// Data sent to the environment unset endpoint.
-type EnvUnsetData struct {
-	Env []string `json:"env,omitempty"`
+import (
+	"time"
+)
 
-	Norestart bool `json:"norestart,omitempty"`
+type NodeCheck struct {
+	Time time.Time `json:"time,omitempty"`
+
+	Checks []NodeCheckResult `json:"checks,omitempty"`
 }

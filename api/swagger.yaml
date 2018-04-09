@@ -121,13 +121,41 @@ paths:
       security:
       - Bearer: []
   /1.0/apps/{app}:
+    get:
+      tags:
+      - "app"
+      description: "Get info about a tsuru app."
+      operationId: "AppGet"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "app"
+        in: "path"
+        description: "Appname."
+        required: true
+        type: "string"
+        minLength: 1
+        x-exportParamName: "App"
+      responses:
+        200:
+          description: "App info"
+          schema:
+            $ref: "#/definitions/App"
+        401:
+          description: "Unauthorized."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "App not found."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
     delete:
       tags:
       - "app"
       description: "Delete a tsuru app."
       operationId: "AppDelete"
-      consumes:
-      - "application/json"
       produces:
       - "application/x-json-stream"
       parameters:
@@ -157,8 +185,6 @@ paths:
       - "app"
       description: "Get app environment variables."
       operationId: "EnvGet"
-      consumes:
-      - "application/json"
       produces:
       - "application/json"
       parameters:
@@ -240,8 +266,6 @@ paths:
       - "app"
       description: "Unset app environment variables."
       operationId: "EnvUnset"
-      consumes:
-      - "application/json"
       produces:
       - "application/x-json-stream"
       parameters:
@@ -252,12 +276,20 @@ paths:
         type: "string"
         minLength: 1
         x-exportParamName: "App"
-      - in: "body"
-        name: "unsetData"
-        required: false
-        schema:
-          $ref: "#/definitions/EnvUnsetData"
-        x-exportParamName: "UnsetData"
+      - name: "env"
+        in: "query"
+        required: true
+        type: "array"
+        items:
+          type: "string"
+        collectionFormat: "multi"
+        minItems: 1
+        x-exportParamName: "Env"
+      - name: "norestart"
+        in: "query"
+        required: true
+        type: "boolean"
+        x-exportParamName: "Norestart"
       responses:
         200:
           description: "Envs deleted"
@@ -271,6 +303,136 @@ paths:
             $ref: "#/definitions/ErrorMessage"
         404:
           description: "App not found"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
+  /1.2/node:
+    post:
+      tags:
+      - "node"
+      description: "Add a node."
+      operationId: "NodeAdd"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/x-json-stream"
+      parameters:
+      - in: "body"
+        name: "nodeAddData"
+        required: true
+        schema:
+          $ref: "#/definitions/NodeAddData"
+        x-exportParamName: "NodeAddData"
+      responses:
+        201:
+          description: "Ok"
+        400:
+          description: "Invalid parameters"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
+    put:
+      tags:
+      - "node"
+      description: "Update node."
+      operationId: "NodeUpdate"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "nodeUpdateData"
+        required: true
+        schema:
+          $ref: "#/definitions/NodeUpdateData"
+        x-exportParamName: "NodeUpdateData"
+      responses:
+        200:
+          description: "Ok"
+        400:
+          description: "Invalid data"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "Not found"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
+  /1.2/node/{address}:
+    get:
+      tags:
+      - "node"
+      description: "Get node information."
+      operationId: "NodeGet"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "address"
+        in: "path"
+        description: "Node address."
+        required: true
+        type: "string"
+        minLength: 1
+        x-exportParamName: "Address"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            $ref: "#/definitions/NodeGetResponse"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "Not found"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
+    delete:
+      tags:
+      - "node"
+      description: "Remove node."
+      operationId: "NodeDelete"
+      parameters:
+      - name: "address"
+        in: "path"
+        description: "Node address."
+        required: true
+        type: "string"
+        minLength: 1
+        x-exportParamName: "Address"
+      - name: "no-rebalance"
+        in: "query"
+        description: "Trigger node rebalance."
+        required: true
+        type: "boolean"
+        x-exportParamName: "NoRebalance"
+      - name: "remove-iaas"
+        in: "query"
+        description: "Remove machine from IaaS."
+        required: true
+        type: "boolean"
+        x-exportParamName: "RemoveIaas"
+      responses:
+        200:
+          description: "Ok"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "Not found"
           schema:
             $ref: "#/definitions/ErrorMessage"
       security:
@@ -492,6 +654,205 @@ definitions:
   ErrorMessage:
     type: "string"
     description: "Error message."
+  NodeUpdateData:
+    type: "object"
+    properties:
+      address:
+        type: "string"
+      pool:
+        type: "string"
+      metadata:
+        type: "object"
+        additionalProperties:
+          type: "string"
+      enable:
+        type: "boolean"
+      disable:
+        type: "boolean"
+    example:
+      metadata:
+        key: "metadata"
+      address: "address"
+      enable: true
+      disable: true
+      pool: "pool"
+  NodeAddData:
+    type: "object"
+    properties:
+      address:
+        type: "string"
+      cacert:
+        type: "string"
+        description: "Docker API CA certificate."
+      clientcert:
+        type: "string"
+        description: "Docker API client certificate."
+      clientkey:
+        type: "string"
+        description: "Docker API client key."
+      register:
+        type: "boolean"
+        description: "Register an existing node."
+      waitto:
+        type: "integer"
+        format: "int64"
+        description: "Timeout in nanoseconds."
+      metadata:
+        type: "object"
+        additionalProperties:
+          type: "string"
+    example:
+      metadata:
+        key: "metadata"
+      address: "address"
+      clientcert: "clientcert"
+      clientkey: "clientkey"
+      cacert: "cacert"
+      waitto: 0
+      register: true
+  NodeGetResponse:
+    type: "object"
+    properties:
+      node:
+        $ref: "#/definitions/Node"
+      status:
+        $ref: "#/definitions/NodeStatus"
+      units:
+        $ref: "#/definitions/Unit"
+    example:
+      node:
+        provisioner: "provisioner"
+        metadata:
+          key: "metadata"
+        address: "address"
+        iaasid: "iaasid"
+        pool: "pool"
+        status: "status"
+      units:
+        address:
+          scheme: "scheme"
+          host: "host"
+        appname: "appname"
+        processname: "processname"
+        ip: "ip"
+        name: "name"
+        id: "id"
+        type: "type"
+        status: "status"
+      status:
+        address: "address"
+        checks:
+        - checks:
+          - err: "err"
+            name: "name"
+            successful: true
+          - err: "err"
+            name: "name"
+            successful: true
+          time: "2000-01-23T04:56:07.000+00:00"
+        - checks:
+          - err: "err"
+            name: "name"
+            successful: true
+          - err: "err"
+            name: "name"
+            successful: true
+          time: "2000-01-23T04:56:07.000+00:00"
+        lastsuccess: "2000-01-23T04:56:07.000+00:00"
+        lastupdate: "2000-01-23T04:56:07.000+00:00"
+  Node:
+    type: "object"
+    properties:
+      address:
+        type: "string"
+      iaasid:
+        type: "string"
+      status:
+        type: "string"
+      pool:
+        type: "string"
+      provisioner:
+        type: "string"
+      metadata:
+        type: "object"
+        additionalProperties:
+          type: "string"
+    example:
+      provisioner: "provisioner"
+      metadata:
+        key: "metadata"
+      address: "address"
+      iaasid: "iaasid"
+      pool: "pool"
+      status: "status"
+  NodeStatus:
+    type: "object"
+    properties:
+      address:
+        type: "string"
+      checks:
+        type: "array"
+        items:
+          $ref: "#/definitions/NodeCheck"
+      lastsuccess:
+        type: "string"
+        format: "date-time"
+      lastupdate:
+        type: "string"
+        format: "date-time"
+    example:
+      address: "address"
+      checks:
+      - checks:
+        - err: "err"
+          name: "name"
+          successful: true
+        - err: "err"
+          name: "name"
+          successful: true
+        time: "2000-01-23T04:56:07.000+00:00"
+      - checks:
+        - err: "err"
+          name: "name"
+          successful: true
+        - err: "err"
+          name: "name"
+          successful: true
+        time: "2000-01-23T04:56:07.000+00:00"
+      lastsuccess: "2000-01-23T04:56:07.000+00:00"
+      lastupdate: "2000-01-23T04:56:07.000+00:00"
+  NodeCheck:
+    type: "object"
+    properties:
+      time:
+        type: "string"
+        format: "date-time"
+      checks:
+        type: "array"
+        items:
+          $ref: "#/definitions/NodeCheckResult"
+    example:
+      checks:
+      - err: "err"
+        name: "name"
+        successful: true
+      - err: "err"
+        name: "name"
+        successful: true
+      time: "2000-01-23T04:56:07.000+00:00"
+  NodeCheckResult:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      err:
+        type: "string"
+      successful:
+        type: "boolean"
+    example:
+      err: "err"
+      name: "name"
+      successful: true
   VolumeListResponse:
     type: "array"
     description: "Response returned by Volume List."
@@ -832,21 +1193,6 @@ definitions:
     description: "Environment variables response information."
     items:
       $ref: "#/definitions/EnvSetResponse_inner"
-  EnvUnsetData:
-    type: "object"
-    properties:
-      env:
-        type: "array"
-        items:
-          type: "string"
-      norestart:
-        type: "boolean"
-    description: "Data sent to the environment unset endpoint."
-    example:
-      norestart: true
-      env:
-      - "env"
-      - "env"
   Unit:
     type: "object"
     properties:
