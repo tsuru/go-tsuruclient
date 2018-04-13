@@ -28,6 +28,12 @@ Class | Method | HTTP request | Description
 *AppApi* | [**EnvGet**](docs/AppApi.md#envget) | **Get** /1.0/apps/{app}/env | 
 *AppApi* | [**EnvSet**](docs/AppApi.md#envset) | **Post** /1.0/apps/{app}/env | 
 *AppApi* | [**EnvUnset**](docs/AppApi.md#envunset) | **Delete** /1.0/apps/{app}/env | 
+*AuthApi* | [**AssignRoleToToken**](docs/AuthApi.md#assignroletotoken) | **Post** /1.6/roles/{role_name}/token | 
+*AuthApi* | [**DissociateRoleFromToken**](docs/AuthApi.md#dissociaterolefromtoken) | **Delete** /1.6/roles/{role_name}/token/{token_id} | 
+*AuthApi* | [**TeamTokenCreate**](docs/AuthApi.md#teamtokencreate) | **Post** /1.6/tokens | 
+*AuthApi* | [**TeamTokenDelete**](docs/AuthApi.md#teamtokendelete) | **Delete** /1.6/tokens/{token_id} | 
+*AuthApi* | [**TeamTokenUpdate**](docs/AuthApi.md#teamtokenupdate) | **Put** /1.6/tokens/{token_id} | 
+*AuthApi* | [**TeamTokensList**](docs/AuthApi.md#teamtokenslist) | **Get** /1.6/tokens | 
 *NodeApi* | [**NodeAdd**](docs/NodeApi.md#nodeadd) | **Post** /1.2/node | 
 *NodeApi* | [**NodeDelete**](docs/NodeApi.md#nodedelete) | **Delete** /1.2/node/{address} | 
 *NodeApi* | [**NodeGet**](docs/NodeApi.md#nodeget) | **Get** /1.2/node/{address} | 
@@ -45,6 +51,7 @@ Class | Method | HTTP request | Description
 
  - [App](docs/App.md)
  - [AppCreateResponse](docs/AppCreateResponse.md)
+ - [AssignTokenArgs](docs/AssignTokenArgs.md)
  - [Env](docs/Env.md)
  - [EnvSetData](docs/EnvSetData.md)
  - [EnvSetResponse](docs/EnvSetResponse.md)
@@ -60,7 +67,11 @@ Class | Method | HTTP request | Description
  - [NodeStatus](docs/NodeStatus.md)
  - [NodeUpdateData](docs/NodeUpdateData.md)
  - [Plan](docs/Plan.md)
+ - [RoleInstance](docs/RoleInstance.md)
  - [Router](docs/Router.md)
+ - [TeamToken](docs/TeamToken.md)
+ - [TeamTokenCreateArgs](docs/TeamTokenCreateArgs.md)
+ - [TeamTokenUpdateArgs](docs/TeamTokenUpdateArgs.md)
  - [Unit](docs/Unit.md)
  - [Url](docs/Url.md)
  - [Volume](docs/Volume.md)

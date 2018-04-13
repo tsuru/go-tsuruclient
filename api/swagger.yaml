@@ -638,6 +638,182 @@ paths:
             $ref: "#/definitions/ErrorMessage"
       security:
       - Bearer: []
+  /1.6/roles/{role_name}/token:
+    post:
+      tags:
+      - "auth"
+      description: "Assigns a role to a team token."
+      operationId: "AssignRoleToToken"
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "role_name"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "RoleName"
+      - in: "body"
+        name: "token"
+        required: true
+        schema:
+          $ref: "#/definitions/AssignTokenArgs"
+        x-exportParamName: "Token"
+      responses:
+        200:
+          description: "Role assigned."
+        401:
+          description: "Unauthorized."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "Role or token not found"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+  /1.6/roles/{role_name}/token/{token_id}:
+    delete:
+      tags:
+      - "auth"
+      description: "Dissociates a role from a team token."
+      operationId: "DissociateRoleFromToken"
+      parameters:
+      - name: "role_name"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "RoleName"
+      - name: "token_id"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "TokenId"
+      - name: "context"
+        in: "query"
+        required: true
+        type: "string"
+        x-exportParamName: "Context"
+      responses:
+        200:
+          description: "Role dissociated."
+        401:
+          description: "Unauthorized."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "Role or token not found"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+  /1.6/tokens:
+    get:
+      tags:
+      - "auth"
+      description: "List team tokens."
+      operationId: "TeamTokensList"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Team tokens list."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/TeamToken"
+        204:
+          description: "No content."
+        401:
+          description: "Unauthorized."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+    post:
+      tags:
+      - "auth"
+      description: "Creates a team token."
+      operationId: "TeamTokenCreate"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "token"
+        required: true
+        schema:
+          $ref: "#/definitions/TeamTokenCreateArgs"
+        x-exportParamName: "Token"
+      responses:
+        201:
+          description: "Team token created."
+          schema:
+            $ref: "#/definitions/TeamToken"
+        401:
+          description: "Unauthorized."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        409:
+          description: "Token with the same ID already exists."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+  /1.6/tokens/{token_id}:
+    put:
+      tags:
+      - "auth"
+      description: "Updates a team token."
+      operationId: "TeamTokenUpdate"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "token_id"
+        in: "path"
+        description: "Token ID."
+        required: true
+        type: "string"
+        minLength: 1
+        x-exportParamName: "TokenId"
+      - in: "body"
+        name: "token"
+        required: true
+        schema:
+          $ref: "#/definitions/TeamTokenUpdateArgs"
+        x-exportParamName: "Token"
+      responses:
+        200:
+          description: "Team token updated."
+          schema:
+            $ref: "#/definitions/TeamToken"
+        401:
+          description: "Unauthorized."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "Team token not found."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+    delete:
+      tags:
+      - "auth"
+      description: "Deletes a team token."
+      operationId: "TeamTokenDelete"
+      parameters:
+      - name: "token_id"
+        in: "path"
+        description: "Token ID."
+        required: true
+        type: "string"
+        minLength: 1
+        x-exportParamName: "TokenId"
+      responses:
+        200:
+          description: "Team token deleted."
+        401:
+          description: "Unauthorized."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "Team token not found."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
 securityDefinitions:
   Bearer:
     type: "apiKey"
@@ -1267,6 +1443,105 @@ definitions:
     example:
       scheme: "scheme"
       host: "host"
+  TeamTokenUpdateArgs:
+    properties:
+      regenerate:
+        type: "boolean"
+      description:
+        type: "string"
+      expires_in:
+        type: "integer"
+        format: "int64"
+        description: "Expire time in seconds, using a negative value removes the expiration."
+    description: "Arguments for updating an existing team token."
+    example:
+      regenerate: true
+      description: "description"
+      expires_in: 0
+  TeamTokenCreateArgs:
+    type: "object"
+    required:
+    - "team"
+    properties:
+      token_id:
+        type: "string"
+      description:
+        type: "string"
+      expires_in:
+        type: "integer"
+        format: "int64"
+        description: "Expire time in seconds."
+      team:
+        type: "string"
+    description: "Arguments for creating a new team token."
+    example:
+      token_id: "token_id"
+      description: "description"
+      team: "team"
+      expires_in: 0
+  TeamToken:
+    type: "object"
+    properties:
+      token:
+        type: "string"
+      token_id:
+        type: "string"
+      description:
+        type: "string"
+      created_at:
+        type: "string"
+        format: "date-time"
+      expires_at:
+        type: "string"
+        format: "date-time"
+      last_access:
+        type: "string"
+        format: "date-time"
+      creator_email:
+        type: "string"
+      team:
+        type: "string"
+      roles:
+        type: "array"
+        items:
+          $ref: "#/definitions/RoleInstance"
+    description: "An authorization token associated to a team."
+    example:
+      last_access: "2000-01-23T04:56:07.000+00:00"
+      expires_at: "2000-01-23T04:56:07.000+00:00"
+      token_id: "token_id"
+      creator_email: "creator_email"
+      roles:
+      - name: "name"
+        contextvalue: "contextvalue"
+      - name: "name"
+        contextvalue: "contextvalue"
+      description: "description"
+      created_at: "2000-01-23T04:56:07.000+00:00"
+      team: "team"
+      token: "token"
+  RoleInstance:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      contextvalue:
+        type: "string"
+    description: "Association between a role and a context value."
+    example:
+      name: "name"
+      contextvalue: "contextvalue"
+  AssignTokenArgs:
+    type: "object"
+    properties:
+      token_id:
+        type: "string"
+      context:
+        type: "string"
+    description: "Assign role to token arguments."
+    example:
+      token_id: "token_id"
+      context: "context"
   EnvSetResponse_inner:
     properties:
       name:
