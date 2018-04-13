@@ -34,9 +34,7 @@ func joinWithUserDir(p ...string) string {
 	return filepath.Join(paths...)
 }
 
-// ReadTarget returns the current target, as defined in the TSURU_TARGET
-// environment variable or in the target file.
-func ReadTarget() (string, error) {
+func getTarget() (string, error) {
 	if target := os.Getenv("TSURU_TARGET"); target != "" {
 		return target, nil
 	}
@@ -56,9 +54,11 @@ func readTarget(targetPath string) (string, error) {
 	return strings.TrimSpace(string(data)), nil
 }
 
+// GetTarget returns the current target, as defined in the TSURU_TARGET
+// environment variable or in the target file.
 func GetTarget() (string, error) {
 	var prefix string
-	target, err := ReadTarget()
+	target, err := getTarget()
 	if err != nil {
 		return "", err
 	}
