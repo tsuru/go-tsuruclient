@@ -18,5 +18,5 @@ type TeamTokenCreateArgs struct {
 	// Expire time in seconds.
 	ExpiresIn int64 `json:"expires_in,omitempty"`
 
-	Team string `json:"team"`
+	Team string `json:"team,omitempty"`
 }

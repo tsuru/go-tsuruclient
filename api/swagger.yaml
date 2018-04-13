@@ -1460,8 +1460,6 @@ definitions:
       expires_in: 0
   TeamTokenCreateArgs:
     type: "object"
-    required:
-    - "team"
     properties:
       token_id:
         type: "string"
