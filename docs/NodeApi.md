@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**NodeAdd**](NodeApi.md#NodeAdd) | **Post** /1.2/node | 
 [**NodeDelete**](NodeApi.md#NodeDelete) | **Delete** /1.2/node/{address} | 
 [**NodeGet**](NodeApi.md#NodeGet) | **Get** /1.2/node/{address} | 
+[**NodeList**](NodeApi.md#NodeList) | **Get** /1.2/node | 
 [**NodeUpdate**](NodeApi.md#NodeUpdate) | **Put** /1.2/node | 
 
 
@@ -84,6 +85,30 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**NodeGetResponse**](NodeGetResponse.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **NodeList**
+> NodeListResponse NodeList(ctx, )
+
+
+List nodes.
+
+### Required Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**NodeListResponse**](NodeListResponse.md)
 
 ### Authorization
 

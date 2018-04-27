@@ -50,7 +50,7 @@ type APIClient struct {
 	PoolApi     *PoolApiService
 	ServiceApi  *ServiceApiService
 	TeamApi     *TeamApiService
-	UsersApi    *UsersApiService
+	UserApi     *UserApiService
 	VolumeApi   *VolumeApiService
 }
 
@@ -77,7 +77,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PoolApi = (*PoolApiService)(&c.common)
 	c.ServiceApi = (*ServiceApiService)(&c.common)
 	c.TeamApi = (*TeamApiService)(&c.common)
-	c.UsersApi = (*UsersApiService)(&c.common)
+	c.UserApi = (*UserApiService)(&c.common)
 	c.VolumeApi = (*VolumeApiService)(&c.common)
 
 	return c

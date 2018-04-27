@@ -37,6 +37,7 @@ Class | Method | HTTP request | Description
 *NodeApi* | [**NodeAdd**](docs/NodeApi.md#nodeadd) | **Post** /1.2/node | 
 *NodeApi* | [**NodeDelete**](docs/NodeApi.md#nodedelete) | **Delete** /1.2/node/{address} | 
 *NodeApi* | [**NodeGet**](docs/NodeApi.md#nodeget) | **Get** /1.2/node/{address} | 
+*NodeApi* | [**NodeList**](docs/NodeApi.md#nodelist) | **Get** /1.2/node | 
 *NodeApi* | [**NodeUpdate**](docs/NodeApi.md#nodeupdate) | **Put** /1.2/node | 
 *PlatformApi* | [**PlatformAdd**](docs/PlatformApi.md#platformadd) | **Post** /1.0/platforms | 
 *PlatformApi* | [**PlatformDelete**](docs/PlatformApi.md#platformdelete) | **Delete** /1.0/platforms/{platform} | 
@@ -55,20 +56,20 @@ Class | Method | HTTP request | Description
 *TeamApi* | [**TeamGet**](docs/TeamApi.md#teamget) | **Get** /1.4/teams/{team} | 
 *TeamApi* | [**TeamUpdate**](docs/TeamApi.md#teamupdate) | **Put** /1.6/teams/{team} | 
 *TeamApi* | [**TeamsList**](docs/TeamApi.md#teamslist) | **Get** /1.0/teams | 
-*UsersApi* | [**APITokenGet**](docs/UsersApi.md#apitokenget) | **Get** /1.0/users/api-key | 
-*UsersApi* | [**APITokenRegenerate**](docs/UsersApi.md#apitokenregenerate) | **Post** /1.0/users/api-key | 
-*UsersApi* | [**ChangePassword**](docs/UsersApi.md#changepassword) | **Put** /1.0/users/password | 
-*UsersApi* | [**ResetPassword**](docs/UsersApi.md#resetpassword) | **Post** /1.0/users/{email}/password | 
-*UsersApi* | [**SSHKeyAdd**](docs/UsersApi.md#sshkeyadd) | **Post** /1.0/users/keys | 
-*UsersApi* | [**SSHKeyList**](docs/UsersApi.md#sshkeylist) | **Get** /1.0/users/keys | 
-*UsersApi* | [**SSHKeyRemove**](docs/UsersApi.md#sshkeyremove) | **Delete** /1.0/users/keys/{key} | 
-*UsersApi* | [**UserCreate**](docs/UsersApi.md#usercreate) | **Post** /1.0/users | 
-*UsersApi* | [**UserDelete**](docs/UsersApi.md#userdelete) | **Delete** /1.0/users | 
-*UsersApi* | [**UserGet**](docs/UsersApi.md#userget) | **Get** /1.0/users/info | 
-*UsersApi* | [**UserQuotaChange**](docs/UsersApi.md#userquotachange) | **Put** /1.0/users/{email}/quota | 
-*UsersApi* | [**UserQuotaGet**](docs/UsersApi.md#userquotaget) | **Get** /1.0/users/{email}/quota | 
-*UsersApi* | [**UserTokenDelete**](docs/UsersApi.md#usertokendelete) | **Delete** /1.0/users/tokens | 
-*UsersApi* | [**UsersList**](docs/UsersApi.md#userslist) | **Get** /1.0/users | 
+*UserApi* | [**APITokenGet**](docs/UserApi.md#apitokenget) | **Get** /1.0/users/api-key | 
+*UserApi* | [**APITokenRegenerate**](docs/UserApi.md#apitokenregenerate) | **Post** /1.0/users/api-key | 
+*UserApi* | [**ChangePassword**](docs/UserApi.md#changepassword) | **Put** /1.0/users/password | 
+*UserApi* | [**ResetPassword**](docs/UserApi.md#resetpassword) | **Post** /1.0/users/{email}/password | 
+*UserApi* | [**SSHKeyAdd**](docs/UserApi.md#sshkeyadd) | **Post** /1.0/users/keys | 
+*UserApi* | [**SSHKeyList**](docs/UserApi.md#sshkeylist) | **Get** /1.0/users/keys | 
+*UserApi* | [**SSHKeyRemove**](docs/UserApi.md#sshkeyremove) | **Delete** /1.0/users/keys/{key} | 
+*UserApi* | [**UserCreate**](docs/UserApi.md#usercreate) | **Post** /1.0/users | 
+*UserApi* | [**UserDelete**](docs/UserApi.md#userdelete) | **Delete** /1.0/users | 
+*UserApi* | [**UserGet**](docs/UserApi.md#userget) | **Get** /1.0/users/info | 
+*UserApi* | [**UserQuotaChange**](docs/UserApi.md#userquotachange) | **Put** /1.0/users/{email}/quota | 
+*UserApi* | [**UserQuotaGet**](docs/UserApi.md#userquotaget) | **Get** /1.0/users/{email}/quota | 
+*UserApi* | [**UserTokenDelete**](docs/UserApi.md#usertokendelete) | **Delete** /1.0/users/tokens | 
+*UserApi* | [**UsersList**](docs/UserApi.md#userslist) | **Get** /1.0/users | 
 *VolumeApi* | [**VolumeBind**](docs/VolumeApi.md#volumebind) | **Post** /1.4/volumes/{volume}/bind | 
 *VolumeApi* | [**VolumeCreate**](docs/VolumeApi.md#volumecreate) | **Post** /1.4/volumes | 
 *VolumeApi* | [**VolumeDelete**](docs/VolumeApi.md#volumedelete) | **Delete** /1.4/volumes/{volume} | 
@@ -90,12 +91,14 @@ Class | Method | HTTP request | Description
  - [EnvSetResponseInner](docs/EnvSetResponseInner.md)
  - [ErrorMessage](docs/ErrorMessage.md)
  - [Lock](docs/Lock.md)
+ - [Machine](docs/Machine.md)
  - [MiniApp](docs/MiniApp.md)
  - [Node](docs/Node.md)
  - [NodeAddData](docs/NodeAddData.md)
  - [NodeCheck](docs/NodeCheck.md)
  - [NodeCheckResult](docs/NodeCheckResult.md)
  - [NodeGetResponse](docs/NodeGetResponse.md)
+ - [NodeListResponse](docs/NodeListResponse.md)
  - [NodeStatus](docs/NodeStatus.md)
  - [NodeUpdateData](docs/NodeUpdateData.md)
  - [PermissionUser](docs/PermissionUser.md)

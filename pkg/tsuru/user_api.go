@@ -24,14 +24,14 @@ var (
 	_ context.Context
 )
 
-type UsersApiService service
+type UserApiService service
 
-/* UsersApiService
+/* UserApiService
 Show the API token of an user.
  * @param ctx context.Context for authentication, logging, tracing, etc.
 @param email
 @return string*/
-func (a *UsersApiService) APITokenGet(ctx context.Context, email string) (string, *http.Response, error) {
+func (a *UserApiService) APITokenGet(ctx context.Context, email string) (string, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -99,12 +99,12 @@ func (a *UsersApiService) APITokenGet(ctx context.Context, email string) (string
 	return successPayload, localVarHttpResponse, err
 }
 
-/* UsersApiService
+/* UserApiService
 Regenerate the API Token of an user.
  * @param ctx context.Context for authentication, logging, tracing, etc.
 @param email
 @return string*/
-func (a *UsersApiService) APITokenRegenerate(ctx context.Context, email string) (string, *http.Response, error) {
+func (a *UserApiService) APITokenRegenerate(ctx context.Context, email string) (string, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -172,12 +172,12 @@ func (a *UsersApiService) APITokenRegenerate(ctx context.Context, email string) 
 	return successPayload, localVarHttpResponse, err
 }
 
-/* UsersApiService
+/* UserApiService
 Change password of logged user.
  * @param ctx context.Context for authentication, logging, tracing, etc.
 @param changePasswordData
 @return */
-func (a *UsersApiService) ChangePassword(ctx context.Context, changePasswordData ChangePasswordData) (*http.Response, error) {
+func (a *UserApiService) ChangePassword(ctx context.Context, changePasswordData ChangePasswordData) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
@@ -240,13 +240,13 @@ func (a *UsersApiService) ChangePassword(ctx context.Context, changePasswordData
 	return localVarHttpResponse, err
 }
 
-/* UsersApiService
+/* UserApiService
 Reset password of an user.
  * @param ctx context.Context for authentication, logging, tracing, etc.
 @param email
 @param token
 @return */
-func (a *UsersApiService) ResetPassword(ctx context.Context, email string, token string) (*http.Response, error) {
+func (a *UserApiService) ResetPassword(ctx context.Context, email string, token string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -313,12 +313,12 @@ func (a *UsersApiService) ResetPassword(ctx context.Context, email string, token
 	return localVarHttpResponse, err
 }
 
-/* UsersApiService
+/* UserApiService
 Add SSH key to logged user.
  * @param ctx context.Context for authentication, logging, tracing, etc.
 @param sSHKeyAddData
 @return */
-func (a *UsersApiService) SSHKeyAdd(ctx context.Context, sSHKeyAddData SshKeyAddData) (*http.Response, error) {
+func (a *UserApiService) SSHKeyAdd(ctx context.Context, sSHKeyAddData SshKeyAddData) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -381,11 +381,11 @@ func (a *UsersApiService) SSHKeyAdd(ctx context.Context, sSHKeyAddData SshKeyAdd
 	return localVarHttpResponse, err
 }
 
-/* UsersApiService
+/* UserApiService
 Show the list of the ssh keys of logged user.
  * @param ctx context.Context for authentication, logging, tracing, etc.
 @return SshKeyListResponse*/
-func (a *UsersApiService) SSHKeyList(ctx context.Context) (SshKeyListResponse, *http.Response, error) {
+func (a *UserApiService) SSHKeyList(ctx context.Context) (SshKeyListResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -452,12 +452,12 @@ func (a *UsersApiService) SSHKeyList(ctx context.Context) (SshKeyListResponse, *
 	return successPayload, localVarHttpResponse, err
 }
 
-/* UsersApiService
+/* UserApiService
 Delete one ssh key of logged user.
  * @param ctx context.Context for authentication, logging, tracing, etc.
 @param key
 @return */
-func (a *UsersApiService) SSHKeyRemove(ctx context.Context, key string) (*http.Response, error) {
+func (a *UserApiService) SSHKeyRemove(ctx context.Context, key string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -522,12 +522,12 @@ func (a *UsersApiService) SSHKeyRemove(ctx context.Context, key string) (*http.R
 	return localVarHttpResponse, err
 }
 
-/* UsersApiService
+/* UserApiService
 Create a new user.
  * @param ctx context.Context for authentication, logging, tracing, etc.
 @param userData
 @return */
-func (a *UsersApiService) UserCreate(ctx context.Context, userData UserData) (*http.Response, error) {
+func (a *UserApiService) UserCreate(ctx context.Context, userData UserData) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -590,12 +590,12 @@ func (a *UsersApiService) UserCreate(ctx context.Context, userData UserData) (*h
 	return localVarHttpResponse, err
 }
 
-/* UsersApiService
+/* UserApiService
 Delete an user.
  * @param ctx context.Context for authentication, logging, tracing, etc.
 @param email User e-mail.
 @return */
-func (a *UsersApiService) UserDelete(ctx context.Context, email string) (*http.Response, error) {
+func (a *UserApiService) UserDelete(ctx context.Context, email string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -660,11 +660,11 @@ func (a *UsersApiService) UserDelete(ctx context.Context, email string) (*http.R
 	return localVarHttpResponse, err
 }
 
-/* UsersApiService
+/* UserApiService
 Get information on logged user.
  * @param ctx context.Context for authentication, logging, tracing, etc.
 @return User*/
-func (a *UsersApiService) UserGet(ctx context.Context) (User, *http.Response, error) {
+func (a *UserApiService) UserGet(ctx context.Context) (User, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -731,13 +731,13 @@ func (a *UsersApiService) UserGet(ctx context.Context) (User, *http.Response, er
 	return successPayload, localVarHttpResponse, err
 }
 
-/* UsersApiService
+/* UserApiService
 Change quota of an user.
  * @param ctx context.Context for authentication, logging, tracing, etc.
 @param email User e-mail.
 @param limit User new quota.
 @return */
-func (a *UsersApiService) UserQuotaChange(ctx context.Context, email string, limit int32) (*http.Response, error) {
+func (a *UserApiService) UserQuotaChange(ctx context.Context, email string, limit int32) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
@@ -803,12 +803,12 @@ func (a *UsersApiService) UserQuotaChange(ctx context.Context, email string, lim
 	return localVarHttpResponse, err
 }
 
-/* UsersApiService
+/* UserApiService
 Get quota of an user.
  * @param ctx context.Context for authentication, logging, tracing, etc.
 @param email User e-mail.
 @return UserQuotaViewResponse*/
-func (a *UsersApiService) UserQuotaGet(ctx context.Context, email string) (UserQuotaViewResponse, *http.Response, error) {
+func (a *UserApiService) UserQuotaGet(ctx context.Context, email string) (UserQuotaViewResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -879,11 +879,11 @@ func (a *UsersApiService) UserQuotaGet(ctx context.Context, email string) (UserQ
 	return successPayload, localVarHttpResponse, err
 }
 
-/* UsersApiService
+/* UserApiService
 Logout.
  * @param ctx context.Context for authentication, logging, tracing, etc.
 @return */
-func (a *UsersApiService) UserTokenDelete(ctx context.Context) (*http.Response, error) {
+func (a *UserApiService) UserTokenDelete(ctx context.Context) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -944,7 +944,7 @@ func (a *UsersApiService) UserTokenDelete(ctx context.Context) (*http.Response, 
 	return localVarHttpResponse, err
 }
 
-/* UsersApiService
+/* UserApiService
 List users.
  * @param ctx context.Context for authentication, logging, tracing, etc.
 @param email
@@ -952,7 +952,7 @@ List users.
     @param "role" (string)
     @param "context" (string)
 @return []User*/
-func (a *UsersApiService) UsersList(ctx context.Context, email string, localVarOptionals map[string]interface{}) ([]User, *http.Response, error) {
+func (a *UserApiService) UsersList(ctx context.Context, email string, localVarOptionals map[string]interface{}) ([]User, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}

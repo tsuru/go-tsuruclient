@@ -742,7 +742,7 @@ paths:
   /1.0/users:
     get:
       tags:
-      - "users"
+      - "user"
       description: "List users."
       operationId: "UsersList"
       produces:
@@ -778,7 +778,7 @@ paths:
       - Bearer: []
     post:
       tags:
-      - "users"
+      - "user"
       description: "Create a new user."
       operationId: "UserCreate"
       consumes:
@@ -815,7 +815,7 @@ paths:
       - Bearer: []
     delete:
       tags:
-      - "users"
+      - "user"
       description: "Delete an user."
       operationId: "UserDelete"
       parameters:
@@ -842,7 +842,7 @@ paths:
   /1.0/users/api-key:
     get:
       tags:
-      - "users"
+      - "user"
       description: "Show the API token of an user."
       operationId: "APITokenGet"
       produces:
@@ -870,7 +870,7 @@ paths:
       - Bearer: []
     post:
       tags:
-      - "users"
+      - "user"
       description: "Regenerate the API Token of an user."
       operationId: "APITokenRegenerate"
       produces:
@@ -899,7 +899,7 @@ paths:
   /1.0/users/keys:
     get:
       tags:
-      - "users"
+      - "user"
       description: "Show the list of the ssh keys of logged user."
       operationId: "SSHKeyList"
       produces:
@@ -922,7 +922,7 @@ paths:
       - Bearer: []
     post:
       tags:
-      - "users"
+      - "user"
       description: "Add SSH key to logged user."
       operationId: "SSHKeyAdd"
       consumes:
@@ -956,7 +956,7 @@ paths:
   /1.0/users/keys/{key}:
     delete:
       tags:
-      - "users"
+      - "user"
       description: "Delete one ssh key of logged user."
       operationId: "SSHKeyRemove"
       parameters:
@@ -986,7 +986,7 @@ paths:
   /1.0/users/info:
     get:
       tags:
-      - "users"
+      - "user"
       description: "Get information on logged user."
       operationId: "UserGet"
       produces:
@@ -1006,7 +1006,7 @@ paths:
   /1.0/users/{email}/quota:
     get:
       tags:
-      - "users"
+      - "user"
       description: "Get quota of an user."
       operationId: "UserQuotaGet"
       produces:
@@ -1036,7 +1036,7 @@ paths:
       - Bearer: []
     put:
       tags:
-      - "users"
+      - "user"
       description: "Change quota of an user."
       operationId: "UserQuotaChange"
       consumes:
@@ -1075,7 +1075,7 @@ paths:
   /1.0/users/password:
     put:
       tags:
-      - "users"
+      - "user"
       description: "Change password of logged user."
       operationId: "ChangePassword"
       consumes:
@@ -1111,7 +1111,7 @@ paths:
   /1.0/users/{email}/password:
     post:
       tags:
-      - "users"
+      - "user"
       description: "Reset password of an user."
       operationId: "ResetPassword"
       consumes:
@@ -1153,7 +1153,7 @@ paths:
   /1.0/users/tokens:
     delete:
       tags:
-      - "users"
+      - "user"
       description: "Logout."
       operationId: "UserTokenDelete"
       parameters: []
@@ -1163,6 +1163,23 @@ paths:
       security:
       - Bearer: []
   /1.2/node:
+    get:
+      tags:
+      - "node"
+      description: "List nodes."
+      operationId: "NodeList"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Nodes List."
+          schema:
+            $ref: "#/definitions/NodeListResponse"
+        204:
+          description: "No content."
+      security:
+      - Bearer: []
     post:
       tags:
       - "node"
@@ -2062,6 +2079,48 @@ definitions:
           time: "2000-01-23T04:56:07.000+00:00"
         lastsuccess: "2000-01-23T04:56:07.000+00:00"
         lastupdate: "2000-01-23T04:56:07.000+00:00"
+  NodeListResponse:
+    type: "object"
+    properties:
+      nodes:
+        type: "array"
+        items:
+          $ref: "#/definitions/Node"
+      machines:
+        type: "array"
+        items:
+          $ref: "#/definitions/Machine"
+    example:
+      nodes:
+      - provisioner: "provisioner"
+        metadata:
+          key: "metadata"
+        address: "address"
+        iaasid: "iaasid"
+        pool: "pool"
+        status: "status"
+      - provisioner: "provisioner"
+        metadata:
+          key: "metadata"
+        address: "address"
+        iaasid: "iaasid"
+        pool: "pool"
+        status: "status"
+      machines:
+      - protocol: "protocol"
+        address: "address"
+        port: 0
+        creationparams:
+          key: "creationparams"
+        id: "id"
+        iaas: "iaas"
+      - protocol: "protocol"
+        address: "address"
+        port: 0
+        creationparams:
+          key: "creationparams"
+        id: "id"
+        iaas: "iaas"
   Node:
     type: "object"
     properties:
@@ -2155,6 +2214,31 @@ definitions:
       err: "err"
       name: "name"
       successful: true
+  Machine:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      iaas:
+        type: "string"
+      address:
+        type: "string"
+      port:
+        type: "integer"
+      protocol:
+        type: "string"
+      creationparams:
+        type: "object"
+        additionalProperties:
+          type: "string"
+    example:
+      protocol: "protocol"
+      address: "address"
+      port: 0
+      creationparams:
+        key: "creationparams"
+      id: "id"
+      iaas: "iaas"
   RoleUser:
     type: "object"
     properties:
