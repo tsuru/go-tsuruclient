@@ -1663,6 +1663,8 @@ paths:
           description: "Role or token not found"
           schema:
             $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
   /1.6/roles/{role_name}/token/{token_id}:
     delete:
       tags:
@@ -1696,6 +1698,8 @@ paths:
           description: "Role or token not found"
           schema:
             $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
   /1.6/tokens:
     get:
       tags:
@@ -1718,6 +1722,8 @@ paths:
           description: "Unauthorized."
           schema:
             $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
     post:
       tags:
       - "auth"
@@ -1747,6 +1753,8 @@ paths:
           description: "Token with the same ID already exists."
           schema:
             $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
   /1.6/tokens/{token_id}:
     put:
       tags:
@@ -1784,6 +1792,8 @@ paths:
           description: "Team token not found."
           schema:
             $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
     delete:
       tags:
       - "auth"
@@ -1808,6 +1818,46 @@ paths:
           description: "Team token not found."
           schema:
             $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
+  /1.1/events/{eventid}/cancel:
+    post:
+      tags:
+      - "event"
+      operationId: "EventCancel"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "eventid"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Eventid"
+      - in: "body"
+        name: "cancel"
+        required: true
+        schema:
+          $ref: "#/definitions/EventCancelArgs"
+        x-exportParamName: "Cancel"
+      responses:
+        204:
+          description: "Event cancelation requested."
+        400:
+          description: "Invalid data"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        401:
+          description: "Unauthorized."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "Event not found"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
 securityDefinitions:
   Bearer:
     type: "apiKey"
@@ -2964,6 +3014,13 @@ definitions:
     example:
       name: "name"
       disabled: true
+  EventCancelArgs:
+    type: "object"
+    properties:
+      reason:
+        type: "string"
+    example:
+      reason: "reason"
   teamData:
     type: "object"
     properties:

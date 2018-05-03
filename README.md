@@ -34,6 +34,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**TeamTokenDelete**](docs/AuthApi.md#teamtokendelete) | **Delete** /1.6/tokens/{token_id} | 
 *AuthApi* | [**TeamTokenUpdate**](docs/AuthApi.md#teamtokenupdate) | **Put** /1.6/tokens/{token_id} | 
 *AuthApi* | [**TeamTokensList**](docs/AuthApi.md#teamtokenslist) | **Get** /1.6/tokens | 
+*EventApi* | [**EventCancel**](docs/EventApi.md#eventcancel) | **Post** /1.1/events/{eventid}/cancel | 
 *NodeApi* | [**NodeAdd**](docs/NodeApi.md#nodeadd) | **Post** /1.2/node | 
 *NodeApi* | [**NodeDelete**](docs/NodeApi.md#nodedelete) | **Delete** /1.2/node/{address} | 
 *NodeApi* | [**NodeGet**](docs/NodeApi.md#nodeget) | **Get** /1.2/node/{address} | 
@@ -90,6 +91,7 @@ Class | Method | HTTP request | Description
  - [EnvSetResponse](docs/EnvSetResponse.md)
  - [EnvSetResponseInner](docs/EnvSetResponseInner.md)
  - [ErrorMessage](docs/ErrorMessage.md)
+ - [EventCancelArgs](docs/EventCancelArgs.md)
  - [Lock](docs/Lock.md)
  - [Machine](docs/Machine.md)
  - [MiniApp](docs/MiniApp.md)

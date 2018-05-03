@@ -45,6 +45,7 @@ type APIClient struct {
 	// API Services
 	AppApi      *AppApiService
 	AuthApi     *AuthApiService
+	EventApi    *EventApiService
 	NodeApi     *NodeApiService
 	PlatformApi *PlatformApiService
 	PoolApi     *PoolApiService
@@ -72,6 +73,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.AppApi = (*AppApiService)(&c.common)
 	c.AuthApi = (*AuthApiService)(&c.common)
+	c.EventApi = (*EventApiService)(&c.common)
 	c.NodeApi = (*NodeApiService)(&c.common)
 	c.PlatformApi = (*PlatformApiService)(&c.common)
 	c.PoolApi = (*PoolApiService)(&c.common)
