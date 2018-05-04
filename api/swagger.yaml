@@ -1858,6 +1858,155 @@ paths:
             $ref: "#/definitions/ErrorMessage"
       security:
       - Bearer: []
+  /1.6/events/webhooks:
+    get:
+      tags:
+      - "event"
+      operationId: "WebHookList"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "WebHooks list."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/WebHook"
+        204:
+          description: "No content."
+        401:
+          description: "Unauthorized."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
+    post:
+      tags:
+      - "event"
+      operationId: "WebHookCreate"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "webhook"
+        required: true
+        schema:
+          $ref: "#/definitions/WebHook"
+        x-exportParamName: "Webhook"
+      responses:
+        200:
+          description: "WebHook created."
+        400:
+          description: "Invalid data"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        401:
+          description: "Unauthorized."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        409:
+          description: "WebHook already exists."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
+  /1.6/events/webhooks/{name}:
+    get:
+      tags:
+      - "event"
+      operationId: "WebHookInfo"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "name"
+        in: "path"
+        description: "WebHook name."
+        required: true
+        type: "string"
+        minLength: 1
+        x-exportParamName: "Name"
+      responses:
+        200:
+          description: "WebHook."
+          schema:
+            $ref: "#/definitions/WebHook"
+        401:
+          description: "Unauthorized."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "Not founds."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
+    put:
+      tags:
+      - "event"
+      operationId: "WebHookUpdate"
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "name"
+        in: "path"
+        description: "WebHook name."
+        required: true
+        type: "string"
+        minLength: 1
+        x-exportParamName: "Name"
+      - in: "body"
+        name: "webhook"
+        required: true
+        schema:
+          $ref: "#/definitions/WebHook"
+        x-exportParamName: "Webhook"
+      responses:
+        200:
+          description: "WebHook updated."
+        400:
+          description: "Invalid data"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        401:
+          description: "Unauthorized."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "WebHook not found."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
+    delete:
+      tags:
+      - "event"
+      operationId: "WebHookDelete"
+      parameters:
+      - name: "name"
+        in: "path"
+        description: "WebHook name."
+        required: true
+        type: "string"
+        minLength: 1
+        x-exportParamName: "Name"
+      responses:
+        200:
+          description: "WebHook created."
+        400:
+          description: "Invalid data"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        401:
+          description: "Unauthorized."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "WebHook not found."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
 securityDefinitions:
   Bearer:
     type: "apiKey"
@@ -3021,6 +3170,96 @@ definitions:
         type: "string"
     example:
       reason: "reason"
+  WebHook:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      description:
+        type: "string"
+      team_owner:
+        type: "string"
+      event_filter:
+        $ref: "#/definitions/WebHookEventFilter"
+      url:
+        type: "string"
+      headers:
+        type: "object"
+        additionalProperties:
+          type: "array"
+          items:
+            type: "string"
+      method:
+        type: "string"
+      body:
+        type: "string"
+      insecure:
+        type: "boolean"
+    example:
+      team_owner: "team_owner"
+      headers:
+        key:
+        - "headers"
+        - "headers"
+      method: "method"
+      name: "name"
+      insecure: true
+      description: "description"
+      body: "body"
+      event_filter:
+        target_values:
+        - "target_values"
+        - "target_values"
+        kind_names:
+        - "kind_names"
+        - "kind_names"
+        kind_types:
+        - "kind_types"
+        - "kind_types"
+        error_only: true
+        success_only: true
+        target_types:
+        - "target_types"
+        - "target_types"
+      url: "url"
+  WebHookEventFilter:
+    type: "object"
+    properties:
+      target_types:
+        type: "array"
+        items:
+          type: "string"
+      target_values:
+        type: "array"
+        items:
+          type: "string"
+      kind_types:
+        type: "array"
+        items:
+          type: "string"
+      kind_names:
+        type: "array"
+        items:
+          type: "string"
+      error_only:
+        type: "boolean"
+      success_only:
+        type: "boolean"
+    example:
+      target_values:
+      - "target_values"
+      - "target_values"
+      kind_names:
+      - "kind_names"
+      - "kind_names"
+      kind_types:
+      - "kind_types"
+      - "kind_types"
+      error_only: true
+      success_only: true
+      target_types:
+      - "target_types"
+      - "target_types"
   teamData:
     type: "object"
     properties:

@@ -35,6 +35,11 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**TeamTokenUpdate**](docs/AuthApi.md#teamtokenupdate) | **Put** /1.6/tokens/{token_id} | 
 *AuthApi* | [**TeamTokensList**](docs/AuthApi.md#teamtokenslist) | **Get** /1.6/tokens | 
 *EventApi* | [**EventCancel**](docs/EventApi.md#eventcancel) | **Post** /1.1/events/{eventid}/cancel | 
+*EventApi* | [**WebHookCreate**](docs/EventApi.md#webhookcreate) | **Post** /1.6/events/webhooks | 
+*EventApi* | [**WebHookDelete**](docs/EventApi.md#webhookdelete) | **Delete** /1.6/events/webhooks/{name} | 
+*EventApi* | [**WebHookInfo**](docs/EventApi.md#webhookinfo) | **Get** /1.6/events/webhooks/{name} | 
+*EventApi* | [**WebHookList**](docs/EventApi.md#webhooklist) | **Get** /1.6/events/webhooks | 
+*EventApi* | [**WebHookUpdate**](docs/EventApi.md#webhookupdate) | **Put** /1.6/events/webhooks/{name} | 
 *NodeApi* | [**NodeAdd**](docs/NodeApi.md#nodeadd) | **Post** /1.2/node | 
 *NodeApi* | [**NodeDelete**](docs/NodeApi.md#nodedelete) | **Delete** /1.2/node/{address} | 
 *NodeApi* | [**NodeGet**](docs/NodeApi.md#nodeget) | **Get** /1.2/node/{address} | 
@@ -136,6 +141,8 @@ Class | Method | HTTP request | Description
  - [VolumeBindId](docs/VolumeBindId.md)
  - [VolumePlan](docs/VolumePlan.md)
  - [VolumePlansListResponse](docs/VolumePlansListResponse.md)
+ - [WebHook](docs/WebHook.md)
+ - [WebHookEventFilter](docs/WebHookEventFilter.md)
 
 
 ## Documentation For Authorization
