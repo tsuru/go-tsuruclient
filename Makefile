@@ -3,3 +3,4 @@ generate:
 	rm -rf pkg/tsuru && mkdir -p pkg/tsuru
 	mv *.go pkg/tsuru
 	gofmt -s -w pkg/tsuru/
+	goimports -w pkg/tsuru/

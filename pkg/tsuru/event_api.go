@@ -11,11 +11,12 @@ package tsuru
 
 import (
 	"fmt"
-	"golang.org/x/net/context"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
+
+	"golang.org/x/net/context"
 )
 
 // Linger please
