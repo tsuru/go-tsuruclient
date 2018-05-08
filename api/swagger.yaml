@@ -1862,29 +1862,25 @@ paths:
     get:
       tags:
       - "event"
-      operationId: "WebHookList"
+      operationId: "WebhookList"
       produces:
       - "application/json"
       parameters: []
       responses:
         200:
-          description: "WebHooks list."
+          description: "Webhooks list."
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/WebHook"
+              $ref: "#/definitions/Webhook"
         204:
           description: "No content."
-        401:
-          description: "Unauthorized."
-          schema:
-            $ref: "#/definitions/ErrorMessage"
       security:
       - Bearer: []
     post:
       tags:
       - "event"
-      operationId: "WebHookCreate"
+      operationId: "WebhookCreate"
       consumes:
       - "application/json"
       parameters:
@@ -1892,11 +1888,11 @@ paths:
         name: "webhook"
         required: true
         schema:
-          $ref: "#/definitions/WebHook"
+          $ref: "#/definitions/Webhook"
         x-exportParamName: "Webhook"
       responses:
         200:
-          description: "WebHook created."
+          description: "Webhook created."
         400:
           description: "Invalid data"
           schema:
@@ -1906,7 +1902,7 @@ paths:
           schema:
             $ref: "#/definitions/ErrorMessage"
         409:
-          description: "WebHook already exists."
+          description: "Webhook already exists."
           schema:
             $ref: "#/definitions/ErrorMessage"
       security:
@@ -1915,22 +1911,22 @@ paths:
     get:
       tags:
       - "event"
-      operationId: "WebHookInfo"
+      operationId: "WebhookGet"
       produces:
       - "application/json"
       parameters:
       - name: "name"
         in: "path"
-        description: "WebHook name."
+        description: "Webhook name."
         required: true
         type: "string"
         minLength: 1
         x-exportParamName: "Name"
       responses:
         200:
-          description: "WebHook."
+          description: "Webhook."
           schema:
-            $ref: "#/definitions/WebHook"
+            $ref: "#/definitions/Webhook"
         401:
           description: "Unauthorized."
           schema:
@@ -1944,13 +1940,13 @@ paths:
     put:
       tags:
       - "event"
-      operationId: "WebHookUpdate"
+      operationId: "WebhookUpdate"
       consumes:
       - "application/json"
       parameters:
       - name: "name"
         in: "path"
-        description: "WebHook name."
+        description: "Webhook name."
         required: true
         type: "string"
         minLength: 1
@@ -1959,11 +1955,11 @@ paths:
         name: "webhook"
         required: true
         schema:
-          $ref: "#/definitions/WebHook"
+          $ref: "#/definitions/Webhook"
         x-exportParamName: "Webhook"
       responses:
         200:
-          description: "WebHook updated."
+          description: "Webhook updated."
         400:
           description: "Invalid data"
           schema:
@@ -1973,7 +1969,7 @@ paths:
           schema:
             $ref: "#/definitions/ErrorMessage"
         404:
-          description: "WebHook not found."
+          description: "Webhook not found."
           schema:
             $ref: "#/definitions/ErrorMessage"
       security:
@@ -1981,18 +1977,18 @@ paths:
     delete:
       tags:
       - "event"
-      operationId: "WebHookDelete"
+      operationId: "WebhookDelete"
       parameters:
       - name: "name"
         in: "path"
-        description: "WebHook name."
+        description: "Webhook name."
         required: true
         type: "string"
         minLength: 1
         x-exportParamName: "Name"
       responses:
         200:
-          description: "WebHook created."
+          description: "Webhook created."
         400:
           description: "Invalid data"
           schema:
@@ -2002,7 +1998,7 @@ paths:
           schema:
             $ref: "#/definitions/ErrorMessage"
         404:
-          description: "WebHook not found."
+          description: "Webhook not found."
           schema:
             $ref: "#/definitions/ErrorMessage"
       security:
@@ -3170,7 +3166,7 @@ definitions:
         type: "string"
     example:
       reason: "reason"
-  WebHook:
+  Webhook:
     type: "object"
     properties:
       name:
@@ -3180,8 +3176,10 @@ definitions:
       team_owner:
         type: "string"
       event_filter:
-        $ref: "#/definitions/WebHookEventFilter"
+        $ref: "#/definitions/WebhookEventFilter"
       url:
+        type: "string"
+      proxy_url:
         type: "string"
       headers:
         type: "object"
@@ -3205,6 +3203,7 @@ definitions:
       name: "name"
       insecure: true
       description: "description"
+      proxy_url: "proxy_url"
       body: "body"
       event_filter:
         target_values:
@@ -3222,7 +3221,7 @@ definitions:
         - "target_types"
         - "target_types"
       url: "url"
-  WebHookEventFilter:
+  WebhookEventFilter:
     type: "object"
     properties:
       target_types:

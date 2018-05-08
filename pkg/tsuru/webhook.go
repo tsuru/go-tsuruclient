@@ -9,16 +9,18 @@
 
 package tsuru
 
-type WebHook struct {
+type Webhook struct {
 	Name string `json:"name,omitempty"`
 
 	Description string `json:"description,omitempty"`
 
 	TeamOwner string `json:"team_owner,omitempty"`
 
-	EventFilter *WebHookEventFilter `json:"event_filter,omitempty"`
+	EventFilter *WebhookEventFilter `json:"event_filter,omitempty"`
 
 	Url string `json:"url,omitempty"`
+
+	ProxyUrl string `json:"proxy_url,omitempty"`
 
 	Headers map[string][]string `json:"headers,omitempty"`
 

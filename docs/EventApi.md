@@ -5,11 +5,11 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**EventCancel**](EventApi.md#EventCancel) | **Post** /1.1/events/{eventid}/cancel | 
-[**WebHookCreate**](EventApi.md#WebHookCreate) | **Post** /1.6/events/webhooks | 
-[**WebHookDelete**](EventApi.md#WebHookDelete) | **Delete** /1.6/events/webhooks/{name} | 
-[**WebHookInfo**](EventApi.md#WebHookInfo) | **Get** /1.6/events/webhooks/{name} | 
-[**WebHookList**](EventApi.md#WebHookList) | **Get** /1.6/events/webhooks | 
-[**WebHookUpdate**](EventApi.md#WebHookUpdate) | **Put** /1.6/events/webhooks/{name} | 
+[**WebhookCreate**](EventApi.md#WebhookCreate) | **Post** /1.6/events/webhooks | 
+[**WebhookDelete**](EventApi.md#WebhookDelete) | **Delete** /1.6/events/webhooks/{name} | 
+[**WebhookGet**](EventApi.md#WebhookGet) | **Get** /1.6/events/webhooks/{name} | 
+[**WebhookList**](EventApi.md#WebhookList) | **Get** /1.6/events/webhooks | 
+[**WebhookUpdate**](EventApi.md#WebhookUpdate) | **Put** /1.6/events/webhooks/{name} | 
 
 
 # **EventCancel**
@@ -39,8 +39,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **WebHookCreate**
-> WebHookCreate(ctx, webhook)
+# **WebhookCreate**
+> WebhookCreate(ctx, webhook)
 
 
 ### Required Parameters
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **webhook** | [**WebHook**](WebHook.md)|  | 
+  **webhook** | [**Webhook**](Webhook.md)|  | 
 
 ### Return type
 
@@ -65,8 +65,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **WebHookDelete**
-> WebHookDelete(ctx, name)
+# **WebhookDelete**
+> WebhookDelete(ctx, name)
 
 
 ### Required Parameters
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **name** | **string**| WebHook name. | 
+  **name** | **string**| Webhook name. | 
 
 ### Return type
 
@@ -91,8 +91,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **WebHookInfo**
-> WebHook WebHookInfo(ctx, name)
+# **WebhookGet**
+> Webhook WebhookGet(ctx, name)
 
 
 ### Required Parameters
@@ -100,11 +100,11 @@ Name | Type | Description  | Notes
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **name** | **string**| WebHook name. | 
+  **name** | **string**| Webhook name. | 
 
 ### Return type
 
-[**WebHook**](WebHook.md)
+[**Webhook**](Webhook.md)
 
 ### Authorization
 
@@ -117,8 +117,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **WebHookList**
-> []WebHook WebHookList(ctx, )
+# **WebhookList**
+> []Webhook WebhookList(ctx, )
 
 
 ### Required Parameters
@@ -126,7 +126,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**[]WebHook**](WebHook.md)
+[**[]Webhook**](Webhook.md)
 
 ### Authorization
 
@@ -139,8 +139,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **WebHookUpdate**
-> WebHookUpdate(ctx, name, webhook)
+# **WebhookUpdate**
+> WebhookUpdate(ctx, name, webhook)
 
 
 ### Required Parameters
@@ -148,8 +148,8 @@ This endpoint does not need any parameter.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **name** | **string**| WebHook name. | 
-  **webhook** | [**WebHook**](WebHook.md)|  | 
+  **name** | **string**| Webhook name. | 
+  **webhook** | [**Webhook**](Webhook.md)|  | 
 
 ### Return type
 

@@ -1,4 +1,4 @@
-# WebHook
+# Webhook
 
 ## Properties
 Name | Type | Description | Notes
@@ -6,8 +6,9 @@ Name | Type | Description | Notes
 **Name** | **string** |  | [optional] [default to null]
 **Description** | **string** |  | [optional] [default to null]
 **TeamOwner** | **string** |  | [optional] [default to null]
-**EventFilter** | [***WebHookEventFilter**](WebHookEventFilter.md) |  | [optional] [default to null]
+**EventFilter** | [***WebhookEventFilter**](WebhookEventFilter.md) |  | [optional] [default to null]
 **Url** | **string** |  | [optional] [default to null]
+**ProxyUrl** | **string** |  | [optional] [default to null]
 **Headers** | [**map[string][]string**](array.md) |  | [optional] [default to null]
 **Method** | **string** |  | [optional] [default to null]
 **Body** | **string** |  | [optional] [default to null]

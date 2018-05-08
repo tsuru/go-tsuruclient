@@ -100,7 +100,7 @@ func (a *EventApiService) EventCancel(ctx context.Context, eventid string, cance
  * @param ctx context.Context for authentication, logging, tracing, etc.
 @param webhook
 @return */
-func (a *EventApiService) WebHookCreate(ctx context.Context, webhook WebHook) (*http.Response, error) {
+func (a *EventApiService) WebhookCreate(ctx context.Context, webhook Webhook) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -165,9 +165,9 @@ func (a *EventApiService) WebHookCreate(ctx context.Context, webhook WebHook) (*
 
 /* EventApiService
  * @param ctx context.Context for authentication, logging, tracing, etc.
-@param name WebHook name.
+@param name Webhook name.
 @return */
-func (a *EventApiService) WebHookDelete(ctx context.Context, name string) (*http.Response, error) {
+func (a *EventApiService) WebhookDelete(ctx context.Context, name string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -234,15 +234,15 @@ func (a *EventApiService) WebHookDelete(ctx context.Context, name string) (*http
 
 /* EventApiService
  * @param ctx context.Context for authentication, logging, tracing, etc.
-@param name WebHook name.
-@return WebHook*/
-func (a *EventApiService) WebHookInfo(ctx context.Context, name string) (WebHook, *http.Response, error) {
+@param name Webhook name.
+@return Webhook*/
+func (a *EventApiService) WebhookGet(ctx context.Context, name string) (Webhook, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		successPayload     WebHook
+		successPayload     Webhook
 	)
 
 	// create path and map variables
@@ -309,14 +309,14 @@ func (a *EventApiService) WebHookInfo(ctx context.Context, name string) (WebHook
 
 /* EventApiService
  * @param ctx context.Context for authentication, logging, tracing, etc.
-@return []WebHook*/
-func (a *EventApiService) WebHookList(ctx context.Context) ([]WebHook, *http.Response, error) {
+@return []Webhook*/
+func (a *EventApiService) WebhookList(ctx context.Context) ([]Webhook, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		successPayload     []WebHook
+		successPayload     []Webhook
 	)
 
 	// create path and map variables
@@ -379,10 +379,10 @@ func (a *EventApiService) WebHookList(ctx context.Context) ([]WebHook, *http.Res
 
 /* EventApiService
  * @param ctx context.Context for authentication, logging, tracing, etc.
-@param name WebHook name.
+@param name Webhook name.
 @param webhook
 @return */
-func (a *EventApiService) WebHookUpdate(ctx context.Context, name string, webhook WebHook) (*http.Response, error) {
+func (a *EventApiService) WebhookUpdate(ctx context.Context, name string, webhook Webhook) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}

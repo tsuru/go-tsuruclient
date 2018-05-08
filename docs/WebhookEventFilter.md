@@ -1,4 +1,4 @@
-# WebHookEventFilter
+# WebhookEventFilter
 
 ## Properties
 Name | Type | Description | Notes
