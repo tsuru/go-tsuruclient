@@ -109,14 +109,14 @@ Get service instance information
  * @param ctx context.Context for authentication, logging, tracing, etc.
 @param service Service name.
 @param instance Instance name.
-@return []ServiceInstanceInfo*/
-func (a *ServiceApiService) InstanceGet(ctx context.Context, service string, instance string) ([]ServiceInstanceInfo, *http.Response, error) {
+@return ServiceInstanceInfo*/
+func (a *ServiceApiService) InstanceGet(ctx context.Context, service string, instance string) (ServiceInstanceInfo, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		successPayload     []ServiceInstanceInfo
+		successPayload     ServiceInstanceInfo
 	)
 
 	// create path and map variables
