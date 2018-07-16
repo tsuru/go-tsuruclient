@@ -57,6 +57,11 @@ Class | Method | HTTP request | Description
 *ServiceApi* | [**InstanceGet**](docs/ServiceApi.md#instanceget) | **Get** /1.0/services/{service}/instances/{instance} | 
 *ServiceApi* | [**InstanceUpdate**](docs/ServiceApi.md#instanceupdate) | **Put** /1.0/services/{service}/instances/{instance} | 
 *ServiceApi* | [**InstancesList**](docs/ServiceApi.md#instanceslist) | **Get** /1.0/services/instances | 
+*ServiceApi* | [**ServiceBrokerCreate**](docs/ServiceApi.md#servicebrokercreate) | **Post** /1.7/brokers | 
+*ServiceApi* | [**ServiceBrokerDelete**](docs/ServiceApi.md#servicebrokerdelete) | **Delete** /1.7/brokers/{name} | 
+*ServiceApi* | [**ServiceBrokerList**](docs/ServiceApi.md#servicebrokerlist) | **Get** /1.7/brokers | 
+*ServiceApi* | [**ServiceBrokerUpdate**](docs/ServiceApi.md#servicebrokerupdate) | **Put** /1.7/brokers/{name} | 
+*ServiceApi* | [**ServicesList**](docs/ServiceApi.md#serviceslist) | **Get** /1.0/services | 
 *TeamApi* | [**TeamCreate**](docs/TeamApi.md#teamcreate) | **Post** /1.0/teams | 
 *TeamApi* | [**TeamDelete**](docs/TeamApi.md#teamdelete) | **Delete** /1.0/teams/{team} | 
 *TeamApi* | [**TeamGet**](docs/TeamApi.md#teamget) | **Get** /1.4/teams/{team} | 
@@ -118,7 +123,13 @@ Class | Method | HTTP request | Description
  - [RoleUser](docs/RoleUser.md)
  - [Router](docs/Router.md)
  - [Service](docs/Service.md)
+ - [ServiceBroker](docs/ServiceBroker.md)
+ - [ServiceBrokerConfig](docs/ServiceBrokerConfig.md)
+ - [ServiceBrokerConfigAuthConfig](docs/ServiceBrokerConfigAuthConfig.md)
+ - [ServiceBrokerConfigAuthConfigBasicAuthConfig](docs/ServiceBrokerConfigAuthConfigBasicAuthConfig.md)
+ - [ServiceBrokerConfigAuthConfigBearerConfig](docs/ServiceBrokerConfigAuthConfigBearerConfig.md)
  - [ServiceInstance](docs/ServiceInstance.md)
+ - [ServiceInstanceBoundUnit](docs/ServiceInstanceBoundUnit.md)
  - [ServiceInstanceInfo](docs/ServiceInstanceInfo.md)
  - [ServiceInstanceUpdateData](docs/ServiceInstanceUpdateData.md)
  - [SshKeyAddData](docs/SshKeyAddData.md)

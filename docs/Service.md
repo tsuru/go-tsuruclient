@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Service** | **string** |  | [optional] [default to null]
-**Instances** | **[]string** |  | [optional] [default to null]
+**Instances** | **[]string** | [deprecated] | [optional] [default to null]
 **Plans** | **[]string** |  | [optional] [default to null]
 **ServiceInstances** | [**[]ServiceInstance**](ServiceInstance.md) |  | [optional] [default to null]
 

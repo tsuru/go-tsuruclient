@@ -8,6 +8,11 @@ Method | HTTP request | Description
 [**InstanceGet**](ServiceApi.md#InstanceGet) | **Get** /1.0/services/{service}/instances/{instance} | 
 [**InstanceUpdate**](ServiceApi.md#InstanceUpdate) | **Put** /1.0/services/{service}/instances/{instance} | 
 [**InstancesList**](ServiceApi.md#InstancesList) | **Get** /1.0/services/instances | 
+[**ServiceBrokerCreate**](ServiceApi.md#ServiceBrokerCreate) | **Post** /1.7/brokers | 
+[**ServiceBrokerDelete**](ServiceApi.md#ServiceBrokerDelete) | **Delete** /1.7/brokers/{name} | 
+[**ServiceBrokerList**](ServiceApi.md#ServiceBrokerList) | **Get** /1.7/brokers | 
+[**ServiceBrokerUpdate**](ServiceApi.md#ServiceBrokerUpdate) | **Put** /1.7/brokers/{name} | 
+[**ServicesList**](ServiceApi.md#ServicesList) | **Get** /1.0/services | 
 
 
 # **InstanceDelete**
@@ -127,6 +132,137 @@ Optional parameters are passed through a map[string]interface{}.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **app** | **string**| Filter instances by app name | 
+
+### Return type
+
+[**[]Service**](Service.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ServiceBrokerCreate**
+> ServiceBrokerCreate(ctx, broker)
+
+
+Create service broker
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **broker** | [**ServiceBroker**](ServiceBroker.md)|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ServiceBrokerDelete**
+> ServiceBrokerDelete(ctx, name)
+
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **name** | **string**| Service Broker name. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ServiceBrokerList**
+> []ServiceBroker ServiceBrokerList(ctx, )
+
+
+List service brokers
+
+### Required Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**[]ServiceBroker**](ServiceBroker.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ServiceBrokerUpdate**
+> ServiceBrokerUpdate(ctx, name, broker)
+
+
+Update service broker
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **name** | **string**| Service Broker name. | 
+  **broker** | [**ServiceBroker**](ServiceBroker.md)|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ServicesList**
+> []Service ServicesList(ctx, )
+
+
+List services
+
+### Required Parameters
+This endpoint does not need any parameter.
 
 ### Return type
 

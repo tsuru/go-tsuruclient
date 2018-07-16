@@ -7,6 +7,26 @@ info:
 schemes:
 - "http"
 paths:
+  /1.0/services:
+    get:
+      tags:
+      - "service"
+      description: "List services"
+      operationId: "ServicesList"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Services"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Service"
+        204:
+          description: "No content"
+      security:
+      - Bearer: []
   /1.0/services/instances:
     get:
       tags:
@@ -159,6 +179,129 @@ paths:
             $ref: "#/definitions/ErrorMessage"
         404:
           description: "Service instance not found"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
+  /1.7/brokers:
+    get:
+      tags:
+      - "service"
+      description: "List service brokers"
+      operationId: "ServiceBrokerList"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "List service brokers"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ServiceBroker"
+        204:
+          description: "No content"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
+    post:
+      tags:
+      - "service"
+      description: "Create service broker"
+      operationId: "ServiceBrokerCreate"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "broker"
+        required: true
+        schema:
+          $ref: "#/definitions/ServiceBroker"
+        x-exportParamName: "Broker"
+      responses:
+        200:
+          description: "Service Broker created."
+        400:
+          description: "Invalid data"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        401:
+          description: "Unauthorized."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        409:
+          description: "Service Broker already exists."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
+  /1.7/brokers/{name}:
+    put:
+      tags:
+      - "service"
+      description: "Update service broker"
+      operationId: "ServiceBrokerUpdate"
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "name"
+        in: "path"
+        description: "Service Broker name."
+        required: true
+        type: "string"
+        minLength: 1
+        x-exportParamName: "Name"
+      - in: "body"
+        name: "broker"
+        required: true
+        schema:
+          $ref: "#/definitions/ServiceBroker"
+        x-exportParamName: "Broker"
+      responses:
+        200:
+          description: "Service Broker updated."
+        400:
+          description: "Invalid data"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        401:
+          description: "Unauthorized."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "Service Broker not found."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
+    delete:
+      tags:
+      - "service"
+      operationId: "ServiceBrokerDelete"
+      parameters:
+      - name: "name"
+        in: "path"
+        description: "Service Broker name."
+        required: true
+        type: "string"
+        minLength: 1
+        x-exportParamName: "Name"
+      responses:
+        200:
+          description: "Service Broker deleted."
+        400:
+          description: "Invalid data"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        401:
+          description: "Unauthorized."
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "Service Broker not found."
           schema:
             $ref: "#/definitions/ErrorMessage"
       security:
@@ -2017,6 +2160,7 @@ definitions:
         type: "string"
       instances:
         type: "array"
+        description: "[deprecated]"
         items:
           type: "string"
       plans:
@@ -2036,14 +2180,50 @@ definitions:
       - "plans"
       - "plans"
       service_instances:
-      - name: "name"
+      - team_owner: "team_owner"
+        bound_units:
+        - app_name: "app_name"
+          ip: "ip"
+          id: "id"
+        - app_name: "app_name"
+          ip: "ip"
+          id: "id"
+        teams:
+        - "teams"
+        - "teams"
+        service_name: "service_name"
+        name: "name"
+        description: "description"
+        id: 0
+        plan_name: "plan_name"
         tags:
         - "tags"
         - "tags"
-      - name: "name"
+        apps:
+        - "apps"
+        - "apps"
+      - team_owner: "team_owner"
+        bound_units:
+        - app_name: "app_name"
+          ip: "ip"
+          id: "id"
+        - app_name: "app_name"
+          ip: "ip"
+          id: "id"
+        teams:
+        - "teams"
+        - "teams"
+        service_name: "service_name"
+        name: "name"
+        description: "description"
+        id: 0
+        plan_name: "plan_name"
         tags:
         - "tags"
         - "tags"
+        apps:
+        - "apps"
+        - "apps"
   ServiceInstance:
     type: "object"
     properties:
@@ -2053,11 +2233,64 @@ definitions:
         type: "array"
         items:
           type: "string"
+      id:
+        type: "integer"
+      service_name:
+        type: "string"
+      plan_name:
+        type: "string"
+      apps:
+        type: "array"
+        items:
+          type: "string"
+      bound_units:
+        type: "array"
+        items:
+          $ref: "#/definitions/ServiceInstanceBoundUnit"
+      teams:
+        type: "array"
+        items:
+          type: "string"
+      team_owner:
+        type: "string"
+      description:
+        type: "string"
     example:
+      team_owner: "team_owner"
+      bound_units:
+      - app_name: "app_name"
+        ip: "ip"
+        id: "id"
+      - app_name: "app_name"
+        ip: "ip"
+        id: "id"
+      teams:
+      - "teams"
+      - "teams"
+      service_name: "service_name"
       name: "name"
+      description: "description"
+      id: 0
+      plan_name: "plan_name"
       tags:
       - "tags"
       - "tags"
+      apps:
+      - "apps"
+      - "apps"
+  ServiceInstanceBoundUnit:
+    type: "object"
+    properties:
+      app_name:
+        type: "string"
+      id:
+        type: "string"
+      ip:
+        type: "string"
+    example:
+      app_name: "app_name"
+      ip: "ip"
+      id: "id"
   ServiceInstanceInfo:
     type: "object"
     properties:
@@ -3257,6 +3490,28 @@ definitions:
       target_types:
       - "target_types"
       - "target_types"
+  ServiceBroker:
+    type: "object"
+    properties:
+      Name:
+        type: "string"
+      URL:
+        type: "string"
+      Config:
+        $ref: "#/definitions/ServiceBroker_Config"
+    example:
+      Config:
+        Context:
+          key: "Context"
+        Insecure: true
+        AuthConfig:
+          BearerConfig:
+            token: "token"
+          BasicAuthConfig:
+            password: "password"
+            username: "username"
+      URL: "URL"
+      Name: "Name"
   teamData:
     type: "object"
     properties:
@@ -3275,3 +3530,50 @@ definitions:
         type: "string"
       public:
         type: "boolean"
+  ServiceBroker_Config_AuthConfig_BasicAuthConfig:
+    properties:
+      username:
+        type: "string"
+      password:
+        type: "string"
+    example:
+      password: "password"
+      username: "username"
+  ServiceBroker_Config_AuthConfig_BearerConfig:
+    properties:
+      token:
+        type: "string"
+    example:
+      token: "token"
+  ServiceBroker_Config_AuthConfig:
+    properties:
+      BasicAuthConfig:
+        $ref: "#/definitions/ServiceBroker_Config_AuthConfig_BasicAuthConfig"
+      BearerConfig:
+        $ref: "#/definitions/ServiceBroker_Config_AuthConfig_BearerConfig"
+    example:
+      BearerConfig:
+        token: "token"
+      BasicAuthConfig:
+        password: "password"
+        username: "username"
+  ServiceBroker_Config:
+    properties:
+      Insecure:
+        type: "boolean"
+      Context:
+        type: "object"
+        additionalProperties:
+          type: "string"
+      AuthConfig:
+        $ref: "#/definitions/ServiceBroker_Config_AuthConfig"
+    example:
+      Context:
+        key: "Context"
+      Insecure: true
+      AuthConfig:
+        BearerConfig:
+          token: "token"
+        BasicAuthConfig:
+          password: "password"
+          username: "username"
