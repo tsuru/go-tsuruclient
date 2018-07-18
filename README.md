@@ -128,6 +128,7 @@ Class | Method | HTTP request | Description
  - [ServiceBrokerConfigAuthConfig](docs/ServiceBrokerConfigAuthConfig.md)
  - [ServiceBrokerConfigAuthConfigBasicAuthConfig](docs/ServiceBrokerConfigAuthConfigBasicAuthConfig.md)
  - [ServiceBrokerConfigAuthConfigBearerConfig](docs/ServiceBrokerConfigAuthConfigBearerConfig.md)
+ - [ServiceBrokerList](docs/ServiceBrokerList.md)
  - [ServiceInstance](docs/ServiceInstance.md)
  - [ServiceInstanceBoundUnit](docs/ServiceInstanceBoundUnit.md)
  - [ServiceInstanceInfo](docs/ServiceInstanceInfo.md)

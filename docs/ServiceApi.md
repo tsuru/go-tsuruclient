@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ServiceBrokerList**
-> []ServiceBroker ServiceBrokerList(ctx, )
+> ServiceBrokerList ServiceBrokerList(ctx, )
 
 
 List service brokers
@@ -213,7 +213,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**[]ServiceBroker**](ServiceBroker.md)
+[**ServiceBrokerList**](ServiceBrokerList.md)
 
 ### Authorization
 

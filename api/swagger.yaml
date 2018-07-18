@@ -196,9 +196,7 @@ paths:
         200:
           description: "List service brokers"
           schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/ServiceBroker"
+            $ref: "#/definitions/ServiceBrokerList"
         204:
           description: "No content"
         401:
@@ -3490,6 +3488,39 @@ definitions:
       target_types:
       - "target_types"
       - "target_types"
+  ServiceBrokerList:
+    type: "object"
+    properties:
+      brokers:
+        type: "array"
+        items:
+          $ref: "#/definitions/ServiceBroker"
+    example:
+      brokers:
+      - Config:
+          Context:
+            key: "Context"
+          Insecure: true
+          AuthConfig:
+            BearerConfig:
+              token: "token"
+            BasicAuthConfig:
+              password: "password"
+              username: "username"
+        URL: "URL"
+        Name: "Name"
+      - Config:
+          Context:
+            key: "Context"
+          Insecure: true
+          AuthConfig:
+            BearerConfig:
+              token: "token"
+            BasicAuthConfig:
+              password: "password"
+              username: "username"
+        URL: "URL"
+        Name: "Name"
   ServiceBroker:
     type: "object"
     properties:
