@@ -723,6 +723,39 @@ paths:
             $ref: "#/definitions/ErrorMessage"
       security:
       - Bearer: []
+  /1.6/platforms/{platform}:
+    get:
+      tags:
+      - "platform"
+      description: "Platform info."
+      operationId: "PlatformInfo"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "platform"
+        in: "path"
+        description: "Platform info."
+        required: true
+        type: "string"
+        minLength: 1
+        x-exportParamName: "Platform"
+      responses:
+        200:
+          description: "Platform info"
+          schema:
+            $ref: "#/definitions/PlatformInfo"
+        204:
+          description: "No content."
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "Not found"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
   /1.0/teams:
     get:
       tags:
@@ -3388,6 +3421,22 @@ definitions:
     example:
       name: "name"
       disabled: true
+  PlatformInfo:
+    type: "object"
+    properties:
+      platform:
+        $ref: "#/definitions/Platform"
+      images:
+        type: "array"
+        items:
+          type: "string"
+    example:
+      images:
+      - "images"
+      - "images"
+      platform:
+        name: "name"
+        disabled: true
   EventCancelArgs:
     type: "object"
     properties:

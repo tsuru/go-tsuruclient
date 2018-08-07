@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**PlatformAdd**](PlatformApi.md#PlatformAdd) | **Post** /1.0/platforms | 
 [**PlatformDelete**](PlatformApi.md#PlatformDelete) | **Delete** /1.0/platforms/{platform} | 
+[**PlatformInfo**](PlatformApi.md#PlatformInfo) | **Get** /1.6/platforms/{platform} | 
 [**PlatformList**](PlatformApi.md#PlatformList) | **Get** /1.0/platforms | 
 [**PlatformUpdate**](PlatformApi.md#PlatformUpdate) | **Put** /1.0/platforms/{platform} | 
 
@@ -64,6 +65,34 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **PlatformInfo**
+> PlatformInfo PlatformInfo(ctx, platform)
+
+
+Platform info.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **platform** | **string**| Platform info. | 
+
+### Return type
+
+[**PlatformInfo**](PlatformInfo.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

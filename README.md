@@ -47,6 +47,7 @@ Class | Method | HTTP request | Description
 *NodeApi* | [**NodeUpdate**](docs/NodeApi.md#nodeupdate) | **Put** /1.2/node | 
 *PlatformApi* | [**PlatformAdd**](docs/PlatformApi.md#platformadd) | **Post** /1.0/platforms | 
 *PlatformApi* | [**PlatformDelete**](docs/PlatformApi.md#platformdelete) | **Delete** /1.0/platforms/{platform} | 
+*PlatformApi* | [**PlatformInfo**](docs/PlatformApi.md#platforminfo) | **Get** /1.6/platforms/{platform} | 
 *PlatformApi* | [**PlatformList**](docs/PlatformApi.md#platformlist) | **Get** /1.0/platforms | 
 *PlatformApi* | [**PlatformUpdate**](docs/PlatformApi.md#platformupdate) | **Put** /1.0/platforms/{platform} | 
 *PoolApi* | [**PoolCreate**](docs/PoolApi.md#poolcreate) | **Post** /1.0/pools | 
@@ -116,6 +117,7 @@ Class | Method | HTTP request | Description
  - [PermissionUser](docs/PermissionUser.md)
  - [Plan](docs/Plan.md)
  - [Platform](docs/Platform.md)
+ - [PlatformInfo](docs/PlatformInfo.md)
  - [Pool](docs/Pool.md)
  - [PoolCreateData](docs/PoolCreateData.md)
  - [PoolUpdateData](docs/PoolUpdateData.md)
