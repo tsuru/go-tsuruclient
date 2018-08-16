@@ -3223,6 +3223,10 @@ definitions:
     properties:
       name:
         type: "string"
+      tags:
+        type: "array"
+        items:
+          type: "string"
       permissions:
         type: "array"
         items:
@@ -3232,11 +3236,18 @@ definitions:
       - "permissions"
       - "permissions"
       name: "name"
+      tags:
+      - "tags"
+      - "tags"
   TeamInfo:
     type: "object"
     properties:
       name:
         type: "string"
+      tags:
+        type: "array"
+        items:
+          type: "string"
       users:
         type: "array"
         items:
@@ -3289,6 +3300,9 @@ definitions:
           name: "name"
           contextvalue: "contextvalue"
         email: "email"
+      tags:
+      - "tags"
+      - "tags"
       apps:
       - teamOwner: "teamOwner"
         router: "router"
@@ -3597,11 +3611,19 @@ definitions:
     properties:
       name:
         type: "string"
+      tags:
+        type: "array"
+        items:
+          type: "string"
   updateData:
     type: "object"
     properties:
       newname:
         type: "string"
+      tags:
+        type: "array"
+        items:
+          type: "string"
   EnvSetResponse_inner:
     properties:
       name:

@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | [optional] [default to null]
+**Tags** | **[]string** |  | [optional] [default to null]
 **Users** | [**[]User**](User.md) |  | [optional] [default to null]
 **Pools** | [**[]Pool**](Pool.md) |  | [optional] [default to null]
 **Apps** | [**[]App**](App.md) |  | [optional] [default to null]
