@@ -89,7 +89,7 @@ func (a *NodeApiService) NodeAdd(ctx context.Context, nodeAddData NodeAddData) (
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return localVarHttpResponse, &HTTPError{status: localVarHttpResponse.Status, statusCode: localVarHttpResponse.StatusCode, body: bodyBytes}
 	}
 	return localVarHttpResponse, err
 }
@@ -162,7 +162,7 @@ func (a *NodeApiService) NodeDelete(ctx context.Context, address string, noRebal
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return localVarHttpResponse, &HTTPError{status: localVarHttpResponse.Status, statusCode: localVarHttpResponse.StatusCode, body: bodyBytes}
 	}
 	return localVarHttpResponse, err
 }
@@ -233,7 +233,7 @@ func (a *NodeApiService) NodeGet(ctx context.Context, address string) (NodeGetRe
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, localVarHttpResponse, &HTTPError{status: localVarHttpResponse.Status, statusCode: localVarHttpResponse.StatusCode, body: bodyBytes}
 	}
 
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
@@ -304,7 +304,7 @@ func (a *NodeApiService) NodeList(ctx context.Context) (NodeListResponse, *http.
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, localVarHttpResponse, &HTTPError{status: localVarHttpResponse.Status, statusCode: localVarHttpResponse.StatusCode, body: bodyBytes}
 	}
 
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
@@ -376,7 +376,7 @@ func (a *NodeApiService) NodeUpdate(ctx context.Context, nodeUpdateData NodeUpda
 	}
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return localVarHttpResponse, &HTTPError{status: localVarHttpResponse.Status, statusCode: localVarHttpResponse.StatusCode, body: bodyBytes}
 	}
 	return localVarHttpResponse, err
 }
