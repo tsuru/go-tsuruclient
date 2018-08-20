@@ -87,7 +87,6 @@ func (a *TeamApiService) TeamCreate(ctx context.Context, teamData TeamData) (*ht
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
-	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
@@ -154,7 +153,6 @@ func (a *TeamApiService) TeamDelete(ctx context.Context, team string) (*http.Res
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
-	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
@@ -297,7 +295,6 @@ func (a *TeamApiService) TeamUpdate(ctx context.Context, team string, updateData
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
-	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)

@@ -89,7 +89,6 @@ func (a *AuthApiService) AssignRoleToToken(ctx context.Context, roleName string,
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
-	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
@@ -160,7 +159,6 @@ func (a *AuthApiService) DissociateRoleFromToken(ctx context.Context, roleName s
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
-	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
@@ -304,7 +302,6 @@ func (a *AuthApiService) TeamTokenDelete(ctx context.Context, tokenId string) (*
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
-	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)

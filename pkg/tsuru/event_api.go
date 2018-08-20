@@ -88,7 +88,6 @@ func (a *EventApiService) EventCancel(ctx context.Context, eventid string, cance
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
-	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
@@ -155,7 +154,6 @@ func (a *EventApiService) WebhookCreate(ctx context.Context, webhook Webhook) (*
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
-	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
@@ -224,7 +222,6 @@ func (a *EventApiService) WebhookDelete(ctx context.Context, name string) (*http
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
-	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
@@ -441,7 +438,6 @@ func (a *EventApiService) WebhookUpdate(ctx context.Context, name string, webhoo
 	if err != nil || localVarHttpResponse == nil {
 		return localVarHttpResponse, err
 	}
-	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
 		return localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
