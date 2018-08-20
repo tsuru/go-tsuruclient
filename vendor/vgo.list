@@ -1,8 +1,0 @@
-MODULE                           VERSION
-github.com/tsuru/go-tsuruclient  -
-github.com/davecgh/go-spew       v1.1.0
-github.com/pmezard/go-difflib    v1.0.0
-github.com/stretchr/objx         v0.0.0-20180106011353-facf9a85c22f
-github.com/stretchr/testify      v1.2.1
-golang.org/x/net                 v0.0.0-20180404174746-b3c676e531a6
-golang.org/x/oauth2              v0.0.0-20180402223937-921ae394b943
