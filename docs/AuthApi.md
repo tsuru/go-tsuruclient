@@ -22,7 +22,7 @@ Assigns a role to a team token.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **roleName** | **string**|  | 
   **token** | [**AssignTokenArgs**](AssignTokenArgs.md)|  | 
 
@@ -51,7 +51,7 @@ Dissociates a role from a team token.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **roleName** | **string**|  | 
   **tokenId** | **string**|  | 
   **context** | **string**|  | 
@@ -81,7 +81,7 @@ Creates a team token.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **token** | [**TeamTokenCreateArgs**](TeamTokenCreateArgs.md)|  | 
 
 ### Return type
@@ -109,7 +109,7 @@ Deletes a team token.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **tokenId** | **string**| Token ID. | 
 
 ### Return type
@@ -137,7 +137,7 @@ Updates a team token.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **tokenId** | **string**| Token ID. | 
   **token** | [**TeamTokenUpdateArgs**](TeamTokenUpdateArgs.md)|  | 
 

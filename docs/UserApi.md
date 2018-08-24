@@ -30,7 +30,7 @@ Show the API token of an user.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **email** | **string**|  | 
 
 ### Return type
@@ -58,7 +58,7 @@ Regenerate the API Token of an user.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **email** | **string**|  | 
 
 ### Return type
@@ -86,7 +86,7 @@ Change password of logged user.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **changePasswordData** | [**ChangePasswordData**](ChangePasswordData.md)|  | 
 
 ### Return type
@@ -114,7 +114,7 @@ Reset password of an user.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **email** | **string**|  | 
   **token** | **string**|  | 
 
@@ -143,7 +143,7 @@ Add SSH key to logged user.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **sSHKeyAddData** | [**SshKeyAddData**](SshKeyAddData.md)|  | 
 
 ### Return type
@@ -195,7 +195,7 @@ Delete one ssh key of logged user.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **key** | **string**|  | 
 
 ### Return type
@@ -223,7 +223,7 @@ Create a new user.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **userData** | [**UserData**](UserData.md)|  | 
 
 ### Return type
@@ -251,7 +251,7 @@ Delete an user.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **email** | **string**| User e-mail. | 
 
 ### Return type
@@ -303,7 +303,7 @@ Change quota of an user.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **email** | **string**| User e-mail. | 
   **limit** | **int32**| User new quota. | 
 
@@ -332,7 +332,7 @@ Get quota of an user.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **email** | **string**| User e-mail. | 
 
 ### Return type
@@ -384,18 +384,18 @@ List users.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **email** | **string**|  | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+ **optional** | ***UsersListOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+Optional parameters are passed through a pointer to a UsersListOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **string**|  | 
- **role** | **string**|  | 
- **context** | **string**|  | 
+
+ **role** | **optional.String**|  | 
+ **context** | **optional.String**|  | 
 
 ### Return type
 

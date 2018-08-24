@@ -42,6 +42,7 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "App"
+        x-optionalDataType: "String"
       responses:
         200:
           description: "Service instances"
@@ -319,36 +320,42 @@ paths:
         required: false
         type: "boolean"
         x-exportParamName: "Locked"
+        x-optionalDataType: "Bool"
       - name: "name"
         in: "query"
         description: "Filter applications by name."
         required: false
         type: "string"
         x-exportParamName: "Name"
+        x-optionalDataType: "String"
       - name: "owner"
         in: "query"
         description: "Filter applications by owner."
         required: false
         type: "string"
         x-exportParamName: "Owner"
+        x-optionalDataType: "String"
       - name: "platform"
         in: "query"
         description: "Filter applications by platform."
         required: false
         type: "string"
         x-exportParamName: "Platform"
+        x-optionalDataType: "String"
       - name: "pool"
         in: "query"
         description: "Filter applications by pool."
         required: false
         type: "string"
         x-exportParamName: "Pool"
+        x-optionalDataType: "String"
       - name: "status"
         in: "query"
         description: "Filter applications by unit status."
         required: false
         type: "string"
         x-exportParamName: "Status"
+        x-optionalDataType: "String"
       - name: "tag"
         in: "query"
         description: "Filter applications by tag."
@@ -363,6 +370,7 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "TeamOwner"
+        x-optionalDataType: "String"
       responses:
         200:
           description: "List apps"
@@ -498,6 +506,7 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Env"
+        x-optionalDataType: "String"
       responses:
         200:
           description: "Environment variables"
@@ -930,11 +939,13 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Role"
+        x-optionalDataType: "String"
       - name: "context"
         in: "query"
         required: false
         type: "string"
         x-exportParamName: "Context"
+        x-optionalDataType: "String"
       responses:
         200:
           description: "List users."
@@ -3570,6 +3581,7 @@ definitions:
             BasicAuthConfig:
               password: "password"
               username: "username"
+          CacheExpiration: "CacheExpiration"
         URL: "URL"
         Name: "Name"
       - Config:
@@ -3582,6 +3594,7 @@ definitions:
             BasicAuthConfig:
               password: "password"
               username: "username"
+          CacheExpiration: "CacheExpiration"
         URL: "URL"
         Name: "Name"
   ServiceBroker:
@@ -3604,6 +3617,7 @@ definitions:
           BasicAuthConfig:
             password: "password"
             username: "username"
+        CacheExpiration: "CacheExpiration"
       URL: "URL"
       Name: "Name"
   teamData:
@@ -3669,6 +3683,8 @@ definitions:
           type: "string"
       AuthConfig:
         $ref: "#/definitions/ServiceBroker_Config_AuthConfig"
+      CacheExpiration:
+        type: "string"
     example:
       Context:
         key: "Context"
@@ -3679,3 +3695,4 @@ definitions:
         BasicAuthConfig:
           password: "password"
           username: "username"
+      CacheExpiration: "CacheExpiration"

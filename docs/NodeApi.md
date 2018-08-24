@@ -21,7 +21,7 @@ Add a node.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **nodeAddData** | [**NodeAddData**](NodeAddData.md)|  | 
 
 ### Return type
@@ -49,7 +49,7 @@ Remove node.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **address** | **string**| Node address. | 
   **noRebalance** | **bool**| Trigger node rebalance. | 
   **removeIaas** | **bool**| Remove machine from IaaS. | 
@@ -79,7 +79,7 @@ Get node information.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **address** | **string**| Node address. | 
 
 ### Return type
@@ -131,7 +131,7 @@ Update node.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **nodeUpdateData** | [**NodeUpdateData**](NodeUpdateData.md)|  | 
 
 ### Return type
