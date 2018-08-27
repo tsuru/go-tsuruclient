@@ -25,7 +25,7 @@ Remove service instance
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **service** | **string**| Service name. | 
   **instance** | **string**| Instance name. | 
   **unbindall** | **bool**| Remove current binds to this instance | 
@@ -55,7 +55,7 @@ Get service instance information
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **service** | **string**| Service name. | 
   **instance** | **string**| Instance name. | 
 
@@ -84,19 +84,19 @@ Update a service instance
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **service** | **string**| Service name. | 
   **instance** | **string**| Instance name. | 
- **optional** | ***InstanceUpdateOpts** | optional parameters | nil if no parameters
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a InstanceUpdateOpts struct
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
-
- **updateData** | [**optional.Interface of ServiceInstanceUpdateData**](ServiceInstanceUpdateData.md)|  | 
+ **service** | **string**| Service name. | 
+ **instance** | **string**| Instance name. | 
+ **updateData** | [**ServiceInstanceUpdateData**](ServiceInstanceUpdateData.md)|  | 
 
 ### Return type
 
@@ -123,15 +123,15 @@ List service instances
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***InstancesListOpts** | optional parameters | nil if no parameters
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a InstancesListOpts struct
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **app** | **optional.String**| Filter instances by app name | 
+ **app** | **string**| Filter instances by app name | 
 
 ### Return type
 
@@ -158,7 +158,7 @@ Create service broker
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **broker** | [**ServiceBroker**](ServiceBroker.md)|  | 
 
 ### Return type
@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **name** | **string**| Service Broker name. | 
 
 ### Return type
@@ -236,7 +236,7 @@ Update service broker
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **name** | **string**| Service Broker name. | 
   **broker** | [**ServiceBroker**](ServiceBroker.md)|  | 
 

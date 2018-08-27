@@ -23,7 +23,7 @@ Create a new app.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **app** | [**App**](App.md)|  | 
 
 ### Return type
@@ -51,7 +51,7 @@ Delete a tsuru app.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **app** | **string**| App name. | 
 
 ### Return type
@@ -79,7 +79,7 @@ Get info about a tsuru app.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **app** | **string**| Appname. | 
 
 ### Return type
@@ -107,22 +107,22 @@ List apps.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***AppListOpts** | optional parameters | nil if no parameters
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a AppListOpts struct
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **locked** | **optional.Bool**| Filter applications by lock status. | 
- **name** | **optional.String**| Filter applications by name. | 
- **owner** | **optional.String**| Filter applications by owner. | 
- **platform** | **optional.String**| Filter applications by platform. | 
- **pool** | **optional.String**| Filter applications by pool. | 
- **status** | **optional.String**| Filter applications by unit status. | 
- **tag** | [**optional.Interface of []string**](string.md)| Filter applications by tag. | 
- **teamOwner** | **optional.String**| Filter applications by team owner. | 
+ **locked** | **bool**| Filter applications by lock status. | 
+ **name** | **string**| Filter applications by name. | 
+ **owner** | **string**| Filter applications by owner. | 
+ **platform** | **string**| Filter applications by platform. | 
+ **pool** | **string**| Filter applications by pool. | 
+ **status** | **string**| Filter applications by unit status. | 
+ **tag** | [**[]string**](string.md)| Filter applications by tag. | 
+ **teamOwner** | **string**| Filter applications by team owner. | 
 
 ### Return type
 
@@ -149,17 +149,17 @@ Get app environment variables.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **app** | **string**| App name. | 
- **optional** | ***EnvGetOpts** | optional parameters | nil if no parameters
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a EnvGetOpts struct
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
- **env** | **optional.String**| Environment variable name. | 
+ **app** | **string**| App name. | 
+ **env** | **string**| Environment variable name. | 
 
 ### Return type
 
@@ -186,7 +186,7 @@ Set new environment variable.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **app** | **string**| App name. | 
   **envs** | [**EnvSetData**](EnvSetData.md)| Environment variables. | 
 
@@ -215,7 +215,7 @@ Unset app environment variables.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **app** | **string**| App name. | 
   **env** | [**[]string**](string.md)|  | 
   **norestart** | **bool**|  | 

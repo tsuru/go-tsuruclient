@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **eventid** | **string**|  | 
   **cancel** | [**EventCancelArgs**](EventCancelArgs.md)|  | 
 
@@ -47,7 +47,7 @@ Name | Type | Description  | Notes
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **webhook** | [**Webhook**](Webhook.md)|  | 
 
 ### Return type
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **name** | **string**| Webhook name. | 
 
 ### Return type
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **name** | **string**| Webhook name. | 
 
 ### Return type
@@ -147,7 +147,7 @@ This endpoint does not need any parameter.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **name** | **string**| Webhook name. | 
   **webhook** | [**Webhook**](Webhook.md)|  | 
 
