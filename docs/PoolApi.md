@@ -20,7 +20,7 @@ Creates a pool.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **poolCreateData** | [**PoolCreateData**](PoolCreateData.md)|  | 
 
 ### Return type
@@ -48,7 +48,7 @@ Deletes a pool.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **pool** | **string**|  | 
 
 ### Return type
@@ -100,7 +100,7 @@ Updates a pool.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **pool** | **string**|  | 
   **poolUpdateData** | [**PoolUpdateData**](PoolUpdateData.md)|  | 
 

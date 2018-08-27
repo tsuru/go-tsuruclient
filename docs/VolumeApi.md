@@ -23,17 +23,17 @@ Bind volume.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **volume** | **string**| Volume name. | 
- **optional** | ***VolumeBindOpts** | optional parameters | nil if no parameters
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a VolumeBindOpts struct
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
- **bindData** | [**optional.Interface of VolumeBindData**](VolumeBindData.md)|  | 
+ **volume** | **string**| Volume name. | 
+ **bindData** | [**VolumeBindData**](VolumeBindData.md)|  | 
 
 ### Return type
 
@@ -60,7 +60,7 @@ Create volume.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **volumeData** | [**Volume**](Volume.md)|  | 
 
 ### Return type
@@ -88,7 +88,7 @@ Delete volume.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **volume** | **string**| Volume name. | 
 
 ### Return type
@@ -116,7 +116,7 @@ Get a volume.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **volume** | **string**| Volume name. | 
 
 ### Return type
@@ -192,17 +192,17 @@ Unbind volume.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **volume** | **string**| Volume name. | 
- **optional** | ***VolumeUnbindOpts** | optional parameters | nil if no parameters
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a VolumeUnbindOpts struct
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
- **bindData** | [**optional.Interface of VolumeBindData**](VolumeBindData.md)|  | 
+ **volume** | **string**| Volume name. | 
+ **bindData** | [**VolumeBindData**](VolumeBindData.md)|  | 
 
 ### Return type
 

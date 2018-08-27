@@ -21,7 +21,7 @@ Create a team.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **teamData** | [**TeamData**](TeamData.md)| Team name. | 
 
 ### Return type
@@ -49,7 +49,7 @@ Delete a team.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **team** | **string**| Team name. | 
 
 ### Return type
@@ -77,7 +77,7 @@ Get a team.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **team** | **string**| Team name. | 
 
 ### Return type
@@ -105,7 +105,7 @@ Update a team.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **team** | **string**| Team name. | 
   **updateData** | [**UpdateData**](UpdateData.md)| Team update data. | 
 
