@@ -16,5 +16,5 @@ type ServiceBrokerConfig struct {
 
 	AuthConfig *ServiceBrokerConfigAuthConfig `json:"AuthConfig,omitempty"`
 
-	CacheExpiration string `json:"CacheExpiration,omitempty"`
+	CacheExpirationSeconds int32 `json:"CacheExpirationSeconds,omitempty"`
 }

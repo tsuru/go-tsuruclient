@@ -3564,26 +3564,26 @@ definitions:
           Context:
             key: "Context"
           Insecure: true
+          CacheExpirationSeconds: 0
           AuthConfig:
             BearerConfig:
               token: "token"
             BasicAuthConfig:
               password: "password"
               username: "username"
-          CacheExpiration: "CacheExpiration"
         URL: "URL"
         Name: "Name"
       - Config:
           Context:
             key: "Context"
           Insecure: true
+          CacheExpirationSeconds: 0
           AuthConfig:
             BearerConfig:
               token: "token"
             BasicAuthConfig:
               password: "password"
               username: "username"
-          CacheExpiration: "CacheExpiration"
         URL: "URL"
         Name: "Name"
   ServiceBroker:
@@ -3600,13 +3600,13 @@ definitions:
         Context:
           key: "Context"
         Insecure: true
+        CacheExpirationSeconds: 0
         AuthConfig:
           BearerConfig:
             token: "token"
           BasicAuthConfig:
             password: "password"
             username: "username"
-        CacheExpiration: "CacheExpiration"
       URL: "URL"
       Name: "Name"
   teamData:
@@ -3672,16 +3672,16 @@ definitions:
           type: "string"
       AuthConfig:
         $ref: "#/definitions/ServiceBroker_Config_AuthConfig"
-      CacheExpiration:
-        type: "string"
+      CacheExpirationSeconds:
+        type: "integer"
     example:
       Context:
         key: "Context"
       Insecure: true
+      CacheExpirationSeconds: 0
       AuthConfig:
         BearerConfig:
           token: "token"
         BasicAuthConfig:
           password: "password"
           username: "username"
-      CacheExpiration: "CacheExpiration"
