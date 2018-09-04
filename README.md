@@ -49,6 +49,7 @@ Class | Method | HTTP request | Description
 *PlatformApi* | [**PlatformDelete**](docs/PlatformApi.md#platformdelete) | **Delete** /1.0/platforms/{platform} | 
 *PlatformApi* | [**PlatformInfo**](docs/PlatformApi.md#platforminfo) | **Get** /1.6/platforms/{platform} | 
 *PlatformApi* | [**PlatformList**](docs/PlatformApi.md#platformlist) | **Get** /1.0/platforms | 
+*PlatformApi* | [**PlatformRollback**](docs/PlatformApi.md#platformrollback) | **Post** /1.6/platforms/{platform}/rollback | 
 *PlatformApi* | [**PlatformUpdate**](docs/PlatformApi.md#platformupdate) | **Put** /1.0/platforms/{platform} | 
 *PoolApi* | [**PoolCreate**](docs/PoolApi.md#poolcreate) | **Post** /1.0/pools | 
 *PoolApi* | [**PoolDelete**](docs/PoolApi.md#pooldelete) | **Delete** /pools/{pool} | 
