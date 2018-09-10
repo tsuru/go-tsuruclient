@@ -2435,7 +2435,9 @@ definitions:
       public:
         type: "boolean"
       teams:
-        type: "string"
+        type: "array"
+        items:
+          type: "string"
       allowed:
         type: "object"
         additionalProperties:
@@ -2446,7 +2448,9 @@ definitions:
       default: true
       provisioner: "provisioner"
       public: true
-      teams: "teams"
+      teams:
+      - "teams"
+      - "teams"
       allowed:
         key:
         - "allowed"
@@ -3349,7 +3353,9 @@ definitions:
       - default: true
         provisioner: "provisioner"
         public: true
-        teams: "teams"
+        teams:
+        - "teams"
+        - "teams"
         allowed:
           key:
           - "allowed"
@@ -3358,7 +3364,9 @@ definitions:
       - default: true
         provisioner: "provisioner"
         public: true
-        teams: "teams"
+        teams:
+        - "teams"
+        - "teams"
         allowed:
           key:
           - "allowed"

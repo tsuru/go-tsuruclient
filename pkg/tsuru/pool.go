@@ -18,7 +18,7 @@ type Pool struct {
 
 	Public bool `json:"public,omitempty"`
 
-	Teams string `json:"teams,omitempty"`
+	Teams []string `json:"teams,omitempty"`
 
 	Allowed map[string][]string `json:"allowed,omitempty"`
 }
