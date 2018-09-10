@@ -2432,9 +2432,25 @@ definitions:
         type: "boolean"
       provisioner:
         type: "string"
+      public:
+        type: "boolean"
+      teams:
+        type: "string"
+      allowed:
+        type: "object"
+        additionalProperties:
+          type: "array"
+          items:
+            type: "string"
     example:
       default: true
       provisioner: "provisioner"
+      public: true
+      teams: "teams"
+      allowed:
+        key:
+        - "allowed"
+        - "allowed"
       name: "name"
   PoolCreateData:
     type: "object"
@@ -3332,9 +3348,21 @@ definitions:
       pools:
       - default: true
         provisioner: "provisioner"
+        public: true
+        teams: "teams"
+        allowed:
+          key:
+          - "allowed"
+          - "allowed"
         name: "name"
       - default: true
         provisioner: "provisioner"
+        public: true
+        teams: "teams"
+        allowed:
+          key:
+          - "allowed"
+          - "allowed"
         name: "name"
       users:
       - permissions:
