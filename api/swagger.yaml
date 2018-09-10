@@ -2996,30 +2996,41 @@ definitions:
         items:
           type: "string"
       cname:
+        type: "array"
+        items:
+          type: "string"
+      ip:
+        type: "string"
+      owner:
         type: "string"
     description: "Tsuru app."
     example:
-      teamOwner: "teamOwner"
-      router: "router"
+      owner: "owner"
       teams:
       - "teams"
       - "teams"
-      name: "name"
+      ip: "ip"
       pool: "pool"
-      cname: "cname"
-      routeropts:
-        key: "routeropts"
+      cname:
+      - "cname"
+      - "cname"
       description: "description"
-      plan:
-        default: true
-        memory: 0
-        swap: 0
-        name: "name"
-        cpushare: 0
       platform: "platform"
       tags:
       - "tags"
       - "tags"
+      teamOwner: "teamOwner"
+      router: "router"
+      name: "name"
+      routeropts:
+        key: "routeropts"
+      plan:
+        default: true
+        router: "router"
+        memory: 0
+        swap: 0
+        name: "name"
+        cpushare: 0
   AppCreateResponse:
     type: "object"
     properties:
@@ -3105,6 +3116,7 @@ definitions:
       error: "error"
       plan:
         default: true
+        router: "router"
         memory: 0
         swap: 0
         name: "name"
@@ -3145,9 +3157,12 @@ definitions:
         minimum: 0
       default:
         type: "boolean"
+      router:
+        type: "string"
     description: "App plan."
     example:
       default: true
+      router: "router"
       memory: 0
       swap: 0
       name: "name"
@@ -3356,48 +3371,58 @@ definitions:
       - "tags"
       - "tags"
       apps:
-      - teamOwner: "teamOwner"
-        router: "router"
+      - owner: "owner"
         teams:
         - "teams"
         - "teams"
-        name: "name"
+        ip: "ip"
         pool: "pool"
-        cname: "cname"
-        routeropts:
-          key: "routeropts"
+        cname:
+        - "cname"
+        - "cname"
         description: "description"
-        plan:
-          default: true
-          memory: 0
-          swap: 0
-          name: "name"
-          cpushare: 0
         platform: "platform"
         tags:
         - "tags"
         - "tags"
-      - teamOwner: "teamOwner"
+        teamOwner: "teamOwner"
         router: "router"
-        teams:
-        - "teams"
-        - "teams"
         name: "name"
-        pool: "pool"
-        cname: "cname"
         routeropts:
           key: "routeropts"
-        description: "description"
         plan:
           default: true
+          router: "router"
           memory: 0
           swap: 0
           name: "name"
           cpushare: 0
+      - owner: "owner"
+        teams:
+        - "teams"
+        - "teams"
+        ip: "ip"
+        pool: "pool"
+        cname:
+        - "cname"
+        - "cname"
+        description: "description"
         platform: "platform"
         tags:
         - "tags"
         - "tags"
+        teamOwner: "teamOwner"
+        router: "router"
+        name: "name"
+        routeropts:
+          key: "routeropts"
+        plan:
+          default: true
+          router: "router"
+          memory: 0
+          swap: 0
+          name: "name"
+          cpushare: 0
   TeamTokenUpdateArgs:
     properties:
       regenerate:

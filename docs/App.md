@@ -13,7 +13,9 @@ Name | Type | Description | Notes
 **Description** | **string** | App description. | [optional] [default to null]
 **TeamOwner** | **string** | Team that owns the app. | [optional] [default to null]
 **Teams** | **[]string** |  | [optional] [default to null]
-**Cname** | **string** |  | [optional] [default to null]
+**Cname** | **[]string** |  | [optional] [default to null]
+**Ip** | **string** |  | [optional] [default to null]
+**Owner** | **string** |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

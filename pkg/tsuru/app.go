@@ -40,5 +40,9 @@ type App struct {
 
 	Teams []string `json:"teams,omitempty"`
 
-	Cname string `json:"cname,omitempty"`
+	Cname []string `json:"cname,omitempty"`
+
+	Ip string `json:"ip,omitempty"`
+
+	Owner string `json:"owner,omitempty"`
 }
