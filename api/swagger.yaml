@@ -756,6 +756,44 @@ paths:
             $ref: "#/definitions/ErrorMessage"
       security:
       - Bearer: []
+  /1.6/platforms/{platform}/rollback:
+    post:
+      tags:
+      - "platform"
+      description: "Platform rollback."
+      operationId: "PlatformRollback"
+      produces:
+      - "application/x-json-stream"
+      parameters:
+      - name: "platform"
+        in: "path"
+        description: "Platform name."
+        required: true
+        type: "string"
+        minLength: 1
+        x-exportParamName: "Platform"
+      - name: "image"
+        in: "query"
+        required: true
+        type: "string"
+        x-exportParamName: "Image"
+      responses:
+        200:
+          description: "Ok"
+        400:
+          description: "Invalid data"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "Not found"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
   /1.0/teams:
     get:
       tags:
@@ -2926,7 +2964,7 @@ definitions:
       name:
         type: "string"
         description: "App name."
-      tag:
+      tags:
         type: "array"
         description: "App tags."
         items:
@@ -2940,8 +2978,7 @@ definitions:
         additionalProperties:
           type: "string"
       plan:
-        type: "string"
-        description: "App plan."
+        $ref: "#/definitions/Plan"
       pool:
         type: "string"
         description: "App pool."
@@ -2954,20 +2991,35 @@ definitions:
       teamOwner:
         type: "string"
         description: "Team that owns the app."
+      teams:
+        type: "array"
+        items:
+          type: "string"
+      cname:
+        type: "string"
     description: "Tsuru app."
     example:
       teamOwner: "teamOwner"
       router: "router"
+      teams:
+      - "teams"
+      - "teams"
       name: "name"
       pool: "pool"
+      cname: "cname"
       routeropts:
         key: "routeropts"
       description: "description"
-      tag:
-      - "tag"
-      - "tag"
-      plan: "plan"
+      plan:
+        default: true
+        memory: 0
+        swap: 0
+        name: "name"
+        cpushare: 0
       platform: "platform"
+      tags:
+      - "tags"
+      - "tags"
   AppCreateResponse:
     type: "object"
     properties:
@@ -3306,28 +3358,46 @@ definitions:
       apps:
       - teamOwner: "teamOwner"
         router: "router"
+        teams:
+        - "teams"
+        - "teams"
         name: "name"
         pool: "pool"
+        cname: "cname"
         routeropts:
           key: "routeropts"
         description: "description"
-        tag:
-        - "tag"
-        - "tag"
-        plan: "plan"
+        plan:
+          default: true
+          memory: 0
+          swap: 0
+          name: "name"
+          cpushare: 0
         platform: "platform"
+        tags:
+        - "tags"
+        - "tags"
       - teamOwner: "teamOwner"
         router: "router"
+        teams:
+        - "teams"
+        - "teams"
         name: "name"
         pool: "pool"
+        cname: "cname"
         routeropts:
           key: "routeropts"
         description: "description"
-        tag:
-        - "tag"
-        - "tag"
-        plan: "plan"
+        plan:
+          default: true
+          memory: 0
+          swap: 0
+          name: "name"
+          cpushare: 0
         platform: "platform"
+        tags:
+        - "tags"
+        - "tags"
   TeamTokenUpdateArgs:
     properties:
       regenerate:
