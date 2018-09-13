@@ -448,6 +448,38 @@ paths:
             $ref: "#/definitions/ErrorMessage"
       security:
       - Bearer: []
+    put:
+      tags:
+      - "app"
+      description: "Update a tsuru app."
+      operationId: "AppUpdate"
+      produces:
+      - "application/x-json-stream"
+      parameters:
+      - name: "app"
+        in: "path"
+        description: "App name."
+        required: true
+        type: "string"
+        minLength: 1
+        x-exportParamName: "App"
+      responses:
+        200:
+          description: "App updated"
+        400:
+          description: "Invalid data"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "Not found"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
     delete:
       tags:
       - "app"
@@ -744,8 +776,6 @@ paths:
           description: "Platform info"
           schema:
             $ref: "#/definitions/PlatformInfo"
-        204:
-          description: "No content."
         401:
           description: "Unauthorized"
           schema:

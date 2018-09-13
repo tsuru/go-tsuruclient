@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**AppDelete**](AppApi.md#AppDelete) | **Delete** /1.0/apps/{app} | 
 [**AppGet**](AppApi.md#AppGet) | **Get** /1.0/apps/{app} | 
 [**AppList**](AppApi.md#AppList) | **Get** /1.0/apps | 
+[**AppUpdate**](AppApi.md#AppUpdate) | **Put** /1.0/apps/{app} | 
 [**EnvGet**](AppApi.md#EnvGet) | **Get** /1.0/apps/{app}/env | 
 [**EnvSet**](AppApi.md#EnvSet) | **Post** /1.0/apps/{app}/env | 
 [**EnvUnset**](AppApi.md#EnvUnset) | **Delete** /1.0/apps/{app}/env | 
@@ -136,6 +137,34 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AppUpdate**
+> AppUpdate(ctx, app)
+
+
+Update a tsuru app.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **app** | **string**| App name. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/x-json-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
