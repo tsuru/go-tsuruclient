@@ -35,6 +35,10 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**TeamTokenDelete**](docs/AuthApi.md#teamtokendelete) | **Delete** /1.6/tokens/{token_id} | 
 *AuthApi* | [**TeamTokenUpdate**](docs/AuthApi.md#teamtokenupdate) | **Put** /1.6/tokens/{token_id} | 
 *AuthApi* | [**TeamTokensList**](docs/AuthApi.md#teamtokenslist) | **Get** /1.6/tokens | 
+*ClusterApi* | [**ClusterCreate**](docs/ClusterApi.md#clustercreate) | **Post** /1.3/provisioners/clusters | 
+*ClusterApi* | [**ClusterDelete**](docs/ClusterApi.md#clusterdelete) | **Delete** /1.3/provisioners/clusters/{cluster} | 
+*ClusterApi* | [**ClusterList**](docs/ClusterApi.md#clusterlist) | **Get** /1.3/provisioners/clusters | 
+*ClusterApi* | [**ClusterUpdate**](docs/ClusterApi.md#clusterupdate) | **Post** /1.4/provisioners/clusters/{cluster} | 
 *EventApi* | [**EventCancel**](docs/EventApi.md#eventcancel) | **Post** /1.1/events/{eventid}/cancel | 
 *EventApi* | [**WebhookCreate**](docs/EventApi.md#webhookcreate) | **Post** /1.6/events/webhooks | 
 *EventApi* | [**WebhookDelete**](docs/EventApi.md#webhookdelete) | **Delete** /1.6/events/webhooks/{name} | 
@@ -99,6 +103,7 @@ Class | Method | HTTP request | Description
  - [AppCreateResponse](docs/AppCreateResponse.md)
  - [AssignTokenArgs](docs/AssignTokenArgs.md)
  - [ChangePasswordData](docs/ChangePasswordData.md)
+ - [Cluster](docs/Cluster.md)
  - [Env](docs/Env.md)
  - [EnvSetData](docs/EnvSetData.md)
  - [EnvSetResponse](docs/EnvSetResponse.md)
