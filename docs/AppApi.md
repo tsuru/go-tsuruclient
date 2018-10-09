@@ -8,6 +8,8 @@ Method | HTTP request | Description
 [**AppDelete**](AppApi.md#AppDelete) | **Delete** /1.0/apps/{app} | 
 [**AppGet**](AppApi.md#AppGet) | **Get** /1.0/apps/{app} | 
 [**AppList**](AppApi.md#AppList) | **Get** /1.0/apps | 
+[**AppQuotaChange**](AppApi.md#AppQuotaChange) | **Put** /1.0/apps/{app}/quota | 
+[**AppQuotaGet**](AppApi.md#AppQuotaGet) | **Get** /1.0/apps/{app}/quota | 
 [**AppUpdate**](AppApi.md#AppUpdate) | **Put** /1.0/apps/{app} | 
 [**EnvGet**](AppApi.md#EnvGet) | **Get** /1.0/apps/{app}/env | 
 [**EnvSet**](AppApi.md#EnvSet) | **Post** /1.0/apps/{app}/env | 
@@ -128,6 +130,63 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]MiniApp**](MiniApp.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AppQuotaChange**
+> AppQuotaChange(ctx, app, limit)
+
+
+Changes the maximum limit of units allowed for use.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **app** | **string**| App name. | 
+  **limit** | **float32**|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AppQuotaGet**
+> Quota AppQuotaGet(ctx, app)
+
+
+Shows app usage info and its quota limit.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **app** | **string**| App name. | 
+
+### Return type
+
+[**Quota**](Quota.md)
 
 ### Authorization
 

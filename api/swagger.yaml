@@ -636,6 +636,77 @@ paths:
             $ref: "#/definitions/ErrorMessage"
       security:
       - Bearer: []
+  /1.0/apps/{app}/quota:
+    get:
+      tags:
+      - "app"
+      description: "Shows app usage info and its quota limit."
+      operationId: "AppQuotaGet"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "app"
+        in: "path"
+        description: "App name."
+        required: true
+        type: "string"
+        minLength: 1
+        x-exportParamName: "App"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/Quota"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "App not found"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
+    put:
+      tags:
+      - "app"
+      description: "Changes the maximum limit of units allowed for use."
+      operationId: "AppQuotaChange"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "app"
+        in: "path"
+        description: "App name."
+        required: true
+        type: "string"
+        minLength: 1
+        x-exportParamName: "App"
+      - name: "limit"
+        in: "formData"
+        required: true
+        type: "number"
+        minimum: 0
+        x-exportParamName: "Limit"
+      responses:
+        200:
+          description: "Quota updated"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        403:
+          description: "Limit lower than allocated"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+        404:
+          description: "App not found"
+          schema:
+            $ref: "#/definitions/ErrorMessage"
+      security:
+      - Bearer: []
   /1.0/platforms/{platform}:
     put:
       tags:
@@ -1720,7 +1791,7 @@ paths:
             $ref: "#/definitions/ErrorMessage"
       security:
       - Bearer: []
-  /1.3/provisioners/clusters:
+  /1.3/provisioner/clusters:
     get:
       tags:
       - "cluster"
@@ -1773,7 +1844,7 @@ paths:
             $ref: "#/definitions/ErrorMessage"
       security:
       - Bearer: []
-  /1.3/provisioners/clusters/{cluster}:
+  /1.3/provisioner/clusters/{cluster}:
     delete:
       tags:
       - "cluster"
@@ -1800,7 +1871,7 @@ paths:
             $ref: "#/definitions/ErrorMessage"
       security:
       - Bearer: []
-  /1.4/provisioners/clusters/{cluster}:
+  /1.4/provisioner/clusters/{cluster}:
     post:
       tags:
       - "cluster"
@@ -3904,10 +3975,12 @@ definitions:
         type: "string"
       clientcert:
         type: "string"
+      clientkey:
+        type: "string"
       pools:
         type: "array"
         items:
-          $ref: "#/definitions/Pool"
+          type: "string"
       custom_data:
         type: "object"
         additionalProperties:
@@ -3927,33 +4000,26 @@ definitions:
       provisioner: "provisioner"
       default: true
       clientcert: "clientcert"
+      clientkey: "clientkey"
       cacert: "cacert"
       name: "name"
       pools:
-      - default: true
-        provisioner: "provisioner"
-        public: true
-        teams:
-        - "teams"
-        - "teams"
-        allowed:
-          key:
-          - "allowed"
-          - "allowed"
-        name: "name"
-      - default: true
-        provisioner: "provisioner"
-        public: true
-        teams:
-        - "teams"
-        - "teams"
-        allowed:
-          key:
-          - "allowed"
-          - "allowed"
-        name: "name"
+      - "pools"
+      - "pools"
       custom_data:
         key: "custom_data"
+  Quota:
+    type: "object"
+    properties:
+      inuse:
+        type: "integer"
+        format: "int64"
+      limit:
+        type: "integer"
+        format: "int64"
+    example:
+      limit: 6
+      inuse: 0
   teamData:
     type: "object"
     properties:

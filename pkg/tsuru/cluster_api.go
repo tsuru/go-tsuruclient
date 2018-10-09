@@ -41,7 +41,7 @@ func (a *ClusterApiService) ClusterCreate(ctx context.Context, clusterCreateData
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.3/provisioners/clusters"
+	localVarPath := a.client.cfg.BasePath + "/1.3/provisioner/clusters"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -108,7 +108,7 @@ func (a *ClusterApiService) ClusterDelete(ctx context.Context, cluster string) (
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.3/provisioners/clusters/{cluster}"
+	localVarPath := a.client.cfg.BasePath + "/1.3/provisioner/clusters/{cluster}"
 	localVarPath = strings.Replace(localVarPath, "{"+"cluster"+"}", fmt.Sprintf("%v", cluster), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -177,7 +177,7 @@ func (a *ClusterApiService) ClusterList(ctx context.Context) ([]Cluster, *http.R
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.3/provisioners/clusters"
+	localVarPath := a.client.cfg.BasePath + "/1.3/provisioner/clusters"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -249,7 +249,7 @@ func (a *ClusterApiService) ClusterUpdate(ctx context.Context, cluster string, c
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.4/provisioners/clusters/{cluster}"
+	localVarPath := a.client.cfg.BasePath + "/1.4/provisioner/clusters/{cluster}"
 	localVarPath = strings.Replace(localVarPath, "{"+"cluster"+"}", fmt.Sprintf("%v", cluster), -1)
 
 	localVarHeaderParams := make(map[string]string)

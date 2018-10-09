@@ -20,7 +20,9 @@ type Cluster struct {
 
 	Clientcert string `json:"clientcert,omitempty"`
 
-	Pools []Pool `json:"pools,omitempty"`
+	Clientkey string `json:"clientkey,omitempty"`
+
+	Pools []string `json:"pools,omitempty"`
 
 	CustomData map[string]string `json:"custom_data,omitempty"`
 

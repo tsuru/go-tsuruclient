@@ -25,6 +25,8 @@ Class | Method | HTTP request | Description
 *AppApi* | [**AppDelete**](docs/AppApi.md#appdelete) | **Delete** /1.0/apps/{app} | 
 *AppApi* | [**AppGet**](docs/AppApi.md#appget) | **Get** /1.0/apps/{app} | 
 *AppApi* | [**AppList**](docs/AppApi.md#applist) | **Get** /1.0/apps | 
+*AppApi* | [**AppQuotaChange**](docs/AppApi.md#appquotachange) | **Put** /1.0/apps/{app}/quota | 
+*AppApi* | [**AppQuotaGet**](docs/AppApi.md#appquotaget) | **Get** /1.0/apps/{app}/quota | 
 *AppApi* | [**AppUpdate**](docs/AppApi.md#appupdate) | **Put** /1.0/apps/{app} | 
 *AppApi* | [**EnvGet**](docs/AppApi.md#envget) | **Get** /1.0/apps/{app}/env | 
 *AppApi* | [**EnvSet**](docs/AppApi.md#envset) | **Post** /1.0/apps/{app}/env | 
@@ -35,10 +37,10 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**TeamTokenDelete**](docs/AuthApi.md#teamtokendelete) | **Delete** /1.6/tokens/{token_id} | 
 *AuthApi* | [**TeamTokenUpdate**](docs/AuthApi.md#teamtokenupdate) | **Put** /1.6/tokens/{token_id} | 
 *AuthApi* | [**TeamTokensList**](docs/AuthApi.md#teamtokenslist) | **Get** /1.6/tokens | 
-*ClusterApi* | [**ClusterCreate**](docs/ClusterApi.md#clustercreate) | **Post** /1.3/provisioners/clusters | 
-*ClusterApi* | [**ClusterDelete**](docs/ClusterApi.md#clusterdelete) | **Delete** /1.3/provisioners/clusters/{cluster} | 
-*ClusterApi* | [**ClusterList**](docs/ClusterApi.md#clusterlist) | **Get** /1.3/provisioners/clusters | 
-*ClusterApi* | [**ClusterUpdate**](docs/ClusterApi.md#clusterupdate) | **Post** /1.4/provisioners/clusters/{cluster} | 
+*ClusterApi* | [**ClusterCreate**](docs/ClusterApi.md#clustercreate) | **Post** /1.3/provisioner/clusters | 
+*ClusterApi* | [**ClusterDelete**](docs/ClusterApi.md#clusterdelete) | **Delete** /1.3/provisioner/clusters/{cluster} | 
+*ClusterApi* | [**ClusterList**](docs/ClusterApi.md#clusterlist) | **Get** /1.3/provisioner/clusters | 
+*ClusterApi* | [**ClusterUpdate**](docs/ClusterApi.md#clusterupdate) | **Post** /1.4/provisioner/clusters/{cluster} | 
 *EventApi* | [**EventCancel**](docs/EventApi.md#eventcancel) | **Post** /1.1/events/{eventid}/cancel | 
 *EventApi* | [**WebhookCreate**](docs/EventApi.md#webhookcreate) | **Post** /1.6/events/webhooks | 
 *EventApi* | [**WebhookDelete**](docs/EventApi.md#webhookdelete) | **Delete** /1.6/events/webhooks/{name} | 
@@ -128,6 +130,7 @@ Class | Method | HTTP request | Description
  - [Pool](docs/Pool.md)
  - [PoolCreateData](docs/PoolCreateData.md)
  - [PoolUpdateData](docs/PoolUpdateData.md)
+ - [Quota](docs/Quota.md)
  - [RoleInstance](docs/RoleInstance.md)
  - [RoleUser](docs/RoleUser.md)
  - [Router](docs/Router.md)
