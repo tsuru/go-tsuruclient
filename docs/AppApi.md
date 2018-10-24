@@ -8,6 +8,9 @@ Method | HTTP request | Description
 [**AppDelete**](AppApi.md#AppDelete) | **Delete** /1.0/apps/{app} | 
 [**AppGet**](AppApi.md#AppGet) | **Get** /1.0/apps/{app} | 
 [**AppList**](AppApi.md#AppList) | **Get** /1.0/apps | 
+[**AppQuotaChange**](AppApi.md#AppQuotaChange) | **Put** /1.0/apps/{app}/quota | 
+[**AppQuotaGet**](AppApi.md#AppQuotaGet) | **Get** /1.0/apps/{app}/quota | 
+[**AppRestart**](AppApi.md#AppRestart) | **Post** /1.0/apps/{app}/restart | 
 [**AppUpdate**](AppApi.md#AppUpdate) | **Put** /1.0/apps/{app} | 
 [**EnvGet**](AppApi.md#EnvGet) | **Get** /1.0/apps/{app}/env | 
 [**EnvSet**](AppApi.md#EnvSet) | **Post** /1.0/apps/{app}/env | 
@@ -124,6 +127,7 @@ Name | Type | Description  | Notes
  **status** | **string**| Filter applications by unit status. | 
  **tag** | [**[]string**](string.md)| Filter applications by tag. | 
  **teamOwner** | **string**| Filter applications by team owner. | 
+ **simplified** | **bool**| Returns applications without units list. | 
 
 ### Return type
 
@@ -137,6 +141,100 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AppQuotaChange**
+> AppQuotaChange(ctx, app, limit)
+
+
+Changes the maximum limit of units allowed for use.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **app** | **string**| App name. | 
+  **limit** | **float32**| Number of units allowed for use by the current app. Negative number indicates unlimited. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AppQuotaGet**
+> Quota AppQuotaGet(ctx, app)
+
+
+Shows app usage info and its quota limit.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **app** | **string**| App name. | 
+
+### Return type
+
+[**Quota**](Quota.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AppRestart**
+> AppRestart(ctx, app, optional)
+
+
+Restart App.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **app** | **string**| App name. | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app** | **string**| App name. | 
+ **process** | **string**| Process number to be restarted. If the process number will not informed, whole application will be restarted. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/x-json-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

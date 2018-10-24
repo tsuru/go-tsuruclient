@@ -4,10 +4,10 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ClusterCreate**](ClusterApi.md#ClusterCreate) | **Post** /1.3/provisioners/clusters | 
-[**ClusterDelete**](ClusterApi.md#ClusterDelete) | **Delete** /1.3/provisioners/clusters/{cluster} | 
-[**ClusterList**](ClusterApi.md#ClusterList) | **Get** /1.3/provisioners/clusters | 
-[**ClusterUpdate**](ClusterApi.md#ClusterUpdate) | **Post** /1.4/provisioners/clusters/{cluster} | 
+[**ClusterCreate**](ClusterApi.md#ClusterCreate) | **Post** /1.3/provisioner/clusters | 
+[**ClusterDelete**](ClusterApi.md#ClusterDelete) | **Delete** /1.3/provisioner/clusters/{cluster} | 
+[**ClusterList**](ClusterApi.md#ClusterList) | **Get** /1.3/provisioner/clusters | 
+[**ClusterUpdate**](ClusterApi.md#ClusterUpdate) | **Post** /1.4/provisioner/clusters/{cluster} | 
 
 
 # **ClusterCreate**
