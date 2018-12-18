@@ -3,6 +3,7 @@ module github.com/tsuru/go-tsuruclient
 require (
 	github.com/Azure/go-ansiterm v0.0.0-20170929234023-d6e3b3328b78 // indirect
 	github.com/Sirupsen/logrus v1.0.6 // indirect
+	github.com/antihax/optional v0.0.0-20180407024304-ca021399b1a6
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/docker/docker v1.13.1 // indirect
 	github.com/docker/go-units v0.3.3 // indirect
@@ -18,7 +19,7 @@ require (
 	github.com/tsuru/tablecli v0.0.0-20180215113938-82de88f75181 // indirect
 	github.com/tsuru/tsuru v0.0.0-20180820205921-0e7f7f02eac5
 	golang.org/x/crypto v0.0.0-20180820150726-614d502a4dac // indirect
-	golang.org/x/net v0.0.0-20180404174746-b3c676e531a6
+	golang.org/x/net v0.0.0-20180404174746-b3c676e531a6 // indirect
 	golang.org/x/oauth2 v0.0.0-20180402223937-921ae394b943
 	golang.org/x/sys v0.0.0-20180820145501-1a700e749ce2 // indirect
 	google.golang.org/appengine v1.1.0 // indirect

@@ -42,6 +42,7 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "App"
+        x-optionalDataType: "String"
       responses:
         200:
           description: "Service instances"
@@ -319,36 +320,42 @@ paths:
         required: false
         type: "boolean"
         x-exportParamName: "Locked"
+        x-optionalDataType: "Bool"
       - name: "name"
         in: "query"
         description: "Filter applications by name."
         required: false
         type: "string"
         x-exportParamName: "Name"
+        x-optionalDataType: "String"
       - name: "owner"
         in: "query"
         description: "Filter applications by owner."
         required: false
         type: "string"
         x-exportParamName: "Owner"
+        x-optionalDataType: "String"
       - name: "platform"
         in: "query"
         description: "Filter applications by platform."
         required: false
         type: "string"
         x-exportParamName: "Platform"
+        x-optionalDataType: "String"
       - name: "pool"
         in: "query"
         description: "Filter applications by pool."
         required: false
         type: "string"
         x-exportParamName: "Pool"
+        x-optionalDataType: "String"
       - name: "status"
         in: "query"
         description: "Filter applications by unit status."
         required: false
         type: "string"
         x-exportParamName: "Status"
+        x-optionalDataType: "String"
       - name: "tag"
         in: "query"
         description: "Filter applications by tag."
@@ -363,12 +370,14 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "TeamOwner"
+        x-optionalDataType: "String"
       - name: "simplified"
         in: "query"
         description: "Returns applications without units list."
         required: false
         type: "boolean"
         x-exportParamName: "Simplified"
+        x-optionalDataType: "Bool"
       responses:
         200:
           description: "List apps"
@@ -536,6 +545,7 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Env"
+        x-optionalDataType: "String"
       responses:
         200:
           description: "Environment variables"
@@ -739,6 +749,7 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Process"
+        x-optionalDataType: "String"
       responses:
         200:
           description: "App restarted"
@@ -1114,11 +1125,13 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Role"
+        x-optionalDataType: "String"
       - name: "context"
         in: "query"
         required: false
         type: "string"
         x-exportParamName: "Context"
+        x-optionalDataType: "String"
       responses:
         200:
           description: "List users."
@@ -1484,6 +1497,7 @@ paths:
         required: true
         schema:
           type: "string"
+          minLength: 1
         x-exportParamName: "Token"
       responses:
         200:
@@ -3237,10 +3251,6 @@ definitions:
         type: "boolean"
       readonly:
         type: "boolean"
-    example:
-      readonly: true
-      norestart: true
-      mountpoint: "mountpoint"
   App:
     type: "object"
     required:
@@ -4018,10 +4028,13 @@ definitions:
         type: "string"
       cacert:
         type: "string"
+        format: "binary"
       clientcert:
         type: "string"
+        format: "binary"
       clientkey:
         type: "string"
+        format: "binary"
       pools:
         type: "array"
         items:
@@ -4044,9 +4057,9 @@ definitions:
       - "addresses"
       provisioner: "provisioner"
       default: true
-      clientcert: "clientcert"
-      clientkey: "clientkey"
-      cacert: "cacert"
+      clientcert: ""
+      clientkey: ""
+      cacert: ""
       name: "name"
       pools:
       - "pools"

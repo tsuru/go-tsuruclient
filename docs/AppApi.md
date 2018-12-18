@@ -27,7 +27,7 @@ Create a new app.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **app** | [**App**](App.md)|  | 
 
 ### Return type
@@ -55,7 +55,7 @@ Delete a tsuru app.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **app** | **string**| App name. | 
 
 ### Return type
@@ -83,7 +83,7 @@ Get info about a tsuru app.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **app** | **string**| Appname. | 
 
 ### Return type
@@ -111,23 +111,23 @@ List apps.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***AppListOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+Optional parameters are passed through a pointer to a AppListOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **locked** | **bool**| Filter applications by lock status. | 
- **name** | **string**| Filter applications by name. | 
- **owner** | **string**| Filter applications by owner. | 
- **platform** | **string**| Filter applications by platform. | 
- **pool** | **string**| Filter applications by pool. | 
- **status** | **string**| Filter applications by unit status. | 
- **tag** | [**[]string**](string.md)| Filter applications by tag. | 
- **teamOwner** | **string**| Filter applications by team owner. | 
- **simplified** | **bool**| Returns applications without units list. | 
+ **locked** | **optional.Bool**| Filter applications by lock status. | 
+ **name** | **optional.String**| Filter applications by name. | 
+ **owner** | **optional.String**| Filter applications by owner. | 
+ **platform** | **optional.String**| Filter applications by platform. | 
+ **pool** | **optional.String**| Filter applications by pool. | 
+ **status** | **optional.String**| Filter applications by unit status. | 
+ **tag** | [**optional.Interface of []string**](string.md)| Filter applications by tag. | 
+ **teamOwner** | **optional.String**| Filter applications by team owner. | 
+ **simplified** | **optional.Bool**| Returns applications without units list. | 
 
 ### Return type
 
@@ -154,7 +154,7 @@ Changes the maximum limit of units allowed for use.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **app** | **string**| App name. | 
   **limit** | **float32**| Number of units allowed for use by the current app. Negative number indicates unlimited. | 
 
@@ -183,7 +183,7 @@ Shows app usage info and its quota limit.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **app** | **string**| App name. | 
 
 ### Return type
@@ -211,17 +211,17 @@ Restart App.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **app** | **string**| App name. | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+ **optional** | ***AppRestartOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+Optional parameters are passed through a pointer to a AppRestartOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **app** | **string**| App name. | 
- **process** | **string**| Process number to be restarted. If the process number will not informed, whole application will be restarted. | 
+
+ **process** | **optional.String**| Process number to be restarted. If the process number will not informed, whole application will be restarted. | 
 
 ### Return type
 
@@ -248,7 +248,7 @@ Update a tsuru app.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **app** | **string**| App name. | 
 
 ### Return type
@@ -276,17 +276,17 @@ Get app environment variables.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **app** | **string**| App name. | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+ **optional** | ***EnvGetOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+Optional parameters are passed through a pointer to a EnvGetOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **app** | **string**| App name. | 
- **env** | **string**| Environment variable name. | 
+
+ **env** | **optional.String**| Environment variable name. | 
 
 ### Return type
 
@@ -304,7 +304,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EnvSet**
-> EnvSetResponse EnvSet(ctx, app, envs)
+> []map[string]interface{} EnvSet(ctx, app, envSetData)
 
 
 Set new environment variable.
@@ -313,13 +313,13 @@ Set new environment variable.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **app** | **string**| App name. | 
-  **envs** | [**EnvSetData**](EnvSetData.md)| Environment variables. | 
+  **envSetData** | [**EnvSetData**](EnvSetData.md)| Environment variables. | 
 
 ### Return type
 
-[**EnvSetResponse**](EnvSetResponse.md)
+[**[]map[string]interface{}**](map[string]interface{}.md)
 
 ### Authorization
 
@@ -342,7 +342,7 @@ Unset app environment variables.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **app** | **string**| App name. | 
   **env** | [**[]string**](string.md)|  | 
   **norestart** | **bool**|  | 

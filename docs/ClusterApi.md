@@ -5,13 +5,13 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ClusterCreate**](ClusterApi.md#ClusterCreate) | **Post** /1.3/provisioner/clusters | 
-[**ClusterDelete**](ClusterApi.md#ClusterDelete) | **Delete** /1.3/provisioner/clusters/{cluster} | 
+[**ClusterDelete**](ClusterApi.md#ClusterDelete) | **Delete** /1.3/provisioner/clusters/{cluster_name} | 
 [**ClusterList**](ClusterApi.md#ClusterList) | **Get** /1.3/provisioner/clusters | 
-[**ClusterUpdate**](ClusterApi.md#ClusterUpdate) | **Post** /1.4/provisioner/clusters/{cluster} | 
+[**ClusterUpdate**](ClusterApi.md#ClusterUpdate) | **Post** /1.4/provisioner/clusters/{cluster_name} | 
 
 
 # **ClusterCreate**
-> ClusterCreate(ctx, clusterCreateData)
+> ClusterCreate(ctx, cluster)
 
 
 Create cluster.
@@ -20,8 +20,8 @@ Create cluster.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **clusterCreateData** | [**Cluster**](Cluster.md)|  | 
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **cluster** | [**Cluster**](Cluster.md)|  | 
 
 ### Return type
 
@@ -34,12 +34,12 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ClusterDelete**
-> ClusterDelete(ctx, cluster)
+> ClusterDelete(ctx, clusterName)
 
 
 Delete cluster.
@@ -48,8 +48,8 @@ Delete cluster.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **cluster** | **string**| Cluster name. | 
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **clusterName** | **string**| Cluster name. | 
 
 ### Return type
 
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -91,7 +91,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ClusterUpdate**
-> ClusterUpdate(ctx, cluster, clusterUpdateData)
+> ClusterUpdate(ctx, clusterName, cluster)
 
 
 Update cluster.
@@ -100,9 +100,9 @@ Update cluster.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **cluster** | **string**| Cluster name. | 
-  **clusterUpdateData** | [**Cluster**](Cluster.md)|  | 
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **clusterName** | **string**| Cluster name. | 
+  **cluster** | [**Cluster**](Cluster.md)|  | 
 
 ### Return type
 
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
