@@ -1,0 +1,4439 @@
+openapi: 3.0.1
+info:
+  description: Open source, extensible and Docker-based Platform as a Service (PaaS)
+  title: Tsuru
+  version: "1.6"
+servers:
+- url: /
+paths:
+  /1.0/services:
+    get:
+      description: List services
+      operationId: ServicesList
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Service'
+                type: array
+          description: Services
+        204:
+          content: {}
+          description: No content
+      security:
+      - Bearer: []
+      tags:
+      - service
+  /1.0/services/instances:
+    get:
+      description: List service instances
+      operationId: InstancesList
+      parameters:
+      - description: Filter instances by app name
+        in: query
+        name: app
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Service'
+                type: array
+          description: Service instances
+        204:
+          content: {}
+          description: No content
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+      security:
+      - Bearer: []
+      tags:
+      - service
+  /1.0/services/{service}/instances/{instance}:
+    delete:
+      description: Remove service instance
+      operationId: InstanceDelete
+      parameters:
+      - description: Service name.
+        in: path
+        name: service
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: Instance name.
+        in: path
+        name: instance
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: Remove current binds to this instance
+        in: query
+        name: unbindall
+        required: true
+        schema:
+          type: boolean
+      responses:
+        200:
+          content: {}
+          description: Service removed
+        400:
+          content: {}
+          description: Bad request
+        401:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Service instance not found
+      security:
+      - Bearer: []
+      tags:
+      - service
+    get:
+      description: Get service instance information
+      operationId: InstanceGet
+      parameters:
+      - description: Service name.
+        in: path
+        name: service
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: Instance name.
+        in: path
+        name: instance
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceInstanceInfo'
+          description: Service instance
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Service instance not found
+      security:
+      - Bearer: []
+      tags:
+      - service
+    put:
+      description: Update a service instance
+      operationId: InstanceUpdate
+      parameters:
+      - description: Service name.
+        in: path
+        name: service
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: Instance name.
+        in: path
+        name: instance
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceInstanceUpdateData'
+        required: false
+      responses:
+        200:
+          content: {}
+          description: Service instance updated
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Service instance not found
+      security:
+      - Bearer: []
+      tags:
+      - service
+  /1.7/brokers:
+    get:
+      description: List service brokers
+      operationId: ServiceBrokerList
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceBrokerList'
+          description: List service brokers
+        204:
+          content: {}
+          description: No content
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+      security:
+      - Bearer: []
+      tags:
+      - service
+    post:
+      description: Create service broker
+      operationId: ServiceBrokerCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceBroker'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Service Broker created.
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        409:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Service Broker already exists.
+      security:
+      - Bearer: []
+      tags:
+      - service
+  /1.7/brokers/{name}:
+    delete:
+      operationId: ServiceBrokerDelete
+      parameters:
+      - description: Service Broker name.
+        in: path
+        name: name
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Service Broker deleted.
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Service Broker not found.
+      security:
+      - Bearer: []
+      tags:
+      - service
+    put:
+      description: Update service broker
+      operationId: ServiceBrokerUpdate
+      parameters:
+      - description: Service Broker name.
+        in: path
+        name: name
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceBroker'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Service Broker updated.
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Service Broker not found.
+      security:
+      - Bearer: []
+      tags:
+      - service
+  /1.0/apps:
+    get:
+      description: List apps.
+      operationId: AppList
+      parameters:
+      - description: Filter applications by lock status.
+        in: query
+        name: locked
+        schema:
+          type: boolean
+      - description: Filter applications by name.
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: Filter applications by owner.
+        in: query
+        name: owner
+        schema:
+          type: string
+      - description: Filter applications by platform.
+        in: query
+        name: platform
+        schema:
+          type: string
+      - description: Filter applications by pool.
+        in: query
+        name: pool
+        schema:
+          type: string
+      - description: Filter applications by unit status.
+        in: query
+        name: status
+        schema:
+          type: string
+      - description: Filter applications by tag.
+        explode: false
+        in: query
+        name: tag
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: Filter applications by team owner.
+        in: query
+        name: teamOwner
+        schema:
+          type: string
+      - description: Returns applications without units list.
+        in: query
+        name: simplified
+        schema:
+          type: boolean
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MiniApp'
+                type: array
+          description: List apps
+        204:
+          content: {}
+          description: No content
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+      security:
+      - Bearer: []
+      tags:
+      - app
+    post:
+      description: Create a new app.
+      operationId: AppCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/App'
+        required: true
+      responses:
+        201:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppCreateResponse'
+          description: App created
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        403:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Quota exceeded
+        409:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App already exists
+      security:
+      - Bearer: []
+      tags:
+      - app
+  /1.0/apps/{app}:
+    delete:
+      description: Delete a tsuru app.
+      operationId: AppDelete
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: App removed.
+        401:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found.
+      security:
+      - Bearer: []
+      tags:
+      - app
+    get:
+      description: Get info about a tsuru app.
+      operationId: AppGet
+      parameters:
+      - description: Appname.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/App'
+          description: App info
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found.
+      security:
+      - Bearer: []
+      tags:
+      - app
+    put:
+      description: Update a tsuru app.
+      operationId: AppUpdate
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: App updated
+        400:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Not found
+      security:
+      - Bearer: []
+      tags:
+      - app
+  /1.0/apps/{app}/env:
+    delete:
+      description: Unset app environment variables.
+      operationId: EnvUnset
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - explode: true
+        in: query
+        name: env
+        required: true
+        schema:
+          items:
+            type: string
+          minItems: 1
+          type: array
+        style: form
+      - in: query
+        name: norestart
+        required: true
+        schema:
+          type: boolean
+      responses:
+        200:
+          content: {}
+          description: Envs deleted
+        400:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
+    get:
+      description: Get app environment variables.
+      operationId: EnvGet
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: Environment variable name.
+        in: query
+        name: env
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Env'
+                type: array
+          description: Environment variables
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
+    post:
+      description: Set new environment variable.
+      operationId: EnvSet
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnvSetData'
+        description: Environment variables.
+        required: true
+      responses:
+        200:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/EnvSetResponse'
+          description: Envs updated
+        400:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
+  /1.0/apps/{app}/quota:
+    get:
+      description: Shows app usage info and its quota limit.
+      operationId: AppQuotaGet
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Quota'
+          description: OK
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
+    put:
+      description: Changes the maximum limit of units allowed for use.
+      operationId: AppQuotaChange
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                limit:
+                  description: Number of units allowed for use by the current app. Negative number indicates unlimited.
+                  type: number
+              required:
+              - limit
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Quota updated
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        403:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Limit lower than allocated
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
+  /1.0/apps/{app}/restart:
+    post:
+      description: Restart App.
+      operationId: AppRestart
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                process:
+                  description: Process number to be restarted. If the process number will not informed, whole application will be restarted.
+                  type: string
+      responses:
+        200:
+          content: {}
+          description: App restarted
+        401:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
+  /1.0/platforms/{platform}:
+    delete:
+      description: Delete platform.
+      operationId: PlatformDelete
+      parameters:
+      - description: Platform name.
+        in: path
+        name: platform
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Platform removed
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Not found
+      security:
+      - Bearer: []
+      tags:
+      - platform
+    put:
+      description: Update platform.
+      operationId: PlatformUpdate
+      parameters:
+      - description: Platform name.
+        in: path
+        name: platform
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                dockerfile_content:
+                  format: binary
+                  type: string
+              required:
+              - dockerfile_content
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Platform updated
+        401:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Not found
+      security:
+      - Bearer: []
+      tags:
+      - platform
+  /1.0/platforms:
+    get:
+      description: List platforms.
+      operationId: PlatformList
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Platform'
+                type: array
+          description: Platform list
+        204:
+          content: {}
+          description: No content
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+      security:
+      - Bearer: []
+      tags:
+      - platform
+    post:
+      description: Add new platform.
+      operationId: PlatformAdd
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                name:
+                  type: string
+                dockerfile_content:
+                  format: binary
+                  type: string
+              required:
+              - dockerfile_content
+              - name
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Platform created
+        400:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+      security:
+      - Bearer: []
+      tags:
+      - platform
+  /1.6/platforms/{platform}:
+    get:
+      description: Platform info.
+      operationId: PlatformInfo
+      parameters:
+      - description: Platform info.
+        in: path
+        name: platform
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlatformInfo'
+          description: Platform info
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Not found
+      security:
+      - Bearer: []
+      tags:
+      - platform
+  /1.6/platforms/{platform}/rollback:
+    post:
+      description: Platform rollback.
+      operationId: PlatformRollback
+      parameters:
+      - description: Platform name.
+        in: path
+        name: platform
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - in: query
+        name: image
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Ok
+        400:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Not found
+      security:
+      - Bearer: []
+      tags:
+      - platform
+  /1.0/teams:
+    get:
+      description: List teams.
+      operationId: TeamsList
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Team'
+                type: array
+          description: Team list.
+        204:
+          content: {}
+          description: No content.
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+      security:
+      - Bearer: []
+      tags:
+      - team
+    post:
+      description: Create a team.
+      operationId: TeamCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamCreateArgs'
+        required: true
+      responses:
+        201:
+          content: {}
+          description: Team created.
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        409:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Team already exists
+      security:
+      - Bearer: []
+      tags:
+      - team
+  /1.0/teams/{team}:
+    delete:
+      description: Delete a team.
+      operationId: TeamDelete
+      parameters:
+      - description: Team name.
+        in: path
+        name: team
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Team removed.
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        403:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Forbidden
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Team not found
+      security:
+      - Bearer: []
+      tags:
+      - team
+  /1.4/teams/{team}:
+    get:
+      description: Get a team.
+      operationId: TeamGet
+      parameters:
+      - description: Team name.
+        in: path
+        name: team
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamInfo'
+          description: Team data
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Team not found
+      security:
+      - Bearer: []
+      tags:
+      - team
+  /1.6/teams/{team}:
+    put:
+      description: Update a team.
+      operationId: TeamUpdate
+      parameters:
+      - description: Team name.
+        in: path
+        name: team
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateArgs'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Team updated
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Team not found
+      security:
+      - Bearer: []
+      tags:
+      - team
+  /1.0/users:
+    delete:
+      description: Delete an user.
+      operationId: UserDelete
+      parameters:
+      - description: User e-mail.
+        in: query
+        name: email
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: User removed
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Not found
+      security:
+      - Bearer: []
+      tags:
+      - user
+    get:
+      description: List users.
+      operationId: UsersList
+      parameters:
+      - in: query
+        name: email
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: role
+        schema:
+          type: string
+      - in: query
+        name: context
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/User'
+                type: array
+          description: List users.
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+      security:
+      - Bearer: []
+      tags:
+      - user
+    post:
+      description: Create a new user.
+      operationId: UserCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserData'
+        required: true
+      responses:
+        201:
+          content: {}
+          description: User created.
+        400:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        403:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Forbidden
+        409:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: User already exists
+      security:
+      - Bearer: []
+      tags:
+      - user
+  /1.0/users/api-key:
+    get:
+      description: Show the API token of an user.
+      operationId: APITokenGet
+      parameters:
+      - in: query
+        name: email
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: string
+          description: API TOKEN
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: User not found
+      security:
+      - Bearer: []
+      tags:
+      - user
+    post:
+      description: Regenerate the API Token of an user.
+      operationId: APITokenRegenerate
+      parameters:
+      - in: query
+        name: email
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: string
+          description: API TOKEN
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: User not found
+      security:
+      - Bearer: []
+      tags:
+      - user
+  /1.0/users/keys:
+    get:
+      description: Show the list of the ssh keys of logged user.
+      operationId: SSHKeyList
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SSHKeyListResponse'
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+      security:
+      - Bearer: []
+      tags:
+      - user
+    post:
+      description: Add SSH key to logged user.
+      operationId: SSHKeyAdd
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SSHKeyAddData'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Ok
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        409:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Key already exists
+      security:
+      - Bearer: []
+      tags:
+      - user
+  /1.0/users/keys/{key}:
+    delete:
+      description: Delete one ssh key of logged user.
+      operationId: SSHKeyRemove
+      parameters:
+      - in: path
+        name: key
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Ok
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Not found
+      security:
+      - Bearer: []
+      tags:
+      - user
+  /1.0/users/info:
+    get:
+      description: Get information on logged user.
+      operationId: UserGet
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: OK
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+      security:
+      - Bearer: []
+      tags:
+      - user
+  /1.0/users/{email}/quota:
+    get:
+      description: Get quota of an user.
+      operationId: UserQuotaGet
+      parameters:
+      - description: User e-mail.
+        in: path
+        name: email
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserQuotaViewResponse'
+          description: OK
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: User not found
+      security:
+      - Bearer: []
+      tags:
+      - user
+    put:
+      description: Change quota of an user.
+      operationId: UserQuotaChange
+      parameters:
+      - description: User e-mail.
+        in: path
+        name: email
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: User new quota.
+        in: query
+        name: limit
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          content: {}
+          description: Quota successfully updated
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: User not found
+      security:
+      - Bearer: []
+      tags:
+      - user
+  /1.0/users/password:
+    put:
+      description: Change password of logged user.
+      operationId: ChangePassword
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ChangePasswordData'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Ok
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        403:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Forbidden
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Not found
+      security:
+      - Bearer: []
+      tags:
+      - user
+  /1.0/users/{email}/password:
+    post:
+      description: Reset password of an user.
+      operationId: ResetPassword
+      parameters:
+      - in: path
+        name: email
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              minLength: 1
+              type: string
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Ok
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        403:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Forbidden
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Not found
+      security:
+      - Bearer: []
+      tags:
+      - user
+  /1.0/users/tokens:
+    delete:
+      description: Logout.
+      operationId: UserTokenDelete
+      responses:
+        200:
+          content: {}
+          description: Ok
+      security:
+      - Bearer: []
+      tags:
+      - user
+  /1.2/node:
+    get:
+      description: List nodes.
+      operationId: NodeList
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeListResponse'
+          description: Nodes List.
+        204:
+          content: {}
+          description: No content.
+      security:
+      - Bearer: []
+      tags:
+      - node
+    post:
+      description: Add a node.
+      operationId: NodeAdd
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodeAddData'
+        required: true
+      responses:
+        201:
+          content: {}
+          description: Ok
+        400:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid parameters
+        401:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+      security:
+      - Bearer: []
+      tags:
+      - node
+    put:
+      description: Update node.
+      operationId: NodeUpdate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodeUpdateData'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Ok
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Not found
+      security:
+      - Bearer: []
+      tags:
+      - node
+  /1.2/node/{address}:
+    delete:
+      description: Remove node.
+      operationId: NodeDelete
+      parameters:
+      - description: Node address.
+        in: path
+        name: address
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: Trigger node rebalance.
+        in: query
+        name: no-rebalance
+        required: true
+        schema:
+          type: boolean
+      - description: Remove machine from IaaS.
+        in: query
+        name: remove-iaas
+        required: true
+        schema:
+          type: boolean
+      responses:
+        200:
+          content: {}
+          description: Ok
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Not found
+      security:
+      - Bearer: []
+      tags:
+      - node
+    get:
+      description: Get node information.
+      operationId: NodeGet
+      parameters:
+      - description: Node address.
+        in: path
+        name: address
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeGetResponse'
+          description: Ok
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Not found
+      security:
+      - Bearer: []
+      tags:
+      - node
+  /1.4/volumes:
+    get:
+      description: List volumes.
+      operationId: VolumeList
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Volume'
+                type: array
+          description: List volumes
+        204:
+          content: {}
+          description: No content
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+      security:
+      - Bearer: []
+      tags:
+      - volume
+    post:
+      description: Create volume.
+      operationId: VolumeCreate
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Volume'
+        required: true
+      responses:
+        201:
+          content: {}
+          description: Volume created
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        409:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Volume already exists
+      security:
+      - Bearer: []
+      tags:
+      - volume
+  /1.0/pools:
+    get:
+      description: List pools.
+      operationId: PoolList
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Pool'
+                type: array
+          description: Pools list
+        204:
+          content: {}
+          description: No content
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+      security:
+      - Bearer: []
+      tags:
+      - pool
+    post:
+      description: Creates a pool.
+      operationId: PoolCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PoolCreateData'
+        required: true
+      responses:
+        201:
+          content: {}
+          description: Pool created
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        409:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Pool already exists
+      security:
+      - Bearer: []
+      tags:
+      - pool
+  /pools/{pool}:
+    delete:
+      description: Deletes a pool.
+      operationId: PoolDelete
+      parameters:
+      - in: path
+        name: pool
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Pool deleted
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        403:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Pool still has apps
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Pool not found
+      security:
+      - Bearer: []
+      tags:
+      - pool
+    put:
+      description: Updates a pool.
+      operationId: PoolUpdate
+      parameters:
+      - in: path
+        name: pool
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PoolUpdateData'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Pool updated
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Pool not found
+        409:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Default pool already defined
+      security:
+      - Bearer: []
+      tags:
+      - pool
+  /1.3/provisioner/clusters:
+    get:
+      description: List cluster
+      operationId: ClusterList
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Cluster'
+                type: array
+          description: Cluster
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Cluster not found
+      security:
+      - Bearer: []
+      tags:
+      - cluster
+    post:
+      description: Create cluster.
+      operationId: ClusterCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cluster'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Cluster created
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Cluster not found
+      security:
+      - Bearer: []
+      tags:
+      - cluster
+  /1.3/provisioner/clusters/{cluster_name}:
+    delete:
+      description: Delete cluster.
+      operationId: ClusterDelete
+      parameters:
+      - description: Cluster name.
+        in: path
+        name: cluster_name
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Cluster deleted
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Cluster not found
+      security:
+      - Bearer: []
+      tags:
+      - cluster
+  /1.4/provisioner/clusters/{cluster_name}:
+    post:
+      description: Update cluster.
+      operationId: ClusterUpdate
+      parameters:
+      - description: Cluster name.
+        in: path
+        name: cluster_name
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cluster'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Cluster updated
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Cluster not found
+      security:
+      - Bearer: []
+      tags:
+      - cluster
+  /1.4/volumes/{volume}:
+    delete:
+      description: Delete volume.
+      operationId: VolumeDelete
+      parameters:
+      - description: Volume name.
+        in: path
+        name: volume
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Volume deleted
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Volume not found
+      security:
+      - Bearer: []
+      tags:
+      - volume
+    get:
+      description: Get a volume.
+      operationId: VolumeGet
+      parameters:
+      - description: Volume name.
+        in: path
+        name: volume
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Volume'
+          description: Volume
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        409:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Volume already exists
+      security:
+      - Bearer: []
+      tags:
+      - volume
+  /1.4/volumes/{volume}/bind:
+    delete:
+      description: Unbind volume.
+      operationId: VolumeUnbind
+      parameters:
+      - description: Volume name.
+        in: path
+        name: volume
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/VolumeBindData'
+        required: false
+      responses:
+        200:
+          content: {}
+          description: Volume unbinded
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Volume not found
+      security:
+      - Bearer: []
+      tags:
+      - volume
+    post:
+      description: Bind volume.
+      operationId: VolumeBind
+      parameters:
+      - description: Volume name.
+        in: path
+        name: volume
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/VolumeBindData'
+        required: false
+      responses:
+        200:
+          content: {}
+          description: Volume bind
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Volume not found
+        409:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Volume bind already exists
+      security:
+      - Bearer: []
+      tags:
+      - volume
+  /1.4/volumeplans:
+    get:
+      description: List volume plans.
+      operationId: VolumePlansList
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VolumePlansListResponse'
+          description: Volume plans list
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+      security:
+      - Bearer: []
+      tags:
+      - volume
+  /1.6/roles/{role_name}/token:
+    post:
+      description: Assigns a role to a team token.
+      operationId: AssignRoleToToken
+      parameters:
+      - in: path
+        name: role_name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssignTokenArgs'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Role assigned.
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Role or token not found
+      security:
+      - Bearer: []
+      tags:
+      - auth
+  /1.6/roles/{role_name}/token/{token_id}:
+    delete:
+      description: Dissociates a role from a team token.
+      operationId: DissociateRoleFromToken
+      parameters:
+      - in: path
+        name: role_name
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: token_id
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: context
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Role dissociated.
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Role or token not found
+      security:
+      - Bearer: []
+      tags:
+      - auth
+  /1.6/tokens:
+    get:
+      description: List team tokens.
+      operationId: TeamTokensList
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TeamToken'
+                type: array
+          description: Team tokens list.
+        204:
+          content: {}
+          description: No content.
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+      security:
+      - Bearer: []
+      tags:
+      - auth
+    post:
+      description: Creates a team token.
+      operationId: TeamTokenCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamTokenCreateArgs'
+        required: true
+      responses:
+        201:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamToken'
+          description: Team token created.
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        409:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Token with the same ID already exists.
+      security:
+      - Bearer: []
+      tags:
+      - auth
+  /1.6/tokens/{token_id}:
+    delete:
+      description: Deletes a team token.
+      operationId: TeamTokenDelete
+      parameters:
+      - description: Token ID.
+        in: path
+        name: token_id
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Team token deleted.
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Team token not found.
+      security:
+      - Bearer: []
+      tags:
+      - auth
+    put:
+      description: Updates a team token.
+      operationId: TeamTokenUpdate
+      parameters:
+      - description: Token ID.
+        in: path
+        name: token_id
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamTokenUpdateArgs'
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamToken'
+          description: Team token updated.
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Team token not found.
+      security:
+      - Bearer: []
+      tags:
+      - auth
+  /1.1/events/{eventid}/cancel:
+    post:
+      operationId: EventCancel
+      parameters:
+      - in: path
+        name: eventid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventCancelArgs'
+        required: true
+      responses:
+        204:
+          content: {}
+          description: Event cancelation requested.
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Event not found
+      security:
+      - Bearer: []
+      tags:
+      - event
+  /1.6/events/webhooks:
+    get:
+      operationId: WebhookList
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Webhook'
+                type: array
+          description: Webhooks list.
+        204:
+          content: {}
+          description: No content.
+      security:
+      - Bearer: []
+      tags:
+      - event
+    post:
+      operationId: WebhookCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Webhook'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Webhook created.
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        409:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Webhook already exists.
+      security:
+      - Bearer: []
+      tags:
+      - event
+  /1.6/events/webhooks/{name}:
+    delete:
+      operationId: WebhookDelete
+      parameters:
+      - description: Webhook name.
+        in: path
+        name: name
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Webhook created.
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Webhook not found.
+      security:
+      - Bearer: []
+      tags:
+      - event
+    get:
+      operationId: WebhookGet
+      parameters:
+      - description: Webhook name.
+        in: path
+        name: name
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+          description: Webhook.
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Not founds.
+      security:
+      - Bearer: []
+      tags:
+      - event
+    put:
+      operationId: WebhookUpdate
+      parameters:
+      - description: Webhook name.
+        in: path
+        name: name
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Webhook'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Webhook updated.
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Webhook not found.
+      security:
+      - Bearer: []
+      tags:
+      - event
+components:
+  schemas:
+    App:
+      description: Tsuru app.
+      example:
+        owner: owner
+        teams:
+        - teams
+        - teams
+        ip: ip
+        pool: pool
+        cname:
+        - cname
+        - cname
+        description: description
+        platform: platform
+        tags:
+        - tags
+        - tags
+        teamOwner: teamOwner
+        router: router
+        name: name
+        routeropts:
+          key: routeropts
+        plan:
+          default: true
+          router: router
+          memory: 0
+          swap: 0
+          name: name
+          cpushare: 0
+      properties:
+        name:
+          description: App name.
+          type: string
+        tags:
+          description: App tags.
+          items:
+            type: string
+          type: array
+        router:
+          description: App router.
+          type: string
+        routeropts:
+          additionalProperties:
+            type: string
+          description: Custom router options.
+          type: object
+        plan:
+          $ref: '#/components/schemas/Plan'
+        pool:
+          description: App pool.
+          type: string
+        platform:
+          description: App platform.
+          type: string
+        description:
+          description: App description.
+          type: string
+        teamOwner:
+          description: Team that owns the app.
+          type: string
+        teams:
+          items:
+            type: string
+          type: array
+        cname:
+          items:
+            type: string
+          type: array
+        ip:
+          type: string
+        owner:
+          type: string
+      required:
+      - name
+      type: object
+    VolumeBindData:
+      example:
+        readonly: true
+        norestart: true
+        mountpoint: mountpoint
+      properties:
+        mountpoint:
+          type: string
+        norestart:
+          type: boolean
+        readonly:
+          type: boolean
+      type: object
+    MiniApp:
+      description: List containing minimal information about apps.
+      example:
+        teamOwner: teamOwner
+        ip: ip
+        name: name
+        pool: pool
+        cname:
+        - cname
+        - cname
+        lock:
+          owner: owner
+          reason: reason
+          acquireDate: acquireDate
+          locked: true
+        units:
+        - address:
+            scheme: scheme
+            host: host
+          appname: appname
+          processname: processname
+          ip: ip
+          name: name
+          id: id
+          type: type
+          status: status
+        - address:
+            scheme: scheme
+            host: host
+          appname: appname
+          processname: processname
+          ip: ip
+          name: name
+          id: id
+          type: type
+          status: status
+        error: error
+        plan:
+          default: true
+          router: router
+          memory: 0
+          swap: 0
+          name: name
+          cpushare: 0
+        routers:
+        - opts:
+            key: opts
+          status-detail: status-detail
+          name: name
+          addres: addres
+          type: type
+          status: status
+        - opts:
+            key: opts
+          status-detail: status-detail
+          name: name
+          addres: addres
+          type: type
+          status: status
+        tags:
+        - tags
+        - tags
+      properties:
+        name:
+          type: string
+        pool:
+          type: string
+        teamOwner:
+          type: string
+        plan:
+          $ref: '#/components/schemas/Plan'
+        units:
+          items:
+            $ref: '#/components/schemas/Unit'
+          type: array
+        cname:
+          items:
+            type: string
+          type: array
+        ip:
+          type: string
+        routers:
+          items:
+            $ref: '#/components/schemas/Router'
+          type: array
+        lock:
+          $ref: '#/components/schemas/Lock'
+        tags:
+          items:
+            type: string
+          type: array
+        error:
+          type: string
+      type: object
+    Platform:
+      example:
+        name: name
+        disabled: true
+      properties:
+        name:
+          type: string
+        disabled:
+          type: boolean
+      type: object
+    Node:
+      example:
+        provisioner: provisioner
+        metadata:
+          key: metadata
+        address: address
+        iaasid: iaasid
+        pool: pool
+        status: status
+      properties:
+        address:
+          type: string
+        iaasid:
+          type: string
+        status:
+          type: string
+        pool:
+          type: string
+        provisioner:
+          type: string
+        metadata:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    SSHKeyAddData:
+      properties:
+        force:
+          type: boolean
+        key:
+          type: string
+        keyname:
+          type: string
+      type: object
+    TeamTokenCreateArgs:
+      description: Arguments for creating a new team token.
+      example:
+        token_id: token_id
+        description: description
+        team: team
+        expires_in: 0
+      properties:
+        token_id:
+          type: string
+        description:
+          type: string
+        expires_in:
+          description: Expire time in seconds.
+          format: int64
+          type: integer
+        team:
+          type: string
+      type: object
+    ServiceBroker_Config_AuthConfig_BearerConfig:
+      example:
+        token: token
+      properties:
+        token:
+          type: string
+    Unit:
+      example:
+        address:
+          scheme: scheme
+          host: host
+        appname: appname
+        processname: processname
+        ip: ip
+        name: name
+        id: id
+        type: type
+        status: status
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        appname:
+          type: string
+        processname:
+          type: string
+        type:
+          type: string
+        ip:
+          type: string
+        status:
+          type: string
+        address:
+          $ref: '#/components/schemas/URL'
+      type: object
+    ServiceBroker:
+      example:
+        Config:
+          Context:
+            key: Context
+          Insecure: true
+          CacheExpirationSeconds: 0
+          AuthConfig:
+            BearerConfig:
+              token: token
+            BasicAuthConfig:
+              password: password
+              username: username
+        URL: URL
+        Name: Name
+      properties:
+        Name:
+          type: string
+        URL:
+          type: string
+        Config:
+          $ref: '#/components/schemas/ServiceBroker_Config'
+      type: object
+    WebhookEventFilter:
+      example:
+        target_values:
+        - target_values
+        - target_values
+        kind_names:
+        - kind_names
+        - kind_names
+        kind_types:
+        - kind_types
+        - kind_types
+        error_only: true
+        success_only: true
+        target_types:
+        - target_types
+        - target_types
+      properties:
+        target_types:
+          items:
+            type: string
+          type: array
+        target_values:
+          items:
+            type: string
+          type: array
+        kind_types:
+          items:
+            type: string
+          type: array
+        kind_names:
+          items:
+            type: string
+          type: array
+        error_only:
+          type: boolean
+        success_only:
+          type: boolean
+      type: object
+    Pool:
+      example:
+        default: true
+        provisioner: provisioner
+        public: true
+        teams:
+        - teams
+        - teams
+        allowed:
+          key:
+          - allowed
+          - allowed
+        name: name
+      properties:
+        name:
+          type: string
+        default:
+          type: boolean
+        provisioner:
+          type: string
+        public:
+          type: boolean
+        teams:
+          items:
+            type: string
+          type: array
+        allowed:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          type: object
+      type: object
+    VolumeBindID:
+      example:
+        app: app
+        volume: volume
+        mountpoint: mountpoint
+      properties:
+        app:
+          description: App the volume is bound to.
+          type: string
+        mountpoint:
+          description: Volume mountpoint.
+          type: string
+        volume:
+          description: Volume name.
+          type: string
+      type: object
+    ServiceInstanceBoundUnit:
+      example:
+        app_name: app_name
+        ip: ip
+        id: id
+      properties:
+        app_name:
+          type: string
+        id:
+          type: string
+        ip:
+          type: string
+      type: object
+    EnvSetResponse:
+      description: Environment variables response information.
+      items:
+        properties:
+          public:
+            type: boolean
+          name:
+            type: string
+          value:
+            type: string
+        type: object
+      type: array
+    NodeCheck:
+      example:
+        checks:
+        - err: err
+          name: name
+          successful: true
+        - err: err
+          name: name
+          successful: true
+        time: 2000-01-23T04:56:07.000+00:00
+      properties:
+        time:
+          format: date-time
+          type: string
+        checks:
+          items:
+            $ref: '#/components/schemas/NodeCheckResult'
+          type: array
+      type: object
+    PoolCreateData:
+      example:
+        default: true
+        provisioner: provisioner
+        public: true
+        name: name
+        force: true
+      properties:
+        name:
+          type: string
+        public:
+          type: boolean
+        default:
+          type: boolean
+        force:
+          type: boolean
+        provisioner:
+          type: string
+      type: object
+    TeamToken:
+      description: An authorization token associated to a team.
+      example:
+        last_access: 2000-01-23T04:56:07.000+00:00
+        expires_at: 2000-01-23T04:56:07.000+00:00
+        token_id: token_id
+        creator_email: creator_email
+        roles:
+        - name: name
+          contextvalue: contextvalue
+        - name: name
+          contextvalue: contextvalue
+        description: description
+        created_at: 2000-01-23T04:56:07.000+00:00
+        team: team
+        token: token
+      properties:
+        token:
+          type: string
+        token_id:
+          type: string
+        description:
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        expires_at:
+          format: date-time
+          type: string
+        last_access:
+          format: date-time
+          type: string
+        creator_email:
+          type: string
+        team:
+          type: string
+        roles:
+          items:
+            $ref: '#/components/schemas/RoleInstance'
+          type: array
+      type: object
+    PoolUpdateData:
+      example:
+        default: true
+        public: true
+        force: true
+      properties:
+        default:
+          type: boolean
+        public:
+          type: boolean
+        force:
+          type: boolean
+      type: object
+    VolumeBind:
+      example:
+        readonly: true
+        id:
+          app: app
+          volume: volume
+          mountpoint: mountpoint
+      properties:
+        id:
+          $ref: '#/components/schemas/VolumeBindID'
+        readonly:
+          description: Volume is read-only.
+          type: boolean
+      type: object
+    Router:
+      example:
+        opts:
+          key: opts
+        status-detail: status-detail
+        name: name
+        addres: addres
+        type: type
+        status: status
+      properties:
+        name:
+          type: string
+        opts:
+          additionalProperties:
+            type: string
+          type: object
+        addres:
+          type: string
+        type:
+          type: string
+        status:
+          type: string
+        status-detail:
+          type: string
+      type: object
+    TeamInfo:
+      example:
+        name: name
+        pools:
+        - default: true
+          provisioner: provisioner
+          public: true
+          teams:
+          - teams
+          - teams
+          allowed:
+            key:
+            - allowed
+            - allowed
+          name: name
+        - default: true
+          provisioner: provisioner
+          public: true
+          teams:
+          - teams
+          - teams
+          allowed:
+            key:
+            - allowed
+            - allowed
+          name: name
+        users:
+        - permissions:
+          - contexttype: contexttype
+            name: name
+            contextvalue: contextvalue
+          - contexttype: contexttype
+            name: name
+            contextvalue: contextvalue
+          roles:
+          - contexttype: contexttype
+            name: name
+            contextvalue: contextvalue
+          - contexttype: contexttype
+            name: name
+            contextvalue: contextvalue
+          email: email
+        - permissions:
+          - contexttype: contexttype
+            name: name
+            contextvalue: contextvalue
+          - contexttype: contexttype
+            name: name
+            contextvalue: contextvalue
+          roles:
+          - contexttype: contexttype
+            name: name
+            contextvalue: contextvalue
+          - contexttype: contexttype
+            name: name
+            contextvalue: contextvalue
+          email: email
+        tags:
+        - tags
+        - tags
+        apps:
+        - owner: owner
+          teams:
+          - teams
+          - teams
+          ip: ip
+          pool: pool
+          cname:
+          - cname
+          - cname
+          description: description
+          platform: platform
+          tags:
+          - tags
+          - tags
+          teamOwner: teamOwner
+          router: router
+          name: name
+          routeropts:
+            key: routeropts
+          plan:
+            default: true
+            router: router
+            memory: 0
+            swap: 0
+            name: name
+            cpushare: 0
+        - owner: owner
+          teams:
+          - teams
+          - teams
+          ip: ip
+          pool: pool
+          cname:
+          - cname
+          - cname
+          description: description
+          platform: platform
+          tags:
+          - tags
+          - tags
+          teamOwner: teamOwner
+          router: router
+          name: name
+          routeropts:
+            key: routeropts
+          plan:
+            default: true
+            router: router
+            memory: 0
+            swap: 0
+            name: name
+            cpushare: 0
+      properties:
+        name:
+          type: string
+        tags:
+          items:
+            type: string
+          type: array
+        users:
+          items:
+            $ref: '#/components/schemas/User'
+          type: array
+        pools:
+          items:
+            $ref: '#/components/schemas/Pool'
+          type: array
+        apps:
+          items:
+            $ref: '#/components/schemas/App'
+          type: array
+      type: object
+    VolumePlansListResponse:
+      additionalProperties:
+        $ref: '#/components/schemas/VolumePlan'
+      description: Response returned by Volume Plans list.
+      type: object
+    Volume:
+      description: Volume
+      example:
+        teamOwner: teamOwner
+        binds:
+        - readonly: true
+          id:
+            app: app
+            volume: volume
+            mountpoint: mountpoint
+        - readonly: true
+          id:
+            app: app
+            volume: volume
+            mountpoint: mountpoint
+        opts:
+          key: opts
+        name: name
+        pool: pool
+        plan:
+          opts:
+            key: opts
+          name: name
+        status: status
+      properties:
+        name:
+          description: Volume name.
+          type: string
+        pool:
+          description: Volume pool.
+          type: string
+        teamOwner:
+          description: Team that owns the volume.
+          type: string
+        status:
+          description: Volume status.
+          type: string
+        plan:
+          $ref: '#/components/schemas/VolumePlan'
+        binds:
+          description: Volume binds.
+          items:
+            $ref: '#/components/schemas/VolumeBind'
+          type: array
+        opts:
+          additionalProperties:
+            type: string
+          description: Custom volume options.
+          type: object
+      type: object
+    RoleInstance:
+      description: Association between a role and a context value.
+      example:
+        name: name
+        contextvalue: contextvalue
+      properties:
+        name:
+          type: string
+        contextvalue:
+          type: string
+      type: object
+    NodeCheckResult:
+      example:
+        err: err
+        name: name
+        successful: true
+      properties:
+        name:
+          type: string
+        err:
+          type: string
+        successful:
+          type: boolean
+      type: object
+    NodeAddData:
+      example:
+        metadata:
+          key: metadata
+        address: address
+        clientcert: clientcert
+        clientkey: clientkey
+        cacert: cacert
+        waitto: 0
+        register: true
+      properties:
+        address:
+          type: string
+        cacert:
+          description: Docker API CA certificate.
+          type: string
+        clientcert:
+          description: Docker API client certificate.
+          type: string
+        clientkey:
+          description: Docker API client key.
+          type: string
+        register:
+          description: Register an existing node.
+          type: boolean
+        waitto:
+          description: Timeout in nanoseconds.
+          format: int64
+          type: integer
+        metadata:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    NodeStatus:
+      example:
+        address: address
+        checks:
+        - checks:
+          - err: err
+            name: name
+            successful: true
+          - err: err
+            name: name
+            successful: true
+          time: 2000-01-23T04:56:07.000+00:00
+        - checks:
+          - err: err
+            name: name
+            successful: true
+          - err: err
+            name: name
+            successful: true
+          time: 2000-01-23T04:56:07.000+00:00
+        lastsuccess: 2000-01-23T04:56:07.000+00:00
+        lastupdate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        address:
+          type: string
+        checks:
+          items:
+            $ref: '#/components/schemas/NodeCheck'
+          type: array
+        lastsuccess:
+          format: date-time
+          type: string
+        lastupdate:
+          format: date-time
+          type: string
+      type: object
+    TeamTokenUpdateArgs:
+      description: Arguments for updating an existing team token.
+      example:
+        regenerate: true
+        description: description
+        expires_in: 0
+      properties:
+        regenerate:
+          type: boolean
+        description:
+          type: string
+        expires_in:
+          description: Expire time in seconds, using a negative value removes the expiration.
+          format: int64
+          type: integer
+      type: object
+    UserQuotaViewResponse:
+      description: Response returned by User Quota View.
+      example:
+        limit: 6
+        inuse: 0
+      properties:
+        inuse:
+          type: integer
+        limit:
+          type: integer
+      type: object
+    User:
+      description: User object.
+      example:
+        permissions:
+        - contexttype: contexttype
+          name: name
+          contextvalue: contextvalue
+        - contexttype: contexttype
+          name: name
+          contextvalue: contextvalue
+        roles:
+        - contexttype: contexttype
+          name: name
+          contextvalue: contextvalue
+        - contexttype: contexttype
+          name: name
+          contextvalue: contextvalue
+        email: email
+      properties:
+        email:
+          type: string
+        roles:
+          items:
+            $ref: '#/components/schemas/RoleUser'
+          type: array
+        permissions:
+          items:
+            $ref: '#/components/schemas/PermissionUser'
+          type: array
+      type: object
+    NodeListResponse:
+      example:
+        nodes:
+        - provisioner: provisioner
+          metadata:
+            key: metadata
+          address: address
+          iaasid: iaasid
+          pool: pool
+          status: status
+        - provisioner: provisioner
+          metadata:
+            key: metadata
+          address: address
+          iaasid: iaasid
+          pool: pool
+          status: status
+        machines:
+        - protocol: protocol
+          address: address
+          port: 0
+          creationparams:
+            key: creationparams
+          id: id
+          iaas: iaas
+        - protocol: protocol
+          address: address
+          port: 0
+          creationparams:
+            key: creationparams
+          id: id
+          iaas: iaas
+      properties:
+        nodes:
+          items:
+            $ref: '#/components/schemas/Node'
+          type: array
+        machines:
+          items:
+            $ref: '#/components/schemas/Machine'
+          type: array
+      type: object
+    UserData:
+      example:
+        password: password
+        email: email
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      type: object
+    ServiceBroker_Config_AuthConfig:
+      example:
+        BearerConfig:
+          token: token
+        BasicAuthConfig:
+          password: password
+          username: username
+      properties:
+        BearerConfig:
+          $ref: '#/components/schemas/ServiceBroker_Config_AuthConfig_BearerConfig'
+        BasicAuthConfig:
+          $ref: '#/components/schemas/ServiceBroker_Config_AuthConfig_BasicAuthConfig'
+    VolumePlan:
+      description: Volume plan.
+      example:
+        opts:
+          key: opts
+        name: name
+      properties:
+        name:
+          description: Volume plan name.
+          type: string
+        opts:
+          additionalProperties:
+            type: string
+          description: Volume plan opts.
+          type: object
+      type: object
+    ServiceBrokerList:
+      example:
+        brokers:
+        - Config:
+            Context:
+              key: Context
+            Insecure: true
+            CacheExpirationSeconds: 0
+            AuthConfig:
+              BearerConfig:
+                token: token
+              BasicAuthConfig:
+                password: password
+                username: username
+          URL: URL
+          Name: Name
+        - Config:
+            Context:
+              key: Context
+            Insecure: true
+            CacheExpirationSeconds: 0
+            AuthConfig:
+              BearerConfig:
+                token: token
+              BasicAuthConfig:
+                password: password
+                username: username
+          URL: URL
+          Name: Name
+      properties:
+        brokers:
+          items:
+            $ref: '#/components/schemas/ServiceBroker'
+          type: array
+      type: object
+    ServiceInstance:
+      example:
+        team_owner: team_owner
+        bound_units:
+        - app_name: app_name
+          ip: ip
+          id: id
+        - app_name: app_name
+          ip: ip
+          id: id
+        teams:
+        - teams
+        - teams
+        service_name: service_name
+        name: name
+        description: description
+        id: 0
+        plan_name: plan_name
+        tags:
+        - tags
+        - tags
+        apps:
+        - apps
+        - apps
+      properties:
+        name:
+          type: string
+        tags:
+          items:
+            type: string
+          type: array
+        id:
+          type: integer
+        service_name:
+          type: string
+        plan_name:
+          type: string
+        apps:
+          items:
+            type: string
+          type: array
+        bound_units:
+          items:
+            $ref: '#/components/schemas/ServiceInstanceBoundUnit'
+          type: array
+        teams:
+          items:
+            type: string
+          type: array
+        team_owner:
+          type: string
+        description:
+          type: string
+      type: object
+    Env:
+      description: Environment variable.
+      example:
+        name: name
+        value: value
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+      type: object
+    Machine:
+      example:
+        protocol: protocol
+        address: address
+        port: 0
+        creationparams:
+          key: creationparams
+        id: id
+        iaas: iaas
+      properties:
+        id:
+          type: string
+        iaas:
+          type: string
+        address:
+          type: string
+        port:
+          type: integer
+        protocol:
+          type: string
+        creationparams:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    SSHKeyListResponse:
+      description: Response returned by User SSH Key List.
+      example:
+        keyname: keyname
+      properties:
+        keyname:
+          description: keyvalue
+          type: string
+      type: object
+    URL:
+      example:
+        scheme: scheme
+        host: host
+      properties:
+        scheme:
+          type: string
+        host:
+          type: string
+      type: object
+    ServiceBroker_Config:
+      example:
+        Context:
+          key: Context
+        Insecure: true
+        CacheExpirationSeconds: 0
+        AuthConfig:
+          BearerConfig:
+            token: token
+          BasicAuthConfig:
+            password: password
+            username: username
+      properties:
+        Context:
+          additionalProperties:
+            type: string
+          type: object
+        Insecure:
+          type: boolean
+        CacheExpirationSeconds:
+          type: integer
+        AuthConfig:
+          $ref: '#/components/schemas/ServiceBroker_Config_AuthConfig'
+    AppCreateResponse:
+      description: Newly created app information.
+      example:
+        ip: ip
+        repository_url: repository_url
+        status: status
+      properties:
+        status:
+          type: string
+        repository_url:
+          type: string
+        ip:
+          type: string
+      type: object
+    PermissionUser:
+      description: Permission of an user.
+      example:
+        contexttype: contexttype
+        name: name
+        contextvalue: contextvalue
+      properties:
+        name:
+          type: string
+        contexttype:
+          type: string
+        contextvalue:
+          type: string
+      type: object
+    Team:
+      example:
+        permissions:
+        - permissions
+        - permissions
+        name: name
+        tags:
+        - tags
+        - tags
+      properties:
+        name:
+          type: string
+        tags:
+          items:
+            type: string
+          type: array
+        permissions:
+          items:
+            type: string
+          type: array
+      type: object
+    TeamCreateArgs:
+      example:
+        name: name
+        tags:
+        - tags
+        - tags
+      properties:
+        name:
+          type: string
+        tags:
+          items:
+            type: string
+          type: array
+      type: object
+    AssignTokenArgs:
+      description: Assign role to token arguments.
+      example:
+        token_id: token_id
+        context: context
+      properties:
+        token_id:
+          type: string
+        context:
+          type: string
+      type: object
+    EnvSetData:
+      description: Data sent to the environment set endpoint.
+      example:
+        private: true
+        envs:
+        - name: name
+          value: value
+        - name: name
+          value: value
+        norestart: true
+      properties:
+        envs:
+          items:
+            $ref: '#/components/schemas/Env'
+          minItems: 1
+          type: array
+        norestart:
+          type: boolean
+        private:
+          type: boolean
+      type: object
+    ServiceInstanceInfo:
+      example:
+        teams:
+        - teams
+        - teams
+        planname: planname
+        description: description
+        plandescription: plandescription
+        custominfo:
+          key: custominfo
+        apps:
+        - apps
+        - apps
+        teamowner: teamowner
+        tags:
+        - tags
+        - tags
+      properties:
+        apps:
+          items:
+            type: string
+          type: array
+        teams:
+          items:
+            type: string
+          type: array
+        teamowner:
+          type: string
+        description:
+          type: string
+        planname:
+          type: string
+        plandescription:
+          type: string
+        tags:
+          items:
+            type: string
+          type: array
+        custominfo:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    Service:
+      example:
+        instances:
+        - instances
+        - instances
+        service: service
+        plans:
+        - plans
+        - plans
+        service_instances:
+        - team_owner: team_owner
+          bound_units:
+          - app_name: app_name
+            ip: ip
+            id: id
+          - app_name: app_name
+            ip: ip
+            id: id
+          teams:
+          - teams
+          - teams
+          service_name: service_name
+          name: name
+          description: description
+          id: 0
+          plan_name: plan_name
+          tags:
+          - tags
+          - tags
+          apps:
+          - apps
+          - apps
+        - team_owner: team_owner
+          bound_units:
+          - app_name: app_name
+            ip: ip
+            id: id
+          - app_name: app_name
+            ip: ip
+            id: id
+          teams:
+          - teams
+          - teams
+          service_name: service_name
+          name: name
+          description: description
+          id: 0
+          plan_name: plan_name
+          tags:
+          - tags
+          - tags
+          apps:
+          - apps
+          - apps
+      properties:
+        service:
+          type: string
+        instances:
+          description: '[deprecated]'
+          items:
+            type: string
+          type: array
+        plans:
+          items:
+            type: string
+          type: array
+        service_instances:
+          items:
+            $ref: '#/components/schemas/ServiceInstance'
+          type: array
+      type: object
+    Cluster:
+      example:
+        create_data:
+          key: create_data
+        addresses:
+        - addresses
+        - addresses
+        provisioner: provisioner
+        default: true
+        clientcert: clientcert
+        clientkey: clientkey
+        cacert: cacert
+        name: name
+        pools:
+        - pools
+        - pools
+        custom_data:
+          key: custom_data
+      properties:
+        name:
+          type: string
+        addresses:
+          items:
+            type: string
+          type: array
+        provisioner:
+          type: string
+        cacert:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+          x-go-custom-type: '[]byte'
+        clientcert:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+          x-go-custom-type: '[]byte'
+        clientkey:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+          x-go-custom-type: '[]byte'
+        pools:
+          items:
+            type: string
+          type: array
+        custom_data:
+          additionalProperties:
+            type: string
+          type: object
+        create_data:
+          additionalProperties:
+            type: string
+          type: object
+        default:
+          type: boolean
+      type: object
+    Plan:
+      description: App plan.
+      example:
+        default: true
+        router: router
+        memory: 0
+        swap: 0
+        name: name
+        cpushare: 0
+      properties:
+        name:
+          type: string
+        memory:
+          format: int64
+          minimum: 0
+          type: integer
+        swap:
+          format: int64
+          minimum: 0
+          type: integer
+        cpushare:
+          minimum: 0
+          type: integer
+        default:
+          type: boolean
+        router:
+          type: string
+      type: object
+    PlatformInfo:
+      example:
+        images:
+        - images
+        - images
+        platform:
+          name: name
+          disabled: true
+      properties:
+        platform:
+          $ref: '#/components/schemas/Platform'
+        images:
+          items:
+            type: string
+          type: array
+      type: object
+    ChangePasswordData:
+      properties:
+        confirm:
+          type: string
+        new:
+          type: string
+        old:
+          type: string
+      type: object
+    TeamUpdateArgs:
+      example:
+        newname: newname
+        tags:
+        - tags
+        - tags
+      properties:
+        newname:
+          type: string
+        tags:
+          items:
+            type: string
+          type: array
+      type: object
+    Lock:
+      example:
+        owner: owner
+        reason: reason
+        acquireDate: acquireDate
+        locked: true
+      properties:
+        locked:
+          type: boolean
+        reason:
+          type: string
+        owner:
+          type: string
+        acquireDate:
+          type: string
+      type: object
+    EventCancelArgs:
+      example:
+        reason: reason
+      properties:
+        reason:
+          type: string
+      type: object
+    NodeGetResponse:
+      example:
+        node:
+          provisioner: provisioner
+          metadata:
+            key: metadata
+          address: address
+          iaasid: iaasid
+          pool: pool
+          status: status
+        units:
+          address:
+            scheme: scheme
+            host: host
+          appname: appname
+          processname: processname
+          ip: ip
+          name: name
+          id: id
+          type: type
+          status: status
+        status:
+          address: address
+          checks:
+          - checks:
+            - err: err
+              name: name
+              successful: true
+            - err: err
+              name: name
+              successful: true
+            time: 2000-01-23T04:56:07.000+00:00
+          - checks:
+            - err: err
+              name: name
+              successful: true
+            - err: err
+              name: name
+              successful: true
+            time: 2000-01-23T04:56:07.000+00:00
+          lastsuccess: 2000-01-23T04:56:07.000+00:00
+          lastupdate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        node:
+          $ref: '#/components/schemas/Node'
+        status:
+          $ref: '#/components/schemas/NodeStatus'
+        units:
+          $ref: '#/components/schemas/Unit'
+      type: object
+    Quota:
+      example:
+        limit: 6
+        inuse: 0
+      properties:
+        inuse:
+          format: int64
+          type: integer
+        limit:
+          format: int64
+          type: integer
+      type: object
+    RoleUser:
+      description: Role of an user.
+      example:
+        contexttype: contexttype
+        name: name
+        contextvalue: contextvalue
+      properties:
+        name:
+          type: string
+        contexttype:
+          type: string
+        contextvalue:
+          type: string
+      type: object
+    ServiceBroker_Config_AuthConfig_BasicAuthConfig:
+      example:
+        password: password
+        username: username
+      properties:
+        password:
+          type: string
+        username:
+          type: string
+    Webhook:
+      example:
+        team_owner: team_owner
+        headers:
+          key:
+          - headers
+          - headers
+        method: method
+        name: name
+        insecure: true
+        description: description
+        proxy_url: proxy_url
+        body: body
+        event_filter:
+          target_values:
+          - target_values
+          - target_values
+          kind_names:
+          - kind_names
+          - kind_names
+          kind_types:
+          - kind_types
+          - kind_types
+          error_only: true
+          success_only: true
+          target_types:
+          - target_types
+          - target_types
+        url: url
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        team_owner:
+          type: string
+        event_filter:
+          $ref: '#/components/schemas/WebhookEventFilter'
+        url:
+          type: string
+        proxy_url:
+          type: string
+        headers:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          type: object
+        method:
+          type: string
+        body:
+          type: string
+        insecure:
+          type: boolean
+      type: object
+    ErrorMessage:
+      description: Error message.
+      type: string
+    NodeUpdateData:
+      example:
+        metadata:
+          key: metadata
+        address: address
+        enable: true
+        disable: true
+        pool: pool
+      properties:
+        address:
+          type: string
+        pool:
+          type: string
+        metadata:
+          additionalProperties:
+            type: string
+          type: object
+        enable:
+          type: boolean
+        disable:
+          type: boolean
+      type: object
+    ServiceInstanceUpdateData:
+      example:
+        description: description
+        plan: plan
+        teamowner: teamowner
+        tags:
+        - tags
+        - tags
+      properties:
+        description:
+          type: string
+        teamowner:
+          type: string
+        plan:
+          type: string
+        tags:
+          items:
+            type: string
+          type: array
+      type: object
+  securitySchemes:
+    Bearer:
+      in: header
+      name: Authorization
+      type: apiKey

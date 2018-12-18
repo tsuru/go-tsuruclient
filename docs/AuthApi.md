@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **AssignRoleToToken**
-> AssignRoleToToken(ctx, roleName, token)
+> AssignRoleToToken(ctx, roleName, assignTokenArgs)
 
 
 Assigns a role to a team token.
@@ -22,9 +22,9 @@ Assigns a role to a team token.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **roleName** | **string**|  | 
-  **token** | [**AssignTokenArgs**](AssignTokenArgs.md)|  | 
+  **assignTokenArgs** | [**AssignTokenArgs**](AssignTokenArgs.md)|  | 
 
 ### Return type
 
@@ -37,7 +37,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -51,7 +51,7 @@ Dissociates a role from a team token.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **roleName** | **string**|  | 
   **tokenId** | **string**|  | 
   **context** | **string**|  | 
@@ -67,12 +67,12 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TeamTokenCreate**
-> TeamToken TeamTokenCreate(ctx, token)
+> TeamToken TeamTokenCreate(ctx, teamTokenCreateArgs)
 
 
 Creates a team token.
@@ -81,8 +81,8 @@ Creates a team token.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **token** | [**TeamTokenCreateArgs**](TeamTokenCreateArgs.md)|  | 
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **teamTokenCreateArgs** | [**TeamTokenCreateArgs**](TeamTokenCreateArgs.md)|  | 
 
 ### Return type
 
@@ -109,7 +109,7 @@ Deletes a team token.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **tokenId** | **string**| Token ID. | 
 
 ### Return type
@@ -123,12 +123,12 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TeamTokenUpdate**
-> TeamToken TeamTokenUpdate(ctx, tokenId, token)
+> TeamToken TeamTokenUpdate(ctx, tokenId, teamTokenUpdateArgs)
 
 
 Updates a team token.
@@ -137,9 +137,9 @@ Updates a team token.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **tokenId** | **string**| Token ID. | 
-  **token** | [**TeamTokenUpdateArgs**](TeamTokenUpdateArgs.md)|  | 
+  **teamTokenUpdateArgs** | [**TeamTokenUpdateArgs**](TeamTokenUpdateArgs.md)|  | 
 
 ### Return type
 

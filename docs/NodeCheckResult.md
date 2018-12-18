@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** |  | [optional] [default to null]
-**Err** | **string** |  | [optional] [default to null]
-**Successful** | **bool** |  | [optional] [default to null]
+**Name** | **string** |  | [optional] 
+**Err** | **string** |  | [optional] 
+**Successful** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

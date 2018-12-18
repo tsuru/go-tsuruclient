@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **TeamCreate**
-> TeamCreate(ctx, teamData)
+> TeamCreate(ctx, teamCreateArgs)
 
 
 Create a team.
@@ -21,8 +21,8 @@ Create a team.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **teamData** | [**TeamData**](TeamData.md)| Team name. | 
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **teamCreateArgs** | [**TeamCreateArgs**](TeamCreateArgs.md)|  | 
 
 ### Return type
 
@@ -35,7 +35,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -49,7 +49,7 @@ Delete a team.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **team** | **string**| Team name. | 
 
 ### Return type
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -77,7 +77,7 @@ Get a team.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **team** | **string**| Team name. | 
 
 ### Return type
@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TeamUpdate**
-> TeamUpdate(ctx, team, updateData)
+> TeamUpdate(ctx, team, teamUpdateArgs)
 
 
 Update a team.
@@ -105,9 +105,9 @@ Update a team.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **team** | **string**| Team name. | 
-  **updateData** | [**UpdateData**](UpdateData.md)| Team update data. | 
+  **teamUpdateArgs** | [**TeamUpdateArgs**](TeamUpdateArgs.md)|  | 
 
 ### Return type
 
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -23,17 +23,17 @@ Bind volume.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **volume** | **string**| Volume name. | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+ **optional** | ***VolumeBindOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+Optional parameters are passed through a pointer to a VolumeBindOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **volume** | **string**| Volume name. | 
- **bindData** | [**VolumeBindData**](VolumeBindData.md)|  | 
+
+ **volumeBindData** | [**optional.Interface of VolumeBindData**](VolumeBindData.md)|  | 
 
 ### Return type
 
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **VolumeCreate**
-> VolumeCreate(ctx, volumeData)
+> VolumeCreate(ctx, volume)
 
 
 Create volume.
@@ -60,8 +60,8 @@ Create volume.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **volumeData** | [**Volume**](Volume.md)|  | 
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **volume** | [**Volume**](Volume.md)|  | 
 
 ### Return type
 
@@ -88,7 +88,7 @@ Delete volume.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **volume** | **string**| Volume name. | 
 
 ### Return type
@@ -116,7 +116,7 @@ Get a volume.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **volume** | **string**| Volume name. | 
 
 ### Return type
@@ -159,7 +159,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **VolumePlansList**
-> VolumePlansListResponse VolumePlansList(ctx, )
+> map[string]VolumePlan VolumePlansList(ctx, )
 
 
 List volume plans.
@@ -169,7 +169,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**VolumePlansListResponse**](VolumePlansListResponse.md)
+[**map[string]VolumePlan**](VolumePlan.md)
 
 ### Authorization
 
@@ -192,17 +192,17 @@ Unbind volume.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **volume** | **string**| Volume name. | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+ **optional** | ***VolumeUnbindOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+Optional parameters are passed through a pointer to a VolumeUnbindOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **volume** | **string**| Volume name. | 
- **bindData** | [**VolumeBindData**](VolumeBindData.md)|  | 
+
+ **volumeBindData** | [**optional.Interface of VolumeBindData**](VolumeBindData.md)|  | 
 
 ### Return type
 
