@@ -2510,6 +2510,40 @@ paths:
       - Bearer: []
       tags:
       - auth
+    get:
+      description: Shows information about a specific token.
+      operationId: TeamTokenInfo
+      parameters:
+      - description: Token ID.
+        in: path
+        name: token_id
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamToken'
+          description: Team token info.
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Team token not found.
+      security:
+      - Bearer: []
+      tags:
+      - auth
     put:
       description: Updates a team token.
       operationId: TeamTokenUpdate
