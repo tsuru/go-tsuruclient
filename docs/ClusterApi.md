@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**ClusterDelete**](ClusterApi.md#ClusterDelete) | **Delete** /1.3/provisioner/clusters/{cluster_name} | 
 [**ClusterList**](ClusterApi.md#ClusterList) | **Get** /1.3/provisioner/clusters | 
 [**ClusterUpdate**](ClusterApi.md#ClusterUpdate) | **Post** /1.4/provisioner/clusters/{cluster_name} | 
+[**ProvisionerList**](ClusterApi.md#ProvisionerList) | **Get** /1.7/provisioner | 
 
 
 # **ClusterCreate**
@@ -116,6 +117,30 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ProvisionerList**
+> []Provisioner ProvisionerList(ctx, )
+
+
+List provisioners
+
+### Required Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**[]Provisioner**](Provisioner.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

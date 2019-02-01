@@ -52,6 +52,7 @@ Class | Method | HTTP request | Description
 *ClusterApi* | [**ClusterDelete**](docs/ClusterApi.md#clusterdelete) | **Delete** /1.3/provisioner/clusters/{cluster_name} | 
 *ClusterApi* | [**ClusterList**](docs/ClusterApi.md#clusterlist) | **Get** /1.3/provisioner/clusters | 
 *ClusterApi* | [**ClusterUpdate**](docs/ClusterApi.md#clusterupdate) | **Post** /1.4/provisioner/clusters/{cluster_name} | 
+*ClusterApi* | [**ProvisionerList**](docs/ClusterApi.md#provisionerlist) | **Get** /1.7/provisioner | 
 *EventApi* | [**EventCancel**](docs/EventApi.md#eventcancel) | **Post** /1.1/events/{eventid}/cancel | 
 *EventApi* | [**WebhookCreate**](docs/EventApi.md#webhookcreate) | **Post** /1.6/events/webhooks | 
 *EventApi* | [**WebhookDelete**](docs/EventApi.md#webhookdelete) | **Delete** /1.6/events/webhooks/{name} | 
@@ -117,6 +118,7 @@ Class | Method | HTTP request | Description
  - [AssignTokenArgs](docs/AssignTokenArgs.md)
  - [ChangePasswordData](docs/ChangePasswordData.md)
  - [Cluster](docs/Cluster.md)
+ - [ClusterHelp](docs/ClusterHelp.md)
  - [Env](docs/Env.md)
  - [EnvSetData](docs/EnvSetData.md)
  - [EventCancelArgs](docs/EventCancelArgs.md)
@@ -138,6 +140,7 @@ Class | Method | HTTP request | Description
  - [Pool](docs/Pool.md)
  - [PoolCreateData](docs/PoolCreateData.md)
  - [PoolUpdateData](docs/PoolUpdateData.md)
+ - [Provisioner](docs/Provisioner.md)
  - [Quota](docs/Quota.md)
  - [RoleInstance](docs/RoleInstance.md)
  - [RoleUser](docs/RoleUser.md)

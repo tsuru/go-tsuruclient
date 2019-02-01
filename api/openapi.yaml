@@ -2790,6 +2790,29 @@ paths:
       - Bearer: []
       tags:
       - event
+  /1.7/provisioner:
+    get:
+      description: List provisioners
+      operationId: ProvisionerList
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Provisioner'
+                type: array
+          description: Provisioner
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+      security:
+      - Bearer: []
+      tags:
+      - cluster
 components:
   schemas:
     App:
@@ -4020,6 +4043,25 @@ components:
         private:
           type: boolean
       type: object
+    ClusterHelp:
+      example:
+        custom_data_help:
+          key: custom_data_help
+        create_data_help:
+          key: create_data_help
+        provisioner_help: provisioner_help
+      properties:
+        provisioner_help:
+          type: string
+        custom_data_help:
+          additionalProperties:
+            type: string
+          type: object
+        create_data_help:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
     ServiceInstanceInfo:
       example:
         teams:
@@ -4062,6 +4104,21 @@ components:
           additionalProperties:
             type: string
           type: object
+      type: object
+    Provisioner:
+      example:
+        name: name
+        cluster_help:
+          custom_data_help:
+            key: custom_data_help
+          create_data_help:
+            key: create_data_help
+          provisioner_help: provisioner_help
+      properties:
+        name:
+          type: string
+        cluster_help:
+          $ref: '#/components/schemas/ClusterHelp'
       type: object
     Service:
       example:
