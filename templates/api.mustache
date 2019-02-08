@@ -279,11 +279,17 @@ func (a *{{{classname}}}Service) {{{nickname}}}(ctx context.Context{{#hasParams}
 		return {{#returnType}}localVarReturnValue, {{/returnType}}localVarHttpResponse, err
 	}
 
+	{{! TSURU }}
+	{{^returnType}}
+	var localVarBody []byte
+	{{/returnType}}
+	{{#returnType}}
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return {{#returnType}}localVarReturnValue, {{/returnType}}localVarHttpResponse, err
 	}
+	{{/returnType}}
 
 	if localVarHttpResponse.StatusCode >= 300 {
 		newErr := GenericOpenAPIError{
@@ -295,6 +301,14 @@ func (a *{{{classname}}}Service) {{{nickname}}}(ctx context.Context{{#hasParams}
 		{{#responses}}
 		{{#dataType}}
 		if localVarHttpResponse.StatusCode == {{{code}}} {
+			{{! TSURU }}
+			{{^returnType}}
+			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
+			localVarHttpResponse.Body.Close()
+			if err != nil {
+				return {{#returnType}}localVarReturnValue, {{/returnType}}localVarHttpResponse, err
+			}
+			{{/returnType}}
 			var v {{{dataType}}}
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
