@@ -2086,13 +2086,13 @@ paths:
           description: Cluster created
         401:
           content:
-            '*/*':
+            application/x-json-stream:
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: Unauthorized
         404:
           content:
-            '*/*':
+            application/x-json-stream:
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: Cluster not found
@@ -2118,13 +2118,13 @@ paths:
           description: Cluster deleted
         401:
           content:
-            '*/*':
+            application/x-json-stream:
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: Unauthorized
         404:
           content:
-            '*/*':
+            application/x-json-stream:
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: Cluster not found
@@ -2156,19 +2156,19 @@ paths:
           description: Cluster updated
         400:
           content:
-            '*/*':
+            application/x-json-stream:
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: Invalid data
         401:
           content:
-            '*/*':
+            application/x-json-stream:
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: Unauthorized
         404:
           content:
-            '*/*':
+            application/x-json-stream:
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: Cluster not found

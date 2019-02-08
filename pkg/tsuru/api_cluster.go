@@ -57,7 +57,7 @@ func (a *ClusterApiService) ClusterCreate(ctx context.Context, cluster Cluster) 
 	}
 
 	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{"*/*"}
+	localVarHttpHeaderAccepts := []string{"application/x-json-stream"}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -163,7 +163,7 @@ func (a *ClusterApiService) ClusterDelete(ctx context.Context, clusterName strin
 	}
 
 	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{"*/*"}
+	localVarHttpHeaderAccepts := []string{"application/x-json-stream"}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -389,7 +389,7 @@ func (a *ClusterApiService) ClusterUpdate(ctx context.Context, clusterName strin
 	}
 
 	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{"*/*"}
+	localVarHttpHeaderAccepts := []string{"application/x-json-stream"}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
