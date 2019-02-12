@@ -3,16 +3,16 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** |  | [optional] [default to null]
-**Addresses** | **[]string** |  | [optional] [default to null]
-**Provisioner** | **string** |  | [optional] [default to null]
-**Cacert** | **string** |  | [optional] [default to null]
-**Clientcert** | **string** |  | [optional] [default to null]
-**Clientkey** | **string** |  | [optional] [default to null]
-**Pools** | **[]string** |  | [optional] [default to null]
-**CustomData** | **map[string]string** |  | [optional] [default to null]
-**CreateData** | **map[string]string** |  | [optional] [default to null]
-**Default_** | **bool** |  | [optional] [default to null]
+**Name** | **string** |  | [optional] 
+**Addresses** | **[]string** |  | [optional] 
+**Provisioner** | **string** |  | [optional] 
+**Cacert** | **string** |  | [optional] 
+**Clientcert** | **string** |  | [optional] 
+**Clientkey** | **string** |  | [optional] 
+**Pools** | **[]string** |  | [optional] 
+**CustomData** | **map[string]string** |  | [optional] 
+**CreateData** | **map[string]string** |  | [optional] 
+**Default** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

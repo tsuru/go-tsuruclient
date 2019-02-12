@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **ClusterCreate**
-> ClusterCreate(ctx, clusterCreateData)
+> ClusterCreate(ctx, cluster)
 
 
 Create cluster.
@@ -22,7 +22,7 @@ Create cluster.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **clusterCreateData** | [**Cluster**](Cluster.md)|  | 
+  **cluster** | [**Cluster**](Cluster.md)|  | 
 
 ### Return type
 
@@ -35,7 +35,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/x-json-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/x-json-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -92,7 +92,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ClusterUpdate**
-> ClusterUpdate(ctx, clusterName, clusterUpdateData)
+> ClusterUpdate(ctx, clusterName, cluster)
 
 
 Update cluster.
@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **clusterName** | **string**| Cluster name. | 
-  **clusterUpdateData** | [**Cluster**](Cluster.md)|  | 
+  **cluster** | [**Cluster**](Cluster.md)|  | 
 
 ### Return type
 
@@ -116,7 +116,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/x-json-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

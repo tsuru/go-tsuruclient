@@ -304,7 +304,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EnvSet**
-> EnvSetResponse EnvSet(ctx, app, envs)
+> []map[string]interface{} EnvSet(ctx, app, envSetData)
 
 
 Set new environment variable.
@@ -315,11 +315,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **app** | **string**| App name. | 
-  **envs** | [**EnvSetData**](EnvSetData.md)| Environment variables. | 
+  **envSetData** | [**EnvSetData**](EnvSetData.md)| Environment variables. | 
 
 ### Return type
 
-[**EnvSetResponse**](EnvSetResponse.md)
+[**[]map[string]interface{}**](map[string]interface{}.md)
 
 ### Authorization
 
