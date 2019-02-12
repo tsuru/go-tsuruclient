@@ -1,8 +1,8 @@
 language: go
-install: true
-matrix:
-  go:
-    - 1.10.x
-    - master
+
+install:
+  - go get -d -v .
+
 script:
-  - go test ./...
+  - go build -v ./
+

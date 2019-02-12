@@ -9,6 +9,8 @@
 
 package tsuru
 
-type ServiceBrokerConfigAuthConfigBearerConfig struct {
-	Token `json:"token,omitempty"`
+type EnvSetResponseInner struct {
+	Name   `json:"name,omitempty"`
+	Value  `json:"value,omitempty"`
+	Public `json:"public,omitempty"`
 }

@@ -9,6 +9,6 @@
 
 package tsuru
 
-type ServiceBrokerConfigAuthConfigBearerConfig struct {
-	Token `json:"token,omitempty"`
+// Error message.
+type ErrorMessage struct {
 }

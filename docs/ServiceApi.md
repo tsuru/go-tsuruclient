@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **serviceInstanceUpdateData** | [**optional.Interface of ServiceInstanceUpdateData**](ServiceInstanceUpdateData.md)|  | 
+ **updateData** | [**optional.Interface of ServiceInstanceUpdateData**](ServiceInstanceUpdateData.md)|  | 
 
 ### Return type
 
@@ -109,7 +109,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: */*
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ServiceBrokerCreate**
-> ServiceBrokerCreate(ctx, serviceBroker)
+> ServiceBrokerCreate(ctx, broker)
 
 
 Create service broker
@@ -159,7 +159,7 @@ Create service broker
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **serviceBroker** | [**ServiceBroker**](ServiceBroker.md)|  | 
+  **broker** | [**ServiceBroker**](ServiceBroker.md)|  | 
 
 ### Return type
 
@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: */*
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -198,7 +198,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -227,7 +227,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ServiceBrokerUpdate**
-> ServiceBrokerUpdate(ctx, name, serviceBroker)
+> ServiceBrokerUpdate(ctx, name, broker)
 
 
 Update service broker
@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **name** | **string**| Service Broker name. | 
-  **serviceBroker** | [**ServiceBroker**](ServiceBroker.md)|  | 
+  **broker** | [**ServiceBroker**](ServiceBroker.md)|  | 
 
 ### Return type
 
@@ -251,7 +251,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: */*
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

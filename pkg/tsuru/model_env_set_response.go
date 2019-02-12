@@ -9,6 +9,6 @@
 
 package tsuru
 
-type ServiceBrokerConfigAuthConfigBearerConfig struct {
-	Token `json:"token,omitempty"`
+// Environment variables response information.
+type EnvSetResponse struct {
 }

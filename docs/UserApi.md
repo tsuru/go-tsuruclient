@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ChangePassword**
-> ChangePassword(ctx, optional)
+> ChangePassword(ctx, changePasswordData)
 
 
 Change password of logged user.
@@ -87,16 +87,7 @@ Change password of logged user.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***ChangePasswordOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a ChangePasswordOpts struct
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **confirm** | **optional.String**|  | 
- **new** | **optional.String**|  | 
- **old** | **optional.String**|  | 
+  **changePasswordData** | [**ChangePasswordData**](ChangePasswordData.md)|  | 
 
 ### Return type
 
@@ -109,12 +100,12 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: */*
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ResetPassword**
-> ResetPassword(ctx, email, body)
+> ResetPassword(ctx, email, token)
 
 
 Reset password of an user.
@@ -125,7 +116,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **email** | **string**|  | 
-  **body** | **string**|  | 
+  **token** | **string**|  | 
 
 ### Return type
 
@@ -138,12 +129,12 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: */*
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SSHKeyAdd**
-> SSHKeyAdd(ctx, sshKeyAddData)
+> SSHKeyAdd(ctx, sSHKeyAddData)
 
 
 Add SSH key to logged user.
@@ -153,7 +144,7 @@ Add SSH key to logged user.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **sshKeyAddData** | [**SshKeyAddData**](SshKeyAddData.md)|  | 
+  **sSHKeyAddData** | [**SshKeyAddData**](SshKeyAddData.md)|  | 
 
 ### Return type
 
@@ -218,7 +209,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -274,7 +265,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -326,8 +317,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

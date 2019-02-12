@@ -15,7 +15,7 @@ process-files:
 
 docker-generate-cmd:
 	cp ../tsuru/docs/reference/api.yaml .
-	docker run -it --rm -u `id -u`:`id -g` -v `pwd`:/app -w /app --entrypoint java swaggerapi/swagger-codegen-cli:v2.3.1 -jar /opt/swagger-codegen-cli/swagger-codegen-cli.jar generate -t ./templates -i api.yaml -l go -c gen-config.json
+	docker run -it --rm -u `id -u`:`id -g` -v `pwd`:/app -w /app --entrypoint java swaggerapi/swagger-codegen-cli:2.4.0 -jar /opt/swagger-codegen-cli/swagger-codegen-cli.jar generate -t ./templates -i api.yaml -l go -c gen-config.json
 	rm api.yaml
 
 docker-generate: docker-generate-cmd process-files

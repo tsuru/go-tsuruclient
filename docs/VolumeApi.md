@@ -33,7 +33,7 @@ Optional parameters are passed through a pointer to a VolumeBindOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **volumeBindData** | [**optional.Interface of VolumeBindData**](VolumeBindData.md)|  | 
+ **bindData** | [**optional.Interface of VolumeBindData**](VolumeBindData.md)|  | 
 
 ### Return type
 
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **VolumeCreate**
-> VolumeCreate(ctx, volume)
+> VolumeCreate(ctx, volumeData)
 
 
 Create volume.
@@ -61,7 +61,7 @@ Create volume.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **volume** | [**Volume**](Volume.md)|  | 
+  **volumeData** | [**Volume**](Volume.md)|  | 
 
 ### Return type
 
@@ -159,7 +159,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **VolumePlansList**
-> map[string]VolumePlan VolumePlansList(ctx, )
+> VolumePlansListResponse VolumePlansList(ctx, )
 
 
 List volume plans.
@@ -169,7 +169,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**map[string]VolumePlan**](VolumePlan.md)
+[**VolumePlansListResponse**](VolumePlansListResponse.md)
 
 ### Authorization
 
@@ -202,7 +202,7 @@ Optional parameters are passed through a pointer to a VolumeUnbindOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **volumeBindData** | [**optional.Interface of VolumeBindData**](VolumeBindData.md)|  | 
+ **bindData** | [**optional.Interface of VolumeBindData**](VolumeBindData.md)|  | 
 
 ### Return type
 

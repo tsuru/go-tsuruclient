@@ -9,6 +9,6 @@
 
 package tsuru
 
-type ServiceBrokerConfigAuthConfigBearerConfig struct {
-	Token `json:"token,omitempty"`
+// Response returned by Volume Plans list.
+type VolumePlansListResponse struct {
 }

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **TeamCreate**
-> TeamCreate(ctx, teamCreateArgs)
+> TeamCreate(ctx, teamData)
 
 
 Create a team.
@@ -22,7 +22,7 @@ Create a team.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **teamCreateArgs** | [**TeamCreateArgs**](TeamCreateArgs.md)|  | 
+  **teamData** | [**TeamCreateArgs**](TeamCreateArgs.md)|  | 
 
 ### Return type
 
@@ -35,7 +35,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: */*
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TeamUpdate**
-> TeamUpdate(ctx, team, teamUpdateArgs)
+> TeamUpdate(ctx, team, updateData)
 
 
 Update a team.
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **team** | **string**| Team name. | 
-  **teamUpdateArgs** | [**TeamUpdateArgs**](TeamUpdateArgs.md)|  | 
+  **updateData** | [**TeamUpdateArgs**](TeamUpdateArgs.md)|  | 
 
 ### Return type
 
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: */*
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

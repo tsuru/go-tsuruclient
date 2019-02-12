@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Brokers** | [**[]ServiceBroker**](ServiceBroker.md) |  | [optional] 
+**Brokers** | [**[]ServiceBroker**](ServiceBroker.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
