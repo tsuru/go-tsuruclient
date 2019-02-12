@@ -366,8 +366,10 @@ func (a *UserApiService) ChangePassword(ctx context.Context, localVarOptionals *
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -381,8 +383,10 @@ func (a *UserApiService) ChangePassword(ctx context.Context, localVarOptionals *
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -396,8 +400,10 @@ func (a *UserApiService) ChangePassword(ctx context.Context, localVarOptionals *
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -411,8 +417,10 @@ func (a *UserApiService) ChangePassword(ctx context.Context, localVarOptionals *
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -509,8 +517,10 @@ func (a *UserApiService) ResetPassword(ctx context.Context, email string, body s
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -524,8 +534,10 @@ func (a *UserApiService) ResetPassword(ctx context.Context, email string, body s
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -539,8 +551,10 @@ func (a *UserApiService) ResetPassword(ctx context.Context, email string, body s
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -554,8 +568,10 @@ func (a *UserApiService) ResetPassword(ctx context.Context, email string, body s
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -647,8 +663,10 @@ func (a *UserApiService) SSHKeyAdd(ctx context.Context, sshKeyAddData SshKeyAddD
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -662,8 +680,10 @@ func (a *UserApiService) SSHKeyAdd(ctx context.Context, sshKeyAddData SshKeyAddD
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -677,8 +697,10 @@ func (a *UserApiService) SSHKeyAdd(ctx context.Context, sshKeyAddData SshKeyAddD
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -893,8 +915,10 @@ func (a *UserApiService) SSHKeyRemove(ctx context.Context, key string) (*http.Re
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -908,8 +932,10 @@ func (a *UserApiService) SSHKeyRemove(ctx context.Context, key string) (*http.Re
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -923,8 +949,10 @@ func (a *UserApiService) SSHKeyRemove(ctx context.Context, key string) (*http.Re
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1016,8 +1044,10 @@ func (a *UserApiService) UserCreate(ctx context.Context, userData UserData) (*ht
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1031,8 +1061,10 @@ func (a *UserApiService) UserCreate(ctx context.Context, userData UserData) (*ht
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1046,8 +1078,10 @@ func (a *UserApiService) UserCreate(ctx context.Context, userData UserData) (*ht
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1061,8 +1095,10 @@ func (a *UserApiService) UserCreate(ctx context.Context, userData UserData) (*ht
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1156,8 +1192,10 @@ func (a *UserApiService) UserDelete(ctx context.Context, email string) (*http.Re
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1171,8 +1209,10 @@ func (a *UserApiService) UserDelete(ctx context.Context, email string) (*http.Re
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1379,8 +1419,10 @@ func (a *UserApiService) UserQuotaChange(ctx context.Context, email string, limi
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1394,8 +1436,10 @@ func (a *UserApiService) UserQuotaChange(ctx context.Context, email string, limi
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1409,8 +1453,10 @@ func (a *UserApiService) UserQuotaChange(ctx context.Context, email string, limi
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {

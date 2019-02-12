@@ -249,8 +249,10 @@ func (a *AppApiService) AppDelete(ctx context.Context, app string) (*http.Respon
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -264,8 +266,10 @@ func (a *AppApiService) AppDelete(ctx context.Context, app string) (*http.Respon
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -648,8 +652,10 @@ func (a *AppApiService) AppQuotaChange(ctx context.Context, app string, limit fl
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -663,8 +669,10 @@ func (a *AppApiService) AppQuotaChange(ctx context.Context, app string, limit fl
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -678,8 +686,10 @@ func (a *AppApiService) AppQuotaChange(ctx context.Context, app string, limit fl
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -909,8 +919,10 @@ func (a *AppApiService) AppRestart(ctx context.Context, app string, localVarOpti
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -924,8 +936,10 @@ func (a *AppApiService) AppRestart(ctx context.Context, app string, localVarOpti
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1019,8 +1033,10 @@ func (a *AppApiService) AppUpdate(ctx context.Context, app string) (*http.Respon
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1034,8 +1050,10 @@ func (a *AppApiService) AppUpdate(ctx context.Context, app string) (*http.Respon
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1049,8 +1067,10 @@ func (a *AppApiService) AppUpdate(ctx context.Context, app string) (*http.Respon
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1428,8 +1448,10 @@ func (a *AppApiService) EnvUnset(ctx context.Context, app string, env []string, 
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1443,8 +1465,10 @@ func (a *AppApiService) EnvUnset(ctx context.Context, app string, env []string, 
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1458,8 +1482,10 @@ func (a *AppApiService) EnvUnset(ctx context.Context, app string, env []string, 
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {

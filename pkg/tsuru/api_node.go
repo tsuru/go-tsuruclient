@@ -101,8 +101,10 @@ func (a *NodeApiService) NodeAdd(ctx context.Context, nodeAddData NodeAddData) (
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -116,8 +118,10 @@ func (a *NodeApiService) NodeAdd(ctx context.Context, nodeAddData NodeAddData) (
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -215,8 +219,10 @@ func (a *NodeApiService) NodeDelete(ctx context.Context, address string, noRebal
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -230,8 +236,10 @@ func (a *NodeApiService) NodeDelete(ctx context.Context, address string, noRebal
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -550,8 +558,10 @@ func (a *NodeApiService) NodeUpdate(ctx context.Context, nodeUpdateData NodeUpda
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -565,8 +575,10 @@ func (a *NodeApiService) NodeUpdate(ctx context.Context, nodeUpdateData NodeUpda
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -580,8 +592,10 @@ func (a *NodeApiService) NodeUpdate(ctx context.Context, nodeUpdateData NodeUpda
 			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
 			localVarHttpResponse.Body.Close()
 			if err != nil {
-				return localVarHttpResponse, err
+				newErr.error = err.Error()
+				return localVarHttpResponse, newErr
 			}
+			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
