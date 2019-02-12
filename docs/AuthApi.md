@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**DissociateRoleFromToken**](AuthApi.md#DissociateRoleFromToken) | **Delete** /1.6/roles/{role_name}/token/{token_id} | 
 [**TeamTokenCreate**](AuthApi.md#TeamTokenCreate) | **Post** /1.6/tokens | 
 [**TeamTokenDelete**](AuthApi.md#TeamTokenDelete) | **Delete** /1.6/tokens/{token_id} | 
-[**TeamTokenInfo**](AuthApi.md#TeamTokenInfo) | **Get** /1.6/tokens/{token_id} | 
+[**TeamTokenInfo**](AuthApi.md#TeamTokenInfo) | **Get** /1.7/tokens/{token_id} | 
 [**TeamTokenUpdate**](AuthApi.md#TeamTokenUpdate) | **Put** /1.6/tokens/{token_id} | 
 [**TeamTokensList**](AuthApi.md#TeamTokensList) | **Get** /1.6/tokens | 
 

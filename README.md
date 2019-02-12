@@ -45,7 +45,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**DissociateRoleFromToken**](docs/AuthApi.md#dissociaterolefromtoken) | **Delete** /1.6/roles/{role_name}/token/{token_id} | 
 *AuthApi* | [**TeamTokenCreate**](docs/AuthApi.md#teamtokencreate) | **Post** /1.6/tokens | 
 *AuthApi* | [**TeamTokenDelete**](docs/AuthApi.md#teamtokendelete) | **Delete** /1.6/tokens/{token_id} | 
-*AuthApi* | [**TeamTokenInfo**](docs/AuthApi.md#teamtokeninfo) | **Get** /1.6/tokens/{token_id} | 
+*AuthApi* | [**TeamTokenInfo**](docs/AuthApi.md#teamtokeninfo) | **Get** /1.7/tokens/{token_id} | 
 *AuthApi* | [**TeamTokenUpdate**](docs/AuthApi.md#teamtokenupdate) | **Put** /1.6/tokens/{token_id} | 
 *AuthApi* | [**TeamTokensList**](docs/AuthApi.md#teamtokenslist) | **Get** /1.6/tokens | 
 *ClusterApi* | [**ClusterCreate**](docs/ClusterApi.md#clustercreate) | **Post** /1.3/provisioner/clusters | 
