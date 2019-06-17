@@ -45,7 +45,18 @@ func (a *UserApiService) APITokenGet(ctx context.Context, email string) (string,
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/users/api-key"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.0/users/api-key"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -168,7 +179,18 @@ func (a *UserApiService) APITokenRegenerate(ctx context.Context, email string) (
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/users/api-key"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.0/users/api-key"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -299,7 +321,18 @@ func (a *UserApiService) ChangePassword(ctx context.Context, localVarOptionals *
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/users/password"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.0/users/password"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -453,8 +486,19 @@ func (a *UserApiService) ResetPassword(ctx context.Context, email string, body s
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/users/{email}/password"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.0/users/{email}/password"
 	localVarPath = strings.Replace(localVarPath, "{"+"email"+"}", fmt.Sprintf("%v", email), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -603,7 +647,18 @@ func (a *UserApiService) SSHKeyAdd(ctx context.Context, sshKeyAddData SshKeyAddD
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/users/keys"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.0/users/keys"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -733,7 +788,18 @@ func (a *UserApiService) SSHKeyList(ctx context.Context) (SshKeyListResponse, *h
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/users/keys"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.0/users/keys"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -853,8 +919,19 @@ func (a *UserApiService) SSHKeyRemove(ctx context.Context, key string) (*http.Re
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/users/keys/{key}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.0/users/keys/{key}"
 	localVarPath = strings.Replace(localVarPath, "{"+"key"+"}", fmt.Sprintf("%v", key), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -984,7 +1061,18 @@ func (a *UserApiService) UserCreate(ctx context.Context, userData UserData) (*ht
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/users"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.0/users"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1130,7 +1218,18 @@ func (a *UserApiService) UserDelete(ctx context.Context, email string) (*http.Re
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/users"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.0/users"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1245,7 +1344,18 @@ func (a *UserApiService) UserGet(ctx context.Context) (User, *http.Response, err
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/users/info"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.0/users/info"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1356,8 +1466,19 @@ func (a *UserApiService) UserQuotaChange(ctx context.Context, email string, limi
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/users/{email}/quota"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.0/users/{email}/quota"
 	localVarPath = strings.Replace(localVarPath, "{"+"email"+"}", fmt.Sprintf("%v", email), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1490,8 +1611,19 @@ func (a *UserApiService) UserQuotaGet(ctx context.Context, email string) (UserQu
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/users/{email}/quota"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.0/users/{email}/quota"
 	localVarPath = strings.Replace(localVarPath, "{"+"email"+"}", fmt.Sprintf("%v", email), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1613,7 +1745,18 @@ func (a *UserApiService) UserTokenDelete(ctx context.Context) (*http.Response, e
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/users/tokens"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.0/users/tokens"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1700,7 +1843,18 @@ func (a *UserApiService) UsersList(ctx context.Context, email string, localVarOp
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/users"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.0/users"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

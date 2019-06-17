@@ -50,8 +50,19 @@ func (a *VolumeApiService) VolumeBind(ctx context.Context, volume string, localV
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.4/volumes/{volume}/bind"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.4/volumes/{volume}/bind"
 	localVarPath = strings.Replace(localVarPath, "{"+"volume"+"}", fmt.Sprintf("%v", volume), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -190,7 +201,18 @@ func (a *VolumeApiService) VolumeCreate(ctx context.Context, volume Volume) (*ht
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.4/volumes"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.4/volumes"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -302,8 +324,19 @@ func (a *VolumeApiService) VolumeDelete(ctx context.Context, volume string) (*ht
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.4/volumes/{volume}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.4/volumes/{volume}"
 	localVarPath = strings.Replace(localVarPath, "{"+"volume"+"}", fmt.Sprintf("%v", volume), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -418,8 +451,19 @@ func (a *VolumeApiService) VolumeGet(ctx context.Context, volume string) (Volume
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.4/volumes/{volume}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.4/volumes/{volume}"
 	localVarPath = strings.Replace(localVarPath, "{"+"volume"+"}", fmt.Sprintf("%v", volume), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -543,7 +587,18 @@ func (a *VolumeApiService) VolumeList(ctx context.Context) ([]Volume, *http.Resp
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.4/volumes"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.4/volumes"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -654,7 +709,18 @@ func (a *VolumeApiService) VolumePlansList(ctx context.Context) (map[string]Volu
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.4/volumeplans"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.4/volumeplans"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -771,8 +837,19 @@ func (a *VolumeApiService) VolumeUnbind(ctx context.Context, volume string, loca
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.4/volumes/{volume}/bind"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.4/volumes/{volume}/bind"
 	localVarPath = strings.Replace(localVarPath, "{"+"volume"+"}", fmt.Sprintf("%v", volume), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

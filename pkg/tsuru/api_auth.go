@@ -42,8 +42,19 @@ func (a *AuthApiService) AssignRoleToToken(ctx context.Context, roleName string,
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.6/roles/{role_name}/token"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.6/roles/{role_name}/token"
 	localVarPath = strings.Replace(localVarPath, "{"+"role_name"+"}", fmt.Sprintf("%v", roleName), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -157,9 +168,20 @@ func (a *AuthApiService) DissociateRoleFromToken(ctx context.Context, roleName s
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.6/roles/{role_name}/token/{token_id}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.6/roles/{role_name}/token/{token_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"role_name"+"}", fmt.Sprintf("%v", roleName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"token_id"+"}", fmt.Sprintf("%v", tokenId), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -272,7 +294,18 @@ func (a *AuthApiService) TeamTokenCreate(ctx context.Context, teamTokenCreateArg
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.6/tokens"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.6/tokens"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -394,8 +427,19 @@ func (a *AuthApiService) TeamTokenDelete(ctx context.Context, tokenId string) (*
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.6/tokens/{token_id}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.6/tokens/{token_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"token_id"+"}", fmt.Sprintf("%v", tokenId), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -510,8 +554,19 @@ func (a *AuthApiService) TeamTokenInfo(ctx context.Context, tokenId string) (Tea
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.7/tokens/{token_id}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.7/tokens/{token_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"token_id"+"}", fmt.Sprintf("%v", tokenId), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -637,8 +692,19 @@ func (a *AuthApiService) TeamTokenUpdate(ctx context.Context, tokenId string, te
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.6/tokens/{token_id}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.6/tokens/{token_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"token_id"+"}", fmt.Sprintf("%v", tokenId), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -764,7 +830,18 @@ func (a *AuthApiService) TeamTokensList(ctx context.Context) ([]TeamToken, *http
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.6/tokens"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.6/tokens"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

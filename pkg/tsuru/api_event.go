@@ -41,8 +41,19 @@ func (a *EventApiService) EventCancel(ctx context.Context, eventid string, event
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.1/events/{eventid}/cancel"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.1/events/{eventid}/cancel"
 	localVarPath = strings.Replace(localVarPath, "{"+"eventid"+"}", fmt.Sprintf("%v", eventid), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -170,7 +181,18 @@ func (a *EventApiService) WebhookCreate(ctx context.Context, webhook Webhook) (*
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.6/events/webhooks"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.6/events/webhooks"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -298,8 +320,19 @@ func (a *EventApiService) WebhookDelete(ctx context.Context, name string) (*http
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.6/events/webhooks/{name}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.6/events/webhooks/{name}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -430,8 +463,19 @@ func (a *EventApiService) WebhookGet(ctx context.Context, name string) (Webhook,
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.6/events/webhooks/{name}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.6/events/webhooks/{name}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -554,7 +598,18 @@ func (a *EventApiService) WebhookList(ctx context.Context) ([]Webhook, *http.Res
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.6/events/webhooks"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.6/events/webhooks"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -654,8 +709,19 @@ func (a *EventApiService) WebhookUpdate(ctx context.Context, name string, webhoo
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.6/events/webhooks/{name}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.6/events/webhooks/{name}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

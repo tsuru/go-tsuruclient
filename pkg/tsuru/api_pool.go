@@ -41,7 +41,18 @@ func (a *PoolApiService) PoolCreate(ctx context.Context, poolCreateData PoolCrea
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/pools"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.0/pools"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -170,8 +181,19 @@ func (a *PoolApiService) PoolDelete(ctx context.Context, pool string) (*http.Res
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/pools/{pool}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/pools/{pool}"
 	localVarPath = strings.Replace(localVarPath, "{"+"pool"+"}", fmt.Sprintf("%v", pool), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -300,8 +322,19 @@ func (a *PoolApiService) PoolGet(ctx context.Context, pool string) (Pool, *http.
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/pools/{pool}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/pools/{pool}"
 	localVarPath = strings.Replace(localVarPath, "{"+"pool"+"}", fmt.Sprintf("%v", pool), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -422,7 +455,18 @@ func (a *PoolApiService) PoolList(ctx context.Context) ([]Pool, *http.Response, 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/pools"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.0/pools"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -533,8 +577,19 @@ func (a *PoolApiService) PoolUpdate(ctx context.Context, pool string, poolUpdate
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/pools/{pool}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/pools/{pool}"
 	localVarPath = strings.Replace(localVarPath, "{"+"pool"+"}", fmt.Sprintf("%v", pool), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

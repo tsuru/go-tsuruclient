@@ -43,7 +43,18 @@ func (a *PlatformApiService) PlatformAdd(ctx context.Context, name string, docke
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/platforms"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.0/platforms"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -162,8 +173,19 @@ func (a *PlatformApiService) PlatformDelete(ctx context.Context, platform string
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/platforms/{platform}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.0/platforms/{platform}"
 	localVarPath = strings.Replace(localVarPath, "{"+"platform"+"}", fmt.Sprintf("%v", platform), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -278,8 +300,19 @@ func (a *PlatformApiService) PlatformInfo(ctx context.Context, platform string) 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.6/platforms/{platform}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.6/platforms/{platform}"
 	localVarPath = strings.Replace(localVarPath, "{"+"platform"+"}", fmt.Sprintf("%v", platform), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -403,7 +436,18 @@ func (a *PlatformApiService) PlatformList(ctx context.Context) ([]Platform, *htt
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/platforms"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.0/platforms"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -514,8 +558,19 @@ func (a *PlatformApiService) PlatformRollback(ctx context.Context, platform stri
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.6/platforms/{platform}/rollback"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.6/platforms/{platform}/rollback"
 	localVarPath = strings.Replace(localVarPath, "{"+"platform"+"}", fmt.Sprintf("%v", platform), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -647,8 +702,19 @@ func (a *PlatformApiService) PlatformUpdate(ctx context.Context, platform string
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/platforms/{platform}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.0/platforms/{platform}"
 	localVarPath = strings.Replace(localVarPath, "{"+"platform"+"}", fmt.Sprintf("%v", platform), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -45,7 +45,18 @@ func (a *AppApiService) AppCreate(ctx context.Context, app App) (AppCreateRespon
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/apps"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.0/apps"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -187,8 +198,19 @@ func (a *AppApiService) AppDelete(ctx context.Context, app string) (*http.Respon
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/apps/{app}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.0/apps/{app}"
 	localVarPath = strings.Replace(localVarPath, "{"+"app"+"}", fmt.Sprintf("%v", app), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -303,8 +325,19 @@ func (a *AppApiService) AppGet(ctx context.Context, app string) (App, *http.Resp
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/apps/{app}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.0/apps/{app}"
 	localVarPath = strings.Replace(localVarPath, "{"+"app"+"}", fmt.Sprintf("%v", app), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -451,7 +484,18 @@ func (a *AppApiService) AppList(ctx context.Context, localVarOptionals *AppListO
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/apps"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.0/apps"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -589,8 +633,19 @@ func (a *AppApiService) AppQuotaChange(ctx context.Context, app string, limit fl
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/apps/{app}/quota"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.0/apps/{app}/quota"
 	localVarPath = strings.Replace(localVarPath, "{"+"app"+"}", fmt.Sprintf("%v", app), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -723,8 +778,19 @@ func (a *AppApiService) AppQuotaGet(ctx context.Context, app string) (Quota, *ht
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/apps/{app}/quota"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.0/apps/{app}/quota"
 	localVarPath = strings.Replace(localVarPath, "{"+"app"+"}", fmt.Sprintf("%v", app), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -854,8 +920,19 @@ func (a *AppApiService) AppRestart(ctx context.Context, app string, localVarOpti
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/apps/{app}/restart"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.0/apps/{app}/restart"
 	localVarPath = strings.Replace(localVarPath, "{"+"app"+"}", fmt.Sprintf("%v", app), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -971,8 +1048,19 @@ func (a *AppApiService) AppUpdate(ctx context.Context, app string) (*http.Respon
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/apps/{app}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.0/apps/{app}"
 	localVarPath = strings.Replace(localVarPath, "{"+"app"+"}", fmt.Sprintf("%v", app), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1111,8 +1199,19 @@ func (a *AppApiService) EnvGet(ctx context.Context, app string, localVarOptional
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/apps/{app}/env"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.0/apps/{app}/env"
 	localVarPath = strings.Replace(localVarPath, "{"+"app"+"}", fmt.Sprintf("%v", app), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1241,8 +1340,19 @@ func (a *AppApiService) EnvSet(ctx context.Context, app string, envSetData EnvSe
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/apps/{app}/env"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.0/apps/{app}/env"
 	localVarPath = strings.Replace(localVarPath, "{"+"app"+"}", fmt.Sprintf("%v", app), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1379,8 +1489,19 @@ func (a *AppApiService) EnvUnset(ctx context.Context, app string, env []string, 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/apps/{app}/env"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.0/apps/{app}/env"
 	localVarPath = strings.Replace(localVarPath, "{"+"app"+"}", fmt.Sprintf("%v", app), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

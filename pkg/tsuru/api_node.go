@@ -41,7 +41,18 @@ func (a *NodeApiService) NodeAdd(ctx context.Context, nodeAddData NodeAddData) (
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.2/node"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.2/node"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -155,8 +166,19 @@ func (a *NodeApiService) NodeDelete(ctx context.Context, address string, noRebal
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.2/node/{address}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.2/node/{address}"
 	localVarPath = strings.Replace(localVarPath, "{"+"address"+"}", fmt.Sprintf("%v", address), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -273,8 +295,19 @@ func (a *NodeApiService) NodeGet(ctx context.Context, address string) (NodeGetRe
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.2/node/{address}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.2/node/{address}"
 	localVarPath = strings.Replace(localVarPath, "{"+"address"+"}", fmt.Sprintf("%v", address), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -398,7 +431,18 @@ func (a *NodeApiService) NodeList(ctx context.Context) (NodeListResponse, *http.
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.2/node"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.2/node"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -498,7 +542,18 @@ func (a *NodeApiService) NodeUpdate(ctx context.Context, nodeUpdateData NodeUpda
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.2/node"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.2/node"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

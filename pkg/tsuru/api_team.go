@@ -41,7 +41,18 @@ func (a *TeamApiService) TeamCreate(ctx context.Context, teamCreateArgs TeamCrea
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/teams"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.0/teams"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -170,8 +181,19 @@ func (a *TeamApiService) TeamDelete(ctx context.Context, team string) (*http.Res
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/teams/{team}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.0/teams/{team}"
 	localVarPath = strings.Replace(localVarPath, "{"+"team"+"}", fmt.Sprintf("%v", team), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -300,8 +322,19 @@ func (a *TeamApiService) TeamGet(ctx context.Context, team string) (TeamInfo, *h
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.4/teams/{team}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.4/teams/{team}"
 	localVarPath = strings.Replace(localVarPath, "{"+"team"+"}", fmt.Sprintf("%v", team), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -422,8 +455,19 @@ func (a *TeamApiService) TeamUpdate(ctx context.Context, team string, teamUpdate
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.6/teams/{team}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.6/teams/{team}"
 	localVarPath = strings.Replace(localVarPath, "{"+"team"+"}", fmt.Sprintf("%v", team), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -553,7 +597,18 @@ func (a *TeamApiService) TeamsList(ctx context.Context) ([]Team, *http.Response,
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/teams"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.0/teams"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

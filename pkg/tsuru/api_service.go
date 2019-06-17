@@ -45,9 +45,20 @@ func (a *ServiceApiService) InstanceDelete(ctx context.Context, service string, 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/services/{service}/instances/{instance}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.0/services/{service}/instances/{instance}"
 	localVarPath = strings.Replace(localVarPath, "{"+"service"+"}", fmt.Sprintf("%v", service), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"instance"+"}", fmt.Sprintf("%v", instance), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -167,9 +178,20 @@ func (a *ServiceApiService) InstanceGet(ctx context.Context, service string, ins
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/services/{service}/instances/{instance}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.0/services/{service}/instances/{instance}"
 	localVarPath = strings.Replace(localVarPath, "{"+"service"+"}", fmt.Sprintf("%v", service), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"instance"+"}", fmt.Sprintf("%v", instance), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -303,9 +325,20 @@ func (a *ServiceApiService) InstanceUpdate(ctx context.Context, service string, 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/services/{service}/instances/{instance}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.0/services/{service}/instances/{instance}"
 	localVarPath = strings.Replace(localVarPath, "{"+"service"+"}", fmt.Sprintf("%v", service), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"instance"+"}", fmt.Sprintf("%v", instance), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -455,7 +488,18 @@ func (a *ServiceApiService) InstancesList(ctx context.Context, localVarOptionals
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/services/instances"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.0/services/instances"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -568,7 +612,18 @@ func (a *ServiceApiService) ServiceBrokerCreate(ctx context.Context, serviceBrok
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.7/brokers"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.7/brokers"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -696,8 +751,19 @@ func (a *ServiceApiService) ServiceBrokerDelete(ctx context.Context, name string
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.7/brokers/{name}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.7/brokers/{name}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -828,7 +894,18 @@ func (a *ServiceApiService) ServiceBrokerList(ctx context.Context) (ServiceBroke
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.7/brokers"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.7/brokers"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -939,8 +1016,19 @@ func (a *ServiceApiService) ServiceBrokerUpdate(ctx context.Context, name string
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.7/brokers/{name}"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarPath := "/1.7/brokers/{name}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1073,7 +1161,18 @@ func (a *ServiceApiService) ServicesList(ctx context.Context) ([]Service, *http.
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/services"
+	basePath, err := url.Parse(a.client.cfg.BasePath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarPath := "/1.0/services"
+
+	u, err := url.Parse(localVarPath)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+	localVarPath = basePath.ResolveReference(u).String()
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
