@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**PoolCreate**](PoolApi.md#PoolCreate) | **Post** /1.0/pools | 
 [**PoolDelete**](PoolApi.md#PoolDelete) | **Delete** /pools/{pool} | 
+[**PoolGet**](PoolApi.md#PoolGet) | **Get** /pools/{pool} | 
 [**PoolList**](PoolApi.md#PoolList) | **Get** /1.0/pools | 
 [**PoolUpdate**](PoolApi.md#PoolUpdate) | **Put** /pools/{pool} | 
 
@@ -54,6 +55,34 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **PoolGet**
+> Pool PoolGet(ctx, pool)
+
+
+Get pool information
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **pool** | **string**|  | 
+
+### Return type
+
+[**Pool**](Pool.md)
 
 ### Authorization
 

@@ -50,6 +50,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**TeamTokensList**](docs/AuthApi.md#teamtokenslist) | **Get** /1.6/tokens | 
 *ClusterApi* | [**ClusterCreate**](docs/ClusterApi.md#clustercreate) | **Post** /1.3/provisioner/clusters | 
 *ClusterApi* | [**ClusterDelete**](docs/ClusterApi.md#clusterdelete) | **Delete** /1.3/provisioner/clusters/{cluster_name} | 
+*ClusterApi* | [**ClusterInfo**](docs/ClusterApi.md#clusterinfo) | **Get** /1.8/provisioner/clusters/{cluster_name} | 
 *ClusterApi* | [**ClusterList**](docs/ClusterApi.md#clusterlist) | **Get** /1.3/provisioner/clusters | 
 *ClusterApi* | [**ClusterUpdate**](docs/ClusterApi.md#clusterupdate) | **Post** /1.4/provisioner/clusters/{cluster_name} | 
 *ClusterApi* | [**ProvisionerList**](docs/ClusterApi.md#provisionerlist) | **Get** /1.7/provisioner | 
@@ -72,6 +73,7 @@ Class | Method | HTTP request | Description
 *PlatformApi* | [**PlatformUpdate**](docs/PlatformApi.md#platformupdate) | **Put** /1.0/platforms/{platform} | 
 *PoolApi* | [**PoolCreate**](docs/PoolApi.md#poolcreate) | **Post** /1.0/pools | 
 *PoolApi* | [**PoolDelete**](docs/PoolApi.md#pooldelete) | **Delete** /pools/{pool} | 
+*PoolApi* | [**PoolGet**](docs/PoolApi.md#poolget) | **Get** /pools/{pool} | 
 *PoolApi* | [**PoolList**](docs/PoolApi.md#poollist) | **Get** /1.0/pools | 
 *PoolApi* | [**PoolUpdate**](docs/PoolApi.md#poolupdate) | **Put** /pools/{pool} | 
 *ServiceApi* | [**InstanceDelete**](docs/ServiceApi.md#instancedelete) | **Delete** /1.0/services/{service}/instances/{instance} | 
