@@ -2001,6 +2001,38 @@ paths:
       - Bearer: []
       tags:
       - pool
+    get:
+      description: Get pool information
+      operationId: PoolGet
+      parameters:
+      - in: path
+        name: pool
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Pool'
+          description: Pool data
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Pool not found
+      security:
+      - Bearer: []
+      tags:
+      - pool
     put:
       description: Updates a pool.
       operationId: PoolUpdate
@@ -2169,6 +2201,43 @@ paths:
         404:
           content:
             application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Cluster not found
+      security:
+      - Bearer: []
+      tags:
+      - cluster
+  /1.8/provisioner/clusters/{cluster_name}:
+    get:
+      description: Cluster info
+      operationId: ClusterInfo
+      parameters:
+      - description: Cluster name.
+        in: path
+        name: cluster_name
+        required: true
+        schema:
+          minLength: 1
+          type: string
+          x-exportParamName: ClusterName
+        x-exportParamName: ClusterName
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cluster'
+          description: Cluster
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: Cluster not found

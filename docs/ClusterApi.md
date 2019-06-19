@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ClusterCreate**](ClusterApi.md#ClusterCreate) | **Post** /1.3/provisioner/clusters | 
 [**ClusterDelete**](ClusterApi.md#ClusterDelete) | **Delete** /1.3/provisioner/clusters/{cluster_name} | 
+[**ClusterInfo**](ClusterApi.md#ClusterInfo) | **Get** /1.8/provisioner/clusters/{cluster_name} | 
 [**ClusterList**](ClusterApi.md#ClusterList) | **Get** /1.3/provisioner/clusters | 
 [**ClusterUpdate**](ClusterApi.md#ClusterUpdate) | **Post** /1.4/provisioner/clusters/{cluster_name} | 
 [**ProvisionerList**](ClusterApi.md#ProvisionerList) | **Get** /1.7/provisioner | 
@@ -64,6 +65,34 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/x-json-stream
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ClusterInfo**
+> Cluster ClusterInfo(ctx, clusterName)
+
+
+Cluster info
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **clusterName** | **string**| Cluster name. | 
+
+### Return type
+
+[**Cluster**](Cluster.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
