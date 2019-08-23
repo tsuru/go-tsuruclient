@@ -1,12 +1,9 @@
 .PHONY: generate-cmd process-files generate docker-generate-cmd docker-generate pre-generate post-generate
 
-OPENAPI_CODEGEN = openapi-generator
 GENERATE_ARGS = generate -t ./templates -i ./api.yaml -g go -c gen-config.json
+GENERATOR_VERSION = v3.3.4
 
-generate: pre-generate generate-cmd process-files post-generate
-
-generate-cmd:
-	$(OPENAPI_CODEGEN) $(GENERATE_ARGS)
+generate: pre-generate docker-generate-cmd process-files post-generate
 
 process-files:
 	rm -rf pkg/tsuru && mkdir -p pkg/tsuru
@@ -15,7 +12,7 @@ process-files:
 	goimports -w pkg/tsuru/
 
 docker-generate-cmd:
-	docker run -it --rm -u `id -u`:`id -g` -v `pwd`:/app -w /app openapitools/openapi-generator-cli:v3.3.4 $(GENERATE_ARGS)
+	docker run -it --rm -u `id -u`:`id -g` -v `pwd`:/app -w /app openapitools/openapi-generator-cli:$(GENERATOR_VERSION) $(GENERATE_ARGS)
 
 docker-generate: pre-generate docker-generate-cmd process-files post-generate
 
