@@ -3944,11 +3944,14 @@ components:
       description: Environment variable.
       example:
         name: name
+        alias: alias
         value: value
       properties:
         name:
           type: string
         value:
+          type: string
+        alias:
           type: string
       type: object
     Machine:
@@ -4098,8 +4101,10 @@ components:
         private: true
         envs:
         - name: name
+          alias: alias
           value: value
         - name: name
+          alias: alias
           value: value
         norestart: true
       properties:
