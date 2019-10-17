@@ -17,7 +17,7 @@ docker-generate-cmd:
 docker-generate: pre-generate docker-generate-cmd process-files post-generate
 
 pre-generate:
-	cp ../tsuru/docs/reference/api.yaml .
+	curl -O https://raw.githubusercontent.com/tsuru/tsuru/master/docs/reference/api.yaml
 
 post-generate:
 	rm api.yaml
