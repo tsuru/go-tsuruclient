@@ -9,6 +9,7 @@
 
 package tsuru
 
+// NodeUpdateData struct for NodeUpdateData
 type NodeUpdateData struct {
 	Address  string            `json:"address,omitempty"`
 	Pool     string            `json:"pool,omitempty"`

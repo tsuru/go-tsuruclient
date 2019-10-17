@@ -9,7 +9,7 @@
 
 package tsuru
 
-// Response returned by User SSH Key List.
+// SshKeyListResponse Response returned by User SSH Key List.
 type SshKeyListResponse struct {
 	// keyvalue
 	Keyname string `json:"keyname,omitempty"`

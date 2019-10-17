@@ -9,7 +9,7 @@
 
 package tsuru
 
-// Volume plan.
+// VolumePlan Volume plan.
 type VolumePlan struct {
 	// Volume plan name.
 	Name string `json:"name,omitempty"`

@@ -9,6 +9,7 @@
 
 package tsuru
 
+// TeamCreateArgs struct for TeamCreateArgs
 type TeamCreateArgs struct {
 	Name string   `json:"name,omitempty"`
 	Tags []string `json:"tags,omitempty"`

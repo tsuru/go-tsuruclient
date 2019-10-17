@@ -9,6 +9,7 @@
 
 package tsuru
 
+// ClusterHelp struct for ClusterHelp
 type ClusterHelp struct {
 	ProvisionerHelp string            `json:"provisioner_help,omitempty"`
 	CustomDataHelp  map[string]string `json:"custom_data_help,omitempty"`

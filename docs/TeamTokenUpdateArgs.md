@@ -1,6 +1,7 @@
 # TeamTokenUpdateArgs
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Regenerate** | **bool** |  | [optional] 

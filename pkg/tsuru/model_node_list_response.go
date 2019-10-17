@@ -9,6 +9,7 @@
 
 package tsuru
 
+// NodeListResponse struct for NodeListResponse
 type NodeListResponse struct {
 	Nodes    []Node    `json:"nodes,omitempty"`
 	Machines []Machine `json:"machines,omitempty"`

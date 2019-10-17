@@ -9,6 +9,7 @@
 
 package tsuru
 
+// PoolUpdateData struct for PoolUpdateData
 type PoolUpdateData struct {
 	Default bool `json:"default,omitempty"`
 	Public  bool `json:"public,omitempty"`

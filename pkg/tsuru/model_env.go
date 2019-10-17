@@ -9,7 +9,7 @@
 
 package tsuru
 
-// Environment variable.
+// Env Environment variable.
 type Env struct {
 	Name  string `json:"name,omitempty"`
 	Value string `json:"value,omitempty"`

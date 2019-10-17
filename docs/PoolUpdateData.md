@@ -1,6 +1,7 @@
 # PoolUpdateData
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Default** | **bool** |  | [optional] 

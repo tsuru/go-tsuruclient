@@ -12,18 +12,21 @@ Method | HTTP request | Description
 [**ProvisionerList**](ClusterApi.md#ProvisionerList) | **Get** /1.7/provisioner | 
 
 
-# **ClusterCreate**
-> ClusterCreate(ctx, cluster)
+
+## ClusterCreate
+
+> ClusterCreate(ctx, clusterCreateData)
 
 
 Create cluster.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **cluster** | [**Cluster**](Cluster.md)|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterCreateData** | [**Cluster**](Cluster.md)|  | 
 
 ### Return type
 
@@ -35,12 +38,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/x-json-stream
+- **Content-Type**: application/json
+- **Accept**: application/x-json-stream
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ClusterDelete**
+
+## ClusterDelete
+
 > ClusterDelete(ctx, clusterName)
 
 
@@ -48,10 +55,11 @@ Delete cluster.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **clusterName** | **string**| Cluster name. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterName** | **string**| Cluster name. | 
 
 ### Return type
 
@@ -63,12 +71,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/x-json-stream
+- **Content-Type**: Not defined
+- **Accept**: application/x-json-stream
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ClusterInfo**
+
+## ClusterInfo
+
 > Cluster ClusterInfo(ctx, clusterName)
 
 
@@ -76,10 +88,11 @@ Cluster info
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **clusterName** | **string**| Cluster name. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterName** | **string**| Cluster name. | 
 
 ### Return type
 
@@ -91,18 +104,23 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ClusterList**
+
+## ClusterList
+
 > []Cluster ClusterList(ctx, )
 
 
 List cluster
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -115,24 +133,29 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ClusterUpdate**
-> ClusterUpdate(ctx, clusterName, cluster)
+
+## ClusterUpdate
+
+> ClusterUpdate(ctx, clusterName, clusterUpdateData)
 
 
 Update cluster.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **clusterName** | **string**| Cluster name. | 
-  **cluster** | [**Cluster**](Cluster.md)|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterName** | **string**| Cluster name. | 
+**clusterUpdateData** | [**Cluster**](Cluster.md)|  | 
 
 ### Return type
 
@@ -144,18 +167,23 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/x-json-stream
+- **Content-Type**: application/json
+- **Accept**: application/x-json-stream
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ProvisionerList**
+
+## ProvisionerList
+
 > []Provisioner ProvisionerList(ctx, )
 
 
 List provisioners
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -168,8 +196,10 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 

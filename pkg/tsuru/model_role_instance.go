@@ -9,7 +9,7 @@
 
 package tsuru
 
-// Association between a role and a context value.
+// RoleInstance Association between a role and a context value.
 type RoleInstance struct {
 	Name         string `json:"name,omitempty"`
 	Contextvalue string `json:"contextvalue,omitempty"`

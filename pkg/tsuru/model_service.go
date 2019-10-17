@@ -9,6 +9,7 @@
 
 package tsuru
 
+// Service struct for Service
 type Service struct {
 	Service string `json:"service,omitempty"`
 	// [deprecated]

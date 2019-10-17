@@ -9,6 +9,7 @@
 
 package tsuru
 
+// ChangePasswordData struct for ChangePasswordData
 type ChangePasswordData struct {
 	Confirm string `json:"confirm,omitempty"`
 	New     string `json:"new,omitempty"`

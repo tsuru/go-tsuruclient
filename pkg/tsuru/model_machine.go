@@ -9,6 +9,7 @@
 
 package tsuru
 
+// Machine struct for Machine
 type Machine struct {
 	Id             string            `json:"id,omitempty"`
 	Iaas           string            `json:"iaas,omitempty"`

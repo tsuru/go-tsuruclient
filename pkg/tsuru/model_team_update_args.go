@@ -9,6 +9,7 @@
 
 package tsuru
 
+// TeamUpdateArgs struct for TeamUpdateArgs
 type TeamUpdateArgs struct {
 	Newname string   `json:"newname,omitempty"`
 	Tags    []string `json:"tags,omitempty"`

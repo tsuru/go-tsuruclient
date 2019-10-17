@@ -9,7 +9,7 @@
 
 package tsuru
 
-// Data sent to the environment set endpoint.
+// EnvSetData Data sent to the environment set endpoint.
 type EnvSetData struct {
 	Envs      []Env `json:"envs,omitempty"`
 	Norestart bool  `json:"norestart,omitempty"`

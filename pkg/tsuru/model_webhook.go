@@ -9,6 +9,7 @@
 
 package tsuru
 
+// Webhook struct for Webhook
 type Webhook struct {
 	Name        string              `json:"name,omitempty"`
 	Description string              `json:"description,omitempty"`

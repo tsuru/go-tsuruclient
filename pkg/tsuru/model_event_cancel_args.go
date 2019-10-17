@@ -9,6 +9,7 @@
 
 package tsuru
 
+// EventCancelArgs struct for EventCancelArgs
 type EventCancelArgs struct {
 	Reason string `json:"reason,omitempty"`
 }

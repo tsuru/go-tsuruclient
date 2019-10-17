@@ -9,6 +9,7 @@
 
 package tsuru
 
+// SshKeyAddData struct for SshKeyAddData
 type SshKeyAddData struct {
 	Force   bool   `json:"force,omitempty"`
 	Key     string `json:"key,omitempty"`

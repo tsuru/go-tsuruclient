@@ -13,6 +13,7 @@ import (
 	"time"
 )
 
+// NodeStatus struct for NodeStatus
 type NodeStatus struct {
 	Address     string      `json:"address,omitempty"`
 	Checks      []NodeCheck `json:"checks,omitempty"`

@@ -9,7 +9,7 @@
 
 package tsuru
 
-// Arguments for creating a new team token.
+// TeamTokenCreateArgs Arguments for creating a new team token.
 type TeamTokenCreateArgs struct {
 	TokenId     string `json:"token_id,omitempty"`
 	Description string `json:"description,omitempty"`

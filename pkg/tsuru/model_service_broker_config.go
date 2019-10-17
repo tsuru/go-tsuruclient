@@ -9,9 +9,10 @@
 
 package tsuru
 
+// ServiceBrokerConfig struct for ServiceBrokerConfig
 type ServiceBrokerConfig struct {
-	Context                map[string]string             `json:"Context,omitempty"`
 	Insecure               bool                          `json:"Insecure,omitempty"`
-	CacheExpirationSeconds int32                         `json:"CacheExpirationSeconds,omitempty"`
+	Context                map[string]string             `json:"Context,omitempty"`
 	AuthConfig             ServiceBrokerConfigAuthConfig `json:"AuthConfig,omitempty"`
+	CacheExpirationSeconds int32                         `json:"CacheExpirationSeconds,omitempty"`
 }

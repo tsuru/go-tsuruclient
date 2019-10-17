@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-// An authorization token associated to a team.
+// TeamToken An authorization token associated to a team.
 type TeamToken struct {
 	Token        string         `json:"token,omitempty"`
 	TokenId      string         `json:"token_id,omitempty"`

@@ -1,6 +1,7 @@
 # Lock
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Locked** | **bool** |  | [optional] 

@@ -9,6 +9,7 @@
 
 package tsuru
 
+// VolumeBind struct for VolumeBind
 type VolumeBind struct {
 	Id VolumeBindId `json:"id,omitempty"`
 	// Volume is read-only.

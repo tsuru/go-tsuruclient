@@ -9,6 +9,7 @@
 
 package tsuru
 
+// PlatformInfo struct for PlatformInfo
 type PlatformInfo struct {
 	Platform Platform `json:"platform,omitempty"`
 	Images   []string `json:"images,omitempty"`

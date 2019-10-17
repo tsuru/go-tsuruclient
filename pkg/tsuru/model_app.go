@@ -9,7 +9,7 @@
 
 package tsuru
 
-// Tsuru app.
+// App Tsuru app.
 type App struct {
 	// App name.
 	Name string `json:"name"`

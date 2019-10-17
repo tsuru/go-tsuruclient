@@ -9,6 +9,7 @@
 
 package tsuru
 
+// VolumeBindId struct for VolumeBindId
 type VolumeBindId struct {
 	// App the volume is bound to.
 	App string `json:"app,omitempty"`

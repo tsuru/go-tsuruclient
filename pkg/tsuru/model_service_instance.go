@@ -9,6 +9,7 @@
 
 package tsuru
 
+// ServiceInstance struct for ServiceInstance
 type ServiceInstance struct {
 	Name        string                     `json:"name,omitempty"`
 	Tags        []string                   `json:"tags,omitempty"`

@@ -9,6 +9,7 @@
 
 package tsuru
 
+// UserData struct for UserData
 type UserData struct {
 	Email    string `json:"email,omitempty"`
 	Password string `json:"password,omitempty"`

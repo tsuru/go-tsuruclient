@@ -1,6 +1,7 @@
 # App
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | App name. | 

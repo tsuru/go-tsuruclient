@@ -9,6 +9,7 @@
 
 package tsuru
 
+// Quota struct for Quota
 type Quota struct {
 	Inuse int64 `json:"inuse,omitempty"`
 	Limit int64 `json:"limit,omitempty"`

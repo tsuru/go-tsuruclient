@@ -9,6 +9,7 @@
 
 package tsuru
 
+// ServiceInstanceUpdateData struct for ServiceInstanceUpdateData
 type ServiceInstanceUpdateData struct {
 	Description string   `json:"description,omitempty"`
 	Teamowner   string   `json:"teamowner,omitempty"`

@@ -1,6 +1,7 @@
 # ChangePasswordData
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Confirm** | **string** |  | [optional] 

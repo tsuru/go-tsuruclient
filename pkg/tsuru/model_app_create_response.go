@@ -9,7 +9,7 @@
 
 package tsuru
 
-// Newly created app information.
+// AppCreateResponse Newly created app information.
 type AppCreateResponse struct {
 	Status        string `json:"status,omitempty"`
 	RepositoryUrl string `json:"repository_url,omitempty"`

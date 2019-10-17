@@ -9,6 +9,7 @@
 
 package tsuru
 
+// Pool struct for Pool
 type Pool struct {
 	Name        string              `json:"name,omitempty"`
 	Default     bool                `json:"default,omitempty"`

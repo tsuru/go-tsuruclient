@@ -9,6 +9,7 @@
 
 package tsuru
 
+// Unit struct for Unit
 type Unit struct {
 	Id          string `json:"id,omitempty"`
 	Name        string `json:"name,omitempty"`

@@ -9,7 +9,7 @@
 
 package tsuru
 
-// Arguments for updating an existing team token.
+// TeamTokenUpdateArgs Arguments for updating an existing team token.
 type TeamTokenUpdateArgs struct {
 	Regenerate  bool   `json:"regenerate,omitempty"`
 	Description string `json:"description,omitempty"`

@@ -9,6 +9,7 @@
 
 package tsuru
 
+// Provisioner struct for Provisioner
 type Provisioner struct {
 	Name        string      `json:"name,omitempty"`
 	ClusterHelp ClusterHelp `json:"cluster_help,omitempty"`

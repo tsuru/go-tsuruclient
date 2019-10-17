@@ -1,27 +1,24 @@
 module github.com/tsuru/go-tsuruclient
 
+go 1.13
+
+replace (
+	github.com/docker/docker => github.com/docker/engine v0.0.0-20190219214528-cbe11bdc6da8
+	github.com/docker/machine => github.com/cezarsa/machine v0.7.1-0.20190219165632-cdcfd549f935
+	github.com/rancher/kontainer-engine => github.com/cezarsa/kontainer-engine v0.0.4-dev.0.20190930172718-74ce09259919
+	github.com/rancher/norman => github.com/rancher/norman v0.0.0-20190930164704-e09204b63081
+	github.com/samalba/dockerclient => github.com/cezarsa/dockerclient v0.0.0-20190924055524-af5052a88081
+	gopkg.in/ahmetb/go-linq.v3 => github.com/ahmetb/go-linq v3.0.0+incompatible
+	gopkg.in/check.v1 => gopkg.in/check.v1 v1.0.0-20161208181325-20d25e280405
+	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20190817020851-f2f3a405f61d
+	k8s.io/client-go => k8s.io/client-go v0.0.0-20190918200256-06eb1244587a
+	k8s.io/code-generator => k8s.io/code-generator v0.0.0-20190612205613-18da4a14b22b
+	k8s.io/kube-openapi => k8s.io/kube-openapi v0.0.0-20190709113604-33be087ad058
+)
+
 require (
-	github.com/Azure/go-ansiterm v0.0.0-20170929234023-d6e3b3328b78 // indirect
-	github.com/Sirupsen/logrus v1.0.6 // indirect
-	github.com/antihax/optional v0.0.0-20180407024304-ca021399b1a6
-	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/docker/docker v1.13.1 // indirect
-	github.com/docker/go-units v0.3.3 // indirect
-	github.com/golang/protobuf v1.2.0 // indirect
-	github.com/hashicorp/go-version v0.0.0-20180716215031-270f2f71b1ee // indirect
-	github.com/howeyc/fsnotify v0.9.0 // indirect
-	github.com/pkg/errors v0.8.0 // indirect
-	github.com/pmezard/go-difflib v1.0.0 // indirect
-	github.com/sajari/fuzzy v1.0.0 // indirect
-	github.com/stretchr/testify v1.2.1
-	github.com/tsuru/config v0.0.0-20180418191556-87403ee7da02 // indirect
-	github.com/tsuru/gnuflag v0.0.0-20151217162021-86b8c1b864aa // indirect
-	github.com/tsuru/tablecli v0.0.0-20180215113938-82de88f75181 // indirect
-	github.com/tsuru/tsuru v0.0.0-20180820205921-0e7f7f02eac5
-	golang.org/x/crypto v0.0.0-20180820150726-614d502a4dac // indirect
-	golang.org/x/net v0.0.0-20180404174746-b3c676e531a6 // indirect
-	golang.org/x/oauth2 v0.0.0-20180402223937-921ae394b943
-	golang.org/x/sys v0.0.0-20180820145501-1a700e749ce2 // indirect
-	google.golang.org/appengine v1.1.0 // indirect
-	gopkg.in/yaml.v2 v2.2.1 // indirect
+	github.com/antihax/optional v1.0.0
+	github.com/stretchr/testify v1.4.0
+	github.com/tsuru/tsuru v0.0.0-20191016203408-62e34d1909b2
+	golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45
 )

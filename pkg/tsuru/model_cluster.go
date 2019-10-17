@@ -9,13 +9,14 @@
 
 package tsuru
 
+// Cluster struct for Cluster
 type Cluster struct {
 	Name        string            `json:"name,omitempty"`
 	Addresses   []string          `json:"addresses,omitempty"`
 	Provisioner string            `json:"provisioner,omitempty"`
-	Cacert      []byte            `json:"cacert,omitempty"`
-	Clientcert  []byte            `json:"clientcert,omitempty"`
-	Clientkey   []byte            `json:"clientkey,omitempty"`
+	Cacert      string            `json:"cacert,omitempty"`
+	Clientcert  string            `json:"clientcert,omitempty"`
+	Clientkey   string            `json:"clientkey,omitempty"`
 	Pools       []string          `json:"pools,omitempty"`
 	CustomData  map[string]string `json:"custom_data,omitempty"`
 	CreateData  map[string]string `json:"create_data,omitempty"`

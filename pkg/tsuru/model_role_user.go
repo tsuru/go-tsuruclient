@@ -9,7 +9,7 @@
 
 package tsuru
 
-// Role of an user.
+// RoleUser Role of an user.
 type RoleUser struct {
 	Name         string `json:"name,omitempty"`
 	Contexttype  string `json:"contexttype,omitempty"`

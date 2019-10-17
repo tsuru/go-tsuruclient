@@ -1,6 +1,7 @@
 # TeamUpdateArgs
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Newname** | **string** |  | [optional] 

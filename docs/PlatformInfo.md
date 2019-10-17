@@ -1,6 +1,7 @@
 # PlatformInfo
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Platform** | [**Platform**](Platform.md) |  | [optional] 

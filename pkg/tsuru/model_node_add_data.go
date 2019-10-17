@@ -9,6 +9,7 @@
 
 package tsuru
 
+// NodeAddData struct for NodeAddData
 type NodeAddData struct {
 	Address string `json:"address,omitempty"`
 	// Docker API CA certificate.

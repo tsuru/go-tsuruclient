@@ -1,6 +1,7 @@
 # NodeUpdateData
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | **string** |  | [optional] 

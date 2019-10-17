@@ -1,6 +1,7 @@
 # AssignTokenArgs
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TokenId** | **string** |  | [optional] 

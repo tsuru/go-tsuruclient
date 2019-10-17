@@ -1,6 +1,7 @@
 # ServiceBrokerConfigAuthConfigBearerConfig
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Token** | **string** |  | [optional] 

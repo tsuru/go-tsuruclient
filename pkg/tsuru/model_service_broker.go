@@ -9,6 +9,7 @@
 
 package tsuru
 
+// ServiceBroker struct for ServiceBroker
 type ServiceBroker struct {
 	Name   string              `json:"Name,omitempty"`
 	URL    string              `json:"URL,omitempty"`

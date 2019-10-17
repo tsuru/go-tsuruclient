@@ -9,6 +9,7 @@
 
 package tsuru
 
+// NodeGetResponse struct for NodeGetResponse
 type NodeGetResponse struct {
 	Node   Node       `json:"node,omitempty"`
 	Status NodeStatus `json:"status,omitempty"`

@@ -9,6 +9,7 @@
 
 package tsuru
 
+// ServiceBrokerConfigAuthConfigBearerConfig struct for ServiceBrokerConfigAuthConfigBearerConfig
 type ServiceBrokerConfigAuthConfigBearerConfig struct {
 	Token string `json:"token,omitempty"`
 }

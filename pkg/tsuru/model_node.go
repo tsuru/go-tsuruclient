@@ -9,6 +9,7 @@
 
 package tsuru
 
+// Node struct for Node
 type Node struct {
 	Address     string            `json:"address,omitempty"`
 	Iaasid      string            `json:"iaasid,omitempty"`

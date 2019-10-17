@@ -13,19 +13,22 @@ Method | HTTP request | Description
 [**TeamTokensList**](AuthApi.md#TeamTokensList) | **Get** /1.6/tokens | 
 
 
-# **AssignRoleToToken**
-> AssignRoleToToken(ctx, roleName, assignTokenArgs)
+
+## AssignRoleToToken
+
+> AssignRoleToToken(ctx, roleName, token)
 
 
 Assigns a role to a team token.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **roleName** | **string**|  | 
-  **assignTokenArgs** | [**AssignTokenArgs**](AssignTokenArgs.md)|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**roleName** | **string**|  | 
+**token** | [**AssignTokenArgs**](AssignTokenArgs.md)|  | 
 
 ### Return type
 
@@ -37,12 +40,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: */*
+- **Content-Type**: application/json
+- **Accept**: */*
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **DissociateRoleFromToken**
+
+## DissociateRoleFromToken
+
 > DissociateRoleFromToken(ctx, roleName, tokenId, context)
 
 
@@ -50,12 +57,13 @@ Dissociates a role from a team token.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **roleName** | **string**|  | 
-  **tokenId** | **string**|  | 
-  **context** | **string**|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**roleName** | **string**|  | 
+**tokenId** | **string**|  | 
+**context** | **string**|  | 
 
 ### Return type
 
@@ -67,23 +75,28 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **TeamTokenCreate**
-> TeamToken TeamTokenCreate(ctx, teamTokenCreateArgs)
+
+## TeamTokenCreate
+
+> TeamToken TeamTokenCreate(ctx, token)
 
 
 Creates a team token.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **teamTokenCreateArgs** | [**TeamTokenCreateArgs**](TeamTokenCreateArgs.md)|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**token** | [**TeamTokenCreateArgs**](TeamTokenCreateArgs.md)|  | 
 
 ### Return type
 
@@ -95,12 +108,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **TeamTokenDelete**
+
+## TeamTokenDelete
+
 > TeamTokenDelete(ctx, tokenId)
 
 
@@ -108,10 +125,11 @@ Deletes a team token.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **tokenId** | **string**| Token ID. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tokenId** | **string**| Token ID. | 
 
 ### Return type
 
@@ -123,12 +141,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **TeamTokenInfo**
+
+## TeamTokenInfo
+
 > TeamToken TeamTokenInfo(ctx, tokenId)
 
 
@@ -136,10 +158,11 @@ Shows information about a specific token.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **tokenId** | **string**| Token ID. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tokenId** | **string**| Token ID. | 
 
 ### Return type
 
@@ -151,24 +174,29 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **TeamTokenUpdate**
-> TeamToken TeamTokenUpdate(ctx, tokenId, teamTokenUpdateArgs)
+
+## TeamTokenUpdate
+
+> TeamToken TeamTokenUpdate(ctx, tokenId, token)
 
 
 Updates a team token.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **tokenId** | **string**| Token ID. | 
-  **teamTokenUpdateArgs** | [**TeamTokenUpdateArgs**](TeamTokenUpdateArgs.md)|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tokenId** | **string**| Token ID. | 
+**token** | [**TeamTokenUpdateArgs**](TeamTokenUpdateArgs.md)|  | 
 
 ### Return type
 
@@ -180,18 +208,23 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **TeamTokensList**
+
+## TeamTokensList
+
 > []TeamToken TeamTokensList(ctx, )
 
 
 List team tokens.
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -204,8 +237,10 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 

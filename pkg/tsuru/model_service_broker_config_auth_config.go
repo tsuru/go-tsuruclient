@@ -9,7 +9,8 @@
 
 package tsuru
 
+// ServiceBrokerConfigAuthConfig struct for ServiceBrokerConfigAuthConfig
 type ServiceBrokerConfigAuthConfig struct {
-	BearerConfig    ServiceBrokerConfigAuthConfigBearerConfig    `json:"BearerConfig,omitempty"`
 	BasicAuthConfig ServiceBrokerConfigAuthConfigBasicAuthConfig `json:"BasicAuthConfig,omitempty"`
+	BearerConfig    ServiceBrokerConfigAuthConfigBearerConfig    `json:"BearerConfig,omitempty"`
 }

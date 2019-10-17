@@ -12,7 +12,9 @@ Method | HTTP request | Description
 [**PlatformUpdate**](PlatformApi.md#PlatformUpdate) | **Put** /1.0/platforms/{platform} | 
 
 
-# **PlatformAdd**
+
+## PlatformAdd
+
 > PlatformAdd(ctx, name, dockerfileContent)
 
 
@@ -20,11 +22,12 @@ Add new platform.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **name** | **string**|  | 
-  **dockerfileContent** | ***os.File*****os.File**|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**name** | **string**|  | 
+**dockerfileContent** | ***os.File*****os.File**|  | 
 
 ### Return type
 
@@ -36,12 +39,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/x-json-stream
+- **Content-Type**: multipart/form-data
+- **Accept**: application/x-json-stream
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **PlatformDelete**
+
+## PlatformDelete
+
 > PlatformDelete(ctx, platform)
 
 
@@ -49,10 +56,11 @@ Delete platform.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **platform** | **string**| Platform name. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**platform** | **string**| Platform name. | 
 
 ### Return type
 
@@ -64,12 +72,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **PlatformInfo**
+
+## PlatformInfo
+
 > PlatformInfo PlatformInfo(ctx, platform)
 
 
@@ -77,10 +89,11 @@ Platform info.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **platform** | **string**| Platform info. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**platform** | **string**| Platform info. | 
 
 ### Return type
 
@@ -92,18 +105,23 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **PlatformList**
+
+## PlatformList
+
 > []Platform PlatformList(ctx, )
 
 
 List platforms.
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -116,12 +134,16 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **PlatformRollback**
+
+## PlatformRollback
+
 > PlatformRollback(ctx, platform, image)
 
 
@@ -129,11 +151,12 @@ Platform rollback.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **platform** | **string**| Platform name. | 
-  **image** | **string**|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**platform** | **string**| Platform name. | 
+**image** | **string**|  | 
 
 ### Return type
 
@@ -145,12 +168,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/x-json-stream
+- **Content-Type**: Not defined
+- **Accept**: application/x-json-stream
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **PlatformUpdate**
+
+## PlatformUpdate
+
 > PlatformUpdate(ctx, platform, dockerfileContent)
 
 
@@ -158,11 +185,12 @@ Update platform.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **platform** | **string**| Platform name. | 
-  **dockerfileContent** | ***os.File*****os.File**|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**platform** | **string**| Platform name. | 
+**dockerfileContent** | ***os.File*****os.File**|  | 
 
 ### Return type
 
@@ -174,8 +202,10 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/x-json-stream
+- **Content-Type**: multipart/form-data
+- **Accept**: application/x-json-stream
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 

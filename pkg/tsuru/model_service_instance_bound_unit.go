@@ -9,6 +9,7 @@
 
 package tsuru
 
+// ServiceInstanceBoundUnit struct for ServiceInstanceBoundUnit
 type ServiceInstanceBoundUnit struct {
 	AppName string `json:"app_name,omitempty"`
 	Id      string `json:"id,omitempty"`

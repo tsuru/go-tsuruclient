@@ -9,6 +9,7 @@
 
 package tsuru
 
+// ServiceBrokerList struct for ServiceBrokerList
 type ServiceBrokerList struct {
 	Brokers []ServiceBroker `json:"brokers,omitempty"`
 }

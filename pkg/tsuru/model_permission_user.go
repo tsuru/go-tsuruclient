@@ -9,7 +9,7 @@
 
 package tsuru
 
-// Permission of an user.
+// PermissionUser Permission of an user.
 type PermissionUser struct {
 	Name         string `json:"name,omitempty"`
 	Contexttype  string `json:"contexttype,omitempty"`

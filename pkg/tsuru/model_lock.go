@@ -9,6 +9,7 @@
 
 package tsuru
 
+// Lock struct for Lock
 type Lock struct {
 	Locked      bool   `json:"locked,omitempty"`
 	Reason      string `json:"reason,omitempty"`

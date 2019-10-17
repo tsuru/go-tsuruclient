@@ -9,6 +9,7 @@
 
 package tsuru
 
+// PoolCreateData struct for PoolCreateData
 type PoolCreateData struct {
 	Name        string `json:"name,omitempty"`
 	Public      bool   `json:"public,omitempty"`

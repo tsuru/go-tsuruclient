@@ -9,6 +9,7 @@
 
 package tsuru
 
+// Url struct for Url
 type Url struct {
 	Scheme string `json:"scheme,omitempty"`
 	Host   string `json:"host,omitempty"`

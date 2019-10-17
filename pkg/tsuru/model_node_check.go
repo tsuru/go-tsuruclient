@@ -13,6 +13,7 @@ import (
 	"time"
 )
 
+// NodeCheck struct for NodeCheck
 type NodeCheck struct {
 	Time   time.Time         `json:"time,omitempty"`
 	Checks []NodeCheckResult `json:"checks,omitempty"`

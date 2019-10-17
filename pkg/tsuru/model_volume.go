@@ -9,7 +9,7 @@
 
 package tsuru
 
-// Volume
+// Volume Volume
 type Volume struct {
 	// Volume name.
 	Name string `json:"name,omitempty"`

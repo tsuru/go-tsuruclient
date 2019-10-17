@@ -15,7 +15,9 @@ Method | HTTP request | Description
 [**ServicesList**](ServiceApi.md#ServicesList) | **Get** /1.0/services | 
 
 
-# **InstanceDelete**
+
+## InstanceDelete
+
 > InstanceDelete(ctx, service, instance, unbindall)
 
 
@@ -23,12 +25,13 @@ Remove service instance
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **service** | **string**| Service name. | 
-  **instance** | **string**| Instance name. | 
-  **unbindall** | **bool**| Remove current binds to this instance | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**service** | **string**| Service name. | 
+**instance** | **string**| Instance name. | 
+**unbindall** | **bool**| Remove current binds to this instance | 
 
 ### Return type
 
@@ -40,12 +43,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/x-json-stream
+- **Content-Type**: Not defined
+- **Accept**: application/x-json-stream
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **InstanceGet**
+
+## InstanceGet
+
 > ServiceInstanceInfo InstanceGet(ctx, service, instance)
 
 
@@ -53,11 +60,12 @@ Get service instance information
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **service** | **string**| Service name. | 
-  **instance** | **string**| Instance name. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**service** | **string**| Service name. | 
+**instance** | **string**| Instance name. | 
 
 ### Return type
 
@@ -69,12 +77,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **InstanceUpdate**
+
+## InstanceUpdate
+
 > InstanceUpdate(ctx, service, instance, optional)
 
 
@@ -82,21 +94,24 @@ Update a service instance
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **service** | **string**| Service name. | 
-  **instance** | **string**| Instance name. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**service** | **string**| Service name. | 
+**instance** | **string**| Instance name. | 
  **optional** | ***InstanceUpdateOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a InstanceUpdateOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **serviceInstanceUpdateData** | [**optional.Interface of ServiceInstanceUpdateData**](ServiceInstanceUpdateData.md)|  | 
+ **updateData** | [**optional.Interface of ServiceInstanceUpdateData**](ServiceInstanceUpdateData.md)|  | 
 
 ### Return type
 
@@ -108,12 +123,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: */*
+- **Content-Type**: application/json
+- **Accept**: */*
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **InstancesList**
+
+## InstancesList
+
 > []Service InstancesList(ctx, optional)
 
 
@@ -121,13 +140,16 @@ List service instances
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
  **optional** | ***InstancesListOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a InstancesListOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -143,23 +165,28 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ServiceBrokerCreate**
-> ServiceBrokerCreate(ctx, serviceBroker)
+
+## ServiceBrokerCreate
+
+> ServiceBrokerCreate(ctx, broker)
 
 
 Create service broker
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **serviceBroker** | [**ServiceBroker**](ServiceBroker.md)|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**broker** | [**ServiceBroker**](ServiceBroker.md)|  | 
 
 ### Return type
 
@@ -171,21 +198,26 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: */*
+- **Content-Type**: application/json
+- **Accept**: */*
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ServiceBrokerDelete**
+
+## ServiceBrokerDelete
+
 > ServiceBrokerDelete(ctx, name)
 
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **name** | **string**| Service Broker name. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**name** | **string**| Service Broker name. | 
 
 ### Return type
 
@@ -197,18 +229,23 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ServiceBrokerList**
+
+## ServiceBrokerList
+
 > ServiceBrokerList ServiceBrokerList(ctx, )
 
 
 List service brokers
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -221,24 +258,29 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ServiceBrokerUpdate**
-> ServiceBrokerUpdate(ctx, name, serviceBroker)
+
+## ServiceBrokerUpdate
+
+> ServiceBrokerUpdate(ctx, name, broker)
 
 
 Update service broker
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **name** | **string**| Service Broker name. | 
-  **serviceBroker** | [**ServiceBroker**](ServiceBroker.md)|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**name** | **string**| Service Broker name. | 
+**broker** | [**ServiceBroker**](ServiceBroker.md)|  | 
 
 ### Return type
 
@@ -250,18 +292,23 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: */*
+- **Content-Type**: application/json
+- **Accept**: */*
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ServicesList**
+
+## ServicesList
+
 > []Service ServicesList(ctx, )
 
 
 List services
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -274,8 +321,10 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 

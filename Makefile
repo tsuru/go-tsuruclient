@@ -1,7 +1,7 @@
 .PHONY: generate-cmd process-files generate docker-generate-cmd docker-generate pre-generate post-generate
 
-GENERATE_ARGS = generate -t ./templates -i ./api.yaml -g go -c gen-config.json
-GENERATOR_VERSION = v3.3.4
+GENERATE_ARGS = generate -i ./api.yaml -g go -c gen-config.json
+GENERATOR_VERSION = v4.1.3
 
 generate: pre-generate docker-generate-cmd process-files post-generate
 

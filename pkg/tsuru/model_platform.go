@@ -9,6 +9,7 @@
 
 package tsuru
 
+// Platform struct for Platform
 type Platform struct {
 	Name     string `json:"name,omitempty"`
 	Disabled bool   `json:"disabled,omitempty"`

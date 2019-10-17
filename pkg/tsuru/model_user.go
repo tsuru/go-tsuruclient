@@ -9,7 +9,7 @@
 
 package tsuru
 
-// User object.
+// User User object.
 type User struct {
 	Email       string           `json:"email,omitempty"`
 	Roles       []RoleUser       `json:"roles,omitempty"`

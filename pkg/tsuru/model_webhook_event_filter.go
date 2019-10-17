@@ -9,6 +9,7 @@
 
 package tsuru
 
+// WebhookEventFilter struct for WebhookEventFilter
 type WebhookEventFilter struct {
 	TargetTypes  []string `json:"target_types,omitempty"`
 	TargetValues []string `json:"target_values,omitempty"`

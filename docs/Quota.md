@@ -1,6 +1,7 @@
 # Quota
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Inuse** | **int64** |  | [optional] 

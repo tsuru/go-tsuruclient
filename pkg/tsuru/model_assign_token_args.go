@@ -9,7 +9,7 @@
 
 package tsuru
 
-// Assign role to token arguments.
+// AssignTokenArgs Assign role to token arguments.
 type AssignTokenArgs struct {
 	TokenId string `json:"token_id,omitempty"`
 	Context string `json:"context,omitempty"`

@@ -9,6 +9,7 @@
 
 package tsuru
 
+// NodeCheckResult struct for NodeCheckResult
 type NodeCheckResult struct {
 	Name       string `json:"name,omitempty"`
 	Err        string `json:"err,omitempty"`

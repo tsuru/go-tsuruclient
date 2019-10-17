@@ -9,7 +9,7 @@
 
 package tsuru
 
-// Response returned by User Quota View.
+// UserQuotaViewResponse Response returned by User Quota View.
 type UserQuotaViewResponse struct {
 	Inuse int32 `json:"inuse,omitempty"`
 	Limit int32 `json:"limit,omitempty"`

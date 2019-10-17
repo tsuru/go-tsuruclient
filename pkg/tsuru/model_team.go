@@ -9,6 +9,7 @@
 
 package tsuru
 
+// Team struct for Team
 type Team struct {
 	Name        string   `json:"name,omitempty"`
 	Tags        []string `json:"tags,omitempty"`
