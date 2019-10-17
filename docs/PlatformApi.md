@@ -178,7 +178,7 @@ Name | Type | Description  | Notes
 
 ## PlatformUpdate
 
-> PlatformUpdate(ctx, platform, dockerfileContent)
+> PlatformUpdate(ctx, dockerfileContent, platform)
 
 
 Update platform.
@@ -189,8 +189,8 @@ Update platform.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**platform** | **string**| Platform name. | 
 **dockerfileContent** | ***os.File*****os.File**|  | 
+**platform** | **string**| Platform name. | 
 
 ### Return type
 

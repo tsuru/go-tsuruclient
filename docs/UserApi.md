@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ## ResetPassword
 
-> ResetPassword(ctx, email, token)
+> ResetPassword(ctx, token, email)
 
 
 Reset password of an user.
@@ -144,8 +144,8 @@ Reset password of an user.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**email** | **string**|  | 
 **token** | **string**|  | 
+**email** | **string**|  | 
 
 ### Return type
 

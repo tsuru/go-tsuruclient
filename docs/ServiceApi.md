@@ -268,7 +268,7 @@ This endpoint does not need any parameter.
 
 ## ServiceBrokerUpdate
 
-> ServiceBrokerUpdate(ctx, name, broker)
+> ServiceBrokerUpdate(ctx, broker, name)
 
 
 Update service broker
@@ -279,8 +279,8 @@ Update service broker
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string**| Service Broker name. | 
 **broker** | [**ServiceBroker**](ServiceBroker.md)|  | 
+**name** | **string**| Service Broker name. | 
 
 ### Return type
 

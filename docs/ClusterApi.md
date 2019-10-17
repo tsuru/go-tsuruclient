@@ -143,7 +143,7 @@ This endpoint does not need any parameter.
 
 ## ClusterUpdate
 
-> ClusterUpdate(ctx, clusterName, clusterUpdateData)
+> ClusterUpdate(ctx, clusterUpdateData, clusterName)
 
 
 Update cluster.
@@ -154,8 +154,8 @@ Update cluster.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**clusterName** | **string**| Cluster name. | 
 **clusterUpdateData** | [**Cluster**](Cluster.md)|  | 
+**clusterName** | **string**| Cluster name. | 
 
 ### Return type
 

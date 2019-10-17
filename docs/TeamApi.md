@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 
 ## TeamUpdate
 
-> TeamUpdate(ctx, team, updateData)
+> TeamUpdate(ctx, updateData, team)
 
 
 Update a team.
@@ -124,8 +124,8 @@ Update a team.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**team** | **string**| Team name. | 
 **updateData** | [**TeamUpdateArgs**](TeamUpdateArgs.md)|  | 
+**team** | **string**| Team name. | 
 
 ### Return type
 

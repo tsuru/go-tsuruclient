@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 
 ## AppQuotaChange
 
-> AppQuotaChange(ctx, app, limit)
+> AppQuotaChange(ctx, limit, app)
 
 
 Changes the maximum limit of units allowed for use.
@@ -180,8 +180,8 @@ Changes the maximum limit of units allowed for use.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**app** | **string**| App name. | 
 **limit** | **float32**| Number of units allowed for use by the current app. Negative number indicates unlimited. | 
+**app** | **string**| App name. | 
 
 ### Return type
 
@@ -357,7 +357,7 @@ Name | Type | Description  | Notes
 
 ## EnvSet
 
-> []map[string]interface{} EnvSet(ctx, app, envs)
+> []map[string]interface{} EnvSet(ctx, envs, app)
 
 
 Set new environment variable.
@@ -368,8 +368,8 @@ Set new environment variable.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**app** | **string**| App name. | 
 **envs** | [**EnvSetData**](EnvSetData.md)| Environment variables. | 
+**app** | **string**| App name. | 
 
 ### Return type
 

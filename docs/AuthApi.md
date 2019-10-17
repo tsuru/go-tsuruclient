@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## AssignRoleToToken
 
-> AssignRoleToToken(ctx, roleName, token)
+> AssignRoleToToken(ctx, token, roleName)
 
 
 Assigns a role to a team token.
@@ -27,8 +27,8 @@ Assigns a role to a team token.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**roleName** | **string**|  | 
 **token** | [**AssignTokenArgs**](AssignTokenArgs.md)|  | 
+**roleName** | **string**|  | 
 
 ### Return type
 
@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 
 ## TeamTokenUpdate
 
-> TeamToken TeamTokenUpdate(ctx, tokenId, token)
+> TeamToken TeamTokenUpdate(ctx, token, tokenId)
 
 
 Updates a team token.
@@ -195,8 +195,8 @@ Updates a team token.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tokenId** | **string**| Token ID. | 
 **token** | [**TeamTokenUpdateArgs**](TeamTokenUpdateArgs.md)|  | 
+**tokenId** | **string**| Token ID. | 
 
 ### Return type
 

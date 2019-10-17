@@ -142,7 +142,7 @@ This endpoint does not need any parameter.
 
 ## PoolUpdate
 
-> PoolUpdate(ctx, pool, poolUpdateData)
+> PoolUpdate(ctx, poolUpdateData, pool)
 
 
 Updates a pool.
@@ -153,8 +153,8 @@ Updates a pool.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pool** | **string**|  | 
 **poolUpdateData** | [**PoolUpdateData**](PoolUpdateData.md)|  | 
+**pool** | **string**|  | 
 
 ### Return type
 

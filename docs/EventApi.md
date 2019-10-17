@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## EventCancel
 
-> EventCancel(ctx, eventid, cancel)
+> EventCancel(ctx, cancel, eventid)
 
 
 ### Required Parameters
@@ -24,8 +24,8 @@ Method | HTTP request | Description
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**eventid** | **string**|  | 
 **cancel** | [**EventCancelArgs**](EventCancelArgs.md)|  | 
+**eventid** | **string**|  | 
 
 ### Return type
 
@@ -167,7 +167,7 @@ This endpoint does not need any parameter.
 
 ## WebhookUpdate
 
-> WebhookUpdate(ctx, name, webhook)
+> WebhookUpdate(ctx, webhook, name)
 
 
 ### Required Parameters
@@ -176,8 +176,8 @@ This endpoint does not need any parameter.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string**| Webhook name. | 
 **webhook** | [**Webhook**](Webhook.md)|  | 
+**name** | **string**| Webhook name. | 
 
 ### Return type
 
