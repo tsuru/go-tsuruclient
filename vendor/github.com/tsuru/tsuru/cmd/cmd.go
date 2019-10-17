@@ -6,21 +6,23 @@ package cmd
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"net/http"
 	"os"
 	"os/signal"
 	"regexp"
 	"sort"
 	"strings"
+	"sync"
 	"syscall"
 
 	goVersion "github.com/hashicorp/go-version"
 	"github.com/pkg/errors"
 	"github.com/sajari/fuzzy"
 	"github.com/tsuru/gnuflag"
-	tsuruErrors "github.com/tsuru/tsuru/errors"
 	"github.com/tsuru/tsuru/fs"
 	"github.com/tsuru/tsuru/net"
 )
@@ -263,7 +265,7 @@ func (m *Manager) Run(args []string) {
 	}
 	err = command.Run(context, client)
 	close(sigChan)
-	if err == errUnauthorized && name != loginCmdName {
+	if isUnauthorized(err) && name != loginCmdName {
 		if cmd, ok := m.Commands[loginCmdName]; ok {
 			fmt.Fprintln(m.stderr, "Error: you're not authenticated or your session has expired.")
 			fmt.Fprintf(m.stderr, "Calling the %q command...\n", loginCmdName)
@@ -279,8 +281,15 @@ func (m *Manager) Run(args []string) {
 		if verbosity > 0 {
 			errorMsg = fmt.Sprintf("%+v", err)
 		}
-		httpErr, ok := err.(*tsuruErrors.HTTP)
-		if ok && httpErr.Code == http.StatusUnauthorized && name != loginCmdName {
+		if bodyErr, ok := err.(interface {
+			Body() []byte
+		}); ok {
+			body := string(bodyErr.Body())
+			if body != "" {
+				errorMsg = fmt.Sprintf("%s: %s", errorMsg, body)
+			}
+		}
+		if isUnauthorized(err) && name != loginCmdName {
 			errorMsg = fmt.Sprintf(`You're not authenticated or your session has expired. Please use %q command for authentication.`, loginCmdName)
 		}
 		if !strings.HasSuffix(errorMsg, "\n") {
@@ -609,11 +618,54 @@ func versionString(manager *Manager) string {
 	if GitHash != "" {
 		suffix = fmt.Sprintf(" hash %s\n", GitHash)
 	}
-	return fmt.Sprintf("%s version %s.%s", manager.name, manager.version, suffix)
+	return fmt.Sprintf("Client version: %s.%s", manager.version, suffix)
+}
+
+func apiVersionString(client *Client) (string, error) {
+	if client == nil {
+		return "", fmt.Errorf("client cannot be nil")
+	}
+
+	url, err := GetURL("/info")
+	if err != nil {
+		return "", err
+	}
+
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return "", err
+	}
+
+	resp, err := client.Do(req)
+	if err != nil {
+		// if we return the error, stdout won't flush until the prompt
+		return fmt.Sprintf("Unable to retrieve server version: %v", err), nil
+	}
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return "", err
+	}
+
+	var version map[string]string
+	err = json.Unmarshal(body, &version)
+	if err != nil {
+		return "", err
+	}
+
+	resp.Body.Close()
+	return fmt.Sprintf("Server version: %s.\n", version["version"]), nil
 }
 
 func (c *version) Run(context *Context, client *Client) error {
-	fmt.Fprintf(context.Stdout, versionString(c.manager))
+	fmt.Fprint(context.Stdout, versionString(c.manager))
+
+	apiVersion, err := apiVersionString(client)
+	if err != nil {
+		return err
+	}
+	fmt.Fprint(context.Stdout, apiVersion)
+
 	return nil
 }
 
@@ -622,9 +674,14 @@ func ExtractProgramName(path string) string {
 	return parts[len(parts)-1]
 }
 
-var fsystem fs.Fs
+var (
+	fsystem   fs.Fs
+	fsystemMu sync.Mutex
+)
 
 func filesystem() fs.Fs {
+	fsystemMu.Lock()
+	defer fsystemMu.Unlock()
 	if fsystem == nil {
 		fsystem = fs.OsFs{}
 	}

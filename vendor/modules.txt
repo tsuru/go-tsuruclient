@@ -1,69 +1,72 @@
 # github.com/Azure/go-ansiterm v0.0.0-20170929234023-d6e3b3328b78
-github.com/Azure/go-ansiterm/winterm
 github.com/Azure/go-ansiterm
-# github.com/Sirupsen/logrus v1.0.6
-github.com/Sirupsen/logrus
-# github.com/antihax/optional v0.0.0-20180407024304-ca021399b1a6
+github.com/Azure/go-ansiterm/winterm
+# github.com/Nvveen/Gotty v0.0.0-20120604004816-cd527374f1e5
+github.com/Nvveen/Gotty
+# github.com/antihax/optional v1.0.0
 github.com/antihax/optional
 # github.com/davecgh/go-spew v1.1.1
 github.com/davecgh/go-spew/spew
-# github.com/docker/docker v1.13.1
+# github.com/docker/docker v1.5.0 => github.com/docker/engine v0.0.0-20190219214528-cbe11bdc6da8
 github.com/docker/docker/pkg/jsonmessage
-github.com/docker/docker/pkg/jsonlog
 github.com/docker/docker/pkg/term
 github.com/docker/docker/pkg/term/windows
 # github.com/docker/go-units v0.3.3
 github.com/docker/go-units
-# github.com/golang/protobuf v1.2.0
+# github.com/golang/protobuf v1.3.2
 github.com/golang/protobuf/proto
-# github.com/hashicorp/go-version v0.0.0-20180716215031-270f2f71b1ee
+# github.com/hashicorp/go-version v0.0.0-20160519212729-0181db470237
 github.com/hashicorp/go-version
-# github.com/howeyc/fsnotify v0.9.0
+# github.com/howeyc/fsnotify v0.8.13
 github.com/howeyc/fsnotify
-# github.com/pkg/errors v0.8.0
+# github.com/konsorten/go-windows-terminal-sequences v1.0.2
+github.com/konsorten/go-windows-terminal-sequences
+# github.com/pkg/errors v0.8.1
 github.com/pkg/errors
 # github.com/pmezard/go-difflib v1.0.0
 github.com/pmezard/go-difflib/difflib
-# github.com/sajari/fuzzy v1.0.0
+# github.com/sajari/fuzzy v0.0.0-20141008071338-bbbcac964e38
 github.com/sajari/fuzzy
-# github.com/stretchr/testify v1.2.1
+# github.com/sirupsen/logrus v1.4.2
+github.com/sirupsen/logrus
+# github.com/stretchr/testify v1.4.0
 github.com/stretchr/testify/assert
 github.com/stretchr/testify/require
-# github.com/tsuru/config v0.0.0-20180418191556-87403ee7da02
+# github.com/tsuru/config v0.0.0-20170714194731-1d2644c59846
 github.com/tsuru/config
 # github.com/tsuru/gnuflag v0.0.0-20151217162021-86b8c1b864aa
 github.com/tsuru/gnuflag
-# github.com/tsuru/tablecli v0.0.0-20180215113938-82de88f75181
+# github.com/tsuru/tablecli v0.0.0-20190131152944-7ded8a3383c6
 github.com/tsuru/tablecli
-# github.com/tsuru/tsuru v0.0.0-20180820205921-0e7f7f02eac5
-github.com/tsuru/tsuru/cmd
+# github.com/tsuru/tsuru v0.0.0-20191016203408-62e34d1909b2
 github.com/tsuru/tsuru/auth/saml/errors
+github.com/tsuru/tsuru/cmd
 github.com/tsuru/tsuru/errors
 github.com/tsuru/tsuru/exec
 github.com/tsuru/tsuru/fs
 github.com/tsuru/tsuru/git
 github.com/tsuru/tsuru/io
-github.com/tsuru/tsuru/net
 github.com/tsuru/tsuru/log
-# golang.org/x/crypto v0.0.0-20180820150726-614d502a4dac
+github.com/tsuru/tsuru/net
+# golang.org/x/crypto v0.0.0-20190701094942-4def268fd1a4
 golang.org/x/crypto/ssh/terminal
-# golang.org/x/net v0.0.0-20180404174746-b3c676e531a6
-golang.org/x/net/websocket
+# golang.org/x/net v0.0.0-20190812203447-cdfb69ac37fc
 golang.org/x/net/context
 golang.org/x/net/context/ctxhttp
-# golang.org/x/oauth2 v0.0.0-20180402223937-921ae394b943
+golang.org/x/net/websocket
+# golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45
 golang.org/x/oauth2
 golang.org/x/oauth2/internal
-# golang.org/x/sys v0.0.0-20180820145501-1a700e749ce2
+# golang.org/x/sys v0.0.0-20190801041406-cbf593c0f2f3
 golang.org/x/sys/unix
 golang.org/x/sys/windows
-# google.golang.org/appengine v1.1.0
-google.golang.org/appengine/urlfetch
+# google.golang.org/appengine v1.6.1
 google.golang.org/appengine/internal
-google.golang.org/appengine/internal/urlfetch
 google.golang.org/appengine/internal/base
 google.golang.org/appengine/internal/datastore
 google.golang.org/appengine/internal/log
 google.golang.org/appengine/internal/remote_api
-# gopkg.in/yaml.v2 v2.2.1
+google.golang.org/appengine/internal/urlfetch
+google.golang.org/appengine/urlfetch
+# gopkg.in/yaml.v2 v2.2.2
 gopkg.in/yaml.v2

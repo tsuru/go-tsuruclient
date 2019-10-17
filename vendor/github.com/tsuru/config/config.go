@@ -27,7 +27,6 @@ import (
 )
 
 var ErrMismatchConf = errors.New("Your conf is wrong:")
-var errNotJSON = errors.New("not a valid json")
 
 type ErrKeyNotFound struct {
 	Key string
@@ -213,9 +212,6 @@ func Get(key string) (interface{}, error) {
 func expandEnv(s string) (interface{}, error) {
 	raw := os.ExpandEnv(s)
 	var jsonMap map[string]interface{}
-	if len(raw) == 0 || (raw[0] != '{' && raw[0] != '[') {
-		return raw, errNotJSON
-	}
 	err := json.Unmarshal([]byte(raw), &jsonMap)
 	if err != nil {
 		var jsonSlice []interface{}

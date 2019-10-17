@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-// Package fsnotify implements file system notification.
+// Package fsnotify implements filesystem notification.
 package fsnotify
 
 import "fmt"
@@ -100,10 +100,6 @@ func (e *FileEvent) String() string {
 
 	if e.IsRename() {
 		events += "|" + "RENAME"
-	}
-
-	if e.IsAttrib() {
-		events += "|" + "ATTRIB"
 	}
 
 	if len(events) > 0 {
