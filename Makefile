@@ -3,7 +3,7 @@
 GENERATE_ARGS = generate -t ./templates -i ./api.yaml -g go -c gen-config.json
 GENERATOR_VERSION = v3.3.4
 
-generate-dev: pre-generate-dev docker-generate-cmd-dev process-files post-generate
+generate-dev: pre-generate-dev docker-generate-cmd process-files post-generate
 generate: pre-generate-prod docker-generate-cmd process-files post-generate
 
 process-files:
