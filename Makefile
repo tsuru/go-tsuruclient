@@ -1,7 +1,6 @@
 .PHONY: generate-cmd process-files generate docker-generate-cmd docker-generate pre-generate post-generate
 
 GENERATE_ARGS = generate -t ./templates -i ./api.yaml -g go -c gen-config.json
-GENERATE_ARGS_DEV = generate-dev -t ./templates -i ./api.yaml -g go -c gen-config.json
 GENERATOR_VERSION = v3.3.4
 
 generate-dev: pre-generate-dev docker-generate-cmd-dev process-files post-generate
@@ -15,9 +14,6 @@ process-files:
 
 docker-generate-cmd:
 	docker run -it --rm -u `id -u`:`id -g` -v `pwd`:/app -w /app openapitools/openapi-generator-cli:$(GENERATOR_VERSION) $(GENERATE_ARGS)
-
-docker-generate-cmd-dev:
-	docker run -it --rm -u `id -u`:`id -g` -v `pwd`:/app -w /app openapitools/openapi-generator-cli:$(GENERATOR_VERSION) $(GENERATE_ARGS_DEV)
 
 docker-generate: pre-generate docker-generate-cmd process-files post-generate
 
