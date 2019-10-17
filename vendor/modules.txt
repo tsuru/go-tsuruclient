@@ -7,7 +7,7 @@ github.com/Nvveen/Gotty
 github.com/antihax/optional
 # github.com/davecgh/go-spew v1.1.1
 github.com/davecgh/go-spew/spew
-# github.com/docker/docker v1.5.0 => github.com/docker/engine v0.0.0-20190219214528-cbe11bdc6da8
+# github.com/docker/docker v1.13.1 => github.com/docker/engine v0.0.0-20190219214528-cbe11bdc6da8
 github.com/docker/docker/pkg/jsonmessage
 github.com/docker/docker/pkg/term
 github.com/docker/docker/pkg/term/windows
@@ -15,9 +15,9 @@ github.com/docker/docker/pkg/term/windows
 github.com/docker/go-units
 # github.com/golang/protobuf v1.3.2
 github.com/golang/protobuf/proto
-# github.com/hashicorp/go-version v0.0.0-20160519212729-0181db470237
+# github.com/hashicorp/go-version v0.0.0-20180716215031-270f2f71b1ee
 github.com/hashicorp/go-version
-# github.com/howeyc/fsnotify v0.8.13
+# github.com/howeyc/fsnotify v0.9.0
 github.com/howeyc/fsnotify
 # github.com/konsorten/go-windows-terminal-sequences v1.0.2
 github.com/konsorten/go-windows-terminal-sequences
@@ -25,14 +25,14 @@ github.com/konsorten/go-windows-terminal-sequences
 github.com/pkg/errors
 # github.com/pmezard/go-difflib v1.0.0
 github.com/pmezard/go-difflib/difflib
-# github.com/sajari/fuzzy v0.0.0-20141008071338-bbbcac964e38
+# github.com/sajari/fuzzy v1.0.0
 github.com/sajari/fuzzy
 # github.com/sirupsen/logrus v1.4.2
 github.com/sirupsen/logrus
 # github.com/stretchr/testify v1.4.0
 github.com/stretchr/testify/assert
 github.com/stretchr/testify/require
-# github.com/tsuru/config v0.0.0-20170714194731-1d2644c59846
+# github.com/tsuru/config v0.0.0-20180418191556-87403ee7da02
 github.com/tsuru/config
 # github.com/tsuru/gnuflag v0.0.0-20151217162021-86b8c1b864aa
 github.com/tsuru/gnuflag
