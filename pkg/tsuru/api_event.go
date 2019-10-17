@@ -29,10 +29,10 @@ type EventApiService service
 /*
 EventCancel Method for EventCancel
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param eventid
  * @param cancel
+ * @param eventid
 */
-func (a *EventApiService) EventCancel(ctx _context.Context, eventid string, cancel EventCancelArgs) (*_nethttp.Response, error) {
+func (a *EventApiService) EventCancel(ctx _context.Context, cancel EventCancelArgs, eventid string) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -579,10 +579,10 @@ func (a *EventApiService) WebhookList(ctx _context.Context) ([]Webhook, *_nethtt
 /*
 WebhookUpdate Method for WebhookUpdate
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param name Webhook name.
  * @param webhook
+ * @param name Webhook name.
 */
-func (a *EventApiService) WebhookUpdate(ctx _context.Context, name string, webhook Webhook) (*_nethttp.Response, error) {
+func (a *EventApiService) WebhookUpdate(ctx _context.Context, webhook Webhook, name string) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}

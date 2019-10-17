@@ -30,10 +30,10 @@ type AuthApiService service
 AssignRoleToToken Method for AssignRoleToToken
 Assigns a role to a team token.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param roleName
  * @param token
+ * @param roleName
 */
-func (a *AuthApiService) AssignRoleToToken(ctx _context.Context, roleName string, token AssignTokenArgs) (*_nethttp.Response, error) {
+func (a *AuthApiService) AssignRoleToToken(ctx _context.Context, token AssignTokenArgs, roleName string) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -581,11 +581,11 @@ func (a *AuthApiService) TeamTokenInfo(ctx _context.Context, tokenId string) (Te
 TeamTokenUpdate Method for TeamTokenUpdate
 Updates a team token.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param tokenId Token ID.
  * @param token
+ * @param tokenId Token ID.
 @return TeamToken
 */
-func (a *AuthApiService) TeamTokenUpdate(ctx _context.Context, tokenId string, token TeamTokenUpdateArgs) (TeamToken, *_nethttp.Response, error) {
+func (a *AuthApiService) TeamTokenUpdate(ctx _context.Context, token TeamTokenUpdateArgs, tokenId string) (TeamToken, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}

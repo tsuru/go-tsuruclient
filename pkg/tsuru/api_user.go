@@ -409,10 +409,10 @@ func (a *UserApiService) ChangePassword(ctx _context.Context, localVarOptionals 
 ResetPassword Method for ResetPassword
 Reset password of an user.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param email
  * @param token
+ * @param email
 */
-func (a *UserApiService) ResetPassword(ctx _context.Context, email string, token string) (*_nethttp.Response, error) {
+func (a *UserApiService) ResetPassword(ctx _context.Context, token string, email string) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -428,11 +428,11 @@ func (a *UserApiService) ResetPassword(ctx _context.Context, email string, token
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if strlen(email) < 1 {
-		return nil, reportError("email must have at least 1 elements")
-	}
 	if strlen(token) < 1 {
 		return nil, reportError("token must have at least 1 elements")
+	}
+	if strlen(email) < 1 {
+		return nil, reportError("email must have at least 1 elements")
 	}
 
 	// to determine the Content-Type header

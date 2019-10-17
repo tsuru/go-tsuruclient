@@ -557,10 +557,10 @@ func (a *AppApiService) AppList(ctx _context.Context, localVarOptionals *AppList
 AppQuotaChange Method for AppQuotaChange
 Changes the maximum limit of units allowed for use.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param app App name.
  * @param limit Number of units allowed for use by the current app. Negative number indicates unlimited.
+ * @param app App name.
 */
-func (a *AppApiService) AppQuotaChange(ctx _context.Context, app string, limit float32) (*_nethttp.Response, error) {
+func (a *AppApiService) AppQuotaChange(ctx _context.Context, limit float32, app string) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
@@ -1151,11 +1151,11 @@ func (a *AppApiService) EnvGet(ctx _context.Context, app string, localVarOptiona
 EnvSet Method for EnvSet
 Set new environment variable.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param app App name.
  * @param envs Environment variables.
+ * @param app App name.
 @return []map[string]interface{}
 */
-func (a *AppApiService) EnvSet(ctx _context.Context, app string, envs EnvSetData) ([]map[string]interface{}, *_nethttp.Response, error) {
+func (a *AppApiService) EnvSet(ctx _context.Context, envs EnvSetData, app string) ([]map[string]interface{}, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}

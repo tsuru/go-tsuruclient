@@ -586,10 +586,10 @@ func (a *PlatformApiService) PlatformRollback(ctx _context.Context, platform str
 PlatformUpdate Method for PlatformUpdate
 Update platform.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param platform Platform name.
  * @param dockerfileContent
+ * @param platform Platform name.
 */
-func (a *PlatformApiService) PlatformUpdate(ctx _context.Context, platform string, dockerfileContent *os.File) (*_nethttp.Response, error) {
+func (a *PlatformApiService) PlatformUpdate(ctx _context.Context, dockerfileContent *os.File, platform string) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}

@@ -477,10 +477,10 @@ func (a *PoolApiService) PoolList(ctx _context.Context) ([]Pool, *_nethttp.Respo
 PoolUpdate Method for PoolUpdate
 Updates a pool.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param pool
  * @param poolUpdateData
+ * @param pool
 */
-func (a *PoolApiService) PoolUpdate(ctx _context.Context, pool string, poolUpdateData PoolUpdateData) (*_nethttp.Response, error) {
+func (a *PoolApiService) PoolUpdate(ctx _context.Context, poolUpdateData PoolUpdateData, pool string) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}

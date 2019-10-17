@@ -369,10 +369,10 @@ func (a *TeamApiService) TeamGet(ctx _context.Context, team string) (TeamInfo, *
 TeamUpdate Method for TeamUpdate
 Update a team.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param team Team name.
  * @param updateData
+ * @param team Team name.
 */
-func (a *TeamApiService) TeamUpdate(ctx _context.Context, team string, updateData TeamUpdateArgs) (*_nethttp.Response, error) {
+func (a *TeamApiService) TeamUpdate(ctx _context.Context, updateData TeamUpdateArgs, team string) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}

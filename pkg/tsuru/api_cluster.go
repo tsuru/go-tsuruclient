@@ -473,10 +473,10 @@ func (a *ClusterApiService) ClusterList(ctx _context.Context) ([]Cluster, *_neth
 ClusterUpdate Method for ClusterUpdate
 Update cluster.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param clusterName Cluster name.
  * @param clusterUpdateData
+ * @param clusterName Cluster name.
 */
-func (a *ClusterApiService) ClusterUpdate(ctx _context.Context, clusterName string, clusterUpdateData Cluster) (*_nethttp.Response, error) {
+func (a *ClusterApiService) ClusterUpdate(ctx _context.Context, clusterUpdateData Cluster, clusterName string) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}

@@ -849,10 +849,10 @@ func (a *ServiceApiService) ServiceBrokerList(ctx _context.Context) (ServiceBrok
 ServiceBrokerUpdate Method for ServiceBrokerUpdate
 Update service broker
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param name Service Broker name.
  * @param broker
+ * @param name Service Broker name.
 */
-func (a *ServiceApiService) ServiceBrokerUpdate(ctx _context.Context, name string, broker ServiceBroker) (*_nethttp.Response, error) {
+func (a *ServiceApiService) ServiceBrokerUpdate(ctx _context.Context, broker ServiceBroker, name string) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
