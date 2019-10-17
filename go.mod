@@ -1,7 +1,5 @@
 module github.com/tsuru/go-tsuruclient
 
-go 1.13
-
 replace (
 	github.com/docker/docker => github.com/docker/engine v0.0.0-20190219214528-cbe11bdc6da8
 	github.com/docker/machine => github.com/cezarsa/machine v0.7.1-0.20190219165632-cdcfd549f935
@@ -16,9 +14,16 @@ replace (
 	k8s.io/kube-openapi => k8s.io/kube-openapi v0.0.0-20190709113604-33be087ad058
 )
 
+go 1.13
+
 require (
 	github.com/antihax/optional v1.0.0
+	github.com/docker/docker v1.13.1 // indirect
+	github.com/hashicorp/go-version v0.0.0-20180716215031-270f2f71b1ee // indirect
+	github.com/howeyc/fsnotify v0.9.0 // indirect
+	github.com/sajari/fuzzy v1.0.0 // indirect
 	github.com/stretchr/testify v1.4.0
+	github.com/tsuru/config v0.0.0-20180418191556-87403ee7da02 // indirect
 	github.com/tsuru/tsuru v0.0.0-20191016203408-62e34d1909b2
 	golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45
 )
