@@ -19,6 +19,9 @@ func ClientFromEnvironment(cfg *tsuru.Configuration) (*tsuru.APIClient, error) {
 	if cfg.DefaultHeader == nil {
 		cfg.DefaultHeader = map[string]string{}
 	}
+
+	cfg.DefaultHeader["Content-Type"] = "application/json"
+
 	if _, authSet := cfg.DefaultHeader["Authorization"]; !authSet {
 		if token, tokenErr := cmd.ReadToken(); tokenErr == nil && token != "" {
 			cfg.DefaultHeader["Authorization"] = "bearer " + token

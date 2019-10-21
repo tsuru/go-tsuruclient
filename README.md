@@ -118,6 +118,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [App](docs/App.md)
+ - [AppCreateData](docs/AppCreateData.md)
  - [AppCreateResponse](docs/AppCreateResponse.md)
  - [AssignTokenArgs](docs/AssignTokenArgs.md)
  - [ChangePasswordData](docs/ChangePasswordData.md)

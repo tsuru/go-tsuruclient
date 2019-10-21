@@ -31,7 +31,7 @@ Create a new app.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**app** | [**App**](App.md)|  | 
+**app** | [**AppCreateData**](AppCreateData.md)|  | 
 
 ### Return type
 

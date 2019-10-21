@@ -422,7 +422,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/App'
+              $ref: '#/components/schemas/AppCreateData'
         required: true
       responses:
         201:
@@ -3739,6 +3739,55 @@ components:
         ip:
           type: string
         owner:
+          type: string
+      required:
+      - name
+      type: object
+    AppCreateData:
+      example:
+        teamOwner: teamOwner
+        router: router
+        name: name
+        pool: pool
+        routeropts:
+          key: routeropts
+        description: description
+        plan: plan
+        platform: platform
+        tags:
+        - tags
+        - tags
+      properties:
+        name:
+          description: App name.
+          type: string
+        tags:
+          description: App tags.
+          items:
+            type: string
+          type: array
+        router:
+          description: App router name.
+          type: string
+        routeropts:
+          additionalProperties:
+            type: string
+          description: Custom router options.
+          type: object
+        plan:
+          description: App plan name.
+          type: string
+        pool:
+          description: App pool name.
+          type: string
+        platform:
+          description: App platform.
+          type: string
+        description:
+          description: App description.
+          type: string
+        teamOwner:
+          description: Team that owns the app.
           type: string
       required:
       - name

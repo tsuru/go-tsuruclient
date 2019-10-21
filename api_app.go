@@ -11,14 +11,13 @@ package tsuru
 
 import (
 	_context "context"
-	"fmt"
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
-	"reflect"
+	"fmt"
 	"strings"
-
 	"github.com/antihax/optional"
+	"reflect"
 )
 
 // Linger please
@@ -397,15 +396,15 @@ func (a *AppApiService) AppGet(ctx _context.Context, app string) (App, *_nethttp
 
 // AppListOpts Optional parameters for the method 'AppList'
 type AppListOpts struct {
-	Locked     optional.Bool
-	Name       optional.String
-	Owner      optional.String
-	Platform   optional.String
-	Pool       optional.String
-	Status     optional.String
-	Tag        optional.Interface
-	TeamOwner  optional.String
-	Simplified optional.Bool
+    Locked optional.Bool
+    Name optional.String
+    Owner optional.String
+    Platform optional.String
+    Pool optional.String
+    Status optional.String
+    Tag optional.Interface
+    TeamOwner optional.String
+    Simplified optional.Bool
 }
 
 /*
@@ -792,7 +791,7 @@ func (a *AppApiService) AppQuotaGet(ctx _context.Context, app string) (Quota, *_
 
 // AppRestartOpts Optional parameters for the method 'AppRestart'
 type AppRestartOpts struct {
-	Process optional.String
+    Process optional.String
 }
 
 /*
@@ -1016,7 +1015,7 @@ func (a *AppApiService) AppUpdate(ctx _context.Context, app string) (*_nethttp.R
 
 // EnvGetOpts Optional parameters for the method 'EnvGet'
 type EnvGetOpts struct {
-	Env optional.String
+    Env optional.String
 }
 
 /*
@@ -1314,7 +1313,7 @@ func (a *AppApiService) EnvUnset(ctx _context.Context, app string, env []string,
 		return nil, reportError("env must have at least 1 elements")
 	}
 
-	t := env
+	t:=env
 	if reflect.TypeOf(t).Kind() == reflect.Slice {
 		s := reflect.ValueOf(t)
 		for i := 0; i < s.Len(); i++ {
