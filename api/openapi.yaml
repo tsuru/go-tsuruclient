@@ -537,25 +537,31 @@ paths:
         schema:
           minLength: 1
           type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppUpdateData'
+        required: true
       responses:
         200:
           content: {}
           description: App updated
         400:
           content:
-            application/x-json-stream:
+            application/json:
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: Invalid data
         401:
           content:
-            application/x-json-stream:
+            application/json:
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: Unauthorized
         404:
           content:
-            application/x-json-stream:
+            application/json:
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: Not found
@@ -563,6 +569,7 @@ paths:
       - Bearer: []
       tags:
       - app
+      x-codegen-request-body-name: appUpdateData
   /1.0/apps/{app}/env:
     delete:
       description: Unset app environment variables.
@@ -3791,6 +3798,38 @@ components:
           type: string
       required:
       - name
+      type: object
+    AppUpdateData:
+      example:
+        teamOwner: teamOwner
+        pool: pool
+        description: description
+        plan: plan
+        platform: platform
+        tags:
+        - tags
+        - tags
+      properties:
+        tags:
+          description: App tags.
+          items:
+            type: string
+          type: array
+        plan:
+          description: App plan name.
+          type: string
+        pool:
+          description: App pool name.
+          type: string
+        platform:
+          description: App platform.
+          type: string
+        description:
+          description: App description.
+          type: string
+        teamOwner:
+          description: Team that owns the app.
+          type: string
       type: object
     AppCreateResponse:
       description: Newly created app information.

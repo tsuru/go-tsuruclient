@@ -280,7 +280,7 @@ Name | Type | Description  | Notes
 
 ## AppUpdate
 
-> AppUpdate(ctx, app)
+> AppUpdate(ctx, appUpdateData, app)
 
 
 Update a tsuru app.
@@ -291,6 +291,7 @@ Update a tsuru app.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**appUpdateData** | [**AppUpdateData**](AppUpdateData.md)|  | 
 **app** | **string**| App name. | 
 
 ### Return type
@@ -303,8 +304,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/x-json-stream
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

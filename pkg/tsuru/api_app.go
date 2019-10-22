@@ -906,9 +906,10 @@ func (a *AppApiService) AppRestart(ctx _context.Context, app string, localVarOpt
 AppUpdate Method for AppUpdate
 Update a tsuru app.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param appUpdateData
  * @param app App name.
 */
-func (a *AppApiService) AppUpdate(ctx _context.Context, app string) (*_nethttp.Response, error) {
+func (a *AppApiService) AppUpdate(ctx _context.Context, appUpdateData AppUpdateData, app string) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
@@ -929,7 +930,7 @@ func (a *AppApiService) AppUpdate(ctx _context.Context, app string) (*_nethttp.R
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -938,13 +939,15 @@ func (a *AppApiService) AppUpdate(ctx _context.Context, app string) (*_nethttp.R
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/x-json-stream"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = &appUpdateData
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {

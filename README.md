@@ -120,6 +120,7 @@ Class | Method | HTTP request | Description
  - [App](docs/App.md)
  - [AppCreateData](docs/AppCreateData.md)
  - [AppCreateResponse](docs/AppCreateResponse.md)
+ - [AppUpdateData](docs/AppUpdateData.md)
  - [AssignTokenArgs](docs/AssignTokenArgs.md)
  - [ChangePasswordData](docs/ChangePasswordData.md)
  - [Cluster](docs/Cluster.md)
