@@ -2,7 +2,7 @@ language: go
 install: true
 matrix:
   go:
-    - 1.10.x
+    - 1.13.x
     - master
 script:
   - go test ./...
