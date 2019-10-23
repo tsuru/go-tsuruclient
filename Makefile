@@ -3,7 +3,8 @@
 GENERATE_ARGS = generate -t ./templates -i ./api.yaml -g go -c gen-config.json
 GENERATOR_VERSION = v3.3.4
 
-generate: pre-generate docker-generate-cmd process-files post-generate
+generate-dev: pre-generate-dev docker-generate-cmd process-files post-generate
+generate: pre-generate-prod docker-generate-cmd process-files post-generate
 
 process-files:
 	rm -rf pkg/tsuru && mkdir -p pkg/tsuru
@@ -16,8 +17,11 @@ docker-generate-cmd:
 
 docker-generate: pre-generate docker-generate-cmd process-files post-generate
 
-pre-generate:
+pre-generate-dev:
 	cp ../tsuru/docs/reference/api.yaml .
+
+pre-generate-prod:
+	curl -O https://raw.githubusercontent.com/tsuru/tsuru/master/docs/reference/api.yaml
 
 post-generate:
 	rm api.yaml
