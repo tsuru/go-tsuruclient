@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**AppQuotaChange**](AppApi.md#AppQuotaChange) | **Put** /1.0/apps/{app}/quota | 
 [**AppQuotaGet**](AppApi.md#AppQuotaGet) | **Get** /1.0/apps/{app}/quota | 
 [**AppRestart**](AppApi.md#AppRestart) | **Post** /1.0/apps/{app}/restart | 
+[**AppSetRoutable**](AppApi.md#AppSetRoutable) | **Post** /1.8/apps/{app}/routable | 
 [**AppUpdate**](AppApi.md#AppUpdate) | **Put** /1.0/apps/{app} | 
 [**EnvGet**](AppApi.md#EnvGet) | **Get** /1.0/apps/{app}/env | 
 [**EnvSet**](AppApi.md#EnvSet) | **Post** /1.0/apps/{app}/env | 
@@ -18,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **AppCreate**
-> AppCreateResponse AppCreate(ctx, app)
+> AppCreateResponse AppCreate(ctx, appCreateData)
 
 
 Create a new app.
@@ -28,7 +29,7 @@ Create a new app.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **app** | [**App**](App.md)|  | 
+  **appCreateData** | [**AppCreateData**](AppCreateData.md)|  | 
 
 ### Return type
 
@@ -235,6 +236,35 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/x-json-stream
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AppSetRoutable**
+> AppSetRoutable(ctx, app, setRoutableArgs)
+
+
+Sets a version as routable.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **app** | **string**| App name. | 
+  **setRoutableArgs** | [**SetRoutableArgs**](SetRoutableArgs.md)|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

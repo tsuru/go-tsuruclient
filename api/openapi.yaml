@@ -419,7 +419,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/App'
+              $ref: '#/components/schemas/AppCreateData'
         required: true
       responses:
         201:
@@ -816,6 +816,47 @@ paths:
         404:
           content:
             application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
+  /1.8/apps/{app}/routable:
+    post:
+      description: Sets a version as routable.
+      operationId: AppSetRoutable
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetRoutableArgs'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: App updated
+        400:
+          content: {}
+          description: Invalid arguments
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: App not found
@@ -3741,6 +3782,16 @@ components:
         limit:
           type: integer
       type: object
+    SetRoutableArgs:
+      example:
+        isRoutable: true
+        version: version
+      properties:
+        version:
+          type: string
+        isRoutable:
+          type: boolean
+      type: object
     User:
       description: User object.
       example:
@@ -4048,6 +4099,55 @@ components:
           type: string
         contextvalue:
           type: string
+      type: object
+    AppCreateData:
+      example:
+        teamOwner: teamOwner
+        router: router
+        name: name
+        pool: pool
+        routeropts:
+          key: routeropts
+        description: description
+        plan: plan
+        platform: platform
+        tags:
+        - tags
+        - tags
+      properties:
+        name:
+          description: App name.
+          type: string
+        tags:
+          description: App tags.
+          items:
+            type: string
+          type: array
+        router:
+          description: App router name.
+          type: string
+        routeropts:
+          additionalProperties:
+            type: string
+          description: Custom router options.
+          type: object
+        plan:
+          description: App plan name.
+          type: string
+        pool:
+          description: App pool name.
+          type: string
+        platform:
+          description: App platform.
+          type: string
+        description:
+          description: App description.
+          type: string
+        teamOwner:
+          description: Team that owns the app.
+          type: string
+      required:
+      - name
       type: object
     Team:
       example:

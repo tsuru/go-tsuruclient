@@ -37,6 +37,7 @@ Class | Method | HTTP request | Description
 *AppApi* | [**AppQuotaChange**](docs/AppApi.md#appquotachange) | **Put** /1.0/apps/{app}/quota | 
 *AppApi* | [**AppQuotaGet**](docs/AppApi.md#appquotaget) | **Get** /1.0/apps/{app}/quota | 
 *AppApi* | [**AppRestart**](docs/AppApi.md#apprestart) | **Post** /1.0/apps/{app}/restart | 
+*AppApi* | [**AppSetRoutable**](docs/AppApi.md#appsetroutable) | **Post** /1.8/apps/{app}/routable | 
 *AppApi* | [**AppUpdate**](docs/AppApi.md#appupdate) | **Put** /1.0/apps/{app} | 
 *AppApi* | [**EnvGet**](docs/AppApi.md#envget) | **Get** /1.0/apps/{app}/env | 
 *AppApi* | [**EnvSet**](docs/AppApi.md#envset) | **Post** /1.0/apps/{app}/env | 
@@ -116,6 +117,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [App](docs/App.md)
+ - [AppCreateData](docs/AppCreateData.md)
  - [AppCreateResponse](docs/AppCreateResponse.md)
  - [AssignTokenArgs](docs/AssignTokenArgs.md)
  - [ChangePasswordData](docs/ChangePasswordData.md)
@@ -158,6 +160,7 @@ Class | Method | HTTP request | Description
  - [ServiceInstanceBoundUnit](docs/ServiceInstanceBoundUnit.md)
  - [ServiceInstanceInfo](docs/ServiceInstanceInfo.md)
  - [ServiceInstanceUpdateData](docs/ServiceInstanceUpdateData.md)
+ - [SetRoutableArgs](docs/SetRoutableArgs.md)
  - [SshKeyAddData](docs/SshKeyAddData.md)
  - [SshKeyListResponse](docs/SshKeyListResponse.md)
  - [Team](docs/Team.md)
