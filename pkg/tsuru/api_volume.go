@@ -117,14 +117,14 @@ func (a *VolumeApiService) VolumeBind(ctx context.Context, volume string, localV
 			error:      localVarHttpResponse.Status,
 			statusCode: localVarHttpResponse.StatusCode,
 		}
-		if localVarHttpResponse.StatusCode == 401 {
-			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
-			localVarHttpResponse.Body.Close()
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHttpResponse, newErr
-			}
+
+		localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
+		localVarHttpResponse.Body.Close()
+		if err == nil {
 			newErr.body = localVarBody
+		}
+
+		if localVarHttpResponse.StatusCode == 401 {
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -135,13 +135,6 @@ func (a *VolumeApiService) VolumeBind(ctx context.Context, volume string, localV
 			return localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 404 {
-			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
-			localVarHttpResponse.Body.Close()
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHttpResponse, newErr
-			}
-			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -152,13 +145,6 @@ func (a *VolumeApiService) VolumeBind(ctx context.Context, volume string, localV
 			return localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 409 {
-			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
-			localVarHttpResponse.Body.Close()
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHttpResponse, newErr
-			}
-			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -246,14 +232,14 @@ func (a *VolumeApiService) VolumeCreate(ctx context.Context, volume Volume) (*ht
 			error:      localVarHttpResponse.Status,
 			statusCode: localVarHttpResponse.StatusCode,
 		}
-		if localVarHttpResponse.StatusCode == 401 {
-			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
-			localVarHttpResponse.Body.Close()
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHttpResponse, newErr
-			}
+
+		localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
+		localVarHttpResponse.Body.Close()
+		if err == nil {
 			newErr.body = localVarBody
+		}
+
+		if localVarHttpResponse.StatusCode == 401 {
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -264,13 +250,6 @@ func (a *VolumeApiService) VolumeCreate(ctx context.Context, volume Volume) (*ht
 			return localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 409 {
-			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
-			localVarHttpResponse.Body.Close()
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHttpResponse, newErr
-			}
-			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -360,14 +339,14 @@ func (a *VolumeApiService) VolumeDelete(ctx context.Context, volume string) (*ht
 			error:      localVarHttpResponse.Status,
 			statusCode: localVarHttpResponse.StatusCode,
 		}
-		if localVarHttpResponse.StatusCode == 401 {
-			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
-			localVarHttpResponse.Body.Close()
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHttpResponse, newErr
-			}
+
+		localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
+		localVarHttpResponse.Body.Close()
+		if err == nil {
 			newErr.body = localVarBody
+		}
+
+		if localVarHttpResponse.StatusCode == 401 {
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -378,13 +357,6 @@ func (a *VolumeApiService) VolumeDelete(ctx context.Context, volume string) (*ht
 			return localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 404 {
-			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
-			localVarHttpResponse.Body.Close()
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHttpResponse, newErr
-			}
-			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -480,6 +452,7 @@ func (a *VolumeApiService) VolumeGet(ctx context.Context, volume string) (Volume
 			error:      localVarHttpResponse.Status,
 			statusCode: localVarHttpResponse.StatusCode,
 		}
+
 		if localVarHttpResponse.StatusCode == 200 {
 			var v Volume
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -601,6 +574,7 @@ func (a *VolumeApiService) VolumeList(ctx context.Context) ([]Volume, *http.Resp
 			error:      localVarHttpResponse.Status,
 			statusCode: localVarHttpResponse.StatusCode,
 		}
+
 		if localVarHttpResponse.StatusCode == 200 {
 			var v []Volume
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -712,6 +686,7 @@ func (a *VolumeApiService) VolumePlansList(ctx context.Context) (map[string]Volu
 			error:      localVarHttpResponse.Status,
 			statusCode: localVarHttpResponse.StatusCode,
 		}
+
 		if localVarHttpResponse.StatusCode == 200 {
 			var v map[string]VolumePlan
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -838,14 +813,14 @@ func (a *VolumeApiService) VolumeUnbind(ctx context.Context, volume string, loca
 			error:      localVarHttpResponse.Status,
 			statusCode: localVarHttpResponse.StatusCode,
 		}
-		if localVarHttpResponse.StatusCode == 401 {
-			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
-			localVarHttpResponse.Body.Close()
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHttpResponse, newErr
-			}
+
+		localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
+		localVarHttpResponse.Body.Close()
+		if err == nil {
 			newErr.body = localVarBody
+		}
+
+		if localVarHttpResponse.StatusCode == 401 {
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -856,13 +831,6 @@ func (a *VolumeApiService) VolumeUnbind(ctx context.Context, volume string, loca
 			return localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 404 {
-			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
-			localVarHttpResponse.Body.Close()
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHttpResponse, newErr
-			}
-			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {

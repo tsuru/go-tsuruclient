@@ -223,6 +223,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **process** | **optional.String**| Process number to be restarted. If the process number will not informed, whole application will be restarted. | 
+ **version** | **optional.String**|  | 
 
 ### Return type
 

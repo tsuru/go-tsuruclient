@@ -298,19 +298,20 @@ func (a *{{{classname}}}Service) {{{nickname}}}(ctx context.Context{{#hasParams}
 			{{! TSURU }}
 			statusCode: localVarHttpResponse.StatusCode,
 		}
+
+		{{! TSURU }}
+		{{^returnType}}
+		localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
+		localVarHttpResponse.Body.Close()
+		if err == nil {
+			newErr.body = localVarBody
+		}
+		{{/returnType}}
+
 		{{#responses}}
 		{{#dataType}}
 		if localVarHttpResponse.StatusCode == {{{code}}} {
 			{{! TSURU }}
-			{{^returnType}}
-			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
-			localVarHttpResponse.Body.Close()
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHttpResponse, newErr
-			}
-			newErr.body = localVarBody
-			{{/returnType}}
 			var v {{{dataType}}}
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {

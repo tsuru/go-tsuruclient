@@ -99,14 +99,14 @@ func (a *AuthApiService) AssignRoleToToken(ctx context.Context, roleName string,
 			error:      localVarHttpResponse.Status,
 			statusCode: localVarHttpResponse.StatusCode,
 		}
-		if localVarHttpResponse.StatusCode == 401 {
-			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
-			localVarHttpResponse.Body.Close()
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHttpResponse, newErr
-			}
+
+		localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
+		localVarHttpResponse.Body.Close()
+		if err == nil {
 			newErr.body = localVarBody
+		}
+
+		if localVarHttpResponse.StatusCode == 401 {
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -117,13 +117,6 @@ func (a *AuthApiService) AssignRoleToToken(ctx context.Context, roleName string,
 			return localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 404 {
-			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
-			localVarHttpResponse.Body.Close()
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHttpResponse, newErr
-			}
-			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -214,14 +207,14 @@ func (a *AuthApiService) DissociateRoleFromToken(ctx context.Context, roleName s
 			error:      localVarHttpResponse.Status,
 			statusCode: localVarHttpResponse.StatusCode,
 		}
-		if localVarHttpResponse.StatusCode == 401 {
-			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
-			localVarHttpResponse.Body.Close()
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHttpResponse, newErr
-			}
+
+		localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
+		localVarHttpResponse.Body.Close()
+		if err == nil {
 			newErr.body = localVarBody
+		}
+
+		if localVarHttpResponse.StatusCode == 401 {
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -232,13 +225,6 @@ func (a *AuthApiService) DissociateRoleFromToken(ctx context.Context, roleName s
 			return localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 404 {
-			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
-			localVarHttpResponse.Body.Close()
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHttpResponse, newErr
-			}
-			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -332,6 +318,7 @@ func (a *AuthApiService) TeamTokenCreate(ctx context.Context, teamTokenCreateArg
 			error:      localVarHttpResponse.Status,
 			statusCode: localVarHttpResponse.StatusCode,
 		}
+
 		if localVarHttpResponse.StatusCode == 201 {
 			var v TeamToken
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -452,14 +439,14 @@ func (a *AuthApiService) TeamTokenDelete(ctx context.Context, tokenId string) (*
 			error:      localVarHttpResponse.Status,
 			statusCode: localVarHttpResponse.StatusCode,
 		}
-		if localVarHttpResponse.StatusCode == 401 {
-			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
-			localVarHttpResponse.Body.Close()
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHttpResponse, newErr
-			}
+
+		localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
+		localVarHttpResponse.Body.Close()
+		if err == nil {
 			newErr.body = localVarBody
+		}
+
+		if localVarHttpResponse.StatusCode == 401 {
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -470,13 +457,6 @@ func (a *AuthApiService) TeamTokenDelete(ctx context.Context, tokenId string) (*
 			return localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 404 {
-			localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
-			localVarHttpResponse.Body.Close()
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHttpResponse, newErr
-			}
-			newErr.body = localVarBody
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -572,6 +552,7 @@ func (a *AuthApiService) TeamTokenInfo(ctx context.Context, tokenId string) (Tea
 			error:      localVarHttpResponse.Status,
 			statusCode: localVarHttpResponse.StatusCode,
 		}
+
 		if localVarHttpResponse.StatusCode == 200 {
 			var v TeamToken
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -701,6 +682,7 @@ func (a *AuthApiService) TeamTokenUpdate(ctx context.Context, tokenId string, te
 			error:      localVarHttpResponse.Status,
 			statusCode: localVarHttpResponse.StatusCode,
 		}
+
 		if localVarHttpResponse.StatusCode == 200 {
 			var v TeamToken
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -822,6 +804,7 @@ func (a *AuthApiService) TeamTokensList(ctx context.Context) ([]TeamToken, *http
 			error:      localVarHttpResponse.Status,
 			statusCode: localVarHttpResponse.StatusCode,
 		}
+
 		if localVarHttpResponse.StatusCode == 200 {
 			var v []TeamToken
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))

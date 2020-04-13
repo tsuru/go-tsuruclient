@@ -803,6 +803,8 @@ paths:
                 process:
                   description: Process number to be restarted. If the process number will not informed, whole application will be restarted.
                   type: string
+                version:
+                  type: string
       responses:
         200:
           content: {}
