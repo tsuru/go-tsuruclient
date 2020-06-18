@@ -38,7 +38,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ConstraintSet**
-> ConstraintSet(ctx, optional)
+> ConstraintSet(ctx, poolConstraintSet)
 
 
 Update a service instance
@@ -48,14 +48,7 @@ Update a service instance
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***ConstraintSetOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a ConstraintSetOpts struct
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **poolConstraintSet** | [**optional.Interface of PoolConstraintSet**](PoolConstraintSet.md)|  | 
+  **poolConstraintSet** | [**PoolConstraintSet**](PoolConstraintSet.md)|  | 
 
 ### Return type
 

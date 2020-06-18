@@ -16,8 +16,6 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -143,15 +141,9 @@ func (a *PoolApiService) ConstraintList(ctx context.Context) ([]PoolConstraint, 
 PoolApiService
 Update a service instance
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *ConstraintSetOpts - Optional Parameters:
- * @param "PoolConstraintSet" (optional.Interface of PoolConstraintSet) -
+ * @param poolConstraintSet
 */
-
-type ConstraintSetOpts struct {
-	PoolConstraintSet optional.Interface
-}
-
-func (a *PoolApiService) ConstraintSet(ctx context.Context, localVarOptionals *ConstraintSetOpts) (*http.Response, error) {
+func (a *PoolApiService) ConstraintSet(ctx context.Context, poolConstraintSet PoolConstraintSet) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -185,14 +177,7 @@ func (a *PoolApiService) ConstraintSet(ctx context.Context, localVarOptionals *C
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.PoolConstraintSet.IsSet() {
-		localVarOptionalPoolConstraintSet, localVarOptionalPoolConstraintSetok := localVarOptionals.PoolConstraintSet.Value().(PoolConstraintSet)
-		if !localVarOptionalPoolConstraintSetok {
-			return nil, reportError("poolConstraintSet should be PoolConstraintSet")
-		}
-		localVarPostBody = &localVarOptionalPoolConstraintSet
-	}
-
+	localVarPostBody = &poolConstraintSet
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {

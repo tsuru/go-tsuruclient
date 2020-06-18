@@ -2960,7 +2960,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PoolConstraintSet'
-        required: false
+        required: true
       responses:
         200:
           content: {}
