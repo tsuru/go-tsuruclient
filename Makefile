@@ -11,6 +11,7 @@ process-files:
 	mv *.go pkg/tsuru
 	gofmt -s -w pkg/tsuru/
 	goimports -w pkg/tsuru/
+	go mod tidy
 
 docker-generate-cmd:
 	docker run -it --rm -u `id -u`:`id -g` -v `pwd`:/app -w /app openapitools/openapi-generator-cli:$(GENERATOR_VERSION) $(GENERATE_ARGS)

@@ -72,6 +72,8 @@ Class | Method | HTTP request | Description
 *PlatformApi* | [**PlatformList**](docs/PlatformApi.md#platformlist) | **Get** /1.0/platforms | 
 *PlatformApi* | [**PlatformRollback**](docs/PlatformApi.md#platformrollback) | **Post** /1.6/platforms/{platform}/rollback | 
 *PlatformApi* | [**PlatformUpdate**](docs/PlatformApi.md#platformupdate) | **Put** /1.0/platforms/{platform} | 
+*PoolApi* | [**ConstraintList**](docs/PoolApi.md#constraintlist) | **Get** /1.3/constraints | 
+*PoolApi* | [**ConstraintSet**](docs/PoolApi.md#constraintset) | **Put** /1.3/constraints | 
 *PoolApi* | [**PoolCreate**](docs/PoolApi.md#poolcreate) | **Post** /1.0/pools | 
 *PoolApi* | [**PoolDelete**](docs/PoolApi.md#pooldelete) | **Delete** /pools/{pool} | 
 *PoolApi* | [**PoolGet**](docs/PoolApi.md#poolget) | **Get** /pools/{pool} | 
@@ -142,6 +144,8 @@ Class | Method | HTTP request | Description
  - [Platform](docs/Platform.md)
  - [PlatformInfo](docs/PlatformInfo.md)
  - [Pool](docs/Pool.md)
+ - [PoolConstraint](docs/PoolConstraint.md)
+ - [PoolConstraintSet](docs/PoolConstraintSet.md)
  - [PoolCreateData](docs/PoolCreateData.md)
  - [PoolUpdateData](docs/PoolUpdateData.md)
  - [Provisioner](docs/Provisioner.md)

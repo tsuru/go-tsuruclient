@@ -2926,6 +2926,61 @@ paths:
       - Bearer: []
       tags:
       - cluster
+  /1.3/constraints:
+    get:
+      description: List pool constraints
+      operationId: ConstraintList
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PoolConstraint'
+                type: array
+          description: PoolConstraints
+        204:
+          content: {}
+          description: No content
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+      security:
+      - Bearer: []
+      tags:
+      - pool
+    put:
+      description: Update a service instance
+      operationId: ConstraintSet
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PoolConstraintSet'
+        required: false
+      responses:
+        200:
+          content: {}
+          description: Pool constraint set
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+      security:
+      - Bearer: []
+      tags:
+      - pool
 components:
   schemas:
     App:
@@ -3344,6 +3399,26 @@ components:
             type: string
         type: object
       type: array
+    PoolConstraint:
+      example:
+        Field: Field
+        Values:
+        - Values
+        - Values
+        Blacklist: true
+        PoolExpr: PoolExpr
+      properties:
+        PoolExpr:
+          type: string
+        Field:
+          type: string
+        Values:
+          items:
+            type: string
+          type: array
+        Blacklist:
+          type: boolean
+      type: object
     NodeCheck:
       example:
         checks:
@@ -4653,6 +4728,29 @@ components:
         body:
           type: string
         insecure:
+          type: boolean
+      type: object
+    PoolConstraintSet:
+      example:
+        Field: Field
+        Values:
+        - Values
+        - Values
+        Blacklist: true
+        append: true
+        PoolExpr: PoolExpr
+      properties:
+        append:
+          type: boolean
+        PoolExpr:
+          type: string
+        Field:
+          type: string
+        Values:
+          items:
+            type: string
+          type: array
+        Blacklist:
           type: boolean
       type: object
     ErrorMessage:
