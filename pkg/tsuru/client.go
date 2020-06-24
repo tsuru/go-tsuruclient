@@ -498,6 +498,12 @@ type GenericOpenAPIError struct {
 
 // Error returns non-empty string if there was an error.
 func (e GenericOpenAPIError) Error() string {
+	if e.model != nil {
+		return fmt.Sprintf("%s: %v", e.error, e.model)
+	}
+	if len(e.body) > 0 {
+		return fmt.Sprintf("%s: %s", e.error, string(e.body))
+	}
 	return e.error
 }
 
