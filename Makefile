@@ -18,11 +18,14 @@ docker-generate-cmd:
 
 docker-generate: pre-generate docker-generate-cmd process-files post-generate
 
-pre-generate-dev:
+pre-generate-dev: clean-docs
 	cp ../tsuru/docs/reference/api.yaml .
 
-pre-generate-prod:
+pre-generate-prod: clean-docs
 	curl -O https://raw.githubusercontent.com/tsuru/tsuru/master/docs/reference/api.yaml
 
 post-generate:
 	rm api.yaml
+
+clean-docs:
+	rm docs/*.md
