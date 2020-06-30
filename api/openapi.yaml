@@ -58,6 +58,44 @@ paths:
       - Bearer: []
       tags:
       - service
+  /1.0/services/{service}/instances:
+    post:
+      description: Create a service instance
+      operationId: InstanceCreate
+      parameters:
+      - description: Service name.
+        in: path
+        name: service
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceInstance'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Service instance created
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Service not found
+      security:
+      - Bearer: []
+      tags:
+      - service
   /1.0/services/{service}/instances/{instance}:
     delete:
       description: Remove service instance
@@ -193,6 +231,97 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: Service instance not found
+      security:
+      - Bearer: []
+      tags:
+      - service
+  /1.0/services/{service}/instances/{instance}/{app}:
+    delete:
+      description: Unbind the service instance from app
+      operationId: ServiceInstanceUnbind
+      parameters:
+      - description: Service name.
+        in: path
+        name: service
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: Instance name.
+        in: path
+        name: instance
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/ServiceInstanceUnbind'
+        required: false
+      responses:
+        200:
+          content: {}
+          description: Instance has been unbound from the app.
+        401:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+      security:
+      - Bearer: []
+      tags:
+      - service
+    put:
+      description: Bind the service instance to app
+      operationId: ServiceInstanceBind
+      parameters:
+      - description: Service name.
+        in: path
+        name: service
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: Instance name.
+        in: path
+        name: instance
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/ServiceInstanceBind'
+        required: false
+      responses:
+        200:
+          content: {}
+          description: Instance bound to the app.
+        401:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
       security:
       - Bearer: []
       tags:
@@ -4068,6 +4197,19 @@ components:
         description:
           type: string
       type: object
+    ServiceInstanceBind:
+      example:
+        noRestart: true
+        parameters:
+          key: parameters
+      properties:
+        noRestart:
+          type: boolean
+        parameters:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
     Env:
       description: Environment variable.
       example:
@@ -4246,6 +4388,16 @@ components:
           items:
             type: string
           type: array
+      type: object
+    ServiceInstanceUnbind:
+      example:
+        noRestart: true
+        force: true
+      properties:
+        noRestart:
+          type: boolean
+        force:
+          type: boolean
       type: object
     TeamCreateArgs:
       example:

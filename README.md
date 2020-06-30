@@ -79,6 +79,7 @@ Class | Method | HTTP request | Description
 *PoolApi* | [**PoolGet**](docs/PoolApi.md#poolget) | **Get** /pools/{pool} | 
 *PoolApi* | [**PoolList**](docs/PoolApi.md#poollist) | **Get** /1.0/pools | 
 *PoolApi* | [**PoolUpdate**](docs/PoolApi.md#poolupdate) | **Put** /pools/{pool} | 
+*ServiceApi* | [**InstanceCreate**](docs/ServiceApi.md#instancecreate) | **Post** /1.0/services/{service}/instances | 
 *ServiceApi* | [**InstanceDelete**](docs/ServiceApi.md#instancedelete) | **Delete** /1.0/services/{service}/instances/{instance} | 
 *ServiceApi* | [**InstanceGet**](docs/ServiceApi.md#instanceget) | **Get** /1.0/services/{service}/instances/{instance} | 
 *ServiceApi* | [**InstanceUpdate**](docs/ServiceApi.md#instanceupdate) | **Put** /1.0/services/{service}/instances/{instance} | 
@@ -87,6 +88,8 @@ Class | Method | HTTP request | Description
 *ServiceApi* | [**ServiceBrokerDelete**](docs/ServiceApi.md#servicebrokerdelete) | **Delete** /1.7/brokers/{name} | 
 *ServiceApi* | [**ServiceBrokerList**](docs/ServiceApi.md#servicebrokerlist) | **Get** /1.7/brokers | 
 *ServiceApi* | [**ServiceBrokerUpdate**](docs/ServiceApi.md#servicebrokerupdate) | **Put** /1.7/brokers/{name} | 
+*ServiceApi* | [**ServiceInstanceBind**](docs/ServiceApi.md#serviceinstancebind) | **Put** /1.0/services/{service}/instances/{instance}/{app} | 
+*ServiceApi* | [**ServiceInstanceUnbind**](docs/ServiceApi.md#serviceinstanceunbind) | **Delete** /1.0/services/{service}/instances/{instance}/{app} | 
 *ServiceApi* | [**ServicesList**](docs/ServiceApi.md#serviceslist) | **Get** /1.0/services | 
 *TeamApi* | [**TeamCreate**](docs/TeamApi.md#teamcreate) | **Post** /1.0/teams | 
 *TeamApi* | [**TeamDelete**](docs/TeamApi.md#teamdelete) | **Delete** /1.0/teams/{team} | 
@@ -161,8 +164,10 @@ Class | Method | HTTP request | Description
  - [ServiceBrokerConfigAuthConfigBearerConfig](docs/ServiceBrokerConfigAuthConfigBearerConfig.md)
  - [ServiceBrokerList](docs/ServiceBrokerList.md)
  - [ServiceInstance](docs/ServiceInstance.md)
+ - [ServiceInstanceBind](docs/ServiceInstanceBind.md)
  - [ServiceInstanceBoundUnit](docs/ServiceInstanceBoundUnit.md)
  - [ServiceInstanceInfo](docs/ServiceInstanceInfo.md)
+ - [ServiceInstanceUnbind](docs/ServiceInstanceUnbind.md)
  - [ServiceInstanceUpdateData](docs/ServiceInstanceUpdateData.md)
  - [SetRoutableArgs](docs/SetRoutableArgs.md)
  - [SshKeyAddData](docs/SshKeyAddData.md)
