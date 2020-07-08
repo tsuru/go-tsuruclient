@@ -7,7 +7,7 @@ generate-dev: pre-generate-dev docker-generate-cmd process-files post-generate
 generate: pre-generate-prod docker-generate-cmd process-files post-generate
 
 process-files:
-	rm -rf pkg/tsuru && mkdir -p pkg/tsuru
+	find pkg/tsuru/ -name "*.go" ! -name 'custom_*' | xargs rm
 	mv *.go pkg/tsuru
 	gofmt -s -w pkg/tsuru/
 	goimports -w pkg/tsuru/
