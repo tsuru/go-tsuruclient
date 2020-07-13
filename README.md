@@ -79,6 +79,10 @@ Class | Method | HTTP request | Description
 *PoolApi* | [**PoolGet**](docs/PoolApi.md#poolget) | **Get** /pools/{pool} | 
 *PoolApi* | [**PoolList**](docs/PoolApi.md#poollist) | **Get** /1.0/pools | 
 *PoolApi* | [**PoolUpdate**](docs/PoolApi.md#poolupdate) | **Put** /pools/{pool} | 
+*RouterApi* | [**RouterCreate**](docs/RouterApi.md#routercreate) | **Post** /1.8/routers | 
+*RouterApi* | [**RouterDelete**](docs/RouterApi.md#routerdelete) | **Delete** /1.8/routers/{name} | 
+*RouterApi* | [**RouterList**](docs/RouterApi.md#routerlist) | **Get** /1.3/routers | 
+*RouterApi* | [**RouterUpdate**](docs/RouterApi.md#routerupdate) | **Put** /1.8/routers/{name} | 
 *ServiceApi* | [**InstanceCreate**](docs/ServiceApi.md#instancecreate) | **Post** /1.0/services/{service}/instances | 
 *ServiceApi* | [**InstanceDelete**](docs/ServiceApi.md#instancedelete) | **Delete** /1.0/services/{service}/instances/{instance} | 
 *ServiceApi* | [**InstanceGet**](docs/ServiceApi.md#instanceget) | **Get** /1.0/services/{service}/instances/{instance} | 
@@ -128,6 +132,7 @@ Class | Method | HTTP request | Description
  - [ChangePasswordData](docs/ChangePasswordData.md)
  - [Cluster](docs/Cluster.md)
  - [ClusterHelp](docs/ClusterHelp.md)
+ - [DynamicRouter](docs/DynamicRouter.md)
  - [Env](docs/Env.md)
  - [EnvSetData](docs/EnvSetData.md)
  - [EventCancelArgs](docs/EventCancelArgs.md)
@@ -144,6 +149,7 @@ Class | Method | HTTP request | Description
  - [NodeUpdateData](docs/NodeUpdateData.md)
  - [PermissionUser](docs/PermissionUser.md)
  - [Plan](docs/Plan.md)
+ - [PlanRouter](docs/PlanRouter.md)
  - [Platform](docs/Platform.md)
  - [PlatformInfo](docs/PlatformInfo.md)
  - [Pool](docs/Pool.md)

@@ -12,7 +12,7 @@ package tsuru
 type Router struct {
 	Name         string            `json:"name,omitempty"`
 	Opts         map[string]string `json:"opts,omitempty"`
-	Addres       string            `json:"addres,omitempty"`
+	Address      string            `json:"address,omitempty"`
 	Type         string            `json:"type,omitempty"`
 	Status       string            `json:"status,omitempty"`
 	StatusDetail string            `json:"status-detail,omitempty"`

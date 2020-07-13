@@ -3110,6 +3110,131 @@ paths:
       - Bearer: []
       tags:
       - pool
+  /1.3/routers:
+    get:
+      description: List available routers
+      operationId: RouterList
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PlanRouter'
+                type: array
+          description: Routers
+        204:
+          content: {}
+          description: No content
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+      security:
+      - Bearer: []
+      tags:
+      - router
+  /1.8/routers:
+    post:
+      description: Adds a new dynamic router
+      operationId: RouterCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DynamicRouter'
+        required: true
+      responses:
+        201:
+          content: {}
+          description: Dynamic router added
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+      security:
+      - Bearer: []
+      tags:
+      - router
+  /1.8/routers/{name}:
+    delete:
+      description: Deletes a dynamic router
+      operationId: RouterDelete
+      parameters:
+      - description: Dynamic router name.
+        in: path
+        name: name
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Dynamic router deleted
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Dynamic router not found
+      security:
+      - Bearer: []
+      tags:
+      - router
+    put:
+      description: Updates a dynamic router
+      operationId: RouterUpdate
+      parameters:
+      - description: Dynamic router name.
+        in: path
+        name: name
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DynamicRouter'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Dynamic router updated
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Dynamic router not found
+      security:
+      - Bearer: []
+      tags:
+      - router
 components:
   schemas:
     App:
@@ -3245,18 +3370,18 @@ components:
           name: name
           cpushare: 0
         routers:
-        - opts:
+        - address: address
+          opts:
             key: opts
           status-detail: status-detail
           name: name
-          addres: addres
           type: type
           status: status
-        - opts:
+        - address: address
+          opts:
             key: opts
           status-detail: status-detail
           name: name
-          addres: addres
           type: type
           status: status
         tags:
@@ -3528,6 +3653,33 @@ components:
             type: string
         type: object
       type: array
+    PlanRouter:
+      description: Plan Router
+      example:
+        default: true
+        name: name
+        dynamic: true
+        type: type
+        config: '{}'
+        info:
+          key: info
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        config:
+          properties: {}
+          type: object
+        info:
+          additionalProperties:
+            type: string
+          type: object
+        default:
+          type: boolean
+        dynamic:
+          type: boolean
+      type: object
     PoolConstraint:
       example:
         Field: Field
@@ -3656,11 +3808,11 @@ components:
       type: object
     Router:
       example:
+        address: address
         opts:
           key: opts
         status-detail: status-detail
         name: name
-        addres: addres
         type: type
         status: status
       properties:
@@ -3670,7 +3822,7 @@ components:
           additionalProperties:
             type: string
           type: object
-        addres:
+        address:
           type: string
         type:
           type: string
@@ -4679,6 +4831,21 @@ components:
           type: boolean
         router:
           type: string
+      type: object
+    DynamicRouter:
+      description: Dynamic router
+      example:
+        name: name
+        type: type
+        config: '{}'
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        config:
+          properties: {}
+          type: object
       type: object
     PlatformInfo:
       example:
