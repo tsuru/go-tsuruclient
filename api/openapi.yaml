@@ -4398,9 +4398,9 @@ components:
         name: name
         pool: pool
         config:
-          envs:
-          - envs
-          - envs
+          env:
+          - env
+          - env
       properties:
         name:
           type: string
@@ -4494,11 +4494,11 @@ components:
           $ref: '#/components/schemas/ServiceBroker_Config_AuthConfig'
     NodeContainer_config:
       example:
-        envs:
-        - envs
-        - envs
+        env:
+        - env
+        - env
       properties:
-        envs:
+        env:
           items:
             type: string
           type: array

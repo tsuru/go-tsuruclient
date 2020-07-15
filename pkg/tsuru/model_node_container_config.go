@@ -10,5 +10,5 @@
 package tsuru
 
 type NodeContainerConfig struct {
-	Envs []string `json:"envs,omitempty"`
+	Env []string `json:"env,omitempty"`
 }
