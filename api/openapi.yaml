@@ -3235,6 +3235,36 @@ paths:
       - Bearer: []
       tags:
       - router
+  /1.2/nodecontainers:
+    post:
+      description: Creates container that runs on every node
+      operationId: NodeContainerCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodeContainer'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Node container created
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Wrong configuration
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+      security:
+      - Bearer: []
+      tags:
+      - nodecontainer
 components:
   schemas:
     App:
@@ -4362,6 +4392,25 @@ components:
             type: string
           type: object
       type: object
+    NodeContainer:
+      description: Data sent to set up a node container
+      example:
+        name: name
+        pool: pool
+        config:
+          envs:
+          - envs
+          - envs
+      properties:
+        name:
+          type: string
+        pool:
+          type: string
+        config:
+          $ref: '#/components/schemas/NodeContainer_config'
+      required:
+      - name
+      type: object
     Env:
       description: Environment variable.
       example:
@@ -4443,6 +4492,16 @@ components:
           type: integer
         AuthConfig:
           $ref: '#/components/schemas/ServiceBroker_Config_AuthConfig'
+    NodeContainer_config:
+      example:
+        envs:
+        - envs
+        - envs
+      properties:
+        envs:
+          items:
+            type: string
+          type: array
     AppCreateResponse:
       description: Newly created app information.
       example:

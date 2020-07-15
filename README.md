@@ -66,6 +66,7 @@ Class | Method | HTTP request | Description
 *NodeApi* | [**NodeGet**](docs/NodeApi.md#nodeget) | **Get** /1.2/node/{address} | 
 *NodeApi* | [**NodeList**](docs/NodeApi.md#nodelist) | **Get** /1.2/node | 
 *NodeApi* | [**NodeUpdate**](docs/NodeApi.md#nodeupdate) | **Put** /1.2/node | 
+*NodecontainerApi* | [**NodeContainerCreate**](docs/NodecontainerApi.md#nodecontainercreate) | **Post** /1.2/nodecontainers | 
 *PlatformApi* | [**PlatformAdd**](docs/PlatformApi.md#platformadd) | **Post** /1.0/platforms | 
 *PlatformApi* | [**PlatformDelete**](docs/PlatformApi.md#platformdelete) | **Delete** /1.0/platforms/{platform} | 
 *PlatformApi* | [**PlatformInfo**](docs/PlatformApi.md#platforminfo) | **Get** /1.6/platforms/{platform} | 
@@ -143,6 +144,8 @@ Class | Method | HTTP request | Description
  - [NodeAddData](docs/NodeAddData.md)
  - [NodeCheck](docs/NodeCheck.md)
  - [NodeCheckResult](docs/NodeCheckResult.md)
+ - [NodeContainer](docs/NodeContainer.md)
+ - [NodeContainerConfig](docs/NodeContainerConfig.md)
  - [NodeGetResponse](docs/NodeGetResponse.md)
  - [NodeListResponse](docs/NodeListResponse.md)
  - [NodeStatus](docs/NodeStatus.md)
