@@ -10,8 +10,9 @@
 package tsuru
 
 type ServiceInstanceUpdateData struct {
-	Description string   `json:"description,omitempty"`
-	Teamowner   string   `json:"teamowner,omitempty"`
-	Plan        string   `json:"plan,omitempty"`
-	Tags        []string `json:"tags,omitempty"`
+	Description string            `json:"description,omitempty"`
+	Teamowner   string            `json:"teamowner,omitempty"`
+	Plan        string            `json:"plan,omitempty"`
+	Tags        []string          `json:"tags,omitempty"`
+	Parameters  map[string]string `json:"parameters,omitempty"`
 }

@@ -4342,6 +4342,8 @@ components:
         name: name
         description: description
         id: 0
+        parameters:
+          key: parameters
         plan_name: plan_name
         tags:
         - tags
@@ -4378,6 +4380,10 @@ components:
           type: string
         description:
           type: string
+        parameters:
+          additionalProperties:
+            type: string
+          type: object
       type: object
     ServiceInstanceBind:
       example:
@@ -4760,6 +4766,8 @@ components:
           name: name
           description: description
           id: 0
+          parameters:
+            key: parameters
           plan_name: plan_name
           tags:
           - tags
@@ -4782,6 +4790,8 @@ components:
           name: name
           description: description
           id: 0
+          parameters:
+            key: parameters
           plan_name: plan_name
           tags:
           - tags
@@ -5160,6 +5170,8 @@ components:
       example:
         description: description
         plan: plan
+        parameters:
+          key: parameters
         teamowner: teamowner
         tags:
         - tags
@@ -5175,6 +5187,10 @@ components:
           items:
             type: string
           type: array
+        parameters:
+          additionalProperties:
+            type: string
+          type: object
       type: object
   securitySchemes:
     Bearer:
