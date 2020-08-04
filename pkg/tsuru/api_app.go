@@ -31,10 +31,10 @@ type AppApiService service
 AppApiService
 Create a new app.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param appCreateData
+ * @param inputApp
 @return AppCreateResponse
 */
-func (a *AppApiService) AppCreate(ctx context.Context, appCreateData AppCreateData) (AppCreateResponse, *http.Response, error) {
+func (a *AppApiService) AppCreate(ctx context.Context, inputApp InputApp) (AppCreateResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
@@ -69,7 +69,7 @@ func (a *AppApiService) AppCreate(ctx context.Context, appCreateData AppCreateDa
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &appCreateData
+	localVarPostBody = &inputApp
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -283,7 +283,7 @@ func (a *AppApiService) AppDelete(ctx context.Context, app string) (*http.Respon
 AppApiService
 Get info about a tsuru app.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param app Appname.
+ * @param app App name.
 @return App
 */
 func (a *AppApiService) AppGet(ctx context.Context, app string) (App, *http.Response, error) {
@@ -1051,8 +1051,9 @@ AppApiService
 Update a tsuru app.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param app App name.
+ * @param inputApp
 */
-func (a *AppApiService) AppUpdate(ctx context.Context, app string) (*http.Response, error) {
+func (a *AppApiService) AppUpdate(ctx context.Context, app string, inputApp InputApp) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -1089,6 +1090,8 @@ func (a *AppApiService) AppUpdate(ctx context.Context, app string) (*http.Respon
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
+	// body params
+	localVarPostBody = &inputApp
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {

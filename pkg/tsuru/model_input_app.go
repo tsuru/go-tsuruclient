@@ -9,7 +9,7 @@
 
 package tsuru
 
-type AppCreateData struct {
+type InputApp struct {
 	// App name.
 	Name string `json:"name"`
 	// App tags.
@@ -19,7 +19,8 @@ type AppCreateData struct {
 	// Custom router options.
 	Routeropts map[string]string `json:"routeropts,omitempty"`
 	// App plan name.
-	Plan string `json:"plan,omitempty"`
+	Plan         string       `json:"plan,omitempty"`
+	Planoverride PlanOverride `json:"planoverride,omitempty"`
 	// App pool name.
 	Pool string `json:"pool,omitempty"`
 	// App platform.

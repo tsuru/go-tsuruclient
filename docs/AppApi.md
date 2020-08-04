@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **AppCreate**
-> AppCreateResponse AppCreate(ctx, appCreateData)
+> AppCreateResponse AppCreate(ctx, inputApp)
 
 
 Create a new app.
@@ -29,7 +29,7 @@ Create a new app.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **appCreateData** | [**AppCreateData**](AppCreateData.md)|  | 
+  **inputApp** | [**InputApp**](InputApp.md)|  | 
 
 ### Return type
 
@@ -85,7 +85,7 @@ Get info about a tsuru app.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **app** | **string**| Appname. | 
+  **app** | **string**| App name. | 
 
 ### Return type
 
@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AppUpdate**
-> AppUpdate(ctx, app)
+> AppUpdate(ctx, app, inputApp)
 
 
 Update a tsuru app.
@@ -281,6 +281,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **app** | **string**| App name. | 
+  **inputApp** | [**InputApp**](InputApp.md)|  | 
 
 ### Return type
 

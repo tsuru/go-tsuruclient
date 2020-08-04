@@ -548,7 +548,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AppCreateData'
+              $ref: '#/components/schemas/InputApp'
         required: true
       responses:
         201:
@@ -621,7 +621,7 @@ paths:
       description: Get info about a tsuru app.
       operationId: AppGet
       parameters:
-      - description: Appname.
+      - description: App name.
         in: path
         name: app
         required: true
@@ -662,6 +662,12 @@ paths:
         schema:
           minLength: 1
           type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/InputApp'
+        required: true
       responses:
         200:
           content: {}
@@ -3265,6 +3271,82 @@ paths:
       - Bearer: []
       tags:
       - nodecontainer
+  /1.9/roles/{role_name}/group:
+    post:
+      description: Assigns a role to a group.
+      operationId: AssignRoleToGroup
+      parameters:
+      - in: path
+        name: role_name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssignGroupArgs'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Role assigned.
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Role not found
+      security:
+      - Bearer: []
+      tags:
+      - auth
+  /1.6/roles/{role_name}/group/{group_name}:
+    delete:
+      description: Dissociates a role from a group.
+      operationId: DissociateRoleFromGroup
+      parameters:
+      - in: path
+        name: role_name
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: group_name
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: context
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Role dissociated.
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Role not found
+      security:
+      - Bearer: []
+      tags:
+      - auth
 components:
   schemas:
     App:
@@ -3293,8 +3375,12 @@ components:
           default: true
           router: router
           memory: 0
+          cpumilli: 0
           swap: 0
           name: name
+          override:
+            memory: 5
+            cpumilli: 2
           cpushare: 0
       properties:
         name:
@@ -3396,8 +3482,12 @@ components:
           default: true
           router: router
           memory: 0
+          cpumilli: 0
           swap: 0
           name: name
+          override:
+            memory: 5
+            cpumilli: 2
           cpushare: 0
         routers:
         - address: address
@@ -3512,6 +3602,17 @@ components:
         team:
           type: string
       type: object
+    AssignGroupArgs:
+      description: Assign role to group arguments.
+      example:
+        group_name: group_name
+        context: context
+      properties:
+        group_name:
+          type: string
+        context:
+          type: string
+      type: object
     ServiceBroker_Config_AuthConfig_BearerConfig:
       example:
         token: token
@@ -3608,6 +3709,20 @@ components:
           type: boolean
         success_only:
           type: boolean
+      type: object
+    PlanOverride:
+      description: App plan override.
+      example:
+        memory: 5
+        cpumilli: 2
+      properties:
+        memory:
+          format: int64
+          type: integer
+          x-go-custom-type: '*int64'
+        cpumilli:
+          type: integer
+          x-go-custom-type: '*int'
       type: object
     Pool:
       example:
@@ -3945,8 +4060,12 @@ components:
             default: true
             router: router
             memory: 0
+            cpumilli: 0
             swap: 0
             name: name
+            override:
+              memory: 5
+              cpumilli: 2
             cpushare: 0
         - owner: owner
           teams:
@@ -3971,8 +4090,12 @@ components:
             default: true
             router: router
             memory: 0
+            cpumilli: 0
             swap: 0
             name: name
+            override:
+              memory: 5
+              cpumilli: 2
             cpushare: 0
       properties:
         name:
@@ -4536,55 +4659,6 @@ components:
         contextvalue:
           type: string
       type: object
-    AppCreateData:
-      example:
-        teamOwner: teamOwner
-        router: router
-        name: name
-        pool: pool
-        routeropts:
-          key: routeropts
-        description: description
-        plan: plan
-        platform: platform
-        tags:
-        - tags
-        - tags
-      properties:
-        name:
-          description: App name.
-          type: string
-        tags:
-          description: App tags.
-          items:
-            type: string
-          type: array
-        router:
-          description: App router name.
-          type: string
-        routeropts:
-          additionalProperties:
-            type: string
-          description: Custom router options.
-          type: object
-        plan:
-          description: App plan name.
-          type: string
-        pool:
-          description: App pool name.
-          type: string
-        platform:
-          description: App platform.
-          type: string
-        description:
-          description: App description.
-          type: string
-        teamOwner:
-          description: Team that owns the app.
-          type: string
-      required:
-      - name
-      type: object
     Team:
       example:
         permissions:
@@ -4879,8 +4953,12 @@ components:
         default: true
         router: router
         memory: 0
+        cpumilli: 0
         swap: 0
         name: name
+        override:
+          memory: 5
+          cpumilli: 2
         cpushare: 0
       properties:
         name:
@@ -4896,10 +4974,15 @@ components:
         cpushare:
           minimum: 0
           type: integer
+        cpumilli:
+          minimum: 0
+          type: integer
         default:
           type: boolean
         router:
           type: string
+        override:
+          $ref: '#/components/schemas/PlanOverride'
       type: object
     DynamicRouter:
       description: Dynamic router
@@ -5191,6 +5274,60 @@ components:
           additionalProperties:
             type: string
           type: object
+      type: object
+    InputApp:
+      example:
+        teamOwner: teamOwner
+        router: router
+        planoverride:
+          memory: 5
+          cpumilli: 2
+        name: name
+        pool: pool
+        routeropts:
+          key: routeropts
+        description: description
+        plan: plan
+        platform: platform
+        tags:
+        - tags
+        - tags
+      properties:
+        name:
+          description: App name.
+          type: string
+        tags:
+          description: App tags.
+          items:
+            type: string
+          type: array
+        router:
+          description: App router name.
+          type: string
+        routeropts:
+          additionalProperties:
+            type: string
+          description: Custom router options.
+          type: object
+        plan:
+          description: App plan name.
+          type: string
+        planoverride:
+          $ref: '#/components/schemas/PlanOverride'
+        pool:
+          description: App pool name.
+          type: string
+        platform:
+          description: App platform.
+          type: string
+        description:
+          description: App description.
+          type: string
+        teamOwner:
+          description: Team that owns the app.
+          type: string
+      required:
+      - name
       type: object
   securitySchemes:
     Bearer:

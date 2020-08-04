@@ -42,7 +42,9 @@ Class | Method | HTTP request | Description
 *AppApi* | [**EnvGet**](docs/AppApi.md#envget) | **Get** /1.0/apps/{app}/env | 
 *AppApi* | [**EnvSet**](docs/AppApi.md#envset) | **Post** /1.0/apps/{app}/env | 
 *AppApi* | [**EnvUnset**](docs/AppApi.md#envunset) | **Delete** /1.0/apps/{app}/env | 
+*AuthApi* | [**AssignRoleToGroup**](docs/AuthApi.md#assignroletogroup) | **Post** /1.9/roles/{role_name}/group | 
 *AuthApi* | [**AssignRoleToToken**](docs/AuthApi.md#assignroletotoken) | **Post** /1.6/roles/{role_name}/token | 
+*AuthApi* | [**DissociateRoleFromGroup**](docs/AuthApi.md#dissociaterolefromgroup) | **Delete** /1.6/roles/{role_name}/group/{group_name} | 
 *AuthApi* | [**DissociateRoleFromToken**](docs/AuthApi.md#dissociaterolefromtoken) | **Delete** /1.6/roles/{role_name}/token/{token_id} | 
 *AuthApi* | [**TeamTokenCreate**](docs/AuthApi.md#teamtokencreate) | **Post** /1.6/tokens | 
 *AuthApi* | [**TeamTokenDelete**](docs/AuthApi.md#teamtokendelete) | **Delete** /1.6/tokens/{token_id} | 
@@ -127,8 +129,8 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [App](docs/App.md)
- - [AppCreateData](docs/AppCreateData.md)
  - [AppCreateResponse](docs/AppCreateResponse.md)
+ - [AssignGroupArgs](docs/AssignGroupArgs.md)
  - [AssignTokenArgs](docs/AssignTokenArgs.md)
  - [ChangePasswordData](docs/ChangePasswordData.md)
  - [Cluster](docs/Cluster.md)
@@ -137,6 +139,7 @@ Class | Method | HTTP request | Description
  - [Env](docs/Env.md)
  - [EnvSetData](docs/EnvSetData.md)
  - [EventCancelArgs](docs/EventCancelArgs.md)
+ - [InputApp](docs/InputApp.md)
  - [Lock](docs/Lock.md)
  - [Machine](docs/Machine.md)
  - [MiniApp](docs/MiniApp.md)
@@ -152,6 +155,7 @@ Class | Method | HTTP request | Description
  - [NodeUpdateData](docs/NodeUpdateData.md)
  - [PermissionUser](docs/PermissionUser.md)
  - [Plan](docs/Plan.md)
+ - [PlanOverride](docs/PlanOverride.md)
  - [PlanRouter](docs/PlanRouter.md)
  - [Platform](docs/Platform.md)
  - [PlatformInfo](docs/PlatformInfo.md)

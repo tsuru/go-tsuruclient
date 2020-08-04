@@ -4,7 +4,9 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AssignRoleToGroup**](AuthApi.md#AssignRoleToGroup) | **Post** /1.9/roles/{role_name}/group | 
 [**AssignRoleToToken**](AuthApi.md#AssignRoleToToken) | **Post** /1.6/roles/{role_name}/token | 
+[**DissociateRoleFromGroup**](AuthApi.md#DissociateRoleFromGroup) | **Delete** /1.6/roles/{role_name}/group/{group_name} | 
 [**DissociateRoleFromToken**](AuthApi.md#DissociateRoleFromToken) | **Delete** /1.6/roles/{role_name}/token/{token_id} | 
 [**TeamTokenCreate**](AuthApi.md#TeamTokenCreate) | **Post** /1.6/tokens | 
 [**TeamTokenDelete**](AuthApi.md#TeamTokenDelete) | **Delete** /1.6/tokens/{token_id} | 
@@ -12,6 +14,35 @@ Method | HTTP request | Description
 [**TeamTokenUpdate**](AuthApi.md#TeamTokenUpdate) | **Put** /1.6/tokens/{token_id} | 
 [**TeamTokensList**](AuthApi.md#TeamTokensList) | **Get** /1.6/tokens | 
 
+
+# **AssignRoleToGroup**
+> AssignRoleToGroup(ctx, roleName, assignGroupArgs)
+
+
+Assigns a role to a group.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **roleName** | **string**|  | 
+  **assignGroupArgs** | [**AssignGroupArgs**](AssignGroupArgs.md)|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AssignRoleToToken**
 > AssignRoleToToken(ctx, roleName, assignTokenArgs)
@@ -38,6 +69,36 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **DissociateRoleFromGroup**
+> DissociateRoleFromGroup(ctx, roleName, groupName, context)
+
+
+Dissociates a role from a group.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **roleName** | **string**|  | 
+  **groupName** | **string**|  | 
+  **context** | **string**|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

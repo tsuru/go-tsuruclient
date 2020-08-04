@@ -1,4 +1,4 @@
-# AppCreateData
+# InputApp
 
 ## Properties
 Name | Type | Description | Notes
@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Router** | **string** | App router name. | [optional] 
 **Routeropts** | **map[string]string** | Custom router options. | [optional] 
 **Plan** | **string** | App plan name. | [optional] 
+**Planoverride** | [**PlanOverride**](PlanOverride.md) |  | [optional] 
 **Pool** | **string** | App pool name. | [optional] 
 **Platform** | **string** | App platform. | [optional] 
 **Description** | **string** | App description. | [optional] 
