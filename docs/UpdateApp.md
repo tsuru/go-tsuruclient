@@ -3,10 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | App name. | 
 **Tags** | **[]string** | App tags. | [optional] 
-**Router** | **string** | App router name. | [optional] 
-**Routeropts** | **map[string]string** | Custom router options. | [optional] 
 **Plan** | **string** | App plan name. | [optional] 
 **Planoverride** | [**PlanOverride**](PlanOverride.md) |  | [optional] 
 **Pool** | **string** | App pool name. | [optional] 

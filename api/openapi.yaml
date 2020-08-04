@@ -4233,16 +4233,12 @@ components:
     UpdateApp:
       example:
         teamOwner: teamOwner
-        router: router
         planoverride:
           memory: 5
           cpumilli: 2
         noRestart: true
         imageReset: true
-        name: name
         pool: pool
-        routeropts:
-          key: routeropts
         description: description
         plan: plan
         platform: platform
@@ -4250,22 +4246,11 @@ components:
         - tags
         - tags
       properties:
-        name:
-          description: App name.
-          type: string
         tags:
           description: App tags.
           items:
             type: string
           type: array
-        router:
-          description: App router name.
-          type: string
-        routeropts:
-          additionalProperties:
-            type: string
-          description: Custom router options.
-          type: object
         plan:
           description: App plan name.
           type: string
@@ -4289,8 +4274,6 @@ components:
         imageReset:
           description: Reset app image to platform base image.
           type: boolean
-      required:
-      - name
       type: object
     NodeStatus:
       example:

@@ -10,14 +10,8 @@
 package tsuru
 
 type UpdateApp struct {
-	// App name.
-	Name string `json:"name"`
 	// App tags.
 	Tags []string `json:"tags,omitempty"`
-	// App router name.
-	Router string `json:"router,omitempty"`
-	// Custom router options.
-	Routeropts map[string]string `json:"routeropts,omitempty"`
 	// App plan name.
 	Plan         string       `json:"plan,omitempty"`
 	Planoverride PlanOverride `json:"planoverride,omitempty"`
