@@ -193,6 +193,7 @@ Class | Method | HTTP request | Description
  - [TeamTokenUpdateArgs](docs/TeamTokenUpdateArgs.md)
  - [TeamUpdateArgs](docs/TeamUpdateArgs.md)
  - [Unit](docs/Unit.md)
+ - [UpdateApp](docs/UpdateApp.md)
  - [Url](docs/Url.md)
  - [User](docs/User.md)
  - [UserData](docs/UserData.md)

@@ -1051,9 +1051,9 @@ AppApiService
 Update a tsuru app.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param app App name.
- * @param inputApp
+ * @param updateApp
 */
-func (a *AppApiService) AppUpdate(ctx context.Context, app string, inputApp InputApp) (*http.Response, error) {
+func (a *AppApiService) AppUpdate(ctx context.Context, app string, updateApp UpdateApp) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -1091,7 +1091,7 @@ func (a *AppApiService) AppUpdate(ctx context.Context, app string, inputApp Inpu
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &inputApp
+	localVarPostBody = &updateApp
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {

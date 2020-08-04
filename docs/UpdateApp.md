@@ -1,4 +1,4 @@
-# InputApp
+# UpdateApp
 
 ## Properties
 Name | Type | Description | Notes
@@ -8,10 +8,13 @@ Name | Type | Description | Notes
 **Router** | **string** | App router name. | [optional] 
 **Routeropts** | **map[string]string** | Custom router options. | [optional] 
 **Plan** | **string** | App plan name. | [optional] 
+**Planoverride** | [**PlanOverride**](PlanOverride.md) |  | [optional] 
 **Pool** | **string** | App pool name. | [optional] 
 **Platform** | **string** | App platform. | [optional] 
 **Description** | **string** | App description. | [optional] 
 **TeamOwner** | **string** | Team that owns the app. | [optional] 
+**NoRestart** | **bool** | Prevent app restart. | [optional] 
+**ImageReset** | **bool** | Reset app image to platform base image. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -666,7 +666,7 @@ paths:
         content:
           '*/*':
             schema:
-              $ref: '#/components/schemas/InputApp'
+              $ref: '#/components/schemas/UpdateApp'
         required: true
       responses:
         200:
@@ -4230,6 +4230,68 @@ components:
             type: string
           type: object
       type: object
+    UpdateApp:
+      example:
+        teamOwner: teamOwner
+        router: router
+        planoverride:
+          memory: 5
+          cpumilli: 2
+        noRestart: true
+        imageReset: true
+        name: name
+        pool: pool
+        routeropts:
+          key: routeropts
+        description: description
+        plan: plan
+        platform: platform
+        tags:
+        - tags
+        - tags
+      properties:
+        name:
+          description: App name.
+          type: string
+        tags:
+          description: App tags.
+          items:
+            type: string
+          type: array
+        router:
+          description: App router name.
+          type: string
+        routeropts:
+          additionalProperties:
+            type: string
+          description: Custom router options.
+          type: object
+        plan:
+          description: App plan name.
+          type: string
+        planoverride:
+          $ref: '#/components/schemas/PlanOverride'
+        pool:
+          description: App pool name.
+          type: string
+        platform:
+          description: App platform.
+          type: string
+        description:
+          description: App description.
+          type: string
+        teamOwner:
+          description: Team that owns the app.
+          type: string
+        noRestart:
+          description: Prevent app restart.
+          type: boolean
+        imageReset:
+          description: Reset app image to platform base image.
+          type: boolean
+      required:
+      - name
+      type: object
     NodeStatus:
       example:
         address: address
@@ -5279,9 +5341,6 @@ components:
       example:
         teamOwner: teamOwner
         router: router
-        planoverride:
-          memory: 5
-          cpumilli: 2
         name: name
         pool: pool
         routeropts:
@@ -5312,8 +5371,6 @@ components:
         plan:
           description: App plan name.
           type: string
-        planoverride:
-          $ref: '#/components/schemas/PlanOverride'
         pool:
           description: App pool name.
           type: string

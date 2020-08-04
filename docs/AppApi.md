@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AppUpdate**
-> AppUpdate(ctx, app, inputApp)
+> AppUpdate(ctx, app, updateApp)
 
 
 Update a tsuru app.
@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **app** | **string**| App name. | 
-  **inputApp** | [**InputApp**](InputApp.md)|  | 
+  **updateApp** | [**UpdateApp**](UpdateApp.md)|  | 
 
 ### Return type
 

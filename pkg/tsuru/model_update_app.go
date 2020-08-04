@@ -9,7 +9,7 @@
 
 package tsuru
 
-type InputApp struct {
+type UpdateApp struct {
 	// App name.
 	Name string `json:"name"`
 	// App tags.
@@ -19,7 +19,8 @@ type InputApp struct {
 	// Custom router options.
 	Routeropts map[string]string `json:"routeropts,omitempty"`
 	// App plan name.
-	Plan string `json:"plan,omitempty"`
+	Plan         string       `json:"plan,omitempty"`
+	Planoverride PlanOverride `json:"planoverride,omitempty"`
 	// App pool name.
 	Pool string `json:"pool,omitempty"`
 	// App platform.
@@ -28,4 +29,8 @@ type InputApp struct {
 	Description string `json:"description,omitempty"`
 	// Team that owns the app.
 	TeamOwner string `json:"teamOwner,omitempty"`
+	// Prevent app restart.
+	NoRestart bool `json:"noRestart,omitempty"`
+	// Reset app image to platform base image.
+	ImageReset bool `json:"imageReset,omitempty"`
 }
