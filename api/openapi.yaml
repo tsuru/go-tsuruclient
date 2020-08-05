@@ -4007,31 +4007,45 @@ components:
           - contexttype: contexttype
             name: name
             contextvalue: contextvalue
+            group: group
           - contexttype: contexttype
             name: name
             contextvalue: contextvalue
+            group: group
           roles:
           - contexttype: contexttype
             name: name
             contextvalue: contextvalue
+            group: group
           - contexttype: contexttype
             name: name
             contextvalue: contextvalue
+            group: group
+          groups:
+          - groups
+          - groups
           email: email
         - permissions:
           - contexttype: contexttype
             name: name
             contextvalue: contextvalue
+            group: group
           - contexttype: contexttype
             name: name
             contextvalue: contextvalue
+            group: group
           roles:
           - contexttype: contexttype
             name: name
             contextvalue: contextvalue
+            group: group
           - contexttype: contexttype
             name: name
             contextvalue: contextvalue
+            group: group
+          groups:
+          - groups
+          - groups
           email: email
         tags:
         - tags
@@ -4355,16 +4369,23 @@ components:
         - contexttype: contexttype
           name: name
           contextvalue: contextvalue
+          group: group
         - contexttype: contexttype
           name: name
           contextvalue: contextvalue
+          group: group
         roles:
         - contexttype: contexttype
           name: name
           contextvalue: contextvalue
+          group: group
         - contexttype: contexttype
           name: name
           contextvalue: contextvalue
+          group: group
+        groups:
+        - groups
+        - groups
         email: email
       properties:
         email:
@@ -4372,6 +4393,10 @@ components:
         roles:
           items:
             $ref: '#/components/schemas/RoleUser'
+          type: array
+        groups:
+          items:
+            type: string
           type: array
         permissions:
           items:
@@ -4696,12 +4721,15 @@ components:
         contexttype: contexttype
         name: name
         contextvalue: contextvalue
+        group: group
       properties:
         name:
           type: string
         contexttype:
           type: string
         contextvalue:
+          type: string
+        group:
           type: string
       type: object
     Team:
@@ -5174,12 +5202,15 @@ components:
         contexttype: contexttype
         name: name
         contextvalue: contextvalue
+        group: group
       properties:
         name:
           type: string
         contexttype:
           type: string
         contextvalue:
+          type: string
+        group:
           type: string
       type: object
     ServiceBroker_Config_AuthConfig_BasicAuthConfig:

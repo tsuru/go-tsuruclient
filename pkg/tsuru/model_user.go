@@ -13,5 +13,6 @@ package tsuru
 type User struct {
 	Email       string           `json:"email,omitempty"`
 	Roles       []RoleUser       `json:"roles,omitempty"`
+	Groups      []string         `json:"groups,omitempty"`
 	Permissions []PermissionUser `json:"permissions,omitempty"`
 }

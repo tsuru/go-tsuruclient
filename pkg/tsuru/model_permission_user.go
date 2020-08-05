@@ -14,4 +14,5 @@ type PermissionUser struct {
 	Name         string `json:"name,omitempty"`
 	Contexttype  string `json:"contexttype,omitempty"`
 	Contextvalue string `json:"contextvalue,omitempty"`
+	Group        string `json:"group,omitempty"`
 }
