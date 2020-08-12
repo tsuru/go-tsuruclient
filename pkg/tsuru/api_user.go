@@ -1577,7 +1577,7 @@ func (a *UserApiService) UserTokenDelete(ctx context.Context) (*http.Response, e
 UserApiService
 List users.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param email
+ * @param userEmail
  * @param optional nil or *UsersListOpts - Optional Parameters:
  * @param "Role" (optional.String) -
  * @param "Context" (optional.String) -
@@ -1589,7 +1589,7 @@ type UsersListOpts struct {
 	Context optional.String
 }
 
-func (a *UserApiService) UsersList(ctx context.Context, email string, localVarOptionals *UsersListOpts) ([]User, *http.Response, error) {
+func (a *UserApiService) UsersList(ctx context.Context, userEmail string, localVarOptionals *UsersListOpts) ([]User, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -1606,7 +1606,7 @@ func (a *UserApiService) UsersList(ctx context.Context, email string, localVarOp
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	localVarQueryParams.Add("email", parameterToString(email, ""))
+	localVarQueryParams.Add("userEmail", parameterToString(userEmail, ""))
 	if localVarOptionals != nil && localVarOptionals.Role.IsSet() {
 		localVarQueryParams.Add("role", parameterToString(localVarOptionals.Role.Value(), ""))
 	}

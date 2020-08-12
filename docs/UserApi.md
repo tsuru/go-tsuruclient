@@ -384,7 +384,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UsersList**
-> []User UsersList(ctx, email, optional)
+> []User UsersList(ctx, userEmail, optional)
 
 
 List users.
@@ -394,7 +394,7 @@ List users.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **email** | **string**|  | 
+  **userEmail** | **string**|  | 
  **optional** | ***UsersListOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters

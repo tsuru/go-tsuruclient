@@ -1428,7 +1428,7 @@ paths:
       operationId: UsersList
       parameters:
       - in: query
-        name: email
+        name: userEmail
         required: true
         schema:
           type: string
