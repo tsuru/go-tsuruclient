@@ -1074,7 +1074,7 @@ func (a *AppApiService) AppUpdate(ctx context.Context, app string, updateApp Upd
 	}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
