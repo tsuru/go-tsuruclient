@@ -39,6 +39,8 @@ Class | Method | HTTP request | Description
 *AppApi* | [**AppRestart**](docs/AppApi.md#apprestart) | **Post** /1.0/apps/{app}/restart | 
 *AppApi* | [**AppSetRoutable**](docs/AppApi.md#appsetroutable) | **Post** /1.8/apps/{app}/routable | 
 *AppApi* | [**AppUpdate**](docs/AppApi.md#appupdate) | **Put** /1.0/apps/{app} | 
+*AppApi* | [**AutoScaleAdd**](docs/AppApi.md#autoscaleadd) | **Post** /1.9/apps/{app}/units/autoscale | 
+*AppApi* | [**AutoScaleRemove**](docs/AppApi.md#autoscaleremove) | **Delete** /1.9/apps/{app}/units/autoscale | 
 *AppApi* | [**EnvGet**](docs/AppApi.md#envget) | **Get** /1.0/apps/{app}/env | 
 *AppApi* | [**EnvSet**](docs/AppApi.md#envset) | **Post** /1.0/apps/{app}/env | 
 *AppApi* | [**EnvUnset**](docs/AppApi.md#envunset) | **Delete** /1.0/apps/{app}/env | 
@@ -132,6 +134,7 @@ Class | Method | HTTP request | Description
  - [AppCreateResponse](docs/AppCreateResponse.md)
  - [AssignGroupArgs](docs/AssignGroupArgs.md)
  - [AssignTokenArgs](docs/AssignTokenArgs.md)
+ - [AutoScaleSpec](docs/AutoScaleSpec.md)
  - [ChangePasswordData](docs/ChangePasswordData.md)
  - [Cluster](docs/Cluster.md)
  - [ClusterHelp](docs/ClusterHelp.md)

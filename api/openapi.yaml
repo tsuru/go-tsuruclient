@@ -3347,6 +3347,86 @@ paths:
       - Bearer: []
       tags:
       - auth
+  /1.9/apps/{app}/units/autoscale:
+    delete:
+      description: Remove unit autoscale spec.
+      operationId: AutoScaleRemove
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - in: query
+        name: process
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content: {}
+          description: AutoScale removed
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
+    post:
+      description: Add new unit autoscale spec.
+      operationId: AutoScaleAdd
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AutoScaleSpec'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: AutoScale updated
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
 components:
   schemas:
     App:
@@ -3362,6 +3442,12 @@ components:
         - cname
         - cname
         description: description
+        autoscale:
+          process: process
+          averageCPU: averageCPU
+          maxUnits: 6
+          minUnits: 0
+          version: 1
         platform: platform
         tags:
         - tags
@@ -3425,6 +3511,8 @@ components:
           type: string
         owner:
           type: string
+        autoscale:
+          $ref: '#/components/schemas/AutoScaleSpec'
       required:
       - name
       type: object
@@ -4061,6 +4149,12 @@ components:
           - cname
           - cname
           description: description
+          autoscale:
+            process: process
+            averageCPU: averageCPU
+            maxUnits: 6
+            minUnits: 0
+            version: 1
           platform: platform
           tags:
           - tags
@@ -4091,6 +4185,12 @@ components:
           - cname
           - cname
           description: description
+          autoscale:
+            process: process
+            averageCPU: averageCPU
+            maxUnits: 6
+            minUnits: 0
+            version: 1
           platform: platform
           tags:
           - tags
@@ -4829,6 +4929,26 @@ components:
           additionalProperties:
             type: string
           type: object
+      type: object
+    AutoScaleSpec:
+      description: Units Auto Scale spec
+      example:
+        process: process
+        averageCPU: averageCPU
+        maxUnits: 6
+        minUnits: 0
+        version: 1
+      properties:
+        process:
+          type: string
+        minUnits:
+          type: integer
+        maxUnits:
+          type: integer
+        averageCPU:
+          type: string
+        version:
+          type: integer
       type: object
     ServiceInstanceInfo:
       example:

@@ -27,9 +27,10 @@ type App struct {
 	// App description.
 	Description string `json:"description,omitempty"`
 	// Team that owns the app.
-	TeamOwner string   `json:"teamOwner,omitempty"`
-	Teams     []string `json:"teams,omitempty"`
-	Cname     []string `json:"cname,omitempty"`
-	Ip        string   `json:"ip,omitempty"`
-	Owner     string   `json:"owner,omitempty"`
+	TeamOwner string        `json:"teamOwner,omitempty"`
+	Teams     []string      `json:"teams,omitempty"`
+	Cname     []string      `json:"cname,omitempty"`
+	Ip        string        `json:"ip,omitempty"`
+	Owner     string        `json:"owner,omitempty"`
+	Autoscale AutoScaleSpec `json:"autoscale,omitempty"`
 }
