@@ -3443,7 +3443,12 @@ components:
         - cname
         description: description
         autoscale:
-          process: process
+        - process: process
+          averageCPU: averageCPU
+          maxUnits: 6
+          minUnits: 0
+          version: 1
+        - process: process
           averageCPU: averageCPU
           maxUnits: 6
           minUnits: 0
@@ -3512,7 +3517,9 @@ components:
         owner:
           type: string
         autoscale:
-          $ref: '#/components/schemas/AutoScaleSpec'
+          items:
+            $ref: '#/components/schemas/AutoScaleSpec'
+          type: array
       required:
       - name
       type: object
@@ -4150,7 +4157,12 @@ components:
           - cname
           description: description
           autoscale:
-            process: process
+          - process: process
+            averageCPU: averageCPU
+            maxUnits: 6
+            minUnits: 0
+            version: 1
+          - process: process
             averageCPU: averageCPU
             maxUnits: 6
             minUnits: 0
@@ -4186,7 +4198,12 @@ components:
           - cname
           description: description
           autoscale:
-            process: process
+          - process: process
+            averageCPU: averageCPU
+            maxUnits: 6
+            minUnits: 0
+            version: 1
+          - process: process
             averageCPU: averageCPU
             maxUnits: 6
             minUnits: 0
