@@ -21,4 +21,5 @@ type ServiceInstance struct {
 	TeamOwner   string                     `json:"team_owner,omitempty"`
 	Description string                     `json:"description,omitempty"`
 	Parameters  map[string]string          `json:"parameters,omitempty"`
+	Pool        string                     `json:"pool,omitempty"`
 }

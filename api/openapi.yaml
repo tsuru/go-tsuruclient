@@ -4650,6 +4650,7 @@ components:
         - teams
         service_name: service_name
         name: name
+        pool: pool
         description: description
         id: 0
         parameters:
@@ -4694,6 +4695,8 @@ components:
           additionalProperties:
             type: string
           type: object
+        pool:
+          type: string
       type: object
     ServiceInstanceBind:
       example:
@@ -5048,6 +5051,7 @@ components:
           - teams
           service_name: service_name
           name: name
+          pool: pool
           description: description
           id: 0
           parameters:
@@ -5072,6 +5076,7 @@ components:
           - teams
           service_name: service_name
           name: name
+          pool: pool
           description: description
           id: 0
           parameters:

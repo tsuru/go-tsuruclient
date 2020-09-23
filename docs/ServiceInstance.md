@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **TeamOwner** | **string** |  | [optional] 
 **Description** | **string** |  | [optional] 
 **Parameters** | **map[string]string** |  | [optional] 
+**Pool** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
