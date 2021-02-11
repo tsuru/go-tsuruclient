@@ -145,6 +145,8 @@ Class | Method | HTTP request | Description
  - [InputApp](docs/InputApp.md)
  - [Lock](docs/Lock.md)
  - [Machine](docs/Machine.md)
+ - [Metadata](docs/Metadata.md)
+ - [MetadataItem](docs/MetadataItem.md)
  - [MiniApp](docs/MiniApp.md)
  - [Node](docs/Node.md)
  - [NodeAddData](docs/NodeAddData.md)

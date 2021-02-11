@@ -4364,6 +4364,21 @@ components:
     UpdateApp:
       example:
         teamOwner: teamOwner
+        metadata:
+          annotations:
+          - name: name
+            value: value
+            delete: true
+          - name: name
+            value: value
+            delete: true
+          labels:
+          - name: name
+            value: value
+            delete: true
+          - name: name
+            value: value
+            delete: true
         planoverride:
           memory: 5
           cpumilli: 2
@@ -4405,6 +4420,8 @@ components:
         imageReset:
           description: Reset app image to platform base image.
           type: boolean
+        metadata:
+          $ref: '#/components/schemas/Metadata'
       type: object
     NodeStatus:
       example:
@@ -4599,6 +4616,33 @@ components:
             type: string
           description: Volume plan opts.
           type: object
+      type: object
+    Metadata:
+      description: App metadata such as custom labels and annotations.
+      example:
+        annotations:
+        - name: name
+          value: value
+          delete: true
+        - name: name
+          value: value
+          delete: true
+        labels:
+        - name: name
+          value: value
+          delete: true
+        - name: name
+          value: value
+          delete: true
+      properties:
+        annotations:
+          items:
+            $ref: '#/components/schemas/MetadataItem'
+          type: array
+        labels:
+          items:
+            $ref: '#/components/schemas/MetadataItem'
+          type: array
       type: object
     ServiceBrokerList:
       example:
@@ -5492,6 +5536,20 @@ components:
           additionalProperties:
             type: string
           type: object
+      type: object
+    MetadataItem:
+      description: Metadata items
+      example:
+        name: name
+        value: value
+        delete: true
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        delete:
+          type: boolean
       type: object
     InputApp:
       example:
