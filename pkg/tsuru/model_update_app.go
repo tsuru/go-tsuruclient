@@ -26,5 +26,6 @@ type UpdateApp struct {
 	// Prevent app restart.
 	NoRestart bool `json:"noRestart,omitempty"`
 	// Reset app image to platform base image.
-	ImageReset bool `json:"imageReset,omitempty"`
+	ImageReset bool     `json:"imageReset,omitempty"`
+	Metadata   Metadata `json:"metadata,omitempty"`
 }
