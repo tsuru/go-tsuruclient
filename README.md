@@ -71,6 +71,9 @@ Class | Method | HTTP request | Description
 *NodeApi* | [**NodeList**](docs/NodeApi.md#nodelist) | **Get** /1.2/node | 
 *NodeApi* | [**NodeUpdate**](docs/NodeApi.md#nodeupdate) | **Put** /1.2/node | 
 *NodecontainerApi* | [**NodeContainerCreate**](docs/NodecontainerApi.md#nodecontainercreate) | **Post** /1.2/nodecontainers | 
+*PlanApi* | [**DeletePlan**](docs/PlanApi.md#deleteplan) | **Delete** /1.0/plans | 
+*PlanApi* | [**PlanCreate**](docs/PlanApi.md#plancreate) | **Post** /1.0/plans | 
+*PlanApi* | [**PlanList**](docs/PlanApi.md#planlist) | **Get** /1.0/plans | 
 *PlatformApi* | [**PlatformAdd**](docs/PlatformApi.md#platformadd) | **Post** /1.0/platforms | 
 *PlatformApi* | [**PlatformDelete**](docs/PlatformApi.md#platformdelete) | **Delete** /1.0/platforms/{platform} | 
 *PlatformApi* | [**PlatformInfo**](docs/PlatformApi.md#platforminfo) | **Get** /1.6/platforms/{platform} | 

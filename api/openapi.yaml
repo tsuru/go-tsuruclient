@@ -465,6 +465,100 @@ paths:
       - Bearer: []
       tags:
       - service
+  /1.0/plans:
+    delete:
+      description: Remove a plan
+      operationId: DeletePlan
+      parameters:
+      - description: Remove current plan
+        in: query
+        name: plan
+        required: true
+        schema:
+          type: boolean
+      responses:
+        200:
+          content: {}
+          description: Plan removed
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Plan not found
+      security:
+      - Bearer: []
+      tags:
+      - plan
+    get:
+      description: List plans.
+      operationId: PlanList
+      parameters:
+      - description: Filter applications by name.
+        in: query
+        name: name
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Plan'
+                type: array
+          description: Plans list
+        204:
+          content: {}
+          description: No content
+      security:
+      - Bearer: []
+      tags:
+      - plan
+    post:
+      description: Create a new plan
+      operationId: PlanCreate
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Plan'
+        required: true
+      responses:
+        201:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Plan'
+          description: Plan created
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        409:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Plan already exists
+      security:
+      - Bearer: []
+      tags:
+      - plan
   /1.0/apps:
     get:
       description: List apps.
