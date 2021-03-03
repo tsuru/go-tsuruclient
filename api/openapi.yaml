@@ -3926,6 +3926,8 @@ components:
           - allowed
           - allowed
         name: name
+        labels:
+          key: labels
       properties:
         name:
           type: string
@@ -3944,6 +3946,10 @@ components:
             items:
               type: string
             type: array
+          type: object
+        labels:
+          additionalProperties:
+            type: string
           type: object
       type: object
     VolumeBindID:
@@ -4192,6 +4198,8 @@ components:
             - allowed
             - allowed
           name: name
+          labels:
+            key: labels
         - default: true
           provisioner: provisioner
           public: true
@@ -4203,6 +4211,8 @@ components:
             - allowed
             - allowed
           name: name
+          labels:
+            key: labels
         users:
         - permissions:
           - contexttype: contexttype
