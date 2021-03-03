@@ -32,7 +32,7 @@ Remove a plan
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param plan Remove current plan
 */
-func (a *PlanApiService) DeletePlan(ctx context.Context, plan bool) (*http.Response, error) {
+func (a *PlanApiService) DeletePlan(ctx context.Context, plan string) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Delete")
 		localVarPostBody     interface{}

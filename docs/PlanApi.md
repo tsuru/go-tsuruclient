@@ -20,7 +20,7 @@ Remove a plan
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **plan** | **bool**| Remove current plan | 
+  **plan** | **string**| Remove current plan | 
 
 ### Return type
 

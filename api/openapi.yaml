@@ -475,7 +475,7 @@ paths:
         name: plan
         required: true
         schema:
-          type: boolean
+          type: string
       responses:
         200:
           content: {}
