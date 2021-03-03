@@ -10,9 +10,10 @@
 package tsuru
 
 type PoolCreateData struct {
-	Name        string `json:"name,omitempty"`
-	Public      bool   `json:"public,omitempty"`
-	Default     bool   `json:"default,omitempty"`
-	Force       bool   `json:"force,omitempty"`
-	Provisioner string `json:"provisioner,omitempty"`
+	Name        string            `json:"name,omitempty"`
+	Public      bool              `json:"public,omitempty"`
+	Default     bool              `json:"default,omitempty"`
+	Force       bool              `json:"force,omitempty"`
+	Provisioner string            `json:"provisioner,omitempty"`
+	Labels      map[string]string `json:"labels,omitempty"`
 }

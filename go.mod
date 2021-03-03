@@ -18,10 +18,11 @@ require (
 	github.com/tsuru/gnuflag v0.0.0-20151217162021-86b8c1b864aa // indirect
 	github.com/tsuru/tablecli v0.0.0-20180215113938-82de88f75181 // indirect
 	github.com/tsuru/tsuru v0.0.0-20180820205921-0e7f7f02eac5
-	golang.org/x/crypto v0.0.0-20191011191535-87dc89f01550 // indirect
-	golang.org/x/net v0.0.0-20200226121028-0de0cce0169b // indirect
+	golang.org/x/net v0.0.0-20201021035429-f5854403a974 // indirect
 	golang.org/x/oauth2 v0.0.0-20180402223937-921ae394b943
-	golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e // indirect
+	golang.org/x/sync v0.0.0-20201020160332-67f06af15bc9 // indirect
+	golang.org/x/sys v0.0.0-20210119212857-b64e53b001e4 // indirect
+	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 	google.golang.org/appengine v1.1.0 // indirect
 	gopkg.in/yaml.v2 v2.2.1 // indirect
 	gotest.tools/v3 v3.0.3 // indirect

@@ -10,7 +10,8 @@
 package tsuru
 
 type PoolUpdateData struct {
-	Default bool `json:"default,omitempty"`
-	Public  bool `json:"public,omitempty"`
-	Force   bool `json:"force,omitempty"`
+	Default bool              `json:"default,omitempty"`
+	Public  bool              `json:"public,omitempty"`
+	Force   bool              `json:"force,omitempty"`
+	Labels  map[string]string `json:"labels,omitempty"`
 }

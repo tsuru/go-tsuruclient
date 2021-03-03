@@ -4060,6 +4060,8 @@ components:
         public: true
         name: name
         force: true
+        labels:
+          key: labels
       properties:
         name:
           type: string
@@ -4071,6 +4073,10 @@ components:
           type: boolean
         provisioner:
           type: string
+        labels:
+          additionalProperties:
+            type: string
+          type: object
       type: object
     TeamToken:
       description: An authorization token associated to a team.
@@ -4118,6 +4124,8 @@ components:
         default: true
         public: true
         force: true
+        labels:
+          key: labels
       properties:
         default:
           type: boolean
@@ -4125,6 +4133,10 @@ components:
           type: boolean
         force:
           type: boolean
+        labels:
+          additionalProperties:
+            type: string
+          type: object
       type: object
     VolumeBind:
       example:
