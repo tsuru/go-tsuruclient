@@ -16,8 +16,6 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -270,16 +268,9 @@ func (a *PlanApiService) PlanCreate(ctx context.Context, plan Plan) (Plan, *http
 PlanApiService
 List plans.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *PlanListOpts - Optional Parameters:
- * @param "Name" (optional.String) -  Filter applications by name.
 @return []Plan
 */
-
-type PlanListOpts struct {
-	Name optional.String
-}
-
-func (a *PlanApiService) PlanList(ctx context.Context, localVarOptionals *PlanListOpts) ([]Plan, *http.Response, error) {
+func (a *PlanApiService) PlanList(ctx context.Context) ([]Plan, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -296,9 +287,6 @@ func (a *PlanApiService) PlanList(ctx context.Context, localVarOptionals *PlanLi
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if localVarOptionals != nil && localVarOptionals.Name.IsSet() {
-		localVarQueryParams.Add("name", parameterToString(localVarOptionals.Name.Value(), ""))
-	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 

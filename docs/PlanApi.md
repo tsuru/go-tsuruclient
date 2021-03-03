@@ -66,24 +66,13 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PlanList**
-> []Plan PlanList(ctx, optional)
+> []Plan PlanList(ctx, )
 
 
 List plans.
 
 ### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***PlanListOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a PlanListOpts struct
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **optional.String**| Filter applications by name. | 
+This endpoint does not need any parameter.
 
 ### Return type
 

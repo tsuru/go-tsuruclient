@@ -469,12 +469,6 @@ paths:
     get:
       description: List plans.
       operationId: PlanList
-      parameters:
-      - description: Filter applications by name.
-        in: query
-        name: name
-        schema:
-          type: string
       responses:
         200:
           content:
