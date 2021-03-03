@@ -466,36 +466,6 @@ paths:
       tags:
       - service
   /1.0/plans:
-    delete:
-      description: Remove a plan
-      operationId: DeletePlan
-      parameters:
-      - description: Remove current plan
-        in: query
-        name: plan
-        required: true
-        schema:
-          type: string
-      responses:
-        200:
-          content: {}
-          description: Plan removed
-        401:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Unauthorized
-        404:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Plan not found
-      security:
-      - Bearer: []
-      tags:
-      - plan
     get:
       description: List plans.
       operationId: PlanList
@@ -555,6 +525,37 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: Plan already exists
+      security:
+      - Bearer: []
+      tags:
+      - plan
+  /1.0/plans/{name}:
+    delete:
+      description: Remove a plan
+      operationId: DeletePlan
+      parameters:
+      - description: Remove current plan
+        in: path
+        name: plan
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Plan removed
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Plan not found
       security:
       - Bearer: []
       tags:

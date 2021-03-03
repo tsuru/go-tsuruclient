@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeletePlan**](PlanApi.md#DeletePlan) | **Delete** /1.0/plans | 
+[**DeletePlan**](PlanApi.md#DeletePlan) | **Delete** /1.0/plans/{name} | 
 [**PlanCreate**](PlanApi.md#PlanCreate) | **Post** /1.0/plans | 
 [**PlanList**](PlanApi.md#PlanList) | **Get** /1.0/plans | 
 

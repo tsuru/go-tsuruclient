@@ -11,6 +11,7 @@ package tsuru
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -42,13 +43,13 @@ func (a *PlanApiService) DeletePlan(ctx context.Context, plan string) (*http.Res
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/plans"
+	localVarPath := a.client.cfg.BasePath + "/1.0/plans/{name}"
+	localVarPath = strings.Replace(localVarPath, "{"+"plan"+"}", fmt.Sprintf("%v", plan), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	localVarQueryParams.Add("plan", parameterToString(plan, ""))
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
