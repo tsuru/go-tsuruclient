@@ -523,7 +523,7 @@ paths:
       - Bearer: []
       tags:
       - plan
-  /1.0/plans/{name}:
+  /1.0/plans/{plan}:
     delete:
       description: Remove a plan
       operationId: DeletePlan

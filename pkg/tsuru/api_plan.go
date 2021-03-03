@@ -41,7 +41,7 @@ func (a *PlanApiService) DeletePlan(ctx context.Context, plan string) (*http.Res
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/1.0/plans/{name}"
+	localVarPath := a.client.cfg.BasePath + "/1.0/plans/{plan}"
 	localVarPath = strings.Replace(localVarPath, "{"+"plan"+"}", fmt.Sprintf("%v", plan), -1)
 
 	localVarHeaderParams := make(map[string]string)
