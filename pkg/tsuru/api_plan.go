@@ -134,30 +134,10 @@ func (a *PlanApiService) DeletePlan(ctx context.Context, plan bool) (*http.Respo
 PlanApiService
 Create a new plan
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *PlanCreateOpts - Optional Parameters:
- * @param "Name" (optional.String) -
- * @param "Memory" (optional.Int64) -
- * @param "Swap" (optional.Int64) -
- * @param "Cpushare" (optional.Int32) -
- * @param "Cpumilli" (optional.Int32) -
- * @param "Default_" (optional.Bool) -
- * @param "Router" (optional.String) -
- * @param "Override" (optional.Interface of PlanOverride) -
+ * @param plan
 @return Plan
 */
-
-type PlanCreateOpts struct {
-	Name     optional.String
-	Memory   optional.Int64
-	Swap     optional.Int64
-	Cpushare optional.Int32
-	Cpumilli optional.Int32
-	Default_ optional.Bool
-	Router   optional.String
-	Override optional.Interface
-}
-
-func (a *PlanApiService) PlanCreate(ctx context.Context, localVarOptionals *PlanCreateOpts) (Plan, *http.Response, error) {
+func (a *PlanApiService) PlanCreate(ctx context.Context, plan Plan) (Plan, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
@@ -175,7 +155,7 @@ func (a *PlanApiService) PlanCreate(ctx context.Context, localVarOptionals *Plan
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{"application/x-www-form-urlencoded"}
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -191,30 +171,8 @@ func (a *PlanApiService) PlanCreate(ctx context.Context, localVarOptionals *Plan
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.Name.IsSet() {
-		localVarFormParams.Add("name", parameterToString(localVarOptionals.Name.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Memory.IsSet() {
-		localVarFormParams.Add("memory", parameterToString(localVarOptionals.Memory.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Swap.IsSet() {
-		localVarFormParams.Add("swap", parameterToString(localVarOptionals.Swap.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Cpushare.IsSet() {
-		localVarFormParams.Add("cpushare", parameterToString(localVarOptionals.Cpushare.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Cpumilli.IsSet() {
-		localVarFormParams.Add("cpumilli", parameterToString(localVarOptionals.Cpumilli.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Default_.IsSet() {
-		localVarFormParams.Add("default", parameterToString(localVarOptionals.Default_.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Router.IsSet() {
-		localVarFormParams.Add("router", parameterToString(localVarOptionals.Router.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Override.IsSet() {
-		localVarFormParams.Add("override", parameterToString(localVarOptionals.Override.Value(), ""))
-	}
+	// body params
+	localVarPostBody = &plan
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {

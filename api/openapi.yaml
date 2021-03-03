@@ -526,7 +526,7 @@ paths:
       operationId: PlanCreate
       requestBody:
         content:
-          application/x-www-form-urlencoded:
+          application/json:
             schema:
               $ref: '#/components/schemas/Plan'
         required: true

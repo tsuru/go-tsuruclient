@@ -38,7 +38,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PlanCreate**
-> Plan PlanCreate(ctx, optional)
+> Plan PlanCreate(ctx, plan)
 
 
 Create a new plan
@@ -48,21 +48,7 @@ Create a new plan
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***PlanCreateOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a PlanCreateOpts struct
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **optional.String**|  | 
- **memory** | **optional.Int64**|  | 
- **swap** | **optional.Int64**|  | 
- **cpushare** | **optional.Int32**|  | 
- **cpumilli** | **optional.Int32**|  | 
- **default_** | **optional.Bool**|  | 
- **router** | **optional.String**|  | 
- **override** | [**optional.Interface of PlanOverride**](PlanOverride.md)|  | 
+  **plan** | [**Plan**](Plan.md)|  | 
 
 ### Return type
 
@@ -74,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/x-www-form-urlencoded
+ - **Content-Type**: application/json
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
