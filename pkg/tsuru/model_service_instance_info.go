@@ -14,8 +14,10 @@ type ServiceInstanceInfo struct {
 	Teams           []string          `json:"teams,omitempty"`
 	Teamowner       string            `json:"teamowner,omitempty"`
 	Description     string            `json:"description,omitempty"`
+	Pool            string            `json:"pool,omitempty"`
 	Planname        string            `json:"planname,omitempty"`
 	Plandescription string            `json:"plandescription,omitempty"`
 	Tags            []string          `json:"tags,omitempty"`
 	Custominfo      map[string]string `json:"custominfo,omitempty"`
+	Parameters      map[string]string `json:"parameters,omitempty"`
 }
