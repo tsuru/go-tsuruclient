@@ -5130,11 +5130,14 @@ components:
         teams:
         - teams
         - teams
+        pool: pool
         planname: planname
         description: description
         plandescription: plandescription
         custominfo:
           key: custominfo
+        parameters:
+          key: parameters
         apps:
         - apps
         - apps
@@ -5155,6 +5158,8 @@ components:
           type: string
         description:
           type: string
+        pool:
+          type: string
         planname:
           type: string
         plandescription:
@@ -5164,6 +5169,10 @@ components:
             type: string
           type: array
         custominfo:
+          additionalProperties:
+            type: string
+          type: object
+        parameters:
           additionalProperties:
             type: string
           type: object
