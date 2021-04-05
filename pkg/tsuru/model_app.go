@@ -13,6 +13,13 @@ package tsuru
 type App struct {
 	// App name.
 	Name string `json:"name"`
+	// Cluster name
+	Cluster string   `json:"cluster,omitempty"`
+	Cname   []string `json:"cname,omitempty"`
+	// Number of Deploys
+	Deploys           int64                  `json:"deploys,omitempty"`
+	Routers           []AppRouters           `json:"routers,omitempty"`
+	InternalAddresses []AppInternalAddresses `json:"internalAddresses,omitempty"`
 	// App tags.
 	Tags []string `json:"tags,omitempty"`
 	// App router.
@@ -22,6 +29,8 @@ type App struct {
 	Plan       Plan              `json:"plan,omitempty"`
 	// App pool.
 	Pool string `json:"pool,omitempty"`
+	// App provisioner.
+	Provisioner string `json:"provisioner,omitempty"`
 	// App platform.
 	Platform string `json:"platform,omitempty"`
 	// App description.
@@ -29,7 +38,6 @@ type App struct {
 	// Team that owns the app.
 	TeamOwner string          `json:"teamOwner,omitempty"`
 	Teams     []string        `json:"teams,omitempty"`
-	Cname     []string        `json:"cname,omitempty"`
 	Ip        string          `json:"ip,omitempty"`
 	Owner     string          `json:"owner,omitempty"`
 	Autoscale []AutoScaleSpec `json:"autoscale,omitempty"`

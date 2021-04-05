@@ -3522,27 +3522,41 @@ components:
       description: Tsuru app.
       example:
         owner: owner
+        cluster: cluster
+        provisioner: provisioner
         teams:
         - teams
         - teams
         ip: ip
-        pool: pool
         cname:
         - cname
         - cname
+        pool: pool
+        deploys: 0
         description: description
         autoscale:
         - process: process
           averageCPU: averageCPU
-          maxUnits: 6
-          minUnits: 0
-          version: 1
+          maxUnits: 1
+          minUnits: 6
+          version: 5
         - process: process
           averageCPU: averageCPU
-          maxUnits: 6
-          minUnits: 0
-          version: 1
+          maxUnits: 1
+          minUnits: 6
+          version: 5
         platform: platform
+        internalAddresses:
+        - Version: Version
+          Port: Port
+          Process: Process
+          Domain: Domain
+          Protocol: Protocol
+        - Version: Version
+          Port: Port
+          Process: Process
+          Domain: Domain
+          Protocol: Protocol
         tags:
         - tags
         - tags
@@ -3551,6 +3565,17 @@ components:
         name: name
         routeropts:
           key: routeropts
+        routers:
+        - addresses:
+          - addresses
+          - addresses
+          opts: '{}'
+          name: name
+        - addresses:
+          - addresses
+          - addresses
+          opts: '{}'
+          name: name
         plan:
           default: true
           router: router
@@ -3566,6 +3591,25 @@ components:
         name:
           description: App name.
           type: string
+        cluster:
+          description: Cluster name
+          type: string
+        cname:
+          items:
+            type: string
+          type: array
+        deploys:
+          description: Number of Deploys
+          format: int64
+          type: integer
+        routers:
+          items:
+            $ref: '#/components/schemas/App_routers'
+          type: array
+        internalAddresses:
+          items:
+            $ref: '#/components/schemas/App_internalAddresses'
+          type: array
         tags:
           description: App tags.
           items:
@@ -3584,6 +3628,9 @@ components:
         pool:
           description: App pool.
           type: string
+        provisioner:
+          description: App provisioner.
+          type: string
         platform:
           description: App platform.
           type: string
@@ -3594,10 +3641,6 @@ components:
           description: Team that owns the app.
           type: string
         teams:
-          items:
-            type: string
-          type: array
-        cname:
           items:
             type: string
           type: array
@@ -4258,27 +4301,41 @@ components:
         - tags
         apps:
         - owner: owner
+          cluster: cluster
+          provisioner: provisioner
           teams:
           - teams
           - teams
           ip: ip
-          pool: pool
           cname:
           - cname
           - cname
+          pool: pool
+          deploys: 0
           description: description
           autoscale:
           - process: process
             averageCPU: averageCPU
-            maxUnits: 6
-            minUnits: 0
-            version: 1
+            maxUnits: 1
+            minUnits: 6
+            version: 5
           - process: process
             averageCPU: averageCPU
-            maxUnits: 6
-            minUnits: 0
-            version: 1
+            maxUnits: 1
+            minUnits: 6
+            version: 5
           platform: platform
+          internalAddresses:
+          - Version: Version
+            Port: Port
+            Process: Process
+            Domain: Domain
+            Protocol: Protocol
+          - Version: Version
+            Port: Port
+            Process: Process
+            Domain: Domain
+            Protocol: Protocol
           tags:
           - tags
           - tags
@@ -4287,6 +4344,17 @@ components:
           name: name
           routeropts:
             key: routeropts
+          routers:
+          - addresses:
+            - addresses
+            - addresses
+            opts: '{}'
+            name: name
+          - addresses:
+            - addresses
+            - addresses
+            opts: '{}'
+            name: name
           plan:
             default: true
             router: router
@@ -4299,27 +4367,41 @@ components:
               cpumilli: 2
             cpushare: 0
         - owner: owner
+          cluster: cluster
+          provisioner: provisioner
           teams:
           - teams
           - teams
           ip: ip
-          pool: pool
           cname:
           - cname
           - cname
+          pool: pool
+          deploys: 0
           description: description
           autoscale:
           - process: process
             averageCPU: averageCPU
-            maxUnits: 6
-            minUnits: 0
-            version: 1
+            maxUnits: 1
+            minUnits: 6
+            version: 5
           - process: process
             averageCPU: averageCPU
-            maxUnits: 6
-            minUnits: 0
-            version: 1
+            maxUnits: 1
+            minUnits: 6
+            version: 5
           platform: platform
+          internalAddresses:
+          - Version: Version
+            Port: Port
+            Process: Process
+            Domain: Domain
+            Protocol: Protocol
+          - Version: Version
+            Port: Port
+            Process: Process
+            Domain: Domain
+            Protocol: Protocol
           tags:
           - tags
           - tags
@@ -4328,6 +4410,17 @@ components:
           name: name
           routeropts:
             key: routeropts
+          routers:
+          - addresses:
+            - addresses
+            - addresses
+            opts: '{}'
+            name: name
+          - addresses:
+            - addresses
+            - addresses
+            opts: '{}'
+            name: name
           plan:
             default: true
             router: router
@@ -4728,6 +4821,23 @@ components:
           description: Volume plan opts.
           type: object
       type: object
+    App_routers:
+      example:
+        addresses:
+        - addresses
+        - addresses
+        opts: '{}'
+        name: name
+      properties:
+        addresses:
+          items:
+            type: string
+          type: array
+        opts:
+          properties: {}
+          type: object
+        name:
+          type: string
     Metadata:
       description: App metadata such as custom labels and annotations.
       example:
@@ -5063,6 +5173,24 @@ components:
         context:
           type: string
       type: object
+    App_internalAddresses:
+      example:
+        Version: Version
+        Port: Port
+        Process: Process
+        Domain: Domain
+        Protocol: Protocol
+      properties:
+        Version:
+          type: string
+        Port:
+          type: string
+        Process:
+          type: string
+        Domain:
+          type: string
+        Protocol:
+          type: string
     EnvSetData:
       description: Data sent to the environment set endpoint.
       example:
@@ -5110,9 +5238,9 @@ components:
       example:
         process: process
         averageCPU: averageCPU
-        maxUnits: 6
-        minUnits: 0
-        version: 1
+        maxUnits: 1
+        minUnits: 6
+        version: 5
       properties:
         process:
           type: string

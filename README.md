@@ -135,6 +135,8 @@ Class | Method | HTTP request | Description
 
  - [App](docs/App.md)
  - [AppCreateResponse](docs/AppCreateResponse.md)
+ - [AppInternalAddresses](docs/AppInternalAddresses.md)
+ - [AppRouters](docs/AppRouters.md)
  - [AssignGroupArgs](docs/AssignGroupArgs.md)
  - [AssignTokenArgs](docs/AssignTokenArgs.md)
  - [AutoScaleSpec](docs/AutoScaleSpec.md)
