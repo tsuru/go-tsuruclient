@@ -11,7 +11,7 @@ package tsuru
 
 type AppInternalAddresses struct {
 	Version  string `json:"Version,omitempty"`
-	Port     string `json:"Port,omitempty"`
+	Port     int64  `json:"Port,omitempty"`
 	Process  string `json:"Process,omitempty"`
 	Domain   string `json:"Domain,omitempty"`
 	Protocol string `json:"Protocol,omitempty"`

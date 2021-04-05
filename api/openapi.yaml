@@ -3537,23 +3537,23 @@ components:
         autoscale:
         - process: process
           averageCPU: averageCPU
-          maxUnits: 1
-          minUnits: 6
+          maxUnits: 5
+          minUnits: 1
           version: 5
         - process: process
           averageCPU: averageCPU
-          maxUnits: 1
-          minUnits: 6
+          maxUnits: 5
+          minUnits: 1
           version: 5
         platform: platform
         internalAddresses:
         - Version: Version
-          Port: Port
+          Port: 6
           Process: Process
           Domain: Domain
           Protocol: Protocol
         - Version: Version
-          Port: Port
+          Port: 6
           Process: Process
           Domain: Domain
           Protocol: Protocol
@@ -3595,6 +3595,7 @@ components:
           description: Cluster name
           type: string
         cname:
+          description: CNames of App
           items:
             type: string
           type: array
@@ -4316,23 +4317,23 @@ components:
           autoscale:
           - process: process
             averageCPU: averageCPU
-            maxUnits: 1
-            minUnits: 6
+            maxUnits: 5
+            minUnits: 1
             version: 5
           - process: process
             averageCPU: averageCPU
-            maxUnits: 1
-            minUnits: 6
+            maxUnits: 5
+            minUnits: 1
             version: 5
           platform: platform
           internalAddresses:
           - Version: Version
-            Port: Port
+            Port: 6
             Process: Process
             Domain: Domain
             Protocol: Protocol
           - Version: Version
-            Port: Port
+            Port: 6
             Process: Process
             Domain: Domain
             Protocol: Protocol
@@ -4382,23 +4383,23 @@ components:
           autoscale:
           - process: process
             averageCPU: averageCPU
-            maxUnits: 1
-            minUnits: 6
+            maxUnits: 5
+            minUnits: 1
             version: 5
           - process: process
             averageCPU: averageCPU
-            maxUnits: 1
-            minUnits: 6
+            maxUnits: 5
+            minUnits: 1
             version: 5
           platform: platform
           internalAddresses:
           - Version: Version
-            Port: Port
+            Port: 6
             Process: Process
             Domain: Domain
             Protocol: Protocol
           - Version: Version
-            Port: Port
+            Port: 6
             Process: Process
             Domain: Domain
             Protocol: Protocol
@@ -5176,7 +5177,7 @@ components:
     App_internalAddresses:
       example:
         Version: Version
-        Port: Port
+        Port: 6
         Process: Process
         Domain: Domain
         Protocol: Protocol
@@ -5184,7 +5185,8 @@ components:
         Version:
           type: string
         Port:
-          type: string
+          format: int64
+          type: integer
         Process:
           type: string
         Domain:
@@ -5238,8 +5240,8 @@ components:
       example:
         process: process
         averageCPU: averageCPU
-        maxUnits: 1
-        minUnits: 6
+        maxUnits: 5
+        minUnits: 1
         version: 5
       properties:
         process:

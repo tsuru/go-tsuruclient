@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Version** | **string** |  | [optional] 
-**Port** | **string** |  | [optional] 
+**Port** | **int64** |  | [optional] 
 **Process** | **string** |  | [optional] 
 **Domain** | **string** |  | [optional] 
 **Protocol** | **string** |  | [optional] 

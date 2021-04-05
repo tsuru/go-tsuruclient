@@ -14,8 +14,9 @@ type App struct {
 	// App name.
 	Name string `json:"name"`
 	// Cluster name
-	Cluster string   `json:"cluster,omitempty"`
-	Cname   []string `json:"cname,omitempty"`
+	Cluster string `json:"cluster,omitempty"`
+	// CNames of App
+	Cname []string `json:"cname,omitempty"`
 	// Number of Deploys
 	Deploys           int64                  `json:"deploys,omitempty"`
 	Routers           []AppRouters           `json:"routers,omitempty"`

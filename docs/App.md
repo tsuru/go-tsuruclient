@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | App name. | 
 **Cluster** | **string** | Cluster name | [optional] 
-**Cname** | **[]string** |  | [optional] 
+**Cname** | **[]string** | CNames of App | [optional] 
 **Deploys** | **int64** | Number of Deploys | [optional] 
 **Routers** | [**[]AppRouters**](App_routers.md) |  | [optional] 
 **InternalAddresses** | [**[]AppInternalAddresses**](App_internalAddresses.md) |  | [optional] 
