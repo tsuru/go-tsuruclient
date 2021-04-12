@@ -783,6 +783,87 @@ paths:
       - Bearer: []
       tags:
       - app
+  /1.0/apps/{app}/cname:
+    delete:
+      description: remove cname from app
+      operationId: AppCnameDelete
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppCName'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Cname removed
+        400:
+          content: {}
+          description: Invalid data
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
+    post:
+      description: adds a cname to app
+      operationId: AppCnameAdd
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppCName'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Cname added
+        400:
+          content: {}
+          description: Invalid data
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
   /1.0/apps/{app}/env:
     delete:
       description: Unset app environment variables.
@@ -1083,6 +1164,254 @@ paths:
         404:
           content:
             application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
+  /1.5/apps/{app}/routers:
+    get:
+      description: adds a router to app
+      operationId: AppRouterList
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppRouterList'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Routers list
+        204:
+          content: {}
+          description: No content
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
+    post:
+      description: adds a router to app
+      operationId: AppRouterAdd
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppRouter'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Router added
+        400:
+          content: {}
+          description: Invalid data
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
+  /1.5/apps/{app}/routers/{router}:
+    delete:
+      description: Delete a tsuru app.
+      operationId: AppRouterDelete
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: Router name
+        in: path
+        name: router
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: App removed.
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found.
+      security:
+      - Bearer: []
+      tags:
+      - app
+    put:
+      description: update a router
+      operationId: AppRouterUpdate
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: Router name
+        in: path
+        name: router
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppRouter'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Router updated
+        400:
+          content: {}
+          description: Invalid data
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
+  /1.0/apps/{app}/teams/{team}: {}
+  /1.9/apps/{app}/units/autoscale:
+    delete:
+      description: Remove unit autoscale spec.
+      operationId: AutoScaleRemove
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - in: query
+        name: process
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content: {}
+          description: AutoScale removed
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
+    post:
+      description: Add new unit autoscale spec.
+      operationId: AutoScaleAdd
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AutoScaleSpec'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: AutoScale updated
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: App not found
@@ -3436,86 +3765,6 @@ paths:
       - Bearer: []
       tags:
       - auth
-  /1.9/apps/{app}/units/autoscale:
-    delete:
-      description: Remove unit autoscale spec.
-      operationId: AutoScaleRemove
-      parameters:
-      - description: App name.
-        in: path
-        name: app
-        required: true
-        schema:
-          minLength: 1
-          type: string
-      - in: query
-        name: process
-        required: true
-        schema:
-          type: string
-      responses:
-        200:
-          content: {}
-          description: AutoScale removed
-        401:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Unauthorized
-        404:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: App not found
-      security:
-      - Bearer: []
-      tags:
-      - app
-    post:
-      description: Add new unit autoscale spec.
-      operationId: AutoScaleAdd
-      parameters:
-      - description: App name.
-        in: path
-        name: app
-        required: true
-        schema:
-          minLength: 1
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AutoScaleSpec'
-        required: true
-      responses:
-        200:
-          content: {}
-          description: AutoScale updated
-        400:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Invalid data
-        401:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Unauthorized
-        404:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: App not found
-      security:
-      - Bearer: []
-      tags:
-      - app
 components:
   schemas:
     App:
@@ -5118,6 +5367,23 @@ components:
         group:
           type: string
       type: object
+    AppRouterList:
+      description: Application Router
+      items:
+        $ref: '#/components/schemas/AppRouter'
+      type: array
+    AppCName:
+      description: Application CNames
+      example:
+        cname:
+        - cname
+        - cname
+      properties:
+        cname:
+          items:
+            type: string
+          type: array
+      type: object
     Team:
       example:
         permissions:
@@ -5619,6 +5885,37 @@ components:
           $ref: '#/components/schemas/NodeStatus'
         units:
           $ref: '#/components/schemas/Unit'
+      type: object
+    AppRouter:
+      description: Application Router
+      example:
+        addresses:
+        - addresses
+        - addresses
+        address: address
+        opts: '{}'
+        status-detail: status-detail
+        name: name
+        type: type
+        status: status
+      properties:
+        name:
+          type: string
+        opts:
+          properties: {}
+          type: object
+        address:
+          type: string
+        addresses:
+          items:
+            type: string
+          type: array
+        type:
+          type: string
+        status:
+          type: string
+        status-detail:
+          type: string
       type: object
     Quota:
       example:

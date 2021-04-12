@@ -4,6 +4,8 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AppCnameAdd**](AppApi.md#AppCnameAdd) | **Post** /1.0/apps/{app}/cname | 
+[**AppCnameDelete**](AppApi.md#AppCnameDelete) | **Delete** /1.0/apps/{app}/cname | 
 [**AppCreate**](AppApi.md#AppCreate) | **Post** /1.0/apps | 
 [**AppDelete**](AppApi.md#AppDelete) | **Delete** /1.0/apps/{app} | 
 [**AppGet**](AppApi.md#AppGet) | **Get** /1.0/apps/{app} | 
@@ -11,6 +13,10 @@ Method | HTTP request | Description
 [**AppQuotaChange**](AppApi.md#AppQuotaChange) | **Put** /1.0/apps/{app}/quota | 
 [**AppQuotaGet**](AppApi.md#AppQuotaGet) | **Get** /1.0/apps/{app}/quota | 
 [**AppRestart**](AppApi.md#AppRestart) | **Post** /1.0/apps/{app}/restart | 
+[**AppRouterAdd**](AppApi.md#AppRouterAdd) | **Post** /1.5/apps/{app}/routers | 
+[**AppRouterDelete**](AppApi.md#AppRouterDelete) | **Delete** /1.5/apps/{app}/routers/{router} | 
+[**AppRouterList**](AppApi.md#AppRouterList) | **Get** /1.5/apps/{app}/routers | 
+[**AppRouterUpdate**](AppApi.md#AppRouterUpdate) | **Put** /1.5/apps/{app}/routers/{router} | 
 [**AppSetRoutable**](AppApi.md#AppSetRoutable) | **Post** /1.8/apps/{app}/routable | 
 [**AppUpdate**](AppApi.md#AppUpdate) | **Put** /1.0/apps/{app} | 
 [**AutoScaleAdd**](AppApi.md#AutoScaleAdd) | **Post** /1.9/apps/{app}/units/autoscale | 
@@ -19,6 +25,64 @@ Method | HTTP request | Description
 [**EnvSet**](AppApi.md#EnvSet) | **Post** /1.0/apps/{app}/env | 
 [**EnvUnset**](AppApi.md#EnvUnset) | **Delete** /1.0/apps/{app}/env | 
 
+
+# **AppCnameAdd**
+> AppCnameAdd(ctx, app, appCName)
+
+
+adds a cname to app
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **app** | **string**| App name. | 
+  **appCName** | [**AppCName**](AppCName.md)|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AppCnameDelete**
+> AppCnameDelete(ctx, app, appCName)
+
+
+remove cname from app
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **app** | **string**| App name. | 
+  **appCName** | [**AppCName**](AppCName.md)|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AppCreate**
 > AppCreateResponse AppCreate(ctx, inputApp)
@@ -239,6 +303,123 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/x-json-stream
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AppRouterAdd**
+> AppRouterAdd(ctx, app, appRouter)
+
+
+adds a router to app
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **app** | **string**| App name. | 
+  **appRouter** | [**AppRouter**](AppRouter.md)|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AppRouterDelete**
+> AppRouterDelete(ctx, app, router)
+
+
+Delete a tsuru app.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **app** | **string**| App name. | 
+  **router** | **string**| Router name | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AppRouterList**
+> AppRouterList(ctx, app, appRouter)
+
+
+adds a router to app
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **app** | **string**| App name. | 
+  **appRouter** | [**[]AppRouter**](array.md)|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AppRouterUpdate**
+> AppRouterUpdate(ctx, app, router, appRouter)
+
+
+update a router
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **app** | **string**| App name. | 
+  **router** | **string**| Router name | 
+  **appRouter** | [**AppRouter**](AppRouter.md)|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
