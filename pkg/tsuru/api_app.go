@@ -1380,18 +1380,19 @@ func (a *AppApiService) AppRouterDelete(ctx context.Context, app string, router 
 
 /*
 AppApiService
-adds a router to app
+list routers from an app
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param app App name.
- * @param appRouter
+@return []AppRouter
 */
-func (a *AppApiService) AppRouterList(ctx context.Context, app string, appRouter []AppRouter) (*http.Response, error) {
+func (a *AppApiService) AppRouterList(ctx context.Context, app string) ([]AppRouter, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  []AppRouter
 	)
 
 	// create path and map variables
@@ -1402,11 +1403,11 @@ func (a *AppApiService) AppRouterList(ctx context.Context, app string, appRouter
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if strlen(app) < 1 {
-		return nil, reportError("app must have at least 1 elements")
+		return localVarReturnValue, nil, reportError("app must have at least 1 elements")
 	}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{"application/json"}
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -1422,8 +1423,6 @@ func (a *AppApiService) AppRouterList(ctx context.Context, app string, appRouter
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	// body params
-	localVarPostBody = &appRouter
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -1439,15 +1438,19 @@ func (a *AppApiService) AppRouterList(ctx context.Context, app string, appRouter
 
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return localVarHttpResponse, err
+		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	var localVarBody []byte
+	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarHttpResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
 
 	if localVarHttpResponse.StatusCode >= 300 {
 		newErr := GenericOpenAPIError{
@@ -1456,36 +1459,50 @@ func (a *AppApiService) AppRouterList(ctx context.Context, app string, appRouter
 			statusCode: localVarHttpResponse.StatusCode,
 		}
 
-		localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
-		localVarHttpResponse.Body.Close()
-		if err == nil {
-			newErr.body = localVarBody
+		if localVarHttpResponse.StatusCode == 200 {
+			var v []AppRouter
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
-
 		if localVarHttpResponse.StatusCode == 401 {
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, newErr
 			}
 			newErr.model = v
-			return localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 404 {
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, newErr
 			}
 			newErr.model = v
-			return localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
-		return localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, newErr
 	}
 
-	return localVarHttpResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:       localVarBody,
+			error:      err.Error(),
+			statusCode: localVarHttpResponse.StatusCode,
+		}
+		return localVarReturnValue, localVarHttpResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHttpResponse, nil
 }
 
 /*

@@ -1173,7 +1173,7 @@ paths:
       - app
   /1.5/apps/{app}/routers:
     get:
-      description: adds a router to app
+      description: list routers from an app
       operationId: AppRouterList
       parameters:
       - description: App name.
@@ -1183,15 +1183,12 @@ paths:
         schema:
           minLength: 1
           type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AppRouterList'
-        required: true
       responses:
         200:
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppRouterList'
           description: Routers list
         204:
           content: {}

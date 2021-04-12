@@ -367,10 +367,10 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AppRouterList**
-> AppRouterList(ctx, app, appRouter)
+> []AppRouter AppRouterList(ctx, app)
 
 
-adds a router to app
+list routers from an app
 
 ### Required Parameters
 
@@ -378,11 +378,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **app** | **string**| App name. | 
-  **appRouter** | [**[]AppRouter**](array.md)|  | 
 
 ### Return type
 
- (empty response body)
+[**[]AppRouter**](AppRouter.md)
 
 ### Authorization
 
@@ -390,7 +389,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
