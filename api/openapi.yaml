@@ -1338,7 +1338,89 @@ paths:
       - Bearer: []
       tags:
       - app
-  /1.0/apps/{app}/teams/{team}: {}
+  /1.0/apps/{app}/teams/{team}:
+    delete:
+      description: grant access to a team
+      operationId: AppTeamRevoke
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: Team name
+        in: path
+        name: team
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Access revoked
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        403:
+          content: {}
+          description: Forbidden
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App or team not found
+      security:
+      - Bearer: []
+      tags:
+      - app
+    put:
+      description: grant access to a team
+      operationId: AppTeamGrant
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: Team name
+        in: path
+        name: team
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Access granted
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App or team not found
+        409:
+          content: {}
+          description: Grant already exists
+      security:
+      - Bearer: []
+      tags:
+      - app
   /1.9/apps/{app}/units/autoscale:
     delete:
       description: Remove unit autoscale spec.

@@ -18,6 +18,8 @@ Method | HTTP request | Description
 [**AppRouterList**](AppApi.md#AppRouterList) | **Get** /1.5/apps/{app}/routers | 
 [**AppRouterUpdate**](AppApi.md#AppRouterUpdate) | **Put** /1.5/apps/{app}/routers/{router} | 
 [**AppSetRoutable**](AppApi.md#AppSetRoutable) | **Post** /1.8/apps/{app}/routable | 
+[**AppTeamGrant**](AppApi.md#AppTeamGrant) | **Put** /1.0/apps/{app}/teams/{team} | 
+[**AppTeamRevoke**](AppApi.md#AppTeamRevoke) | **Delete** /1.0/apps/{app}/teams/{team} | 
 [**AppUpdate**](AppApi.md#AppUpdate) | **Put** /1.0/apps/{app} | 
 [**AutoScaleAdd**](AppApi.md#AutoScaleAdd) | **Post** /1.9/apps/{app}/units/autoscale | 
 [**AutoScaleRemove**](AppApi.md#AutoScaleRemove) | **Delete** /1.9/apps/{app}/units/autoscale | 
@@ -448,6 +450,64 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AppTeamGrant**
+> AppTeamGrant(ctx, app, team)
+
+
+grant access to a team
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **app** | **string**| App name. | 
+  **team** | **string**| Team name | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AppTeamRevoke**
+> AppTeamRevoke(ctx, app, team)
+
+
+grant access to a team
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **app** | **string**| App name. | 
+  **team** | **string**| Team name | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
