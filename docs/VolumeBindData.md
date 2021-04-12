@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**App** | **string** |  | [optional] 
 **Mountpoint** | **string** |  | [optional] 
 **Norestart** | **bool** |  | [optional] 
 **Readonly** | **bool** |  | [optional] 

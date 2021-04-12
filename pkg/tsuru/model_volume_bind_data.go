@@ -10,6 +10,7 @@
 package tsuru
 
 type VolumeBindData struct {
+	App        string `json:"app,omitempty"`
 	Mountpoint string `json:"mountpoint,omitempty"`
 	Norestart  bool   `json:"norestart,omitempty"`
 	Readonly   bool   `json:"readonly,omitempty"`
