@@ -10,9 +10,10 @@
 package tsuru
 
 type Service struct {
-	Service string `json:"service,omitempty"`
-	// [deprecated]
-	Instances        []string          `json:"instances,omitempty"`
-	Plans            []string          `json:"plans,omitempty"`
-	ServiceInstances []ServiceInstance `json:"service_instances,omitempty"`
+	Id           string `json:"id,omitempty"`
+	Username     string `json:"username,omitempty"`
+	Password     string `json:"password,omitempty"`
+	Endpoint     string `json:"endpoint,omitempty"`
+	MultiCluster string `json:"multi-cluster,omitempty"`
+	Team         string `json:"team,omitempty"`
 }

@@ -16,12 +16,393 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/Service'
+                  $ref: '#/components/schemas/ServiceList'
                 type: array
           description: Services
         204:
           content: {}
           description: No content
+      security:
+      - Bearer: []
+      tags:
+      - service
+    post:
+      description: Creates a new service
+      operationId: ServiceCreate
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Service'
+        required: true
+      responses:
+        201:
+          content: {}
+          description: Services
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Service not found
+      security:
+      - Bearer: []
+      tags:
+      - service
+  /1.0/services/{name}:
+    delete:
+      description: Delete a service
+      operationId: ServiceDelete
+      parameters:
+      - description: Service name.
+        in: path
+        name: name
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Service removed
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        403:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Forbidden
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Service not found
+      security:
+      - Bearer: []
+      tags:
+      - service
+    get:
+      description: Information on a service
+      operationId: ServiceInfo
+      parameters:
+      - description: Service name.
+        in: path
+        name: name
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ServiceInfo'
+                type: array
+          description: Service removed
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        403:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Forbidden
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Service not found
+      security:
+      - Bearer: []
+      tags:
+      - service
+    put:
+      description: Updates a service
+      operationId: ServiceUpdate
+      parameters:
+      - description: Service name.
+        in: path
+        name: name
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Service'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Service Updated
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        403:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Forbidden
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Service not found
+      security:
+      - Bearer: []
+      tags:
+      - service
+  /1.0/services/{name}/plans:
+    get:
+      description: Plans for a service
+      operationId: ServicePlans
+      parameters:
+      - description: Service name.
+        in: path
+        name: name
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - in: query
+        name: pool
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ServicePlan'
+                type: array
+          description: Service plans
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Service not found
+      security:
+      - Bearer: []
+      tags:
+      - service
+  /1.0/services/{name}/doc:
+    get:
+      description: Documentation on a service
+      operationId: ServiceDoc
+      parameters:
+      - description: Service name.
+        in: path
+        name: name
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Service docs
+        401:
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        403:
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Forbidden
+        404:
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Service not found
+      security:
+      - Bearer: []
+      tags:
+      - service
+    put:
+      description: Documentation on a service
+      operationId: ServiceAddDoc
+      parameters:
+      - description: Service name.
+        in: path
+        name: name
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ServiceDoc'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Service docs added
+        401:
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        403:
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Forbidden
+      security:
+      - Bearer: []
+      tags:
+      - service
+  /1.0/services/{service}/team/{team}:
+    delete:
+      description: Revoke access to team for the service
+      operationId: ServiceRevokeTeam
+      parameters:
+      - description: Service name.
+        in: path
+        name: service
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: Team name
+        in: path
+        name: team
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Team access revoked
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Team not found
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Service not found
+        409:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Team does not has access to this service
+      security:
+      - Bearer: []
+      tags:
+      - service
+    put:
+      description: Grant access to team for the service
+      operationId: ServiceGrantTeam
+      parameters:
+      - description: Service name.
+        in: path
+        name: service
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: Team name
+        in: path
+        name: team
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Team access granted
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Team not found
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Service not found
+        409:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Team already has access to this service
       security:
       - Bearer: []
       tags:
@@ -42,7 +423,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/Service'
+                  $ref: '#/components/schemas/ServiceList'
                 type: array
           description: Service instances
         204:
@@ -322,6 +703,136 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: Unauthorized
+      security:
+      - Bearer: []
+      tags:
+      - service
+  /1.0/services/{service}/instances/{instance}/status:
+    get:
+      description: Status for service instance
+      operationId: ServiceInstanceStatus
+      parameters:
+      - description: Service name.
+        in: path
+        name: service
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: Instance name.
+        in: path
+        name: instance
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Instance has been unbound from the app.
+        401:
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Service instance or team not found
+      security:
+      - Bearer: []
+      tags:
+      - service
+  /1.0/services/{service}/instances/permission/{instance}/{team}:
+    delete:
+      description: Revoke access to team for this service instance
+      operationId: ServiceInstanceRevoke
+      parameters:
+      - description: Service name.
+        in: path
+        name: service
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: Instance name.
+        in: path
+        name: instance
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: Team name.
+        in: path
+        name: team
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Access revoked
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Service instance or team not found
+      security:
+      - Bearer: []
+      tags:
+      - service
+    put:
+      description: Grant access to team for this service instance
+      operationId: ServiceInstanceGrant
+      parameters:
+      - description: Service name.
+        in: path
+        name: service
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: Instance name.
+        in: path
+        name: instance
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: Team name.
+        in: path
+        name: team
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Access granted
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Service instance or team not found
       security:
       - Bearer: []
       tags:
@@ -4208,6 +4719,46 @@ components:
         address:
           $ref: '#/components/schemas/URL'
       type: object
+    ServiceInfo:
+      example:
+        teams:
+        - teams
+        - teams
+        name: name
+        pool: pool
+        planname: planname
+        servicename: servicename
+        id: id
+        apps:
+        - apps
+        - apps
+        info: '{}'
+        teamowner: teamowner
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        pool:
+          type: string
+        teams:
+          items:
+            type: string
+          type: array
+        planname:
+          type: string
+        apps:
+          items:
+            type: string
+          type: array
+        servicename:
+          type: string
+        info:
+          properties: {}
+          type: object
+        teamowner:
+          type: string
+      type: object
     ServiceBroker:
       example:
         Config:
@@ -4454,6 +5005,83 @@ components:
             type: string
           type: object
       type: object
+    ServiceList:
+      example:
+        instances:
+        - instances
+        - instances
+        service: service
+        plans:
+        - plans
+        - plans
+        service_instances:
+        - team_owner: team_owner
+          bound_units:
+          - app_name: app_name
+            ip: ip
+            id: id
+          - app_name: app_name
+            ip: ip
+            id: id
+          teams:
+          - teams
+          - teams
+          service_name: service_name
+          name: name
+          pool: pool
+          description: description
+          id: 0
+          parameters:
+            key: parameters
+          plan_name: plan_name
+          tags:
+          - tags
+          - tags
+          apps:
+          - apps
+          - apps
+        - team_owner: team_owner
+          bound_units:
+          - app_name: app_name
+            ip: ip
+            id: id
+          - app_name: app_name
+            ip: ip
+            id: id
+          teams:
+          - teams
+          - teams
+          service_name: service_name
+          name: name
+          pool: pool
+          description: description
+          id: 0
+          parameters:
+            key: parameters
+          plan_name: plan_name
+          tags:
+          - tags
+          - tags
+          apps:
+          - apps
+          - apps
+      properties:
+        service:
+          type: string
+        instances:
+          description: '[deprecated]'
+          items:
+            type: string
+          type: array
+        plans:
+          items:
+            type: string
+          type: array
+        service_instances:
+          items:
+            $ref: '#/components/schemas/ServiceInstance'
+          type: array
+      type: object
     TeamToken:
       description: An authorization token associated to a team.
       example:
@@ -4527,6 +5155,16 @@ components:
         readonly:
           description: Volume is read-only.
           type: boolean
+      type: object
+    ServicePlan:
+      example:
+        name: name
+        description: description
+      properties:
+        name:
+          type: string
+        description:
+          type: string
       type: object
     Router:
       example:
@@ -5541,6 +6179,11 @@ components:
           type: string
         Protocol:
           type: string
+    ServiceDoc:
+      properties:
+        doc:
+          type: string
+      type: object
     EnvSetData:
       description: Data sent to the environment set endpoint.
       example:
@@ -5671,81 +6314,19 @@ components:
           $ref: '#/components/schemas/ClusterHelp'
       type: object
     Service:
-      example:
-        instances:
-        - instances
-        - instances
-        service: service
-        plans:
-        - plans
-        - plans
-        service_instances:
-        - team_owner: team_owner
-          bound_units:
-          - app_name: app_name
-            ip: ip
-            id: id
-          - app_name: app_name
-            ip: ip
-            id: id
-          teams:
-          - teams
-          - teams
-          service_name: service_name
-          name: name
-          pool: pool
-          description: description
-          id: 0
-          parameters:
-            key: parameters
-          plan_name: plan_name
-          tags:
-          - tags
-          - tags
-          apps:
-          - apps
-          - apps
-        - team_owner: team_owner
-          bound_units:
-          - app_name: app_name
-            ip: ip
-            id: id
-          - app_name: app_name
-            ip: ip
-            id: id
-          teams:
-          - teams
-          - teams
-          service_name: service_name
-          name: name
-          pool: pool
-          description: description
-          id: 0
-          parameters:
-            key: parameters
-          plan_name: plan_name
-          tags:
-          - tags
-          - tags
-          apps:
-          - apps
-          - apps
       properties:
-        service:
+        id:
           type: string
-        instances:
-          description: '[deprecated]'
-          items:
-            type: string
-          type: array
-        plans:
-          items:
-            type: string
-          type: array
-        service_instances:
-          items:
-            $ref: '#/components/schemas/ServiceInstance'
-          type: array
+        username:
+          type: string
+        password:
+          type: string
+        endpoint:
+          type: string
+        multi-cluster:
+          type: string
+        team:
+          type: string
       type: object
     Cluster:
       example:
@@ -6184,6 +6765,21 @@ components:
       example:
         teamOwner: teamOwner
         router: router
+        metadata:
+          annotations:
+          - name: name
+            value: value
+            delete: true
+          - name: name
+            value: value
+            delete: true
+          labels:
+          - name: name
+            value: value
+            delete: true
+          - name: name
+            value: value
+            delete: true
         name: name
         pool: pool
         routeropts:
@@ -6226,6 +6822,8 @@ components:
         teamOwner:
           description: Team that owns the app.
           type: string
+        metadata:
+          $ref: '#/components/schemas/Metadata'
       required:
       - name
       type: object

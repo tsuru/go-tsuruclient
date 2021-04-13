@@ -104,12 +104,24 @@ Class | Method | HTTP request | Description
 *ServiceApi* | [**InstanceGet**](docs/ServiceApi.md#instanceget) | **Get** /1.0/services/{service}/instances/{instance} | 
 *ServiceApi* | [**InstanceUpdate**](docs/ServiceApi.md#instanceupdate) | **Put** /1.0/services/{service}/instances/{instance} | 
 *ServiceApi* | [**InstancesList**](docs/ServiceApi.md#instanceslist) | **Get** /1.0/services/instances | 
+*ServiceApi* | [**ServiceAddDoc**](docs/ServiceApi.md#serviceadddoc) | **Put** /1.0/services/{name}/doc | 
 *ServiceApi* | [**ServiceBrokerCreate**](docs/ServiceApi.md#servicebrokercreate) | **Post** /1.7/brokers | 
 *ServiceApi* | [**ServiceBrokerDelete**](docs/ServiceApi.md#servicebrokerdelete) | **Delete** /1.7/brokers/{name} | 
 *ServiceApi* | [**ServiceBrokerList**](docs/ServiceApi.md#servicebrokerlist) | **Get** /1.7/brokers | 
 *ServiceApi* | [**ServiceBrokerUpdate**](docs/ServiceApi.md#servicebrokerupdate) | **Put** /1.7/brokers/{name} | 
+*ServiceApi* | [**ServiceCreate**](docs/ServiceApi.md#servicecreate) | **Post** /1.0/services | 
+*ServiceApi* | [**ServiceDelete**](docs/ServiceApi.md#servicedelete) | **Delete** /1.0/services/{name} | 
+*ServiceApi* | [**ServiceDoc**](docs/ServiceApi.md#servicedoc) | **Get** /1.0/services/{name}/doc | 
+*ServiceApi* | [**ServiceGrantTeam**](docs/ServiceApi.md#servicegrantteam) | **Put** /1.0/services/{service}/team/{team} | 
+*ServiceApi* | [**ServiceInfo**](docs/ServiceApi.md#serviceinfo) | **Get** /1.0/services/{name} | 
 *ServiceApi* | [**ServiceInstanceBind**](docs/ServiceApi.md#serviceinstancebind) | **Put** /1.0/services/{service}/instances/{instance}/{app} | 
+*ServiceApi* | [**ServiceInstanceGrant**](docs/ServiceApi.md#serviceinstancegrant) | **Put** /1.0/services/{service}/instances/permission/{instance}/{team} | 
+*ServiceApi* | [**ServiceInstanceRevoke**](docs/ServiceApi.md#serviceinstancerevoke) | **Delete** /1.0/services/{service}/instances/permission/{instance}/{team} | 
+*ServiceApi* | [**ServiceInstanceStatus**](docs/ServiceApi.md#serviceinstancestatus) | **Get** /1.0/services/{service}/instances/{instance}/status | 
 *ServiceApi* | [**ServiceInstanceUnbind**](docs/ServiceApi.md#serviceinstanceunbind) | **Delete** /1.0/services/{service}/instances/{instance}/{app} | 
+*ServiceApi* | [**ServicePlans**](docs/ServiceApi.md#serviceplans) | **Get** /1.0/services/{name}/plans | 
+*ServiceApi* | [**ServiceRevokeTeam**](docs/ServiceApi.md#servicerevoketeam) | **Delete** /1.0/services/{service}/team/{team} | 
+*ServiceApi* | [**ServiceUpdate**](docs/ServiceApi.md#serviceupdate) | **Put** /1.0/services/{name} | 
 *ServiceApi* | [**ServicesList**](docs/ServiceApi.md#serviceslist) | **Get** /1.0/services | 
 *TeamApi* | [**TeamCreate**](docs/TeamApi.md#teamcreate) | **Post** /1.0/teams | 
 *TeamApi* | [**TeamDelete**](docs/TeamApi.md#teamdelete) | **Delete** /1.0/teams/{team} | 
@@ -196,12 +208,16 @@ Class | Method | HTTP request | Description
  - [ServiceBrokerConfigAuthConfigBasicAuthConfig](docs/ServiceBrokerConfigAuthConfigBasicAuthConfig.md)
  - [ServiceBrokerConfigAuthConfigBearerConfig](docs/ServiceBrokerConfigAuthConfigBearerConfig.md)
  - [ServiceBrokerList](docs/ServiceBrokerList.md)
+ - [ServiceDoc](docs/ServiceDoc.md)
+ - [ServiceInfo](docs/ServiceInfo.md)
  - [ServiceInstance](docs/ServiceInstance.md)
  - [ServiceInstanceBind](docs/ServiceInstanceBind.md)
  - [ServiceInstanceBoundUnit](docs/ServiceInstanceBoundUnit.md)
  - [ServiceInstanceInfo](docs/ServiceInstanceInfo.md)
  - [ServiceInstanceUnbind](docs/ServiceInstanceUnbind.md)
  - [ServiceInstanceUpdateData](docs/ServiceInstanceUpdateData.md)
+ - [ServiceList](docs/ServiceList.md)
+ - [ServicePlan](docs/ServicePlan.md)
  - [SetRoutableArgs](docs/SetRoutableArgs.md)
  - [SshKeyAddData](docs/SshKeyAddData.md)
  - [SshKeyListResponse](docs/SshKeyListResponse.md)

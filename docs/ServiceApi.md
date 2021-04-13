@@ -9,12 +9,24 @@ Method | HTTP request | Description
 [**InstanceGet**](ServiceApi.md#InstanceGet) | **Get** /1.0/services/{service}/instances/{instance} | 
 [**InstanceUpdate**](ServiceApi.md#InstanceUpdate) | **Put** /1.0/services/{service}/instances/{instance} | 
 [**InstancesList**](ServiceApi.md#InstancesList) | **Get** /1.0/services/instances | 
+[**ServiceAddDoc**](ServiceApi.md#ServiceAddDoc) | **Put** /1.0/services/{name}/doc | 
 [**ServiceBrokerCreate**](ServiceApi.md#ServiceBrokerCreate) | **Post** /1.7/brokers | 
 [**ServiceBrokerDelete**](ServiceApi.md#ServiceBrokerDelete) | **Delete** /1.7/brokers/{name} | 
 [**ServiceBrokerList**](ServiceApi.md#ServiceBrokerList) | **Get** /1.7/brokers | 
 [**ServiceBrokerUpdate**](ServiceApi.md#ServiceBrokerUpdate) | **Put** /1.7/brokers/{name} | 
+[**ServiceCreate**](ServiceApi.md#ServiceCreate) | **Post** /1.0/services | 
+[**ServiceDelete**](ServiceApi.md#ServiceDelete) | **Delete** /1.0/services/{name} | 
+[**ServiceDoc**](ServiceApi.md#ServiceDoc) | **Get** /1.0/services/{name}/doc | 
+[**ServiceGrantTeam**](ServiceApi.md#ServiceGrantTeam) | **Put** /1.0/services/{service}/team/{team} | 
+[**ServiceInfo**](ServiceApi.md#ServiceInfo) | **Get** /1.0/services/{name} | 
 [**ServiceInstanceBind**](ServiceApi.md#ServiceInstanceBind) | **Put** /1.0/services/{service}/instances/{instance}/{app} | 
+[**ServiceInstanceGrant**](ServiceApi.md#ServiceInstanceGrant) | **Put** /1.0/services/{service}/instances/permission/{instance}/{team} | 
+[**ServiceInstanceRevoke**](ServiceApi.md#ServiceInstanceRevoke) | **Delete** /1.0/services/{service}/instances/permission/{instance}/{team} | 
+[**ServiceInstanceStatus**](ServiceApi.md#ServiceInstanceStatus) | **Get** /1.0/services/{service}/instances/{instance}/status | 
 [**ServiceInstanceUnbind**](ServiceApi.md#ServiceInstanceUnbind) | **Delete** /1.0/services/{service}/instances/{instance}/{app} | 
+[**ServicePlans**](ServiceApi.md#ServicePlans) | **Get** /1.0/services/{name}/plans | 
+[**ServiceRevokeTeam**](ServiceApi.md#ServiceRevokeTeam) | **Delete** /1.0/services/{service}/team/{team} | 
+[**ServiceUpdate**](ServiceApi.md#ServiceUpdate) | **Put** /1.0/services/{name} | 
 [**ServicesList**](ServiceApi.md#ServicesList) | **Get** /1.0/services | 
 
 
@@ -146,7 +158,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **InstancesList**
-> []Service InstancesList(ctx, optional)
+> []ServiceList InstancesList(ctx, optional)
 
 
 List service instances
@@ -167,7 +179,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Service**](Service.md)
+[**[]ServiceList**](ServiceList.md)
 
 ### Authorization
 
@@ -177,6 +189,43 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ServiceAddDoc**
+> ServiceAddDoc(ctx, name, optional)
+
+
+Documentation on a service
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **name** | **string**| Service name. | 
+ **optional** | ***ServiceAddDocOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a ServiceAddDocOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **doc** | **optional.String**|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -287,6 +336,159 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **ServiceCreate**
+> ServiceCreate(ctx, optional)
+
+
+Creates a new service
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***ServiceCreateOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a ServiceCreateOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **optional.String**|  | 
+ **username** | **optional.String**|  | 
+ **password** | **optional.String**|  | 
+ **endpoint** | **optional.String**|  | 
+ **multiCluster** | **optional.String**|  | 
+ **team** | **optional.String**|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ServiceDelete**
+> ServiceDelete(ctx, name)
+
+
+Delete a service
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **name** | **string**| Service name. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ServiceDoc**
+> ServiceDoc(ctx, name)
+
+
+Documentation on a service
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **name** | **string**| Service name. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ServiceGrantTeam**
+> ServiceGrantTeam(ctx, service, team)
+
+
+Grant access to team for the service
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **service** | **string**| Service name. | 
+  **team** | **string**| Team name | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ServiceInfo**
+> []ServiceInfo ServiceInfo(ctx, name)
+
+
+Information on a service
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **name** | **string**| Service name. | 
+
+### Return type
+
+[**[]ServiceInfo**](ServiceInfo.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **ServiceInstanceBind**
 > ServiceInstanceBind(ctx, service, instance, app, optional)
 
@@ -325,6 +527,95 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/x-json-stream
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ServiceInstanceGrant**
+> ServiceInstanceGrant(ctx, service, instance, team)
+
+
+Grant access to team for this service instance
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **service** | **string**| Service name. | 
+  **instance** | **string**| Instance name. | 
+  **team** | **string**| Team name. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ServiceInstanceRevoke**
+> ServiceInstanceRevoke(ctx, service, instance, team)
+
+
+Revoke access to team for this service instance
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **service** | **string**| Service name. | 
+  **instance** | **string**| Instance name. | 
+  **team** | **string**| Team name. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ServiceInstanceStatus**
+> ServiceInstanceStatus(ctx, service, instance)
+
+
+Status for service instance
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **service** | **string**| Service name. | 
+  **instance** | **string**| Instance name. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -369,8 +660,116 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **ServicePlans**
+> []ServicePlan ServicePlans(ctx, name, optional)
+
+
+Plans for a service
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **name** | **string**| Service name. | 
+ **optional** | ***ServicePlansOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a ServicePlansOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **pool** | **optional.String**|  | 
+
+### Return type
+
+[**[]ServicePlan**](ServicePlan.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ServiceRevokeTeam**
+> ServiceRevokeTeam(ctx, service, team)
+
+
+Revoke access to team for the service
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **service** | **string**| Service name. | 
+  **team** | **string**| Team name | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ServiceUpdate**
+> ServiceUpdate(ctx, name, optional)
+
+
+Updates a service
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **name** | **string**| Service name. | 
+ **optional** | ***ServiceUpdateOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a ServiceUpdateOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **id** | **optional.String**|  | 
+ **username** | **optional.String**|  | 
+ **password** | **optional.String**|  | 
+ **endpoint** | **optional.String**|  | 
+ **multiCluster** | **optional.String**|  | 
+ **team** | **optional.String**|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **ServicesList**
-> []Service ServicesList(ctx, )
+> []ServiceList ServicesList(ctx, )
 
 
 List services
@@ -380,7 +779,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**[]Service**](Service.md)
+[**[]ServiceList**](ServiceList.md)
 
 ### Authorization
 
