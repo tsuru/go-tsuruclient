@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **VolumeBind**
-> VolumeBind(ctx, volume, optional)
+> VolumeBind(ctx, volume, volumeBindData)
 
 
 Bind volume.
@@ -25,15 +25,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **volume** | **string**| Volume name. | 
- **optional** | ***VolumeBindOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a VolumeBindOpts struct
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **volumeBindData** | [**optional.Interface of VolumeBindData**](VolumeBindData.md)|  | 
+  **volumeBindData** | [**VolumeBindData**](VolumeBindData.md)|  | 
 
 ### Return type
 
@@ -183,7 +175,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **VolumeUnbind**
-> VolumeUnbind(ctx, volume, optional)
+> VolumeUnbind(ctx, volume, volumeBindData)
 
 
 Unbind volume.
@@ -194,15 +186,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **volume** | **string**| Volume name. | 
- **optional** | ***VolumeUnbindOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a VolumeUnbindOpts struct
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **volumeBindData** | [**optional.Interface of VolumeBindData**](VolumeBindData.md)|  | 
+  **volumeBindData** | [**VolumeBindData**](VolumeBindData.md)|  | 
 
 ### Return type
 

@@ -3514,7 +3514,7 @@ paths:
           '*/*':
             schema:
               $ref: '#/components/schemas/VolumeBindData'
-        required: false
+        required: true
       responses:
         200:
           content: {}
@@ -3551,7 +3551,7 @@ paths:
           '*/*':
             schema:
               $ref: '#/components/schemas/VolumeBindData'
-        required: false
+        required: true
       responses:
         200:
           content: {}

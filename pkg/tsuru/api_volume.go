@@ -16,8 +16,6 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -32,15 +30,9 @@ VolumeApiService
 Bind volume.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param volume Volume name.
- * @param optional nil or *VolumeBindOpts - Optional Parameters:
- * @param "VolumeBindData" (optional.Interface of VolumeBindData) -
+ * @param volumeBindData
 */
-
-type VolumeBindOpts struct {
-	VolumeBindData optional.Interface
-}
-
-func (a *VolumeApiService) VolumeBind(ctx context.Context, volume string, localVarOptionals *VolumeBindOpts) (*http.Response, error) {
+func (a *VolumeApiService) VolumeBind(ctx context.Context, volume string, volumeBindData VolumeBindData) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
@@ -78,14 +70,7 @@ func (a *VolumeApiService) VolumeBind(ctx context.Context, volume string, localV
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.VolumeBindData.IsSet() {
-		localVarOptionalVolumeBindData, localVarOptionalVolumeBindDataok := localVarOptionals.VolumeBindData.Value().(VolumeBindData)
-		if !localVarOptionalVolumeBindDataok {
-			return nil, reportError("volumeBindData should be VolumeBindData")
-		}
-		localVarPostBody = &localVarOptionalVolumeBindData
-	}
-
+	localVarPostBody = &volumeBindData
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -728,15 +713,9 @@ VolumeApiService
 Unbind volume.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param volume Volume name.
- * @param optional nil or *VolumeUnbindOpts - Optional Parameters:
- * @param "VolumeBindData" (optional.Interface of VolumeBindData) -
+ * @param volumeBindData
 */
-
-type VolumeUnbindOpts struct {
-	VolumeBindData optional.Interface
-}
-
-func (a *VolumeApiService) VolumeUnbind(ctx context.Context, volume string, localVarOptionals *VolumeUnbindOpts) (*http.Response, error) {
+func (a *VolumeApiService) VolumeUnbind(ctx context.Context, volume string, volumeBindData VolumeBindData) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Delete")
 		localVarPostBody     interface{}
@@ -774,14 +753,7 @@ func (a *VolumeApiService) VolumeUnbind(ctx context.Context, volume string, loca
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.VolumeBindData.IsSet() {
-		localVarOptionalVolumeBindData, localVarOptionalVolumeBindDataok := localVarOptionals.VolumeBindData.Value().(VolumeBindData)
-		if !localVarOptionalVolumeBindDataok {
-			return nil, reportError("volumeBindData should be VolumeBindData")
-		}
-		localVarPostBody = &localVarOptionalVolumeBindData
-	}
-
+	localVarPostBody = &volumeBindData
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
