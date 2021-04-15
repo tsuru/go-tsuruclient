@@ -48,6 +48,7 @@ Class | Method | HTTP request | Description
 *AppApi* | [**AppTeamRevoke**](docs/AppApi.md#appteamrevoke) | **Delete** /1.0/apps/{app}/teams/{team} | 
 *AppApi* | [**AppUpdate**](docs/AppApi.md#appupdate) | **Put** /1.0/apps/{app} | 
 *AppApi* | [**AutoScaleAdd**](docs/AppApi.md#autoscaleadd) | **Post** /1.9/apps/{app}/units/autoscale | 
+*AppApi* | [**AutoScaleInfo**](docs/AppApi.md#autoscaleinfo) | **Get** /1.9/apps/{app}/units/autoscale | 
 *AppApi* | [**AutoScaleRemove**](docs/AppApi.md#autoscaleremove) | **Delete** /1.9/apps/{app}/units/autoscale | 
 *AppApi* | [**EnvGet**](docs/AppApi.md#envget) | **Get** /1.0/apps/{app}/env | 
 *AppApi* | [**EnvSet**](docs/AppApi.md#envset) | **Post** /1.0/apps/{app}/env | 

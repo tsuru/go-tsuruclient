@@ -1966,6 +1966,48 @@ paths:
       - Bearer: []
       tags:
       - app
+    get:
+      description: List autoscales for app.
+      operationId: AutoScaleInfo
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AutoScaleSpec'
+                type: array
+          description: AutoScale info
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        403:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
     post:
       description: Add new unit autoscale spec.
       operationId: AutoScaleAdd
