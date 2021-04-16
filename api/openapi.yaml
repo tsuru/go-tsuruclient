@@ -6010,6 +6010,7 @@ components:
     Env:
       description: Environment variable.
       example:
+        public: true
         name: name
         alias: alias
         value: value
@@ -6020,6 +6021,8 @@ components:
           type: string
         alias:
           type: string
+        public:
+          type: boolean
       type: object
     Machine:
       example:
@@ -6231,10 +6234,12 @@ components:
       example:
         private: true
         envs:
-        - name: name
+        - public: true
+          name: name
           alias: alias
           value: value
-        - name: name
+        - public: true
+          name: name
           alias: alias
           value: value
         norestart: true
