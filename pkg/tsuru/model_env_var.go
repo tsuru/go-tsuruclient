@@ -10,10 +10,10 @@
 package tsuru
 
 // Environment variable.
-type Env struct {
+type EnvVar struct {
 	Name      string `json:"name,omitempty"`
 	Value     string `json:"value,omitempty"`
 	Alias     string `json:"alias,omitempty"`
-	Private   bool   `json:"private,omitempty"`
+	Public    bool   `json:"public,omitempty"`
 	ManagedBy string `json:"managedBy,omitempty"`
 }

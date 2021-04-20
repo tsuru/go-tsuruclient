@@ -4,6 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Envs** | [**[]Env**](Env.md) |  | [optional] 
+**ManagedBy** | **string** |  | [optional] 
+**PruneUnused** | **bool** |  | [optional] 
 **Norestart** | **bool** |  | [optional] 
 **Private** | **bool** |  | [optional] 
 

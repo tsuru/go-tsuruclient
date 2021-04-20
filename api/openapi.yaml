@@ -1450,7 +1450,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/Env'
+                  $ref: '#/components/schemas/EnvVar'
                 type: array
           description: Environment variables
         401:
@@ -1489,10 +1489,7 @@ paths:
         required: true
       responses:
         200:
-          content:
-            application/x-json-stream:
-              schema:
-                $ref: '#/components/schemas/EnvSetResponse'
+          content: {}
           description: Envs updated
         400:
           content:
@@ -4876,6 +4873,26 @@ components:
           type: integer
           x-go-custom-type: '*int'
       type: object
+    EnvVar:
+      description: Environment variable.
+      example:
+        public: true
+        managedBy: managedBy
+        name: name
+        alias: alias
+        value: value
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        alias:
+          type: string
+        public:
+          type: boolean
+        managedBy:
+          type: string
+      type: object
     Pool:
       example:
         default: true
@@ -4944,18 +4961,6 @@ components:
         ip:
           type: string
       type: object
-    EnvSetResponse:
-      description: Environment variables response information.
-      items:
-        properties:
-          public:
-            type: boolean
-          name:
-            type: string
-          value:
-            type: string
-        type: object
-      type: array
     PlanRouter:
       description: Plan Router
       example:
@@ -6010,7 +6015,8 @@ components:
     Env:
       description: Environment variable.
       example:
-        public: true
+        private: true
+        managedBy: managedBy
         name: name
         alias: alias
         value: value
@@ -6021,8 +6027,10 @@ components:
           type: string
         alias:
           type: string
-        public:
+        private:
           type: boolean
+        managedBy:
+          type: string
       type: object
     Machine:
       example:
@@ -6232,13 +6240,17 @@ components:
     EnvSetData:
       description: Data sent to the environment set endpoint.
       example:
+        pruneUnused: true
         private: true
+        managedBy: managedBy
         envs:
-        - public: true
+        - private: true
+          managedBy: managedBy
           name: name
           alias: alias
           value: value
-        - public: true
+        - private: true
+          managedBy: managedBy
           name: name
           alias: alias
           value: value
@@ -6249,6 +6261,10 @@ components:
             $ref: '#/components/schemas/Env'
           minItems: 1
           type: array
+        managedBy:
+          type: string
+        pruneUnused:
+          type: boolean
         norestart:
           type: boolean
         private:

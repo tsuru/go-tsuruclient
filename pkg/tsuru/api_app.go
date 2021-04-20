@@ -2447,21 +2447,21 @@ Get app environment variables.
  * @param app App name.
  * @param optional nil or *EnvGetOpts - Optional Parameters:
  * @param "Env" (optional.String) -  Environment variable name.
-@return []Env
+@return []EnvVar
 */
 
 type EnvGetOpts struct {
 	Env optional.String
 }
 
-func (a *AppApiService) EnvGet(ctx context.Context, app string, localVarOptionals *EnvGetOpts) ([]Env, *http.Response, error) {
+func (a *AppApiService) EnvGet(ctx context.Context, app string, localVarOptionals *EnvGetOpts) ([]EnvVar, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []Env
+		localVarReturnValue  []EnvVar
 	)
 
 	// create path and map variables
@@ -2532,7 +2532,7 @@ func (a *AppApiService) EnvGet(ctx context.Context, app string, localVarOptional
 		}
 
 		if localVarHttpResponse.StatusCode == 200 {
-			var v []Env
+			var v []EnvVar
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2583,16 +2583,14 @@ Set new environment variable.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param app App name.
  * @param envSetData Environment variables.
-@return []map[string]interface{}
 */
-func (a *AppApiService) EnvSet(ctx context.Context, app string, envSetData EnvSetData) ([]map[string]interface{}, *http.Response, error) {
+func (a *AppApiService) EnvSet(ctx context.Context, app string, envSetData EnvSetData) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []map[string]interface{}
 	)
 
 	// create path and map variables
@@ -2603,7 +2601,7 @@ func (a *AppApiService) EnvSet(ctx context.Context, app string, envSetData EnvSe
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if strlen(app) < 1 {
-		return localVarReturnValue, nil, reportError("app must have at least 1 elements")
+		return nil, reportError("app must have at least 1 elements")
 	}
 
 	// to determine the Content-Type header
@@ -2640,19 +2638,15 @@ func (a *AppApiService) EnvSet(ctx context.Context, app string, envSetData EnvSe
 
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
+		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
-	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
-	}
+	var localVarBody []byte
 
 	if localVarHttpResponse.StatusCode >= 300 {
 		newErr := GenericOpenAPIError{
@@ -2661,60 +2655,46 @@ func (a *AppApiService) EnvSet(ctx context.Context, app string, envSetData EnvSe
 			statusCode: localVarHttpResponse.StatusCode,
 		}
 
-		if localVarHttpResponse.StatusCode == 200 {
-			var v []map[string]interface{}
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+		localVarBody, err = ioutil.ReadAll(localVarHttpResponse.Body)
+		localVarHttpResponse.Body.Close()
+		if err == nil {
+			newErr.body = localVarBody
 		}
+
 		if localVarHttpResponse.StatusCode == 400 {
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarHttpResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 401 {
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarHttpResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 404 {
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarHttpResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarHttpResponse, newErr
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarHttpResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:       localVarBody,
-			error:      err.Error(),
-			statusCode: localVarHttpResponse.StatusCode,
-		}
-		return localVarReturnValue, localVarHttpResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHttpResponse, nil
+	return localVarHttpResponse, nil
 }
 
 /*

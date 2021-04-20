@@ -628,7 +628,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EnvGet**
-> []Env EnvGet(ctx, app, optional)
+> []EnvVar EnvGet(ctx, app, optional)
 
 
 Get app environment variables.
@@ -651,7 +651,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Env**](Env.md)
+[**[]EnvVar**](EnvVar.md)
 
 ### Authorization
 
@@ -665,7 +665,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **EnvSet**
-> []map[string]interface{} EnvSet(ctx, app, envSetData)
+> EnvSet(ctx, app, envSetData)
 
 
 Set new environment variable.
@@ -680,7 +680,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]map[string]interface{}**](map[string]interface{}.md)
+ (empty response body)
 
 ### Authorization
 

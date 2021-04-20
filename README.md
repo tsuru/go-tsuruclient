@@ -169,6 +169,7 @@ Class | Method | HTTP request | Description
  - [DynamicRouter](docs/DynamicRouter.md)
  - [Env](docs/Env.md)
  - [EnvSetData](docs/EnvSetData.md)
+ - [EnvVar](docs/EnvVar.md)
  - [EventCancelArgs](docs/EventCancelArgs.md)
  - [InputApp](docs/InputApp.md)
  - [Lock](docs/Lock.md)
