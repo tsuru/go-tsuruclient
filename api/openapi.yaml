@@ -647,7 +647,7 @@ paths:
           '*/*':
             schema:
               $ref: '#/components/schemas/ServiceInstanceUnbind'
-        required: false
+        required: true
       responses:
         200:
           content: {}
@@ -692,7 +692,7 @@ paths:
           '*/*':
             schema:
               $ref: '#/components/schemas/ServiceInstanceBind'
-        required: false
+        required: true
       responses:
         200:
           content: {}
@@ -1922,6 +1922,99 @@ paths:
         409:
           content: {}
           description: Grant already exists
+      security:
+      - Bearer: []
+      tags:
+      - app
+  /1.0/apps/{app}/units:
+    delete:
+      description: Remove units from app
+      operationId: UnitsRemove
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UnitsDelta'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Access revoked
+        400:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        403:
+          content: {}
+          description: Forbidden
+        404:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App or team not found
+      security:
+      - Bearer: []
+      tags:
+      - app
+    put:
+      description: Add units to app
+      operationId: UnitsAdd
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UnitsDelta'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Access revoked
+        400:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        403:
+          content: {}
+          description: Forbidden
+        404:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App or team not found
       security:
       - Bearer: []
       tags:
@@ -4709,6 +4802,15 @@ components:
           format: int64
           type: integer
         team:
+          type: string
+      type: object
+    UnitsDelta:
+      properties:
+        units:
+          type: string
+        process:
+          type: string
+        version:
           type: string
       type: object
     AssignGroupArgs:

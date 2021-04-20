@@ -53,6 +53,8 @@ Class | Method | HTTP request | Description
 *AppApi* | [**EnvGet**](docs/AppApi.md#envget) | **Get** /1.0/apps/{app}/env | 
 *AppApi* | [**EnvSet**](docs/AppApi.md#envset) | **Post** /1.0/apps/{app}/env | 
 *AppApi* | [**EnvUnset**](docs/AppApi.md#envunset) | **Delete** /1.0/apps/{app}/env | 
+*AppApi* | [**UnitsAdd**](docs/AppApi.md#unitsadd) | **Put** /1.0/apps/{app}/units | 
+*AppApi* | [**UnitsRemove**](docs/AppApi.md#unitsremove) | **Delete** /1.0/apps/{app}/units | 
 *AuthApi* | [**AssignRoleToGroup**](docs/AuthApi.md#assignroletogroup) | **Post** /1.9/roles/{role_name}/group | 
 *AuthApi* | [**AssignRoleToToken**](docs/AuthApi.md#assignroletotoken) | **Post** /1.6/roles/{role_name}/token | 
 *AuthApi* | [**DissociateRoleFromGroup**](docs/AuthApi.md#dissociaterolefromgroup) | **Delete** /1.6/roles/{role_name}/group/{group_name} | 
@@ -231,6 +233,7 @@ Class | Method | HTTP request | Description
  - [TeamTokenUpdateArgs](docs/TeamTokenUpdateArgs.md)
  - [TeamUpdateArgs](docs/TeamUpdateArgs.md)
  - [Unit](docs/Unit.md)
+ - [UnitsDelta](docs/UnitsDelta.md)
  - [UpdateApp](docs/UpdateApp.md)
  - [Url](docs/Url.md)
  - [User](docs/User.md)

@@ -490,7 +490,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ServiceInstanceBind**
-> ServiceInstanceBind(ctx, service, instance, app, optional)
+> ServiceInstanceBind(ctx, service, instance, app, serviceInstanceBind)
 
 
 Bind the service instance to app
@@ -503,17 +503,7 @@ Name | Type | Description  | Notes
   **service** | **string**| Service name. | 
   **instance** | **string**| Instance name. | 
   **app** | **string**| App name. | 
- **optional** | ***ServiceInstanceBindOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a ServiceInstanceBindOpts struct
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
- **serviceInstanceBind** | [**optional.Interface of ServiceInstanceBind**](ServiceInstanceBind.md)|  | 
+  **serviceInstanceBind** | [**ServiceInstanceBind**](ServiceInstanceBind.md)|  | 
 
 ### Return type
 
@@ -620,7 +610,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ServiceInstanceUnbind**
-> ServiceInstanceUnbind(ctx, service, instance, app, optional)
+> ServiceInstanceUnbind(ctx, service, instance, app, serviceInstanceUnbind)
 
 
 Unbind the service instance from app
@@ -633,17 +623,7 @@ Name | Type | Description  | Notes
   **service** | **string**| Service name. | 
   **instance** | **string**| Instance name. | 
   **app** | **string**| App name. | 
- **optional** | ***ServiceInstanceUnbindOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a ServiceInstanceUnbindOpts struct
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
- **serviceInstanceUnbind** | [**optional.Interface of ServiceInstanceUnbind**](ServiceInstanceUnbind.md)|  | 
+  **serviceInstanceUnbind** | [**ServiceInstanceUnbind**](ServiceInstanceUnbind.md)|  | 
 
 ### Return type
 

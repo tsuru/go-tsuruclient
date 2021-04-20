@@ -1880,15 +1880,9 @@ Bind the service instance to app
  * @param service Service name.
  * @param instance Instance name.
  * @param app App name.
- * @param optional nil or *ServiceInstanceBindOpts - Optional Parameters:
- * @param "ServiceInstanceBind" (optional.Interface of ServiceInstanceBind) -
+ * @param serviceInstanceBind
 */
-
-type ServiceInstanceBindOpts struct {
-	ServiceInstanceBind optional.Interface
-}
-
-func (a *ServiceApiService) ServiceInstanceBind(ctx context.Context, service string, instance string, app string, localVarOptionals *ServiceInstanceBindOpts) (*http.Response, error) {
+func (a *ServiceApiService) ServiceInstanceBind(ctx context.Context, service string, instance string, app string, serviceInstanceBind ServiceInstanceBind) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -1934,14 +1928,7 @@ func (a *ServiceApiService) ServiceInstanceBind(ctx context.Context, service str
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.ServiceInstanceBind.IsSet() {
-		localVarOptionalServiceInstanceBind, localVarOptionalServiceInstanceBindok := localVarOptionals.ServiceInstanceBind.Value().(ServiceInstanceBind)
-		if !localVarOptionalServiceInstanceBindok {
-			return nil, reportError("serviceInstanceBind should be ServiceInstanceBind")
-		}
-		localVarPostBody = &localVarOptionalServiceInstanceBind
-	}
-
+	localVarPostBody = &serviceInstanceBind
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -2349,15 +2336,9 @@ Unbind the service instance from app
  * @param service Service name.
  * @param instance Instance name.
  * @param app App name.
- * @param optional nil or *ServiceInstanceUnbindOpts - Optional Parameters:
- * @param "ServiceInstanceUnbind" (optional.Interface of ServiceInstanceUnbind) -
+ * @param serviceInstanceUnbind
 */
-
-type ServiceInstanceUnbindOpts struct {
-	ServiceInstanceUnbind optional.Interface
-}
-
-func (a *ServiceApiService) ServiceInstanceUnbind(ctx context.Context, service string, instance string, app string, localVarOptionals *ServiceInstanceUnbindOpts) (*http.Response, error) {
+func (a *ServiceApiService) ServiceInstanceUnbind(ctx context.Context, service string, instance string, app string, serviceInstanceUnbind ServiceInstanceUnbind) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Delete")
 		localVarPostBody     interface{}
@@ -2403,14 +2384,7 @@ func (a *ServiceApiService) ServiceInstanceUnbind(ctx context.Context, service s
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.ServiceInstanceUnbind.IsSet() {
-		localVarOptionalServiceInstanceUnbind, localVarOptionalServiceInstanceUnbindok := localVarOptionals.ServiceInstanceUnbind.Value().(ServiceInstanceUnbind)
-		if !localVarOptionalServiceInstanceUnbindok {
-			return nil, reportError("serviceInstanceUnbind should be ServiceInstanceUnbind")
-		}
-		localVarPostBody = &localVarOptionalServiceInstanceUnbind
-	}
-
+	localVarPostBody = &serviceInstanceUnbind
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
