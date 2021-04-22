@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **Description** | **string** | App description. | [optional] 
 **TeamOwner** | **string** | Team that owns the app. | [optional] 
 **Teams** | **[]string** |  | [optional] 
+**Units** | [**[]Unit**](Unit.md) |  | [optional] 
 **Ip** | **string** |  | [optional] 
 **Owner** | **string** |  | [optional] 
 **Autoscale** | [**[]AutoScaleSpec**](AutoScaleSpec.md) |  | [optional] 

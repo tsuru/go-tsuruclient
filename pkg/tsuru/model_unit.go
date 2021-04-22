@@ -17,5 +17,9 @@ type Unit struct {
 	Type        string `json:"type,omitempty"`
 	Ip          string `json:"ip,omitempty"`
 	Status      string `json:"status,omitempty"`
+	Version     int32  `json:"version,omitempty"`
+	Routable    *bool  `json:"routable,omitempty"`
+	Ready       *bool  `json:"ready,omitempty"`
+	Restarts    *int   `json:"restarts,omitempty"`
 	Address     Url    `json:"address,omitempty"`
 }

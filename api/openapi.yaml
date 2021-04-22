@@ -4507,6 +4507,35 @@ components:
         pool: pool
         deploys: 0
         description: description
+        units:
+        - address:
+            scheme: scheme
+            host: host
+          appname: appname
+          routable: true
+          ready: true
+          processname: processname
+          ip: ip
+          name: name
+          id: id
+          type: type
+          version: 0
+          restarts: 6
+          status: status
+        - address:
+            scheme: scheme
+            host: host
+          appname: appname
+          routable: true
+          ready: true
+          processname: processname
+          ip: ip
+          name: name
+          id: id
+          type: type
+          version: 0
+          restarts: 6
+          status: status
         autoscale:
         - process: process
           averageCPU: averageCPU
@@ -4618,6 +4647,10 @@ components:
           items:
             type: string
           type: array
+        units:
+          items:
+            $ref: '#/components/schemas/Unit'
+          type: array
         ip:
           type: string
         owner:
@@ -4665,21 +4698,29 @@ components:
             scheme: scheme
             host: host
           appname: appname
+          routable: true
+          ready: true
           processname: processname
           ip: ip
           name: name
           id: id
           type: type
+          version: 0
+          restarts: 6
           status: status
         - address:
             scheme: scheme
             host: host
           appname: appname
+          routable: true
+          ready: true
           processname: processname
           ip: ip
           name: name
           id: id
           type: type
+          version: 0
+          restarts: 6
           status: status
         error: error
         plan:
@@ -4843,11 +4884,15 @@ components:
           scheme: scheme
           host: host
         appname: appname
+        routable: true
+        ready: true
         processname: processname
         ip: ip
         name: name
         id: id
         type: type
+        version: 0
+        restarts: 6
         status: status
       properties:
         id:
@@ -4864,6 +4909,17 @@ components:
           type: string
         status:
           type: string
+        version:
+          type: integer
+        routable:
+          type: boolean
+          x-go-custom-type: '*bool'
+        ready:
+          type: boolean
+          x-go-custom-type: '*bool'
+        restarts:
+          type: integer
+          x-go-custom-type: '*int'
         address:
           $ref: '#/components/schemas/URL'
       type: object
@@ -5439,6 +5495,35 @@ components:
           pool: pool
           deploys: 0
           description: description
+          units:
+          - address:
+              scheme: scheme
+              host: host
+            appname: appname
+            routable: true
+            ready: true
+            processname: processname
+            ip: ip
+            name: name
+            id: id
+            type: type
+            version: 0
+            restarts: 6
+            status: status
+          - address:
+              scheme: scheme
+              host: host
+            appname: appname
+            routable: true
+            ready: true
+            processname: processname
+            ip: ip
+            name: name
+            id: id
+            type: type
+            version: 0
+            restarts: 6
+            status: status
           autoscale:
           - process: process
             averageCPU: averageCPU
@@ -5505,6 +5590,35 @@ components:
           pool: pool
           deploys: 0
           description: description
+          units:
+          - address:
+              scheme: scheme
+              host: host
+            appname: appname
+            routable: true
+            ready: true
+            processname: processname
+            ip: ip
+            name: name
+            id: id
+            type: type
+            version: 0
+            restarts: 6
+            status: status
+          - address:
+              scheme: scheme
+              host: host
+            appname: appname
+            routable: true
+            ready: true
+            processname: processname
+            ip: ip
+            name: name
+            id: id
+            type: type
+            version: 0
+            restarts: 6
+            status: status
           autoscale:
           - process: process
             averageCPU: averageCPU
@@ -6686,11 +6800,15 @@ components:
             scheme: scheme
             host: host
           appname: appname
+          routable: true
+          ready: true
           processname: processname
           ip: ip
           name: name
           id: id
           type: type
+          version: 0
+          restarts: 6
           status: status
         status:
           address: address
