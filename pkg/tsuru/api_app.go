@@ -2828,19 +2828,9 @@ AppApiService
 Add units to app
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param app App name.
- * @param optional nil or *UnitsAddOpts - Optional Parameters:
- * @param "Units" (optional.String) -
- * @param "Process" (optional.String) -
- * @param "Version" (optional.String) -
+ * @param unitsDelta number of units to add
 */
-
-type UnitsAddOpts struct {
-	Units   optional.String
-	Process optional.String
-	Version optional.String
-}
-
-func (a *AppApiService) UnitsAdd(ctx context.Context, app string, localVarOptionals *UnitsAddOpts) (*http.Response, error) {
+func (a *AppApiService) UnitsAdd(ctx context.Context, app string, unitsDelta UnitsDelta) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -2861,7 +2851,7 @@ func (a *AppApiService) UnitsAdd(ctx context.Context, app string, localVarOption
 	}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{"application/x-www-form-urlencoded"}
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -2877,15 +2867,8 @@ func (a *AppApiService) UnitsAdd(ctx context.Context, app string, localVarOption
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.Units.IsSet() {
-		localVarFormParams.Add("units", parameterToString(localVarOptionals.Units.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Process.IsSet() {
-		localVarFormParams.Add("process", parameterToString(localVarOptionals.Process.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Version.IsSet() {
-		localVarFormParams.Add("version", parameterToString(localVarOptionals.Version.Value(), ""))
-	}
+	// body params
+	localVarPostBody = &unitsDelta
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -2965,19 +2948,9 @@ AppApiService
 Remove units from app
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param app App name.
- * @param optional nil or *UnitsRemoveOpts - Optional Parameters:
- * @param "Units" (optional.String) -
- * @param "Process" (optional.String) -
- * @param "Version" (optional.String) -
+ * @param unitsDelta number of units to remove
 */
-
-type UnitsRemoveOpts struct {
-	Units   optional.String
-	Process optional.String
-	Version optional.String
-}
-
-func (a *AppApiService) UnitsRemove(ctx context.Context, app string, localVarOptionals *UnitsRemoveOpts) (*http.Response, error) {
+func (a *AppApiService) UnitsRemove(ctx context.Context, app string, unitsDelta UnitsDelta) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Delete")
 		localVarPostBody     interface{}
@@ -2998,7 +2971,7 @@ func (a *AppApiService) UnitsRemove(ctx context.Context, app string, localVarOpt
 	}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{"application/x-www-form-urlencoded"}
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -3014,15 +2987,8 @@ func (a *AppApiService) UnitsRemove(ctx context.Context, app string, localVarOpt
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.Units.IsSet() {
-		localVarFormParams.Add("units", parameterToString(localVarOptionals.Units.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Process.IsSet() {
-		localVarFormParams.Add("process", parameterToString(localVarOptionals.Process.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Version.IsSet() {
-		localVarFormParams.Add("version", parameterToString(localVarOptionals.Version.Value(), ""))
-	}
+	// body params
+	localVarPostBody = &unitsDelta
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {

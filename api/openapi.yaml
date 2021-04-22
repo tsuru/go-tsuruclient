@@ -1940,9 +1940,10 @@ paths:
           type: string
       requestBody:
         content:
-          application/x-www-form-urlencoded:
+          application/json:
             schema:
               $ref: '#/components/schemas/UnitsDelta'
+        description: number of units to remove
         required: true
       responses:
         200:
@@ -1986,9 +1987,10 @@ paths:
           type: string
       requestBody:
         content:
-          application/x-www-form-urlencoded:
+          application/json:
             schema:
               $ref: '#/components/schemas/UnitsDelta'
+        description: number of units to add
         required: true
       responses:
         200:
@@ -4805,6 +4807,11 @@ components:
           type: string
       type: object
     UnitsDelta:
+      description: number of units to add or remove from a process
+      example:
+        process: process
+        units: units
+        version: version
       properties:
         units:
           type: string

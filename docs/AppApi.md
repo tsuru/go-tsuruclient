@@ -726,7 +726,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UnitsAdd**
-> UnitsAdd(ctx, app, optional)
+> UnitsAdd(ctx, app, unitsDelta)
 
 
 Add units to app
@@ -737,17 +737,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **app** | **string**| App name. | 
- **optional** | ***UnitsAddOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a UnitsAddOpts struct
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **units** | **optional.String**|  | 
- **process** | **optional.String**|  | 
- **version** | **optional.String**|  | 
+  **unitsDelta** | [**UnitsDelta**](UnitsDelta.md)| number of units to add | 
 
 ### Return type
 
@@ -759,13 +749,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/x-www-form-urlencoded
+ - **Content-Type**: application/json
  - **Accept**: application/x-json-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UnitsRemove**
-> UnitsRemove(ctx, app, optional)
+> UnitsRemove(ctx, app, unitsDelta)
 
 
 Remove units from app
@@ -776,17 +766,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **app** | **string**| App name. | 
- **optional** | ***UnitsRemoveOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a UnitsRemoveOpts struct
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **units** | **optional.String**|  | 
- **process** | **optional.String**|  | 
- **version** | **optional.String**|  | 
+  **unitsDelta** | [**UnitsDelta**](UnitsDelta.md)| number of units to remove | 
 
 ### Return type
 
@@ -798,7 +778,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/x-www-form-urlencoded
+ - **Content-Type**: application/json
  - **Accept**: application/x-json-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
