@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Routers** | [**[]AppRouters**](App_routers.md) |  | [optional] 
 **InternalAddresses** | [**[]AppInternalAddresses**](App_internalAddresses.md) |  | [optional] 
 **Tags** | **[]string** | App tags. | [optional] 
+**Metadata** | [**Metadata**](Metadata.md) |  | [optional] 
 **Router** | **string** | App router. | [optional] 
 **Routeropts** | **map[string]string** | Custom router options. | [optional] 
 **Plan** | [**Plan**](Plan.md) |  | [optional] 

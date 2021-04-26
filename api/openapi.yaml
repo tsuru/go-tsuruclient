@@ -4496,6 +4496,21 @@ components:
       example:
         owner: owner
         cluster: cluster
+        metadata:
+          annotations:
+          - name: name
+            value: value
+            delete: true
+          - name: name
+            value: value
+            delete: true
+          labels:
+          - name: name
+            value: value
+            delete: true
+          - name: name
+            value: value
+            delete: true
         provisioner: provisioner
         teams:
         - teams
@@ -4618,6 +4633,8 @@ components:
           items:
             type: string
           type: array
+        metadata:
+          $ref: '#/components/schemas/Metadata'
         router:
           description: App router.
           type: string
@@ -5484,6 +5501,21 @@ components:
         apps:
         - owner: owner
           cluster: cluster
+          metadata:
+            annotations:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+            labels:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
           provisioner: provisioner
           teams:
           - teams
@@ -5579,6 +5611,21 @@ components:
             cpushare: 0
         - owner: owner
           cluster: cluster
+          metadata:
+            annotations:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+            labels:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
           provisioner: provisioner
           teams:
           - teams

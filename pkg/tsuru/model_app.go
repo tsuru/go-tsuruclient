@@ -22,7 +22,8 @@ type App struct {
 	Routers           []AppRouters           `json:"routers,omitempty"`
 	InternalAddresses []AppInternalAddresses `json:"internalAddresses,omitempty"`
 	// App tags.
-	Tags []string `json:"tags,omitempty"`
+	Tags     []string `json:"tags,omitempty"`
+	Metadata Metadata `json:"metadata,omitempty"`
 	// App router.
 	Router string `json:"router,omitempty"`
 	// Custom router options.
