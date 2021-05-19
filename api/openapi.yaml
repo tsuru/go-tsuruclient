@@ -4695,6 +4695,1088 @@ components:
         readonly:
           type: boolean
       type: object
+    Platform:
+      example:
+        name: name
+        disabled: true
+      properties:
+        name:
+          type: string
+        disabled:
+          type: boolean
+      type: object
+    Node:
+      example:
+        provisioner: provisioner
+        metadata:
+          key: metadata
+        address: address
+        iaasid: iaasid
+        pool: pool
+        status: status
+      properties:
+        address:
+          type: string
+        iaasid:
+          type: string
+        status:
+          type: string
+        pool:
+          type: string
+        provisioner:
+          type: string
+        metadata:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    TeamTokenCreateArgs:
+      description: Arguments for creating a new team token.
+      example:
+        token_id: token_id
+        description: description
+        team: team
+        expires_in: 0
+      properties:
+        token_id:
+          type: string
+        description:
+          type: string
+        expires_in:
+          description: Expire time in seconds.
+          format: int64
+          type: integer
+        team:
+          type: string
+      type: object
+    UnitsDelta:
+      description: number of units to add or remove from a process
+      example:
+        process: process
+        units: units
+        version: version
+      properties:
+        units:
+          type: string
+        process:
+          type: string
+        version:
+          type: string
+      type: object
+    AssignGroupArgs:
+      description: Assign role to group arguments.
+      example:
+        group_name: group_name
+        context: context
+      properties:
+        group_name:
+          type: string
+        context:
+          type: string
+      type: object
+    Cluster_kubeConfig_cluster:
+      example:
+        server: server
+        certificate-authority-data: certificate-authority-data
+      properties:
+        server:
+          type: string
+        certificate-authority-data:
+          type: string
+      required:
+      - server
+    WebhookEventFilter:
+      example:
+        target_values:
+        - target_values
+        - target_values
+        kind_names:
+        - kind_names
+        - kind_names
+        kind_types:
+        - kind_types
+        - kind_types
+        error_only: true
+        success_only: true
+        target_types:
+        - target_types
+        - target_types
+      properties:
+        target_types:
+          items:
+            type: string
+          type: array
+        target_values:
+          items:
+            type: string
+          type: array
+        kind_types:
+          items:
+            type: string
+          type: array
+        kind_names:
+          items:
+            type: string
+          type: array
+        error_only:
+          type: boolean
+        success_only:
+          type: boolean
+      type: object
+    EnvVar:
+      description: Environment variable.
+      example:
+        public: true
+        managedBy: managedBy
+        name: name
+        alias: alias
+        value: value
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        alias:
+          type: string
+        public:
+          type: boolean
+        managedBy:
+          type: string
+      type: object
+    Pool:
+      example:
+        default: true
+        provisioner: provisioner
+        public: true
+        teams:
+        - teams
+        - teams
+        allowed:
+          key:
+          - allowed
+          - allowed
+        name: name
+        labels:
+          key: labels
+      properties:
+        name:
+          type: string
+        default:
+          type: boolean
+        provisioner:
+          type: string
+        public:
+          type: boolean
+        teams:
+          items:
+            type: string
+          type: array
+        allowed:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          type: object
+        labels:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    PoolConstraint:
+      example:
+        Field: Field
+        Values:
+        - Values
+        - Values
+        Blacklist: true
+        PoolExpr: PoolExpr
+      properties:
+        PoolExpr:
+          type: string
+        Field:
+          type: string
+        Values:
+          items:
+            type: string
+          type: array
+        Blacklist:
+          type: boolean
+      type: object
+    PoolCreateData:
+      example:
+        default: true
+        provisioner: provisioner
+        public: true
+        name: name
+        force: true
+        labels:
+          key: labels
+      properties:
+        name:
+          type: string
+        public:
+          type: boolean
+        default:
+          type: boolean
+        force:
+          type: boolean
+        provisioner:
+          type: string
+        labels:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    TeamToken:
+      description: An authorization token associated to a team.
+      example:
+        last_access: 2000-01-23T04:56:07.000+00:00
+        expires_at: 2000-01-23T04:56:07.000+00:00
+        token_id: token_id
+        creator_email: creator_email
+        roles:
+        - name: name
+          contextvalue: contextvalue
+        - name: name
+          contextvalue: contextvalue
+        description: description
+        created_at: 2000-01-23T04:56:07.000+00:00
+        team: team
+        token: token
+      properties:
+        token:
+          type: string
+        token_id:
+          type: string
+        description:
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        expires_at:
+          format: date-time
+          type: string
+        last_access:
+          format: date-time
+          type: string
+        creator_email:
+          type: string
+        team:
+          type: string
+        roles:
+          items:
+            $ref: '#/components/schemas/RoleInstance'
+          type: array
+      type: object
+    ServicePlan:
+      example:
+        name: name
+        description: description
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+      type: object
+    Router:
+      example:
+        address: address
+        opts:
+          key: opts
+        status-detail: status-detail
+        name: name
+        type: type
+        status: status
+      properties:
+        name:
+          type: string
+        opts:
+          additionalProperties:
+            type: string
+          type: object
+        address:
+          type: string
+        type:
+          type: string
+        status:
+          type: string
+        status-detail:
+          type: string
+      type: object
+    VolumePlansListResponse:
+      additionalProperties:
+        $ref: '#/components/schemas/VolumePlan'
+      description: Response returned by Volume Plans list.
+      type: object
+    Cluster_kubeConfig_user_exec_env:
+      example:
+        name: name
+        value: value
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+    Volume:
+      description: Volume
+      example:
+        teamOwner: teamOwner
+        binds:
+        - readonly: true
+          id:
+            app: app
+            volume: volume
+            mountpoint: mountpoint
+        - readonly: true
+          id:
+            app: app
+            volume: volume
+            mountpoint: mountpoint
+        opts:
+          key: opts
+        name: name
+        pool: pool
+        plan:
+          opts:
+            key: opts
+          name: name
+        status: status
+      properties:
+        name:
+          description: Volume name.
+          type: string
+        pool:
+          description: Volume pool.
+          type: string
+        teamOwner:
+          description: Team that owns the volume.
+          type: string
+        status:
+          description: Volume status.
+          type: string
+        plan:
+          $ref: '#/components/schemas/VolumePlan'
+        binds:
+          description: Volume binds.
+          items:
+            $ref: '#/components/schemas/VolumeBind'
+          type: array
+        opts:
+          additionalProperties:
+            type: string
+          description: Custom volume options.
+          type: object
+      type: object
+    NodeCheckResult:
+      example:
+        err: err
+        name: name
+        successful: true
+      properties:
+        name:
+          type: string
+        err:
+          type: string
+        successful:
+          type: boolean
+      type: object
+    UpdateApp:
+      example:
+        teamOwner: teamOwner
+        metadata:
+          annotations:
+          - name: name
+            value: value
+            delete: true
+          - name: name
+            value: value
+            delete: true
+          labels:
+          - name: name
+            value: value
+            delete: true
+          - name: name
+            value: value
+            delete: true
+        planoverride:
+          memory: 5
+          cpumilli: 2
+        noRestart: true
+        imageReset: true
+        pool: pool
+        description: description
+        plan: plan
+        platform: platform
+        tags:
+        - tags
+        - tags
+      properties:
+        tags:
+          description: App tags.
+          items:
+            type: string
+          type: array
+        plan:
+          description: App plan name.
+          type: string
+        planoverride:
+          $ref: '#/components/schemas/PlanOverride'
+        pool:
+          description: App pool name.
+          type: string
+        platform:
+          description: App platform.
+          type: string
+        description:
+          description: App description.
+          type: string
+        teamOwner:
+          description: Team that owns the app.
+          type: string
+        noRestart:
+          description: Prevent app restart.
+          type: boolean
+        imageReset:
+          description: Reset app image to platform base image.
+          type: boolean
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+      type: object
+    SetRoutableArgs:
+      example:
+        isRoutable: true
+        version: version
+      properties:
+        version:
+          type: string
+        isRoutable:
+          type: boolean
+      type: object
+    NodeListResponse:
+      example:
+        nodes:
+        - provisioner: provisioner
+          metadata:
+            key: metadata
+          address: address
+          iaasid: iaasid
+          pool: pool
+          status: status
+        - provisioner: provisioner
+          metadata:
+            key: metadata
+          address: address
+          iaasid: iaasid
+          pool: pool
+          status: status
+        machines:
+        - protocol: protocol
+          address: address
+          port: 0
+          creationparams:
+            key: creationparams
+          id: id
+          iaas: iaas
+        - protocol: protocol
+          address: address
+          port: 0
+          creationparams:
+            key: creationparams
+          id: id
+          iaas: iaas
+      properties:
+        nodes:
+          items:
+            $ref: '#/components/schemas/Node'
+          type: array
+        machines:
+          items:
+            $ref: '#/components/schemas/Machine'
+          type: array
+      type: object
+    ServiceBroker_Config_AuthConfig:
+      example:
+        BearerConfig:
+          token: token
+        BasicAuthConfig:
+          password: password
+          username: username
+      properties:
+        BearerConfig:
+          $ref: '#/components/schemas/ServiceBroker_Config_AuthConfig_BearerConfig'
+        BasicAuthConfig:
+          $ref: '#/components/schemas/ServiceBroker_Config_AuthConfig_BasicAuthConfig'
+    App_routers:
+      example:
+        addresses:
+        - addresses
+        - addresses
+        opts: '{}'
+        name: name
+      properties:
+        addresses:
+          items:
+            type: string
+          type: array
+        opts:
+          properties: {}
+          type: object
+        name:
+          type: string
+    Metadata:
+      description: App metadata such as custom labels and annotations.
+      example:
+        annotations:
+        - name: name
+          value: value
+          delete: true
+        - name: name
+          value: value
+          delete: true
+        labels:
+        - name: name
+          value: value
+          delete: true
+        - name: name
+          value: value
+          delete: true
+      properties:
+        annotations:
+          items:
+            $ref: '#/components/schemas/MetadataItem'
+          type: array
+        labels:
+          items:
+            $ref: '#/components/schemas/MetadataItem'
+          type: array
+      type: object
+    ServiceInstance:
+      example:
+        team_owner: team_owner
+        bound_units:
+        - app_name: app_name
+          ip: ip
+          id: id
+        - app_name: app_name
+          ip: ip
+          id: id
+        teams:
+        - teams
+        - teams
+        service_name: service_name
+        name: name
+        pool: pool
+        description: description
+        id: 0
+        parameters:
+          key: parameters
+        plan_name: plan_name
+        tags:
+        - tags
+        - tags
+        apps:
+        - apps
+        - apps
+      properties:
+        name:
+          type: string
+        tags:
+          items:
+            type: string
+          type: array
+        id:
+          type: integer
+        service_name:
+          type: string
+        plan_name:
+          type: string
+        apps:
+          items:
+            type: string
+          type: array
+        bound_units:
+          items:
+            $ref: '#/components/schemas/ServiceInstanceBoundUnit'
+          type: array
+        teams:
+          items:
+            type: string
+          type: array
+        team_owner:
+          type: string
+        description:
+          type: string
+        parameters:
+          additionalProperties:
+            type: string
+          type: object
+        pool:
+          type: string
+      type: object
+    ServiceInstanceBind:
+      example:
+        noRestart: true
+        parameters:
+          key: parameters
+      properties:
+        noRestart:
+          type: boolean
+        parameters:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    NodeContainer:
+      description: Data sent to set up a node container
+      example:
+        name: name
+        pool: pool
+        config:
+          env:
+          - env
+          - env
+      properties:
+        name:
+          type: string
+        pool:
+          type: string
+        config:
+          $ref: '#/components/schemas/NodeContainer_config'
+      required:
+      - name
+      type: object
+    Machine:
+      example:
+        protocol: protocol
+        address: address
+        port: 0
+        creationparams:
+          key: creationparams
+        id: id
+        iaas: iaas
+      properties:
+        id:
+          type: string
+        iaas:
+          type: string
+        address:
+          type: string
+        port:
+          type: integer
+        protocol:
+          type: string
+        creationparams:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    URL:
+      example:
+        scheme: scheme
+        host: host
+      properties:
+        scheme:
+          type: string
+        host:
+          type: string
+      type: object
+    AppCreateResponse:
+      description: Newly created app information.
+      example:
+        ip: ip
+        repository_url: repository_url
+        status: status
+      properties:
+        status:
+          type: string
+        repository_url:
+          type: string
+        ip:
+          type: string
+      type: object
+    AppRouterList:
+      description: Application Router
+      items:
+        $ref: '#/components/schemas/AppRouter'
+      type: array
+    Cluster_kubeConfig_user_exec:
+      example:
+        args:
+        - args
+        - args
+        apiVersion: apiVersion
+        env:
+        - name: name
+          value: value
+        - name: name
+          value: value
+        command: command
+      properties:
+        args:
+          items:
+            type: string
+          type: array
+        apiVersion:
+          type: string
+        env:
+          items:
+            $ref: '#/components/schemas/Cluster_kubeConfig_user_exec_env'
+          type: array
+        command:
+          type: string
+    Team:
+      example:
+        permissions:
+        - permissions
+        - permissions
+        name: name
+        tags:
+        - tags
+        - tags
+      properties:
+        name:
+          type: string
+        tags:
+          items:
+            type: string
+          type: array
+        permissions:
+          items:
+            type: string
+          type: array
+      type: object
+    AssignTokenArgs:
+      description: Assign role to token arguments.
+      example:
+        token_id: token_id
+        context: context
+      properties:
+        token_id:
+          type: string
+        context:
+          type: string
+      type: object
+    ServiceDoc:
+      properties:
+        doc:
+          type: string
+      type: object
+    ClusterHelp:
+      example:
+        custom_data_help:
+          key: custom_data_help
+        create_data_help:
+          key: create_data_help
+        provisioner_help: provisioner_help
+      properties:
+        provisioner_help:
+          type: string
+        custom_data_help:
+          additionalProperties:
+            type: string
+          type: object
+        create_data_help:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    AutoScaleSpec:
+      description: Units Auto Scale spec
+      example:
+        process: process
+        averageCPU: averageCPU
+        maxUnits: 5
+        minUnits: 1
+        version: 5
+      properties:
+        process:
+          type: string
+        minUnits:
+          type: integer
+        maxUnits:
+          type: integer
+        averageCPU:
+          type: string
+        version:
+          type: integer
+      type: object
+    Provisioner:
+      example:
+        name: name
+        cluster_help:
+          custom_data_help:
+            key: custom_data_help
+          create_data_help:
+            key: create_data_help
+          provisioner_help: provisioner_help
+      properties:
+        name:
+          type: string
+        cluster_help:
+          $ref: '#/components/schemas/ClusterHelp'
+      type: object
+    Plan:
+      description: App plan.
+      example:
+        default: true
+        router: router
+        memory: 0
+        cpumilli: 0
+        swap: 0
+        name: name
+        override:
+          memory: 5
+          cpumilli: 2
+        cpushare: 0
+      properties:
+        name:
+          type: string
+        memory:
+          format: int64
+          minimum: 0
+          type: integer
+        swap:
+          format: int64
+          minimum: 0
+          type: integer
+        cpushare:
+          minimum: 0
+          type: integer
+        cpumilli:
+          minimum: 0
+          type: integer
+        default:
+          type: boolean
+        router:
+          type: string
+        override:
+          $ref: '#/components/schemas/PlanOverride'
+      type: object
+    Lock:
+      example:
+        owner: owner
+        reason: reason
+        acquireDate: acquireDate
+        locked: true
+      properties:
+        locked:
+          type: boolean
+        reason:
+          type: string
+        owner:
+          type: string
+        acquireDate:
+          type: string
+      type: object
+    NodeGetResponse:
+      example:
+        node:
+          provisioner: provisioner
+          metadata:
+            key: metadata
+          address: address
+          iaasid: iaasid
+          pool: pool
+          status: status
+        units:
+          address:
+            scheme: scheme
+            host: host
+          appname: appname
+          routable: true
+          ready: true
+          processname: processname
+          ip: ip
+          name: name
+          id: id
+          type: type
+          version: 0
+          restarts: 6
+          status: status
+        status:
+          address: address
+          checks:
+          - checks:
+            - err: err
+              name: name
+              successful: true
+            - err: err
+              name: name
+              successful: true
+            time: 2000-01-23T04:56:07.000+00:00
+          - checks:
+            - err: err
+              name: name
+              successful: true
+            - err: err
+              name: name
+              successful: true
+            time: 2000-01-23T04:56:07.000+00:00
+          lastsuccess: 2000-01-23T04:56:07.000+00:00
+          lastupdate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        node:
+          $ref: '#/components/schemas/Node'
+        status:
+          $ref: '#/components/schemas/NodeStatus'
+        units:
+          $ref: '#/components/schemas/Unit'
+      type: object
+    AppRouter:
+      description: Application Router
+      example:
+        addresses:
+        - addresses
+        - addresses
+        address: address
+        opts: '{}'
+        status-detail: status-detail
+        name: name
+        type: type
+        status: status
+      properties:
+        name:
+          type: string
+        opts:
+          properties: {}
+          type: object
+        address:
+          type: string
+        addresses:
+          items:
+            type: string
+          type: array
+        type:
+          type: string
+        status:
+          type: string
+        status-detail:
+          type: string
+      type: object
+    RoleUser:
+      description: Role of an user.
+      example:
+        contexttype: contexttype
+        name: name
+        contextvalue: contextvalue
+        group: group
+      properties:
+        name:
+          type: string
+        contexttype:
+          type: string
+        contextvalue:
+          type: string
+        group:
+          type: string
+      type: object
+    ServiceBroker_Config_AuthConfig_BasicAuthConfig:
+      example:
+        password: password
+        username: username
+      properties:
+        password:
+          type: string
+        username:
+          type: string
+    Webhook:
+      example:
+        team_owner: team_owner
+        headers:
+          key:
+          - headers
+          - headers
+        method: method
+        name: name
+        insecure: true
+        description: description
+        proxy_url: proxy_url
+        body: body
+        event_filter:
+          target_values:
+          - target_values
+          - target_values
+          kind_names:
+          - kind_names
+          - kind_names
+          kind_types:
+          - kind_types
+          - kind_types
+          error_only: true
+          success_only: true
+          target_types:
+          - target_types
+          - target_types
+        url: url
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        team_owner:
+          type: string
+        event_filter:
+          $ref: '#/components/schemas/WebhookEventFilter'
+        url:
+          type: string
+        proxy_url:
+          type: string
+        headers:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          type: object
+        method:
+          type: string
+        body:
+          type: string
+        insecure:
+          type: boolean
+      type: object
+    ErrorMessage:
+      description: Error message.
+      type: string
+    ServiceInstanceUpdateData:
+      example:
+        description: description
+        plan: plan
+        parameters:
+          key: parameters
+        teamowner: teamowner
+        tags:
+        - tags
+        - tags
+      properties:
+        description:
+          type: string
+        teamowner:
+          type: string
+        plan:
+          type: string
+        tags:
+          items:
+            type: string
+          type: array
+        parameters:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    MetadataItem:
+      description: Metadata items
+      example:
+        name: name
+        value: value
+        delete: true
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        delete:
+          type: boolean
+      type: object
     MiniApp:
       description: List containing minimal information about apps.
       example:
@@ -4801,41 +5883,55 @@ components:
         error:
           type: string
       type: object
-    Platform:
+    Cluster_kubeConfig_user_authprovider:
       example:
         name: name
-        disabled: true
+        config:
+          key: config
       properties:
         name:
           type: string
-        disabled:
-          type: boolean
-      type: object
-    Node:
-      example:
-        provisioner: provisioner
-        metadata:
-          key: metadata
-        address: address
-        iaasid: iaasid
-        pool: pool
-        status: status
-      properties:
-        address:
-          type: string
-        iaasid:
-          type: string
-        status:
-          type: string
-        pool:
-          type: string
-        provisioner:
-          type: string
-        metadata:
+        config:
           additionalProperties:
             type: string
           type: object
-      type: object
+    Cluster_kubeConfig_user:
+      example:
+        password: password
+        client-certificate-data: client-certificate-data
+        client-key-data: client-key-data
+        auth-provider:
+          name: name
+          config:
+            key: config
+        exec:
+          args:
+          - args
+          - args
+          apiVersion: apiVersion
+          env:
+          - name: name
+            value: value
+          - name: name
+            value: value
+          command: command
+        token: token
+        username: username
+      properties:
+        password:
+          type: string
+        client-certificate-data:
+          type: string
+        client-key-data:
+          type: string
+        auth-provider:
+          $ref: '#/components/schemas/Cluster_kubeConfig_user_authprovider'
+        exec:
+          $ref: '#/components/schemas/Cluster_kubeConfig_user_exec'
+        token:
+          type: string
+        username:
+          type: string
     SSHKeyAddData:
       properties:
         force:
@@ -4843,50 +5939,6 @@ components:
         key:
           type: string
         keyname:
-          type: string
-      type: object
-    TeamTokenCreateArgs:
-      description: Arguments for creating a new team token.
-      example:
-        token_id: token_id
-        description: description
-        team: team
-        expires_in: 0
-      properties:
-        token_id:
-          type: string
-        description:
-          type: string
-        expires_in:
-          description: Expire time in seconds.
-          format: int64
-          type: integer
-        team:
-          type: string
-      type: object
-    UnitsDelta:
-      description: number of units to add or remove from a process
-      example:
-        process: process
-        units: units
-        version: version
-      properties:
-        units:
-          type: string
-        process:
-          type: string
-        version:
-          type: string
-      type: object
-    AssignGroupArgs:
-      description: Assign role to group arguments.
-      example:
-        group_name: group_name
-        context: context
-      properties:
-        group_name:
-          type: string
-        context:
           type: string
       type: object
     ServiceBroker_Config_AuthConfig_BearerConfig:
@@ -5003,44 +6055,6 @@ components:
         Config:
           $ref: '#/components/schemas/ServiceBroker_Config'
       type: object
-    WebhookEventFilter:
-      example:
-        target_values:
-        - target_values
-        - target_values
-        kind_names:
-        - kind_names
-        - kind_names
-        kind_types:
-        - kind_types
-        - kind_types
-        error_only: true
-        success_only: true
-        target_types:
-        - target_types
-        - target_types
-      properties:
-        target_types:
-          items:
-            type: string
-          type: array
-        target_values:
-          items:
-            type: string
-          type: array
-        kind_types:
-          items:
-            type: string
-          type: array
-        kind_names:
-          items:
-            type: string
-          type: array
-        error_only:
-          type: boolean
-        success_only:
-          type: boolean
-      type: object
     PlanOverride:
       description: App plan override.
       example:
@@ -5054,65 +6068,6 @@ components:
         cpumilli:
           type: integer
           x-go-custom-type: '*int'
-      type: object
-    EnvVar:
-      description: Environment variable.
-      example:
-        public: true
-        managedBy: managedBy
-        name: name
-        alias: alias
-        value: value
-      properties:
-        name:
-          type: string
-        value:
-          type: string
-        alias:
-          type: string
-        public:
-          type: boolean
-        managedBy:
-          type: string
-      type: object
-    Pool:
-      example:
-        default: true
-        provisioner: provisioner
-        public: true
-        teams:
-        - teams
-        - teams
-        allowed:
-          key:
-          - allowed
-          - allowed
-        name: name
-        labels:
-          key: labels
-      properties:
-        name:
-          type: string
-        default:
-          type: boolean
-        provisioner:
-          type: string
-        public:
-          type: boolean
-        teams:
-          items:
-            type: string
-          type: array
-        allowed:
-          additionalProperties:
-            items:
-              type: string
-            type: array
-          type: object
-        labels:
-          additionalProperties:
-            type: string
-          type: object
       type: object
     VolumeBindID:
       example:
@@ -5170,26 +6125,6 @@ components:
         dynamic:
           type: boolean
       type: object
-    PoolConstraint:
-      example:
-        Field: Field
-        Values:
-        - Values
-        - Values
-        Blacklist: true
-        PoolExpr: PoolExpr
-      properties:
-        PoolExpr:
-          type: string
-        Field:
-          type: string
-        Values:
-          items:
-            type: string
-          type: array
-        Blacklist:
-          type: boolean
-      type: object
     NodeCheck:
       example:
         checks:
@@ -5208,31 +6143,6 @@ components:
           items:
             $ref: '#/components/schemas/NodeCheckResult'
           type: array
-      type: object
-    PoolCreateData:
-      example:
-        default: true
-        provisioner: provisioner
-        public: true
-        name: name
-        force: true
-        labels:
-          key: labels
-      properties:
-        name:
-          type: string
-        public:
-          type: boolean
-        default:
-          type: boolean
-        force:
-          type: boolean
-        provisioner:
-          type: string
-        labels:
-          additionalProperties:
-            type: string
-          type: object
       type: object
     ServiceList:
       example:
@@ -5311,47 +6221,6 @@ components:
             $ref: '#/components/schemas/ServiceInstance'
           type: array
       type: object
-    TeamToken:
-      description: An authorization token associated to a team.
-      example:
-        last_access: 2000-01-23T04:56:07.000+00:00
-        expires_at: 2000-01-23T04:56:07.000+00:00
-        token_id: token_id
-        creator_email: creator_email
-        roles:
-        - name: name
-          contextvalue: contextvalue
-        - name: name
-          contextvalue: contextvalue
-        description: description
-        created_at: 2000-01-23T04:56:07.000+00:00
-        team: team
-        token: token
-      properties:
-        token:
-          type: string
-        token_id:
-          type: string
-        description:
-          type: string
-        created_at:
-          format: date-time
-          type: string
-        expires_at:
-          format: date-time
-          type: string
-        last_access:
-          format: date-time
-          type: string
-        creator_email:
-          type: string
-        team:
-          type: string
-        roles:
-          items:
-            $ref: '#/components/schemas/RoleInstance'
-          type: array
-      type: object
     PoolUpdateData:
       example:
         default: true
@@ -5384,41 +6253,6 @@ components:
         readonly:
           description: Volume is read-only.
           type: boolean
-      type: object
-    ServicePlan:
-      example:
-        name: name
-        description: description
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-      type: object
-    Router:
-      example:
-        address: address
-        opts:
-          key: opts
-        status-detail: status-detail
-        name: name
-        type: type
-        status: status
-      properties:
-        name:
-          type: string
-        opts:
-          additionalProperties:
-            type: string
-          type: object
-        address:
-          type: string
-        type:
-          type: string
-        status:
-          type: string
-        status-detail:
-          type: string
       type: object
     TeamInfo:
       example:
@@ -5739,61 +6573,6 @@ components:
             $ref: '#/components/schemas/App'
           type: array
       type: object
-    VolumePlansListResponse:
-      additionalProperties:
-        $ref: '#/components/schemas/VolumePlan'
-      description: Response returned by Volume Plans list.
-      type: object
-    Volume:
-      description: Volume
-      example:
-        teamOwner: teamOwner
-        binds:
-        - readonly: true
-          id:
-            app: app
-            volume: volume
-            mountpoint: mountpoint
-        - readonly: true
-          id:
-            app: app
-            volume: volume
-            mountpoint: mountpoint
-        opts:
-          key: opts
-        name: name
-        pool: pool
-        plan:
-          opts:
-            key: opts
-          name: name
-        status: status
-      properties:
-        name:
-          description: Volume name.
-          type: string
-        pool:
-          description: Volume pool.
-          type: string
-        teamOwner:
-          description: Team that owns the volume.
-          type: string
-        status:
-          description: Volume status.
-          type: string
-        plan:
-          $ref: '#/components/schemas/VolumePlan'
-        binds:
-          description: Volume binds.
-          items:
-            $ref: '#/components/schemas/VolumeBind'
-          type: array
-        opts:
-          additionalProperties:
-            type: string
-          description: Custom volume options.
-          type: object
-      type: object
     RoleInstance:
       description: Association between a role and a context value.
       example:
@@ -5805,19 +6584,37 @@ components:
         contextvalue:
           type: string
       type: object
-    NodeCheckResult:
+    Cluster_kubeConfig:
       example:
-        err: err
-        name: name
-        successful: true
+        cluster:
+          server: server
+          certificate-authority-data: certificate-authority-data
+        user:
+          password: password
+          client-certificate-data: client-certificate-data
+          client-key-data: client-key-data
+          auth-provider:
+            name: name
+            config:
+              key: config
+          exec:
+            args:
+            - args
+            - args
+            apiVersion: apiVersion
+            env:
+            - name: name
+              value: value
+            - name: name
+              value: value
+            command: command
+          token: token
+          username: username
       properties:
-        name:
-          type: string
-        err:
-          type: string
-        successful:
-          type: boolean
-      type: object
+        cluster:
+          $ref: '#/components/schemas/Cluster_kubeConfig_cluster'
+        user:
+          $ref: '#/components/schemas/Cluster_kubeConfig_user'
     NodeAddData:
       example:
         metadata:
@@ -5851,68 +6648,6 @@ components:
           additionalProperties:
             type: string
           type: object
-      type: object
-    UpdateApp:
-      example:
-        teamOwner: teamOwner
-        metadata:
-          annotations:
-          - name: name
-            value: value
-            delete: true
-          - name: name
-            value: value
-            delete: true
-          labels:
-          - name: name
-            value: value
-            delete: true
-          - name: name
-            value: value
-            delete: true
-        planoverride:
-          memory: 5
-          cpumilli: 2
-        noRestart: true
-        imageReset: true
-        pool: pool
-        description: description
-        plan: plan
-        platform: platform
-        tags:
-        - tags
-        - tags
-      properties:
-        tags:
-          description: App tags.
-          items:
-            type: string
-          type: array
-        plan:
-          description: App plan name.
-          type: string
-        planoverride:
-          $ref: '#/components/schemas/PlanOverride'
-        pool:
-          description: App pool name.
-          type: string
-        platform:
-          description: App platform.
-          type: string
-        description:
-          description: App description.
-          type: string
-        teamOwner:
-          description: Team that owns the app.
-          type: string
-        noRestart:
-          description: Prevent app restart.
-          type: boolean
-        imageReset:
-          description: Reset app image to platform base image.
-          type: boolean
-        metadata:
-          $ref: '#/components/schemas/Metadata'
       type: object
     NodeStatus:
       example:
@@ -5977,16 +6712,6 @@ components:
         limit:
           type: integer
       type: object
-    SetRoutableArgs:
-      example:
-        isRoutable: true
-        version: version
-      properties:
-        version:
-          type: string
-        isRoutable:
-          type: boolean
-      type: object
     User:
       description: User object.
       example:
@@ -6028,48 +6753,6 @@ components:
             $ref: '#/components/schemas/PermissionUser'
           type: array
       type: object
-    NodeListResponse:
-      example:
-        nodes:
-        - provisioner: provisioner
-          metadata:
-            key: metadata
-          address: address
-          iaasid: iaasid
-          pool: pool
-          status: status
-        - provisioner: provisioner
-          metadata:
-            key: metadata
-          address: address
-          iaasid: iaasid
-          pool: pool
-          status: status
-        machines:
-        - protocol: protocol
-          address: address
-          port: 0
-          creationparams:
-            key: creationparams
-          id: id
-          iaas: iaas
-        - protocol: protocol
-          address: address
-          port: 0
-          creationparams:
-            key: creationparams
-          id: id
-          iaas: iaas
-      properties:
-        nodes:
-          items:
-            $ref: '#/components/schemas/Node'
-          type: array
-        machines:
-          items:
-            $ref: '#/components/schemas/Machine'
-          type: array
-      type: object
     UserData:
       example:
         password: password
@@ -6080,18 +6763,6 @@ components:
         password:
           type: string
       type: object
-    ServiceBroker_Config_AuthConfig:
-      example:
-        BearerConfig:
-          token: token
-        BasicAuthConfig:
-          password: password
-          username: username
-      properties:
-        BearerConfig:
-          $ref: '#/components/schemas/ServiceBroker_Config_AuthConfig_BearerConfig'
-        BasicAuthConfig:
-          $ref: '#/components/schemas/ServiceBroker_Config_AuthConfig_BasicAuthConfig'
     VolumePlan:
       description: Volume plan.
       example:
@@ -6107,50 +6778,6 @@ components:
             type: string
           description: Volume plan opts.
           type: object
-      type: object
-    App_routers:
-      example:
-        addresses:
-        - addresses
-        - addresses
-        opts: '{}'
-        name: name
-      properties:
-        addresses:
-          items:
-            type: string
-          type: array
-        opts:
-          properties: {}
-          type: object
-        name:
-          type: string
-    Metadata:
-      description: App metadata such as custom labels and annotations.
-      example:
-        annotations:
-        - name: name
-          value: value
-          delete: true
-        - name: name
-          value: value
-          delete: true
-        labels:
-        - name: name
-          value: value
-          delete: true
-        - name: name
-          value: value
-          delete: true
-      properties:
-        annotations:
-          items:
-            $ref: '#/components/schemas/MetadataItem'
-          type: array
-        labels:
-          items:
-            $ref: '#/components/schemas/MetadataItem'
-          type: array
       type: object
     ServiceBrokerList:
       example:
@@ -6187,101 +6814,6 @@ components:
             $ref: '#/components/schemas/ServiceBroker'
           type: array
       type: object
-    ServiceInstance:
-      example:
-        team_owner: team_owner
-        bound_units:
-        - app_name: app_name
-          ip: ip
-          id: id
-        - app_name: app_name
-          ip: ip
-          id: id
-        teams:
-        - teams
-        - teams
-        service_name: service_name
-        name: name
-        pool: pool
-        description: description
-        id: 0
-        parameters:
-          key: parameters
-        plan_name: plan_name
-        tags:
-        - tags
-        - tags
-        apps:
-        - apps
-        - apps
-      properties:
-        name:
-          type: string
-        tags:
-          items:
-            type: string
-          type: array
-        id:
-          type: integer
-        service_name:
-          type: string
-        plan_name:
-          type: string
-        apps:
-          items:
-            type: string
-          type: array
-        bound_units:
-          items:
-            $ref: '#/components/schemas/ServiceInstanceBoundUnit'
-          type: array
-        teams:
-          items:
-            type: string
-          type: array
-        team_owner:
-          type: string
-        description:
-          type: string
-        parameters:
-          additionalProperties:
-            type: string
-          type: object
-        pool:
-          type: string
-      type: object
-    ServiceInstanceBind:
-      example:
-        noRestart: true
-        parameters:
-          key: parameters
-      properties:
-        noRestart:
-          type: boolean
-        parameters:
-          additionalProperties:
-            type: string
-          type: object
-      type: object
-    NodeContainer:
-      description: Data sent to set up a node container
-      example:
-        name: name
-        pool: pool
-        config:
-          env:
-          - env
-          - env
-      properties:
-        name:
-          type: string
-        pool:
-          type: string
-        config:
-          $ref: '#/components/schemas/NodeContainer_config'
-      required:
-      - name
-      type: object
     Env:
       description: Environment variable.
       example:
@@ -6302,31 +6834,6 @@ components:
         managedBy:
           type: string
       type: object
-    Machine:
-      example:
-        protocol: protocol
-        address: address
-        port: 0
-        creationparams:
-          key: creationparams
-        id: id
-        iaas: iaas
-      properties:
-        id:
-          type: string
-        iaas:
-          type: string
-        address:
-          type: string
-        port:
-          type: integer
-        protocol:
-          type: string
-        creationparams:
-          additionalProperties:
-            type: string
-          type: object
-      type: object
     SSHKeyListResponse:
       description: Response returned by User SSH Key List.
       example:
@@ -6334,16 +6841,6 @@ components:
       properties:
         keyname:
           description: keyvalue
-          type: string
-      type: object
-    URL:
-      example:
-        scheme: scheme
-        host: host
-      properties:
-        scheme:
-          type: string
-        host:
           type: string
       type: object
     ServiceBroker_Config:
@@ -6379,20 +6876,6 @@ components:
           items:
             type: string
           type: array
-    AppCreateResponse:
-      description: Newly created app information.
-      example:
-        ip: ip
-        repository_url: repository_url
-        status: status
-      properties:
-        status:
-          type: string
-        repository_url:
-          type: string
-        ip:
-          type: string
-      type: object
     PermissionUser:
       description: Permission of an user.
       example:
@@ -6410,11 +6893,6 @@ components:
         group:
           type: string
       type: object
-    AppRouterList:
-      description: Application Router
-      items:
-        $ref: '#/components/schemas/AppRouter'
-      type: array
     AppCName:
       description: Application CNames
       example:
@@ -6423,27 +6901,6 @@ components:
         - cname
       properties:
         cname:
-          items:
-            type: string
-          type: array
-      type: object
-    Team:
-      example:
-        permissions:
-        - permissions
-        - permissions
-        name: name
-        tags:
-        - tags
-        - tags
-      properties:
-        name:
-          type: string
-        tags:
-          items:
-            type: string
-          type: array
-        permissions:
           items:
             type: string
           type: array
@@ -6472,17 +6929,6 @@ components:
             type: string
           type: array
       type: object
-    AssignTokenArgs:
-      description: Assign role to token arguments.
-      example:
-        token_id: token_id
-        context: context
-      properties:
-        token_id:
-          type: string
-        context:
-          type: string
-      type: object
     App_internalAddresses:
       example:
         Version: Version
@@ -6502,11 +6948,6 @@ components:
           type: string
         Protocol:
           type: string
-    ServiceDoc:
-      properties:
-        doc:
-          type: string
-      type: object
     EnvSetData:
       description: Data sent to the environment set endpoint.
       example:
@@ -6539,45 +6980,6 @@ components:
           type: boolean
         private:
           type: boolean
-      type: object
-    ClusterHelp:
-      example:
-        custom_data_help:
-          key: custom_data_help
-        create_data_help:
-          key: create_data_help
-        provisioner_help: provisioner_help
-      properties:
-        provisioner_help:
-          type: string
-        custom_data_help:
-          additionalProperties:
-            type: string
-          type: object
-        create_data_help:
-          additionalProperties:
-            type: string
-          type: object
-      type: object
-    AutoScaleSpec:
-      description: Units Auto Scale spec
-      example:
-        process: process
-        averageCPU: averageCPU
-        maxUnits: 5
-        minUnits: 1
-        version: 5
-      properties:
-        process:
-          type: string
-        minUnits:
-          type: integer
-        maxUnits:
-          type: integer
-        averageCPU:
-          type: string
-        version:
-          type: integer
       type: object
     ServiceInstanceInfo:
       example:
@@ -6631,21 +7033,6 @@ components:
             type: string
           type: object
       type: object
-    Provisioner:
-      example:
-        name: name
-        cluster_help:
-          custom_data_help:
-            key: custom_data_help
-          create_data_help:
-            key: create_data_help
-          provisioner_help: provisioner_help
-      properties:
-        name:
-          type: string
-        cluster_help:
-          $ref: '#/components/schemas/ClusterHelp'
-      type: object
     Service:
       properties:
         id:
@@ -6663,20 +7050,44 @@ components:
       type: object
     Cluster:
       example:
-        create_data:
-          key: create_data
         addresses:
         - addresses
         - addresses
         provisioner: provisioner
         default: true
         clientcert: clientcert
+        httpProxy: httpProxy
         clientkey: clientkey
         cacert: cacert
         name: name
         pools:
         - pools
         - pools
+        kubeConfig:
+          cluster:
+            server: server
+            certificate-authority-data: certificate-authority-data
+          user:
+            password: password
+            client-certificate-data: client-certificate-data
+            client-key-data: client-key-data
+            auth-provider:
+              name: name
+              config:
+                key: config
+            exec:
+              args:
+              - args
+              - args
+              apiVersion: apiVersion
+              env:
+              - name: name
+                value: value
+              - name: name
+                value: value
+              command: command
+            token: token
+            username: username
         custom_data:
           key: custom_data
       properties:
@@ -6711,49 +7122,12 @@ components:
           additionalProperties:
             type: string
           type: object
-        create_data:
-          additionalProperties:
-            type: string
-          type: object
+        httpProxy:
+          type: string
+        kubeConfig:
+          $ref: '#/components/schemas/Cluster_kubeConfig'
         default:
           type: boolean
-      type: object
-    Plan:
-      description: App plan.
-      example:
-        default: true
-        router: router
-        memory: 0
-        cpumilli: 0
-        swap: 0
-        name: name
-        override:
-          memory: 5
-          cpumilli: 2
-        cpushare: 0
-      properties:
-        name:
-          type: string
-        memory:
-          format: int64
-          minimum: 0
-          type: integer
-        swap:
-          format: int64
-          minimum: 0
-          type: integer
-        cpushare:
-          minimum: 0
-          type: integer
-        cpumilli:
-          minimum: 0
-          type: integer
-        default:
-          type: boolean
-        router:
-          type: string
-        override:
-          $ref: '#/components/schemas/PlanOverride'
       type: object
     DynamicRouter:
       description: Dynamic router
@@ -6809,112 +7183,11 @@ components:
             type: string
           type: array
       type: object
-    Lock:
-      example:
-        owner: owner
-        reason: reason
-        acquireDate: acquireDate
-        locked: true
-      properties:
-        locked:
-          type: boolean
-        reason:
-          type: string
-        owner:
-          type: string
-        acquireDate:
-          type: string
-      type: object
     EventCancelArgs:
       example:
         reason: reason
       properties:
         reason:
-          type: string
-      type: object
-    NodeGetResponse:
-      example:
-        node:
-          provisioner: provisioner
-          metadata:
-            key: metadata
-          address: address
-          iaasid: iaasid
-          pool: pool
-          status: status
-        units:
-          address:
-            scheme: scheme
-            host: host
-          appname: appname
-          routable: true
-          ready: true
-          processname: processname
-          ip: ip
-          name: name
-          id: id
-          type: type
-          version: 0
-          restarts: 6
-          status: status
-        status:
-          address: address
-          checks:
-          - checks:
-            - err: err
-              name: name
-              successful: true
-            - err: err
-              name: name
-              successful: true
-            time: 2000-01-23T04:56:07.000+00:00
-          - checks:
-            - err: err
-              name: name
-              successful: true
-            - err: err
-              name: name
-              successful: true
-            time: 2000-01-23T04:56:07.000+00:00
-          lastsuccess: 2000-01-23T04:56:07.000+00:00
-          lastupdate: 2000-01-23T04:56:07.000+00:00
-      properties:
-        node:
-          $ref: '#/components/schemas/Node'
-        status:
-          $ref: '#/components/schemas/NodeStatus'
-        units:
-          $ref: '#/components/schemas/Unit'
-      type: object
-    AppRouter:
-      description: Application Router
-      example:
-        addresses:
-        - addresses
-        - addresses
-        address: address
-        opts: '{}'
-        status-detail: status-detail
-        name: name
-        type: type
-        status: status
-      properties:
-        name:
-          type: string
-        opts:
-          properties: {}
-          type: object
-        address:
-          type: string
-        addresses:
-          items:
-            type: string
-          type: array
-        type:
-          type: string
-        status:
-          type: string
-        status-detail:
           type: string
       type: object
     Quota:
@@ -6928,87 +7201,6 @@ components:
         limit:
           format: int64
           type: integer
-      type: object
-    RoleUser:
-      description: Role of an user.
-      example:
-        contexttype: contexttype
-        name: name
-        contextvalue: contextvalue
-        group: group
-      properties:
-        name:
-          type: string
-        contexttype:
-          type: string
-        contextvalue:
-          type: string
-        group:
-          type: string
-      type: object
-    ServiceBroker_Config_AuthConfig_BasicAuthConfig:
-      example:
-        password: password
-        username: username
-      properties:
-        password:
-          type: string
-        username:
-          type: string
-    Webhook:
-      example:
-        team_owner: team_owner
-        headers:
-          key:
-          - headers
-          - headers
-        method: method
-        name: name
-        insecure: true
-        description: description
-        proxy_url: proxy_url
-        body: body
-        event_filter:
-          target_values:
-          - target_values
-          - target_values
-          kind_names:
-          - kind_names
-          - kind_names
-          kind_types:
-          - kind_types
-          - kind_types
-          error_only: true
-          success_only: true
-          target_types:
-          - target_types
-          - target_types
-        url: url
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        team_owner:
-          type: string
-        event_filter:
-          $ref: '#/components/schemas/WebhookEventFilter'
-        url:
-          type: string
-        proxy_url:
-          type: string
-        headers:
-          additionalProperties:
-            items:
-              type: string
-            type: array
-          type: object
-        method:
-          type: string
-        body:
-          type: string
-        insecure:
-          type: boolean
       type: object
     PoolConstraintSet:
       example:
@@ -7033,9 +7225,6 @@ components:
         Blacklist:
           type: boolean
       type: object
-    ErrorMessage:
-      description: Error message.
-      type: string
     NodeUpdateData:
       example:
         metadata:
@@ -7056,46 +7245,6 @@ components:
         enable:
           type: boolean
         disable:
-          type: boolean
-      type: object
-    ServiceInstanceUpdateData:
-      example:
-        description: description
-        plan: plan
-        parameters:
-          key: parameters
-        teamowner: teamowner
-        tags:
-        - tags
-        - tags
-      properties:
-        description:
-          type: string
-        teamowner:
-          type: string
-        plan:
-          type: string
-        tags:
-          items:
-            type: string
-          type: array
-        parameters:
-          additionalProperties:
-            type: string
-          type: object
-      type: object
-    MetadataItem:
-      description: Metadata items
-      example:
-        name: name
-        value: value
-        delete: true
-      properties:
-        name:
-          type: string
-        value:
-          type: string
-        delete:
           type: boolean
       type: object
     InputApp:

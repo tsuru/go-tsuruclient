@@ -18,6 +18,7 @@ type Cluster struct {
 	Clientkey   []byte            `json:"clientkey,omitempty"`
 	Pools       []string          `json:"pools,omitempty"`
 	CustomData  map[string]string `json:"custom_data,omitempty"`
-	CreateData  map[string]string `json:"create_data,omitempty"`
+	HttpProxy   string            `json:"httpProxy,omitempty"`
+	KubeConfig  ClusterKubeConfig `json:"kubeConfig,omitempty"`
 	Default     bool              `json:"default,omitempty"`
 }
