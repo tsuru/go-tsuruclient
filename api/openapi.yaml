@@ -7100,6 +7100,7 @@ components:
             username: username
         custom_data:
           key: custom_data
+        local: true
       properties:
         name:
           type: string
@@ -7128,6 +7129,10 @@ components:
           items:
             type: string
           type: array
+        default:
+          type: boolean
+        local:
+          type: boolean
         custom_data:
           additionalProperties:
             type: string
@@ -7136,8 +7141,6 @@ components:
           type: string
         kubeConfig:
           $ref: '#/components/schemas/Cluster_kubeConfig'
-        default:
-          type: boolean
       type: object
     DynamicRouter:
       description: Dynamic router
