@@ -4778,11 +4778,14 @@ components:
       example:
         server: server
         certificate-authority-data: certificate-authority-data
+        insecure-skip-tls-verify: true
       properties:
         server:
           type: string
         certificate-authority-data:
           type: string
+        insecure-skip-tls-verify:
+          type: boolean
       required:
       - server
     WebhookEventFilter:
@@ -6589,6 +6592,7 @@ components:
         cluster:
           server: server
           certificate-authority-data: certificate-authority-data
+          insecure-skip-tls-verify: true
         user:
           password: password
           client-certificate-data: client-certificate-data
@@ -7067,6 +7071,7 @@ components:
           cluster:
             server: server
             certificate-authority-data: certificate-authority-data
+            insecure-skip-tls-verify: true
           user:
             password: password
             client-certificate-data: client-certificate-data

@@ -12,4 +12,5 @@ package tsuru
 type ClusterKubeConfigCluster struct {
 	Server                   string `json:"server"`
 	CertificateAuthorityData string `json:"certificate-authority-data,omitempty"`
+	InsecureSkipTlsVerify    bool   `json:"insecure-skip-tls-verify,omitempty"`
 }
