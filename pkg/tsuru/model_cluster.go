@@ -21,5 +21,6 @@ type Cluster struct {
 	Local       bool              `json:"local,omitempty"`
 	CustomData  map[string]string `json:"custom_data,omitempty"`
 	HttpProxy   string            `json:"httpProxy,omitempty"`
-	KubeConfig  ClusterKubeConfig `json:"kubeConfig,omitempty"`
+
+	KubeConfig *ClusterKubeConfig `json:"kubeConfig,omitempty"`
 }

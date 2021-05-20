@@ -1,0 +1,12 @@
+diff --git a/pkg/tsuru/model_cluster.go b/pkg/tsuru/model_cluster.go
+index 0e09e42..7934a7a 100644
+--- a/pkg/tsuru/model_cluster.go
++++ b/pkg/tsuru/model_cluster.go
+@@ -21,5 +21,6 @@ type Cluster struct {
+ 	Local       bool              `json:"local,omitempty"`
+ 	CustomData  map[string]string `json:"custom_data,omitempty"`
+ 	HttpProxy   string            `json:"httpProxy,omitempty"`
+-	KubeConfig  ClusterKubeConfig `json:"kubeConfig,omitempty"`
++
++	KubeConfig *ClusterKubeConfig `json:"kubeConfig,omitempty"`
+ }
