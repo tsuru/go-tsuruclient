@@ -12,6 +12,7 @@ process-files:
 	find pkg/tsuru/ -name "*.go" ! -name 'custom_*' | xargs rm
 	mv *.go pkg/tsuru
 	gofmt -s -w pkg/tsuru/
+	git apply patch.diff
 	goimports -w pkg/tsuru/
 	go mod tidy
 

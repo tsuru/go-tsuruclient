@@ -14,7 +14,7 @@ type ClusterKubeConfigUser struct {
 	ClientCertificateData string                            `json:"client-certificate-data,omitempty"`
 	ClientKeyData         string                            `json:"client-key-data,omitempty"`
 	AuthProvider          ClusterKubeConfigUserAuthprovider `json:"auth-provider,omitempty"`
-	Exec                  ClusterKubeConfigUserExec         `json:"exec,omitempty"`
+	Exec                  *ClusterKubeConfigUserExec        `json:"exec,omitempty"`
 	Token                 string                            `json:"token,omitempty"`
 	Username              string                            `json:"username,omitempty"`
 }
