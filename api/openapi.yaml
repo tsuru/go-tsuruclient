@@ -4778,11 +4778,14 @@ components:
       example:
         server: server
         certificate-authority-data: certificate-authority-data
+        tls-server-name: tls-server-name
         insecure-skip-tls-verify: true
       properties:
         server:
           type: string
         certificate-authority-data:
+          type: string
+        tls-server-name:
           type: string
         insecure-skip-tls-verify:
           type: boolean
@@ -6592,6 +6595,7 @@ components:
         cluster:
           server: server
           certificate-authority-data: certificate-authority-data
+          tls-server-name: tls-server-name
           insecure-skip-tls-verify: true
         user:
           password: password
@@ -7071,6 +7075,7 @@ components:
           cluster:
             server: server
             certificate-authority-data: certificate-authority-data
+            tls-server-name: tls-server-name
             insecure-skip-tls-verify: true
           user:
             password: password
