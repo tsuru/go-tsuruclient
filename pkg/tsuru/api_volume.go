@@ -168,7 +168,7 @@ func (a *VolumeApiService) VolumeCreate(ctx context.Context, volume Volume) (*ht
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)

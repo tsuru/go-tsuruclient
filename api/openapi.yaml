@@ -3200,7 +3200,7 @@ paths:
       operationId: VolumeCreate
       requestBody:
         content:
-          '*/*':
+          application/json:
             schema:
               $ref: '#/components/schemas/Volume'
         required: true
