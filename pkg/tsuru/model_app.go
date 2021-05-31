@@ -21,6 +21,7 @@ type App struct {
 	Deploys           int64                  `json:"deploys,omitempty"`
 	Routers           []AppRouters           `json:"routers,omitempty"`
 	InternalAddresses []AppInternalAddresses `json:"internalAddresses,omitempty"`
+	VolumeBinds       []AppVolumeBinds       `json:"volumeBinds,omitempty"`
 	// App tags.
 	Tags     []string `json:"tags,omitempty"`
 	Metadata Metadata `json:"metadata,omitempty"`

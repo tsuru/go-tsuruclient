@@ -4496,6 +4496,15 @@ components:
       example:
         owner: owner
         cluster: cluster
+        volumeBinds:
+        - ID:
+            App: App
+            MountPoint: MountPoint
+            Volume: Volume
+        - ID:
+            App: App
+            MountPoint: MountPoint
+            Volume: Volume
         metadata:
           annotations:
           - name: name
@@ -4627,6 +4636,10 @@ components:
         internalAddresses:
           items:
             $ref: '#/components/schemas/App_internalAddresses'
+          type: array
+        volumeBinds:
+          items:
+            $ref: '#/components/schemas/App_volumeBinds'
           type: array
         tags:
           description: App tags.
@@ -5386,6 +5399,18 @@ components:
         host:
           type: string
       type: object
+    App_ID:
+      example:
+        App: App
+        MountPoint: MountPoint
+        Volume: Volume
+      properties:
+        App:
+          type: string
+        MountPoint:
+          type: string
+        Volume:
+          type: string
     AppCreateResponse:
       description: Newly created app information.
       example:
@@ -6131,6 +6156,15 @@ components:
         dynamic:
           type: boolean
       type: object
+    App_volumeBinds:
+      example:
+        ID:
+          App: App
+          MountPoint: MountPoint
+          Volume: Volume
+      properties:
+        ID:
+          $ref: '#/components/schemas/App_ID'
     NodeCheck:
       example:
         checks:
@@ -6341,6 +6375,15 @@ components:
         apps:
         - owner: owner
           cluster: cluster
+          volumeBinds:
+          - ID:
+              App: App
+              MountPoint: MountPoint
+              Volume: Volume
+          - ID:
+              App: App
+              MountPoint: MountPoint
+              Volume: Volume
           metadata:
             annotations:
             - name: name
@@ -6451,6 +6494,15 @@ components:
             cpushare: 0
         - owner: owner
           cluster: cluster
+          volumeBinds:
+          - ID:
+              App: App
+              MountPoint: MountPoint
+              Volume: Volume
+          - ID:
+              App: App
+              MountPoint: MountPoint
+              Volume: Volume
           metadata:
             annotations:
             - name: name

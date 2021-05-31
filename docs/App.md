@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Deploys** | **int64** | Number of Deploys | [optional] 
 **Routers** | [**[]AppRouters**](App_routers.md) |  | [optional] 
 **InternalAddresses** | [**[]AppInternalAddresses**](App_internalAddresses.md) |  | [optional] 
+**VolumeBinds** | [**[]AppVolumeBinds**](App_volumeBinds.md) |  | [optional] 
 **Tags** | **[]string** | App tags. | [optional] 
 **Metadata** | [**Metadata**](Metadata.md) |  | [optional] 
 **Router** | **string** | App router. | [optional] 
