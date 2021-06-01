@@ -53,7 +53,7 @@ func (a *VolumeApiService) VolumeBind(ctx context.Context, volume string, volume
 	}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
