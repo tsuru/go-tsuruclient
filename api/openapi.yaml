@@ -1294,6 +1294,47 @@ paths:
       - Bearer: []
       tags:
       - app
+  /1.0/apps/{app}/deploy:
+    post:
+      description: deploy a app
+      operationId: AppDeploy
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppDeployOptions'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Deploy started
+        400:
+          content: {}
+          description: Invalid data
+        401:
+          content:
+            text:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            text:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
   /1.0/apps/{app}/cname:
     delete:
       description: remove cname from app
@@ -4497,11 +4538,13 @@ components:
         owner: owner
         cluster: cluster
         volumeBinds:
-        - ID:
+        - ReadOnly: true
+          ID:
             App: App
             MountPoint: MountPoint
             Volume: Volume
-        - ID:
+        - ReadOnly: true
+          ID:
             App: App
             MountPoint: MountPoint
             Volume: Volume
@@ -6158,11 +6201,14 @@ components:
       type: object
     App_volumeBinds:
       example:
+        ReadOnly: true
         ID:
           App: App
           MountPoint: MountPoint
           Volume: Volume
       properties:
+        ReadOnly:
+          type: boolean
         ID:
           $ref: '#/components/schemas/App_ID'
     NodeCheck:
@@ -6376,11 +6422,13 @@ components:
         - owner: owner
           cluster: cluster
           volumeBinds:
-          - ID:
+          - ReadOnly: true
+            ID:
               App: App
               MountPoint: MountPoint
               Volume: Volume
-          - ID:
+          - ReadOnly: true
+            ID:
               App: App
               MountPoint: MountPoint
               Volume: Volume
@@ -6495,11 +6543,13 @@ components:
         - owner: owner
           cluster: cluster
           volumeBinds:
-          - ID:
+          - ReadOnly: true
+            ID:
               App: App
               MountPoint: MountPoint
               Volume: Volume
-          - ID:
+          - ReadOnly: true
+            ID:
               App: App
               MountPoint: MountPoint
               Volume: Volume
@@ -7040,6 +7090,18 @@ components:
           type: boolean
         private:
           type: boolean
+      type: object
+    AppDeployOptions:
+      example:
+        image: image
+        message: message
+      properties:
+        image:
+          type: string
+        message:
+          type: string
+      required:
+      - image
       type: object
     ServiceInstanceInfo:
       example:

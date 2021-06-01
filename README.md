@@ -34,6 +34,7 @@ Class | Method | HTTP request | Description
 *AppApi* | [**AppCnameDelete**](docs/AppApi.md#appcnamedelete) | **Delete** /1.0/apps/{app}/cname | 
 *AppApi* | [**AppCreate**](docs/AppApi.md#appcreate) | **Post** /1.0/apps | 
 *AppApi* | [**AppDelete**](docs/AppApi.md#appdelete) | **Delete** /1.0/apps/{app} | 
+*AppApi* | [**AppDeploy**](docs/AppApi.md#appdeploy) | **Post** /1.0/apps/{app}/deploy | 
 *AppApi* | [**AppGet**](docs/AppApi.md#appget) | **Get** /1.0/apps/{app} | 
 *AppApi* | [**AppList**](docs/AppApi.md#applist) | **Get** /1.0/apps | 
 *AppApi* | [**AppQuotaChange**](docs/AppApi.md#appquotachange) | **Put** /1.0/apps/{app}/quota | 
@@ -159,6 +160,7 @@ Class | Method | HTTP request | Description
  - [App](docs/App.md)
  - [AppCName](docs/AppCName.md)
  - [AppCreateResponse](docs/AppCreateResponse.md)
+ - [AppDeployOptions](docs/AppDeployOptions.md)
  - [AppId](docs/AppId.md)
  - [AppInternalAddresses](docs/AppInternalAddresses.md)
  - [AppRouter](docs/AppRouter.md)

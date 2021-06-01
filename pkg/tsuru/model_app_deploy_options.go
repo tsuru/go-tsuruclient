@@ -9,7 +9,7 @@
 
 package tsuru
 
-type AppVolumeBinds struct {
-	ReadOnly bool  `json:"ReadOnly,omitempty"`
-	ID       AppId `json:"ID,omitempty"`
+type AppDeployOptions struct {
+	Image   string `json:"image"`
+	Message string `json:"message,omitempty"`
 }

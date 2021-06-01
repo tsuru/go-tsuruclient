@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**AppCnameDelete**](AppApi.md#AppCnameDelete) | **Delete** /1.0/apps/{app}/cname | 
 [**AppCreate**](AppApi.md#AppCreate) | **Post** /1.0/apps | 
 [**AppDelete**](AppApi.md#AppDelete) | **Delete** /1.0/apps/{app} | 
+[**AppDeploy**](AppApi.md#AppDeploy) | **Post** /1.0/apps/{app}/deploy | 
 [**AppGet**](AppApi.md#AppGet) | **Get** /1.0/apps/{app} | 
 [**AppList**](AppApi.md#AppList) | **Get** /1.0/apps | 
 [**AppQuotaChange**](AppApi.md#AppQuotaChange) | **Put** /1.0/apps/{app}/quota | 
@@ -142,6 +143,35 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/x-json-stream
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AppDeploy**
+> AppDeploy(ctx, app, appDeployOptions)
+
+
+deploy a app
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **app** | **string**| App name. | 
+  **appDeployOptions** | [**AppDeployOptions**](AppDeployOptions.md)|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: text
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

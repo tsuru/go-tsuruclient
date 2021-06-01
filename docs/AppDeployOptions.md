@@ -1,10 +1,10 @@
-# AppVolumeBinds
+# AppDeployOptions
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ReadOnly** | **bool** |  | [optional] 
-**ID** | [**AppId**](App_ID.md) |  | [optional] 
+**Image** | **string** |  | 
+**Message** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
