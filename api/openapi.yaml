@@ -7094,12 +7094,18 @@ components:
     AppDeployOptions:
       example:
         image: image
+        new-version: true
         message: message
+        override-versions: true
       properties:
         image:
           type: string
         message:
           type: string
+        new-version:
+          type: boolean
+        override-versions:
+          type: boolean
       required:
       - image
       type: object

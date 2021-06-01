@@ -10,6 +10,8 @@
 package tsuru
 
 type AppDeployOptions struct {
-	Image   string `json:"image"`
-	Message string `json:"message,omitempty"`
+	Image            string `json:"image"`
+	Message          string `json:"message,omitempty"`
+	NewVersion       bool   `json:"new-version,omitempty"`
+	OverrideVersions bool   `json:"override-versions,omitempty"`
 }
