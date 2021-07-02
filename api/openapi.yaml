@@ -1602,7 +1602,7 @@ paths:
           type: string
       requestBody:
         content:
-          application/x-www-form-urlencoded:
+          application/json:
             schema:
               properties:
                 limit:
@@ -1637,6 +1637,82 @@ paths:
       - Bearer: []
       tags:
       - app
+  /1.0/apps/{app}/start:
+    post:
+      description: Start App.
+      operationId: AppStart
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppStartStop'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: App started
+        401:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
+  /1.0/apps/{app}/stop:
+    post:
+      description: Stop App.
+      operationId: AppStop
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppStartStop'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: App stoped
+        401:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
   /1.0/apps/{app}/restart:
     post:
       description: Restart App.
@@ -1651,14 +1727,10 @@ paths:
           type: string
       requestBody:
         content:
-          application/x-www-form-urlencoded:
+          application/json:
             schema:
-              properties:
-                process:
-                  description: Process number to be restarted. If the process number will not informed, whole application will be restarted.
-                  type: string
-                version:
-                  type: string
+              $ref: '#/components/schemas/AppStartStop'
+        required: true
       responses:
         200:
           content: {}
@@ -2952,7 +3024,7 @@ paths:
       operationId: ChangePassword
       requestBody:
         content:
-          application/x-www-form-urlencoded:
+          application/json:
             schema:
               $ref: '#/components/schemas/ChangePasswordData'
         required: true
@@ -3668,6 +3740,37 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: Volume already exists
+      security:
+      - Bearer: []
+      tags:
+      - volume
+    put:
+      description: Update volume.
+      operationId: VolumeUpdate
+      parameters:
+      - description: Volume name.
+        in: path
+        name: volume
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Volume updated
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Volume not found
       security:
       - Bearer: []
       tags:
@@ -5454,6 +5557,16 @@ components:
           type: string
         Volume:
           type: string
+    AppStartStop:
+      example:
+        process: process
+        version: version
+      properties:
+        process:
+          type: string
+        version:
+          type: string
+      type: object
     AppCreateResponse:
       description: Newly created app information.
       example:
@@ -7294,6 +7407,10 @@ components:
           type: array
       type: object
     ChangePasswordData:
+      example:
+        confirm: confirm
+        new: new
+        old: old
       properties:
         confirm:
           type: string

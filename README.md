@@ -45,6 +45,8 @@ Class | Method | HTTP request | Description
 *AppApi* | [**AppRouterList**](docs/AppApi.md#approuterlist) | **Get** /1.5/apps/{app}/routers | 
 *AppApi* | [**AppRouterUpdate**](docs/AppApi.md#approuterupdate) | **Put** /1.5/apps/{app}/routers/{router} | 
 *AppApi* | [**AppSetRoutable**](docs/AppApi.md#appsetroutable) | **Post** /1.8/apps/{app}/routable | 
+*AppApi* | [**AppStart**](docs/AppApi.md#appstart) | **Post** /1.0/apps/{app}/start | 
+*AppApi* | [**AppStop**](docs/AppApi.md#appstop) | **Post** /1.0/apps/{app}/stop | 
 *AppApi* | [**AppTeamGrant**](docs/AppApi.md#appteamgrant) | **Put** /1.0/apps/{app}/teams/{team} | 
 *AppApi* | [**AppTeamRevoke**](docs/AppApi.md#appteamrevoke) | **Delete** /1.0/apps/{app}/teams/{team} | 
 *AppApi* | [**AppUpdate**](docs/AppApi.md#appupdate) | **Put** /1.0/apps/{app} | 
@@ -153,6 +155,7 @@ Class | Method | HTTP request | Description
 *VolumeApi* | [**VolumeList**](docs/VolumeApi.md#volumelist) | **Get** /1.4/volumes | 
 *VolumeApi* | [**VolumePlansList**](docs/VolumeApi.md#volumeplanslist) | **Get** /1.4/volumeplans | 
 *VolumeApi* | [**VolumeUnbind**](docs/VolumeApi.md#volumeunbind) | **Delete** /1.4/volumes/{volume}/bind | 
+*VolumeApi* | [**VolumeUpdate**](docs/VolumeApi.md#volumeupdate) | **Put** /1.4/volumes/{volume} | 
 
 
 ## Documentation For Models
@@ -165,6 +168,7 @@ Class | Method | HTTP request | Description
  - [AppInternalAddresses](docs/AppInternalAddresses.md)
  - [AppRouter](docs/AppRouter.md)
  - [AppRouters](docs/AppRouters.md)
+ - [AppStartStop](docs/AppStartStop.md)
  - [AppVolumeBinds](docs/AppVolumeBinds.md)
  - [AssignGroupArgs](docs/AssignGroupArgs.md)
  - [AssignTokenArgs](docs/AssignTokenArgs.md)

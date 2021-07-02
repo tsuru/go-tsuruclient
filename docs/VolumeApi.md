@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**VolumeList**](VolumeApi.md#VolumeList) | **Get** /1.4/volumes | 
 [**VolumePlansList**](VolumeApi.md#VolumePlansList) | **Get** /1.4/volumeplans | 
 [**VolumeUnbind**](VolumeApi.md#VolumeUnbind) | **Delete** /1.4/volumes/{volume}/bind | 
+[**VolumeUpdate**](VolumeApi.md#VolumeUpdate) | **Put** /1.4/volumes/{volume} | 
 
 
 # **VolumeBind**
@@ -187,6 +188,34 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **volume** | **string**| Volume name. | 
   **volumeBindData** | [**VolumeBindData**](VolumeBindData.md)|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **VolumeUpdate**
+> VolumeUpdate(ctx, volume)
+
+
+Update volume.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **volume** | **string**| Volume name. | 
 
 ### Return type
 
