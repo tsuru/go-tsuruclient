@@ -3755,6 +3755,12 @@ paths:
         schema:
           minLength: 1
           type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Volume'
+        required: true
       responses:
         200:
           content: {}

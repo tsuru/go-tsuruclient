@@ -823,8 +823,9 @@ VolumeApiService
 Update volume.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param volume Volume name.
+ * @param volume
 */
-func (a *VolumeApiService) VolumeUpdate(ctx context.Context, volume string) (*http.Response, error) {
+func (a *VolumeApiService) VolumeUpdate(ctx context.Context, volume string, volume Volume) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -861,6 +862,8 @@ func (a *VolumeApiService) VolumeUpdate(ctx context.Context, volume string) (*ht
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
+	// body params
+	localVarPostBody = &volume
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {

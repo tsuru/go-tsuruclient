@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **VolumeUpdate**
-> VolumeUpdate(ctx, volume)
+> VolumeUpdate(ctx, volume, volume)
 
 
 Update volume.
@@ -216,6 +216,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **volume** | **string**| Volume name. | 
+  **volume** | [**Volume**](Volume.md)|  | 
 
 ### Return type
 
