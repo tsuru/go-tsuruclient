@@ -279,19 +279,9 @@ func (a *UserApiService) APITokenRegenerate(ctx context.Context, email string) (
 UserApiService
 Change password of logged user.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *ChangePasswordOpts - Optional Parameters:
- * @param "Confirm" (optional.String) -
- * @param "New" (optional.String) -
- * @param "Old" (optional.String) -
+ * @param changePasswordData
 */
-
-type ChangePasswordOpts struct {
-	Confirm optional.String
-	New     optional.String
-	Old     optional.String
-}
-
-func (a *UserApiService) ChangePassword(ctx context.Context, localVarOptionals *ChangePasswordOpts) (*http.Response, error) {
+func (a *UserApiService) ChangePassword(ctx context.Context, changePasswordData ChangePasswordData) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -308,7 +298,7 @@ func (a *UserApiService) ChangePassword(ctx context.Context, localVarOptionals *
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{"application/x-www-form-urlencoded"}
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -324,15 +314,8 @@ func (a *UserApiService) ChangePassword(ctx context.Context, localVarOptionals *
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.Confirm.IsSet() {
-		localVarFormParams.Add("confirm", parameterToString(localVarOptionals.Confirm.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.New.IsSet() {
-		localVarFormParams.Add("new", parameterToString(localVarOptionals.New.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Old.IsSet() {
-		localVarFormParams.Add("old", parameterToString(localVarOptionals.Old.Value(), ""))
-	}
+	// body params
+	localVarPostBody = &changePasswordData
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
