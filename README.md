@@ -258,6 +258,7 @@ Class | Method | HTTP request | Description
  - [VolumeBindData](docs/VolumeBindData.md)
  - [VolumeBindId](docs/VolumeBindId.md)
  - [VolumePlan](docs/VolumePlan.md)
+ - [VolumeUpdateData](docs/VolumeUpdateData.md)
  - [Webhook](docs/Webhook.md)
  - [WebhookEventFilter](docs/WebhookEventFilter.md)
 

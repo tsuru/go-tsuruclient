@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **InstanceUpdate**
-> InstanceUpdate(ctx, service, instance, optional)
+> InstanceUpdate(ctx, service, instance, serviceInstanceUpdateData)
 
 
 Update a service instance
@@ -131,16 +131,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **service** | **string**| Service name. | 
   **instance** | **string**| Instance name. | 
- **optional** | ***InstanceUpdateOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a InstanceUpdateOpts struct
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **serviceInstanceUpdateData** | [**optional.Interface of ServiceInstanceUpdateData**](ServiceInstanceUpdateData.md)|  | 
+  **serviceInstanceUpdateData** | [**ServiceInstanceUpdateData**](ServiceInstanceUpdateData.md)|  | 
 
 ### Return type
 
@@ -153,7 +144,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: */*
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

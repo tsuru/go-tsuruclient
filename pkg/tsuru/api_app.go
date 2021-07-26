@@ -903,9 +903,9 @@ AppApiService
 Changes the maximum limit of units allowed for use.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param app App name.
- * @param uNKNOWNBASETYPE
+ * @param limit Number of units allowed for use by the current app. Negative number indicates unlimited.
 */
-func (a *AppApiService) AppQuotaChange(ctx context.Context, app string, uNKNOWNBASETYPE UNKNOWN_BASE_TYPE) (*http.Response, error) {
+func (a *AppApiService) AppQuotaChange(ctx context.Context, app string, limit float32) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -926,7 +926,7 @@ func (a *AppApiService) AppQuotaChange(ctx context.Context, app string, uNKNOWNB
 	}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{"application/json"}
+	localVarHttpContentTypes := []string{"application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -942,8 +942,7 @@ func (a *AppApiService) AppQuotaChange(ctx context.Context, app string, uNKNOWNB
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	// body params
-	localVarPostBody = &uNKNOWNBASETYPE
+	localVarFormParams.Add("limit", parameterToString(limit, ""))
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {

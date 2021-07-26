@@ -389,15 +389,9 @@ Update a service instance
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param service Service name.
  * @param instance Instance name.
- * @param optional nil or *InstanceUpdateOpts - Optional Parameters:
- * @param "ServiceInstanceUpdateData" (optional.Interface of ServiceInstanceUpdateData) -
+ * @param serviceInstanceUpdateData
 */
-
-type InstanceUpdateOpts struct {
-	ServiceInstanceUpdateData optional.Interface
-}
-
-func (a *ServiceApiService) InstanceUpdate(ctx context.Context, service string, instance string, localVarOptionals *InstanceUpdateOpts) (*http.Response, error) {
+func (a *ServiceApiService) InstanceUpdate(ctx context.Context, service string, instance string, serviceInstanceUpdateData ServiceInstanceUpdateData) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -431,7 +425,7 @@ func (a *ServiceApiService) InstanceUpdate(ctx context.Context, service string, 
 	}
 
 	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{"*/*"}
+	localVarHttpHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -439,14 +433,7 @@ func (a *ServiceApiService) InstanceUpdate(ctx context.Context, service string, 
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.ServiceInstanceUpdateData.IsSet() {
-		localVarOptionalServiceInstanceUpdateData, localVarOptionalServiceInstanceUpdateDataok := localVarOptionals.ServiceInstanceUpdateData.Value().(ServiceInstanceUpdateData)
-		if !localVarOptionalServiceInstanceUpdateDataok {
-			return nil, reportError("serviceInstanceUpdateData should be ServiceInstanceUpdateData")
-		}
-		localVarPostBody = &localVarOptionalServiceInstanceUpdateData
-	}
-
+	localVarPostBody = &serviceInstanceUpdateData
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {

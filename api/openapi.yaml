@@ -589,26 +589,26 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ServiceInstanceUpdateData'
-        required: false
+        required: true
       responses:
         200:
           content: {}
           description: Service instance updated
         400:
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: Invalid data
         401:
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: Unauthorized
         404:
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: Service instance not found
@@ -1602,7 +1602,7 @@ paths:
           type: string
       requestBody:
         content:
-          application/json:
+          application/x-www-form-urlencoded:
             schema:
               properties:
                 limit:
@@ -3757,9 +3757,9 @@ paths:
           type: string
       requestBody:
         content:
-          '*/*':
+          application/json:
             schema:
-              $ref: '#/components/schemas/Volume'
+              $ref: '#/components/schemas/VolumeUpdateData'
         required: true
       responses:
         200:
@@ -5862,6 +5862,40 @@ components:
           type: string
         group:
           type: string
+      type: object
+    VolumeUpdateData:
+      description: Volume
+      example:
+        teamOwner: teamOwner
+        opts:
+          key: opts
+        name: name
+        pool: pool
+        plan:
+          opts:
+            key: opts
+          name: name
+        status: status
+      properties:
+        name:
+          description: Volume name.
+          type: string
+        pool:
+          description: Volume pool.
+          type: string
+        teamOwner:
+          description: Team that owns the volume.
+          type: string
+        status:
+          description: Volume status.
+          type: string
+        plan:
+          $ref: '#/components/schemas/VolumePlan'
+        opts:
+          additionalProperties:
+            type: string
+          description: Custom volume options.
+          type: object
       type: object
     ServiceBroker_Config_AuthConfig_BasicAuthConfig:
       example:
