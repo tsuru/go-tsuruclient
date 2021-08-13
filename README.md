@@ -53,6 +53,8 @@ Class | Method | HTTP request | Description
 *AppApi* | [**AutoScaleAdd**](docs/AppApi.md#autoscaleadd) | **Post** /1.9/apps/{app}/units/autoscale | 
 *AppApi* | [**AutoScaleInfo**](docs/AppApi.md#autoscaleinfo) | **Get** /1.9/apps/{app}/units/autoscale | 
 *AppApi* | [**AutoScaleRemove**](docs/AppApi.md#autoscaleremove) | **Delete** /1.9/apps/{app}/units/autoscale | 
+*AppApi* | [**CertificatUnset**](docs/AppApi.md#certificatunset) | **Delete** /1.0/apps/{app}/certificate | 
+*AppApi* | [**CertificateSet**](docs/AppApi.md#certificateset) | **Put** /1.0/apps/{app}/certificate | 
 *AppApi* | [**EnvGet**](docs/AppApi.md#envget) | **Get** /1.0/apps/{app}/env | 
 *AppApi* | [**EnvSet**](docs/AppApi.md#envset) | **Post** /1.0/apps/{app}/env | 
 *AppApi* | [**EnvUnset**](docs/AppApi.md#envunset) | **Delete** /1.0/apps/{app}/env | 
@@ -60,13 +62,22 @@ Class | Method | HTTP request | Description
 *AppApi* | [**UnitsRemove**](docs/AppApi.md#unitsremove) | **Delete** /1.0/apps/{app}/units | 
 *AuthApi* | [**AssignRoleToGroup**](docs/AuthApi.md#assignroletogroup) | **Post** /1.9/roles/{role_name}/group | 
 *AuthApi* | [**AssignRoleToToken**](docs/AuthApi.md#assignroletotoken) | **Post** /1.6/roles/{role_name}/token | 
+*AuthApi* | [**CreateRole**](docs/AuthApi.md#createrole) | **Post** /1.0/roles | 
+*AuthApi* | [**DefaultRoleAdd**](docs/AuthApi.md#defaultroleadd) | **Post** /1.0/role/default | 
+*AuthApi* | [**DeleteRole**](docs/AuthApi.md#deleterole) | **Delete** /1.0/roles/{role_name} | 
+*AuthApi* | [**DissociateRole**](docs/AuthApi.md#dissociaterole) | **Delete** /1.0/roles/{role_name}/user/{email} | 
 *AuthApi* | [**DissociateRoleFromGroup**](docs/AuthApi.md#dissociaterolefromgroup) | **Delete** /1.6/roles/{role_name}/group/{group_name} | 
 *AuthApi* | [**DissociateRoleFromToken**](docs/AuthApi.md#dissociaterolefromtoken) | **Delete** /1.6/roles/{role_name}/token/{token_id} | 
+*AuthApi* | [**PermissionAdd**](docs/AuthApi.md#permissionadd) | **Post** /1.0/roles/{role_name}/permissions | 
+*AuthApi* | [**RemovePermission**](docs/AuthApi.md#removepermission) | **Delete** /1.0/roles{role_name}/permissions/{permission} | 
+*AuthApi* | [**RoleAssign**](docs/AuthApi.md#roleassign) | **Post** /1,0/roles/{role_name}/user | 
+*AuthApi* | [**RoleDefaultDelete**](docs/AuthApi.md#roledefaultdelete) | **Delete** /1.0/role/default | 
 *AuthApi* | [**TeamTokenCreate**](docs/AuthApi.md#teamtokencreate) | **Post** /1.6/tokens | 
 *AuthApi* | [**TeamTokenDelete**](docs/AuthApi.md#teamtokendelete) | **Delete** /1.6/tokens/{token_id} | 
 *AuthApi* | [**TeamTokenInfo**](docs/AuthApi.md#teamtokeninfo) | **Get** /1.7/tokens/{token_id} | 
 *AuthApi* | [**TeamTokenUpdate**](docs/AuthApi.md#teamtokenupdate) | **Put** /1.6/tokens/{token_id} | 
 *AuthApi* | [**TeamTokensList**](docs/AuthApi.md#teamtokenslist) | **Get** /1.6/tokens | 
+*AuthApi* | [**UpdateRole**](docs/AuthApi.md#updaterole) | **Put** /1.0/roles | 
 *ClusterApi* | [**ClusterCreate**](docs/ClusterApi.md#clustercreate) | **Post** /1.3/provisioner/clusters | 
 *ClusterApi* | [**ClusterDelete**](docs/ClusterApi.md#clusterdelete) | **Delete** /1.3/provisioner/clusters/{cluster_name} | 
 *ClusterApi* | [**ClusterInfo**](docs/ClusterApi.md#clusterinfo) | **Get** /1.8/provisioner/clusters/{cluster_name} | 
@@ -173,6 +184,7 @@ Class | Method | HTTP request | Description
  - [AssignGroupArgs](docs/AssignGroupArgs.md)
  - [AssignTokenArgs](docs/AssignTokenArgs.md)
  - [AutoScaleSpec](docs/AutoScaleSpec.md)
+ - [CertificateSetData](docs/CertificateSetData.md)
  - [ChangePasswordData](docs/ChangePasswordData.md)
  - [Cluster](docs/Cluster.md)
  - [ClusterHelp](docs/ClusterHelp.md)
@@ -203,6 +215,7 @@ Class | Method | HTTP request | Description
  - [NodeListResponse](docs/NodeListResponse.md)
  - [NodeStatus](docs/NodeStatus.md)
  - [NodeUpdateData](docs/NodeUpdateData.md)
+ - [PermissionData](docs/PermissionData.md)
  - [PermissionUser](docs/PermissionUser.md)
  - [Plan](docs/Plan.md)
  - [PlanOverride](docs/PlanOverride.md)
@@ -216,7 +229,11 @@ Class | Method | HTTP request | Description
  - [PoolUpdateData](docs/PoolUpdateData.md)
  - [Provisioner](docs/Provisioner.md)
  - [Quota](docs/Quota.md)
+ - [RoleAddData](docs/RoleAddData.md)
+ - [RoleAssignData](docs/RoleAssignData.md)
+ - [RoleDefaultData](docs/RoleDefaultData.md)
  - [RoleInstance](docs/RoleInstance.md)
+ - [RoleUpdateData](docs/RoleUpdateData.md)
  - [RoleUser](docs/RoleUser.md)
  - [Router](docs/Router.md)
  - [Service](docs/Service.md)
