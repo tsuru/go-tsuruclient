@@ -1294,6 +1294,81 @@ paths:
       - Bearer: []
       tags:
       - app
+  /1.0/apps/{app}/certificate:
+    delete:
+      description: Unset app certificate.
+      operationId: CertificatUnset
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Certificate deleted
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        403:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Certificate not found
+      security:
+      - Bearer: []
+      tags:
+      - app
+    put:
+      description: Create a certificate
+      operationId: certificateSet
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CertificateSetData'
+        required: true
+      responses:
+        201:
+          content: {}
+          description: Certificate created
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        409:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Certificate already exists
+      security:
+      - Bearer: []
+      tags:
+      - app
   /1.0/apps/{app}/deploy:
     post:
       description: deploy a app
@@ -3883,6 +3958,314 @@ paths:
       - Bearer: []
       tags:
       - volume
+  /1.0/roles:
+    post:
+      description: create a role
+      operationId: CreateRole
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleAddData'
+        required: true
+      responses:
+        201:
+          content: {}
+          description: Role created
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        409:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Role already exists
+      security:
+      - Bearer: []
+      tags:
+      - auth
+    put:
+      description: update a role
+      operationId: UpdateRole
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleUpdateData'
+        required: true
+      responses:
+        201:
+          content: {}
+          description: Role updated
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+      security:
+      - Bearer: []
+      tags:
+      - auth
+  /1.0/roles/{role_name}:
+    delete:
+      description: delete a role
+      operationId: DeleteRole
+      parameters:
+      - in: path
+        name: role_name
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Role deleted.
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Role  not found
+      security:
+      - Bearer: []
+      tags:
+      - auth
+  /1.0/roles/{role_name}/permissions:
+    post:
+      description: add a permission
+      operationId: PermissionAdd
+      parameters:
+      - in: path
+        name: role_name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PermissionData'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Permission created.
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        409:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Permission not a allowed
+      security:
+      - Bearer: []
+      tags:
+      - auth
+  /1.0/roles{role_name}/permissions/{permission}:
+    delete:
+      description: remove a permission
+      operationId: RemovePermission
+      parameters:
+      - in: path
+        name: role_name
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: permission
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Permission removed.
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Not found
+      security:
+      - Bearer: []
+      tags:
+      - auth
+  /1,0/roles/{role_name}/user:
+    post:
+      description: assign a role
+      operationId: Role assign
+      parameters:
+      - in: path
+        name: role_name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleAssignData'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Role assigned.
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data.
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Role not found
+      security:
+      - Bearer: []
+      tags:
+      - auth
+  /1.0/roles/{role_name}/user/{email}:
+    delete:
+      description: Dissociate a role from user
+      operationId: DissociateRole
+      parameters:
+      - in: path
+        name: role_name
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: email
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Role dissociated.
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data.
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Role or token not found
+      security:
+      - Bearer: []
+      tags:
+      - auth
+  /1.0/role/default:
+    delete:
+      description: Delete a Default role
+      operationId: RoleDefaultDelete
+      responses:
+        200:
+          content: {}
+          description: Default role deleted.
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data.
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+      security:
+      - Bearer: []
+      tags:
+      - auth
+    post:
+      description: add a default role
+      operationId: DefaultRoleAdd
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleDefaultData'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Default role created.
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+      security:
+      - Bearer: []
+      tags:
+      - auth
   /1.6/roles/{role_name}/token:
     post:
       description: Assigns a role to a team token.
@@ -5188,6 +5571,21 @@ components:
           type: string
         value:
           type: string
+    RoleDefaultData:
+      description: Default a role
+      example:
+        rolesmap:
+          key:
+          - rolesmap
+          - rolesmap
+      properties:
+        rolesmap:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          type: object
+      type: object
     Volume:
       description: Volume
       example:
@@ -5672,6 +6070,23 @@ components:
           additionalProperties:
             type: string
           type: object
+      type: object
+    RoleUpdateData:
+      description: Role of an user.
+      example:
+        newName: newName
+        contextType: contextType
+        name: name
+        description: description
+      properties:
+        name:
+          type: string
+        contextType:
+          type: string
+        newName:
+          type: string
+        description:
+          type: string
       type: object
     AutoScaleSpec:
       description: Units Auto Scale spec
@@ -6168,6 +6583,25 @@ components:
         keyname:
           type: string
       type: object
+    CertificateSetData:
+      example:
+        cname: cname
+        certificate: certificate
+        key: key
+      properties:
+        cname:
+          type: string
+        certificate:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+          x-go-custom-type: '[]byte'
+        key:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+          x-go-custom-type: '[]byte'
+      type: object
     ServiceBroker_Config_AuthConfig_BearerConfig:
       example:
         token: token
@@ -6323,6 +6757,26 @@ components:
         id:
           type: string
         ip:
+          type: string
+      type: object
+    RoleAssignData:
+      description: Assign a role
+      example:
+        roletarget: roletarget
+        name: name
+        sufix: sufix
+        contextvalue: contextvalue
+        version: version
+      properties:
+        name:
+          type: string
+        contextvalue:
+          type: string
+        roletarget:
+          type: string
+        sufix:
+          type: string
+        version:
           type: string
       type: object
     PlanRouter:
@@ -6948,6 +7402,21 @@ components:
           format: date-time
           type: string
       type: object
+    PermissionData:
+      description: Add a permission
+      example:
+        name: name
+        permission:
+        - permission
+        - permission
+      properties:
+        name:
+          type: string
+        permission:
+          items:
+            type: string
+          type: array
+      type: object
     TeamTokenUpdateArgs:
       description: Arguments for updating an existing team token.
       example:
@@ -7536,6 +8005,20 @@ components:
           type: boolean
         disable:
           type: boolean
+      type: object
+    RoleAddData:
+      description: Role of an user.
+      example:
+        contexttype: contexttype
+        name: name
+        description: description
+      properties:
+        name:
+          type: string
+        contexttype:
+          type: string
+        description:
+          type: string
       type: object
     InputApp:
       example:
