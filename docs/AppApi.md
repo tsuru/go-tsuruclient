@@ -18,6 +18,7 @@ Method | HTTP request | Description
 [**AppRouterDelete**](AppApi.md#AppRouterDelete) | **Delete** /1.5/apps/{app}/routers/{router} | 
 [**AppRouterList**](AppApi.md#AppRouterList) | **Get** /1.5/apps/{app}/routers | 
 [**AppRouterUpdate**](AppApi.md#AppRouterUpdate) | **Put** /1.5/apps/{app}/routers/{router} | 
+[**AppRun**](AppApi.md#AppRun) | **Post** /1.0/apps/{app}/run | 
 [**AppSetRoutable**](AppApi.md#AppSetRoutable) | **Post** /1.8/apps/{app}/routable | 
 [**AppStart**](AppApi.md#AppStart) | **Post** /1.0/apps/{app}/start | 
 [**AppStop**](AppApi.md#AppStop) | **Post** /1.0/apps/{app}/stop | 
@@ -449,6 +450,35 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AppRun**
+> AppRun(ctx, app, appRunOpts)
+
+
+run commands inside an app
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **app** | **string**| App name. | 
+  **appRunOpts** | [**AppRunOpts**](AppRunOpts.md)| Options to run commands inside an app | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/x-json-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -44,6 +44,7 @@ Class | Method | HTTP request | Description
 *AppApi* | [**AppRouterDelete**](docs/AppApi.md#approuterdelete) | **Delete** /1.5/apps/{app}/routers/{router} | 
 *AppApi* | [**AppRouterList**](docs/AppApi.md#approuterlist) | **Get** /1.5/apps/{app}/routers | 
 *AppApi* | [**AppRouterUpdate**](docs/AppApi.md#approuterupdate) | **Put** /1.5/apps/{app}/routers/{router} | 
+*AppApi* | [**AppRun**](docs/AppApi.md#apprun) | **Post** /1.0/apps/{app}/run | 
 *AppApi* | [**AppSetRoutable**](docs/AppApi.md#appsetroutable) | **Post** /1.8/apps/{app}/routable | 
 *AppApi* | [**AppStart**](docs/AppApi.md#appstart) | **Post** /1.0/apps/{app}/start | 
 *AppApi* | [**AppStop**](docs/AppApi.md#appstop) | **Post** /1.0/apps/{app}/stop | 
@@ -179,6 +180,7 @@ Class | Method | HTTP request | Description
  - [AppInternalAddresses](docs/AppInternalAddresses.md)
  - [AppRouter](docs/AppRouter.md)
  - [AppRouters](docs/AppRouters.md)
+ - [AppRunOpts](docs/AppRunOpts.md)
  - [AppStartStop](docs/AppStartStop.md)
  - [AppVolumeBinds](docs/AppVolumeBinds.md)
  - [AssignGroupArgs](docs/AssignGroupArgs.md)

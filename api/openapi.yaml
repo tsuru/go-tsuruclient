@@ -1491,6 +1491,51 @@ paths:
       - Bearer: []
       tags:
       - app
+  /1.0/apps/{app}/run:
+    post:
+      description: run commands inside an app
+      operationId: AppRun
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppRunOpts'
+        description: Options to run commands inside an app
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Envs updated
+        400:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
   /1.0/apps/{app}/env:
     delete:
       description: Unset app environment variables.
@@ -7332,6 +7377,20 @@ components:
           $ref: '#/components/schemas/Cluster_kubeConfig_cluster'
         user:
           $ref: '#/components/schemas/Cluster_kubeConfig_user'
+    AppRunOpts:
+      description: App Run options
+      example:
+        once: true
+        isolated: true
+        command: command
+      properties:
+        once:
+          type: boolean
+        isolated:
+          type: boolean
+        command:
+          type: string
+      type: object
     NodeAddData:
       example:
         metadata:
