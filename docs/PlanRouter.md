@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Info** | **map[string]string** |  | [optional] 
 **Default** | **bool** |  | [optional] 
 **Dynamic** | **bool** |  | [optional] 
+**ReadinessGates** | **[]string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

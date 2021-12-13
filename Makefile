@@ -5,6 +5,13 @@ DOCKER ?= docker
 GENERATE_ARGS = generate -t ./templates -i ./api.yaml -g go -c gen-config.json
 GENERATOR_VERSION = v3.3.4
 
+uname_m := $(shell uname -m)
+ifeq ($(uname_m),arm64)
+  IMAGE ?= tsuru/openapi-generator-cli
+else
+  IMAGE ?= openapitools/openapi-generator-cli
+endif
+
 generate-dev: pre-generate-dev docker-generate-cmd process-files post-generate
 generate: pre-generate-prod docker-generate-cmd process-files post-generate
 
@@ -18,7 +25,7 @@ process-files:
 	go mod tidy
 
 docker-generate-cmd:
-	$(DOCKER) run -it --rm -u `id -u`:`id -g` -v `pwd`:/app -w /app openapitools/openapi-generator-cli:$(GENERATOR_VERSION) $(GENERATE_ARGS)
+	$(DOCKER) run -it --rm -u `id -u`:`id -g` -v `pwd`:/app -w /app $(IMAGE):$(GENERATOR_VERSION) $(GENERATE_ARGS)
 
 docker-generate: pre-generate docker-generate-cmd process-files post-generate
 

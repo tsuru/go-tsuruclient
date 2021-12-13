@@ -1816,7 +1816,7 @@ paths:
       responses:
         200:
           content: {}
-          description: App stoped
+          description: App stopped
         401:
           content:
             application/x-json-stream:
@@ -4570,7 +4570,7 @@ paths:
       responses:
         204:
           content: {}
-          description: Event cancelation requested.
+          description: Event cancellation requested.
         400:
           content:
             application/json:
@@ -6828,6 +6828,9 @@ components:
       description: Plan Router
       example:
         default: true
+        readinessGates:
+        - readinessGates
+        - readinessGates
         name: name
         dynamic: true
         type: type
@@ -6850,6 +6853,10 @@ components:
           type: boolean
         dynamic:
           type: boolean
+        readinessGates:
+          items:
+            type: string
+          type: array
       type: object
     App_volumeBinds:
       example:
@@ -7946,6 +7953,9 @@ components:
     DynamicRouter:
       description: Dynamic router
       example:
+        readinessGates:
+        - readinessGates
+        - readinessGates
         name: name
         type: type
         config: '{}'
@@ -7954,6 +7964,10 @@ components:
           type: string
         type:
           type: string
+        readinessGates:
+          items:
+            type: string
+          type: array
         config:
           properties: {}
           type: object

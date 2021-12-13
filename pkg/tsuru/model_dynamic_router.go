@@ -11,7 +11,8 @@ package tsuru
 
 // Dynamic router
 type DynamicRouter struct {
-	Name   string                 `json:"name,omitempty"`
-	Type   string                 `json:"type,omitempty"`
-	Config map[string]interface{} `json:"config,omitempty"`
+	Name           string                 `json:"name,omitempty"`
+	Type           string                 `json:"type,omitempty"`
+	ReadinessGates []string               `json:"readinessGates,omitempty"`
+	Config         map[string]interface{} `json:"config,omitempty"`
 }

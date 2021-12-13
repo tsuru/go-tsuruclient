@@ -11,10 +11,11 @@ package tsuru
 
 // Plan Router
 type PlanRouter struct {
-	Name    string                 `json:"name,omitempty"`
-	Type    string                 `json:"type,omitempty"`
-	Config  map[string]interface{} `json:"config,omitempty"`
-	Info    map[string]string      `json:"info,omitempty"`
-	Default bool                   `json:"default,omitempty"`
-	Dynamic bool                   `json:"dynamic,omitempty"`
+	Name           string                 `json:"name,omitempty"`
+	Type           string                 `json:"type,omitempty"`
+	Config         map[string]interface{} `json:"config,omitempty"`
+	Info           map[string]string      `json:"info,omitempty"`
+	Default        bool                   `json:"default,omitempty"`
+	Dynamic        bool                   `json:"dynamic,omitempty"`
+	ReadinessGates []string               `json:"readinessGates,omitempty"`
 }
