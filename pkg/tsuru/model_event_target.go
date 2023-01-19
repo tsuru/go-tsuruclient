@@ -9,7 +9,7 @@
 
 package tsuru
 
-type ServiceBrokerConfigAuthConfigBasicAuthConfig struct {
-	Password string `json:"password,omitempty"`
-	Username string `json:"username,omitempty"`
+type EventTarget struct {
+	Type  string `json:"Type,omitempty"`
+	Value string `json:"Value,omitempty"`
 }

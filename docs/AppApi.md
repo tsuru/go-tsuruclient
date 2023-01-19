@@ -4,6 +4,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AppBuild**](AppApi.md#AppBuild) | **Post** /1.5/apps/{app}/build | 
 [**AppCnameAdd**](AppApi.md#AppCnameAdd) | **Post** /1.0/apps/{app}/cname | 
 [**AppCnameDelete**](AppApi.md#AppCnameDelete) | **Delete** /1.0/apps/{app}/cname | 
 [**AppCreate**](AppApi.md#AppCreate) | **Post** /1.0/apps | 
@@ -36,6 +37,47 @@ Method | HTTP request | Description
 [**UnitsAdd**](AppApi.md#UnitsAdd) | **Put** /1.0/apps/{app}/units | 
 [**UnitsRemove**](AppApi.md#UnitsRemove) | **Delete** /1.0/apps/{app}/units | 
 
+
+# **AppBuild**
+> AppBuild(ctx, app, tag, optional)
+
+
+Build a Tsuru app image (a regular container image) following the deploy's workflow but don't roll it out to the provisioner. That ends up with a container image that can be pulled by the user or used to deploy the app later.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **app** | **string**| Application name | 
+  **tag** | **string**| Container image&#39;s tag reference. It must be a valid tag reference according to [container image&#39;s name specification](https://github.com/opencontainers/distribution-spec/blob/main/spec.md#pulling-manifests).  Examples: &#x60;staging&#x60;, &#x60;feature-abc&#x60;, &#x60;42.1.0&#x60; | 
+ **optional** | ***AppBuildOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a AppBuildOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **file** | **optional.Interface of *os.File****optional.*os.File**| App&#39;s source files (tarball compressed with gzip).  NOTE: Cannot be presented mutually with &#x60;archive-url&#x60; or &#x60;image&#x60;. | 
+ **archiveUrl** | **optional.String**| HTTP URL to app&#39;s source files.  NOTE 1: Tsuru API must be able to download the file over HTTP and the downloaded file must be a tarball compressed with gzip.  NOTE 2: Cannot be presented mutually with &#x60;file&#x60; or &#x60;image&#x60;.  Example: &#x60;https://my-org.example.com/my-app/v42.tar.gz&#x60;. | 
+ **image** | **optional.String**| Container image name. It must be a valid container image name according to [container image&#39;s name specification](https://github.com/opencontainers/distribution-spec/blob/main/spec.md#pulling-manifests).  NOTE: Cannote be presented mutually with &#x60;archive-url&#x60; or &#x60;file&#x60;.  Example: &#x60;registry.example.com/my-org/my-app:v42&#x60; | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: text/plain
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AppCnameAdd**
 > AppCnameAdd(ctx, app, appCName)
@@ -152,18 +194,32 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AppDeploy**
-> AppDeploy(ctx, app, appDeployOptions)
+> AppDeploy(ctx, app, optional)
 
 
-deploy a app
+Build a new Tsuru app image and roll it out to the provisioner.
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **app** | **string**| App name. | 
-  **appDeployOptions** | [**AppDeployOptions**](AppDeployOptions.md)|  | 
+  **app** | **string**| Application name | 
+ **optional** | ***AppDeployOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a AppDeployOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **newVersion** | **optional.Bool**| Whether should create a new version while preserving the old ones in the provisioner. | [default to false]
+ **overrideVersions** | **optional.Bool**| Whether should replace all versions in the provisioner by this new one. | [default to false]
+ **message** | **optional.String**| Message to describe the deploy.  Example: &#x60;Updating the driver connector of MongoDB (vX.Y.Z)&#x60; | 
+ **origin** | **optional.String**| The type of client who originates the deploy. | 
+ **file** | **optional.Interface of *os.File****optional.*os.File**| App&#39;s source files (tarball compressed with gzip).  NOTE: Cannot be presented mutually with &#x60;archive-url&#x60; or &#x60;image&#x60;. | 
+ **archiveUrl** | **optional.String**| HTTP URL to app&#39;s source files.  NOTE 1: Tsuru API must be able to download the file over HTTP and the downloaded file must be a tarball compressed with gzip.  NOTE 2: Cannot be presented mutually with &#x60;file&#x60; or &#x60;image&#x60;.  Example: &#x60;https://my-org.example.com/my-app/v42.tar.gz&#x60;. | 
+ **image** | **optional.String**| Container image name. It must be a valid container image name according to [container image&#39;s name specification](https://github.com/opencontainers/distribution-spec/blob/main/spec.md#pulling-manifests).  NOTE: Cannot be presented mutually with &#x60;archive-url&#x60; or &#x60;file&#x60;.  Example: &#x60;registry.example.com/my-org/my-app:v42&#x60; | 
 
 ### Return type
 
@@ -175,8 +231,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: text
+ - **Content-Type**: multipart/form-data
+ - **Accept**: text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

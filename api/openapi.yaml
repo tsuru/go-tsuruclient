@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   description: Open source, extensible and Docker-based Platform as a Service (PaaS)
   title: Tsuru
-  version: "1.6"
+  version: "1.12"
 servers:
 - url: /
 paths:
@@ -1369,40 +1369,165 @@ paths:
       - Bearer: []
       tags:
       - app
-  /1.0/apps/{app}/deploy:
+  /1.5/apps/{app}/build:
     post:
-      description: deploy a app
-      operationId: AppDeploy
+      description: Build a Tsuru app image (a regular container image) following the deploy's workflow but don't roll it out to the provisioner. That ends up with a container image that can be pulled by the user or used to deploy the app later.
+      operationId: AppBuild
       parameters:
-      - description: App name.
+      - description: Application name
         in: path
         name: app
         required: true
         schema:
-          minLength: 1
           type: string
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
-              $ref: '#/components/schemas/AppDeployOptions'
+              properties:
+                tag:
+                  description: |-
+                    Container image's tag reference. It must be a valid tag reference according to [container image's name specification](https://github.com/opencontainers/distribution-spec/blob/main/spec.md#pulling-manifests).
+
+                    Examples: `staging`, `feature-abc`, `42.1.0`
+                  type: string
+                file:
+                  description: |-
+                    App's source files (tarball compressed with gzip).
+
+                    NOTE: Cannot be presented mutually with `archive-url` or `image`.
+                  format: binary
+                  type: string
+                  x-mimetype: application/gzip
+                archive-url:
+                  description: |-
+                    HTTP URL to app's source files.
+
+                    NOTE 1: Tsuru API must be able to download the file over HTTP and the downloaded file must be a tarball compressed with gzip.
+
+                    NOTE 2: Cannot be presented mutually with `file` or `image`.
+
+                    Example: `https://my-org.example.com/my-app/v42.tar.gz`.
+                  type: string
+                image:
+                  description: |-
+                    Container image name. It must be a valid container image name according to [container image's name specification](https://github.com/opencontainers/distribution-spec/blob/main/spec.md#pulling-manifests).
+
+                    NOTE: Cannote be presented mutually with `archive-url` or `file`.
+
+                    Example: `registry.example.com/my-org/my-app:v42`
+                  type: string
+              required:
+              - tag
         required: true
       responses:
         200:
           content: {}
-          description: Deploy started
+          description: Build finished successfully
+        400:
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        403:
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Forbidden
+      security:
+      - Bearer: []
+      tags:
+      - app
+  /1.0/apps/{app}/deploy:
+    post:
+      description: Build a new Tsuru app image and roll it out to the provisioner.
+      operationId: AppDeploy
+      parameters:
+      - description: Application name
+        in: path
+        name: app
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                new-version:
+                  default: false
+                  description: Whether should create a new version while preserving the old ones in the provisioner.
+                  type: boolean
+                override-versions:
+                  default: false
+                  description: Whether should replace all versions in the provisioner by this new one.
+                  type: boolean
+                message:
+                  description: |-
+                    Message to describe the deploy.
+
+                    Example: `Updating the driver connector of MongoDB (vX.Y.Z)`
+                  type: string
+                origin:
+                  description: The type of client who originates the deploy.
+                  enum:
+                  - app-deploy
+                  - drag-and-drop
+                  - image
+                  - git
+                  - rebuild
+                  - rollback
+                  type: string
+                file:
+                  description: |-
+                    App's source files (tarball compressed with gzip).
+
+                    NOTE: Cannot be presented mutually with `archive-url` or `image`.
+                  format: binary
+                  type: string
+                  x-mimetype: application/gzip
+                archive-url:
+                  description: |-
+                    HTTP URL to app's source files.
+
+                    NOTE 1: Tsuru API must be able to download the file over HTTP and the downloaded file must be a tarball compressed with gzip.
+
+                    NOTE 2: Cannot be presented mutually with `file` or `image`.
+
+                    Example: `https://my-org.example.com/my-app/v42.tar.gz`.
+                  type: string
+                image:
+                  description: |-
+                    Container image name. It must be a valid container image name according to [container image's name specification](https://github.com/opencontainers/distribution-spec/blob/main/spec.md#pulling-manifests).
+
+                    NOTE: Cannot be presented mutually with `archive-url` or `file`.
+
+                    Example: `registry.example.com/my-org/my-app:v42`
+                  type: string
+      responses:
+        200:
+          content: {}
+          description: Deploy finished successfully
         400:
           content: {}
           description: Invalid data
         401:
           content:
-            text:
+            text/plain:
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: Unauthorized
         404:
           content:
-            text:
+            text/plain:
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: App not found
@@ -2759,6 +2884,89 @@ paths:
         404:
           content:
             '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Team not found
+      security:
+      - Bearer: []
+      tags:
+      - team
+  /1.12/teams/{team}/quota:
+    get:
+      description: Get quota of a team.
+      operationId: TeamQuotaGet
+      parameters:
+      - description: Team name.
+        in: path
+        name: team
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserQuotaViewResponse'
+          description: OK
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Team not found
+      security:
+      - Bearer: []
+      tags:
+      - team
+    put:
+      description: Changes the team's apps limit.
+      operationId: TeamQuotaChange
+      parameters:
+      - description: Team name.
+        in: path
+        name: team
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                limit:
+                  description: New limit of apps. Negative number indicates unlimited.
+                  type: number
+              required:
+              - limit
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Quota updated
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        403:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Limit lower than allocated
+        404:
+          content:
+            application/json:
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: Team not found
@@ -4552,6 +4760,38 @@ paths:
       - Bearer: []
       tags:
       - auth
+  /1.1/events/{eventid}:
+    get:
+      operationId: EventInfo
+      parameters:
+      - in: path
+        name: eventid
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+          description: Event info.
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Team token not found.
+      security:
+      - Bearer: []
+      tags:
+      - event
   /1.1/events/{eventid}/cancel:
     post:
       operationId: EventCancel
@@ -5481,6 +5721,15 @@ components:
             type: string
           type: object
       type: object
+    Event_Target:
+      example:
+        Type: Type
+        Value: Value
+      properties:
+        Type:
+          type: string
+        Value:
+          type: string
     PoolConstraint:
       example:
         Field: Field
@@ -6357,6 +6606,48 @@ components:
           description: Custom volume options.
           type: object
       type: object
+    Event:
+      description: Tsuru event
+      example:
+        UniqueID: UniqueID
+        Target:
+          Type: Type
+          Value: Value
+        EndTime: 2000-01-23T04:56:07.000+00:00
+        StartCustomData:
+          Kind: 0.80082819046101150206595775671303272247314453125
+          Data: Data
+        Log: Log
+        StartTime: 2000-01-23T04:56:07.000+00:00
+        EndCustomData:
+          Kind: 0.80082819046101150206595775671303272247314453125
+          Data: Data
+        Error: Error
+        OtherCustomData:
+          Kind: 0.80082819046101150206595775671303272247314453125
+          Data: Data
+      properties:
+        UniqueID:
+          type: string
+        StartTime:
+          format: date-time
+          type: string
+        EndTime:
+          format: date-time
+          type: string
+        Target:
+          $ref: '#/components/schemas/Event_Target'
+        StartCustomData:
+          $ref: '#/components/schemas/Event_StartCustomData'
+        EndCustomData:
+          $ref: '#/components/schemas/Event_StartCustomData'
+        OtherCustomData:
+          $ref: '#/components/schemas/Event_StartCustomData'
+        Error:
+          type: string
+        Log:
+          type: string
+      type: object
     ServiceBroker_Config_AuthConfig_BasicAuthConfig:
       example:
         password: password
@@ -6582,6 +6873,15 @@ components:
           additionalProperties:
             type: string
           type: object
+    Event_StartCustomData:
+      example:
+        Kind: 0.80082819046101150206595775671303272247314453125
+        Data: Data
+      properties:
+        Kind:
+          type: number
+        Data:
+          type: string
     Cluster_kubeConfig_user:
       example:
         password: password
@@ -7778,24 +8078,6 @@ components:
           type: boolean
         private:
           type: boolean
-      type: object
-    AppDeployOptions:
-      example:
-        image: image
-        new-version: true
-        message: message
-        override-versions: true
-      properties:
-        image:
-          type: string
-        message:
-          type: string
-        new-version:
-          type: boolean
-        override-versions:
-          type: boolean
-      required:
-      - image
       type: object
     ServiceInstanceInfo:
       example:
