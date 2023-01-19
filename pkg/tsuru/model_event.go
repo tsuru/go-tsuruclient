@@ -24,4 +24,5 @@ type Event struct {
 	OtherCustomData EventStartCustomData `json:"OtherCustomData,omitempty"`
 	Error           string               `json:"Error,omitempty"`
 	Log             string               `json:"Log,omitempty"`
+	Running         bool                 `json:"Running,omitempty"`
 }

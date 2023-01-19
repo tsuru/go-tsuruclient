@@ -6619,6 +6619,7 @@ components:
           Data: Data
         Log: Log
         StartTime: 2000-01-23T04:56:07.000+00:00
+        Running: true
         EndCustomData:
           Kind: 0.80082819046101150206595775671303272247314453125
           Data: Data
@@ -6647,6 +6648,8 @@ components:
           type: string
         Log:
           type: string
+        Running:
+          type: boolean
       type: object
     ServiceBroker_Config_AuthConfig_BasicAuthConfig:
       example:
