@@ -9,24 +9,20 @@
 
 package tsuru
 
-type InputApp struct {
-	// App name.
+type InputJob struct {
+	// Job name.
 	Name string `json:"name"`
-	// App tags.
+	// Job tags.
 	Tags []string `json:"tags,omitempty"`
-	// App router name.
-	Router string `json:"router,omitempty"`
-	// Custom router options.
-	Routeropts map[string]string `json:"routeropts,omitempty"`
-	// App plan name.
+	// how often this job will run.
+	Schedule string `json:"schedule,omitempty"`
+	// job plan name.
 	Plan string `json:"plan,omitempty"`
-	// App pool name.
+	// job pool name.
 	Pool string `json:"pool,omitempty"`
-	// App platform.
-	Platform string `json:"platform,omitempty"`
-	// App description.
+	// job description.
 	Description string `json:"description,omitempty"`
-	// Team that owns the app.
+	// Team that owns the job.
 	TeamOwner string   `json:"teamOwner,omitempty"`
 	Metadata  Metadata `json:"metadata,omitempty"`
 }

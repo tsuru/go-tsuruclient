@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 **Name** | **string** |  | [optional] 
 **Memory** | **int64** |  | [optional] 
 **Swap** | **int64** |  | [optional] 
-**Cpushare** | **int32** |  | [optional] 
 **Cpumilli** | **int32** |  | [optional] 
 **Default** | **bool** |  | [optional] 
 **Router** | **string** |  | [optional] 
