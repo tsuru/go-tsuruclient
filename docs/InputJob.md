@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Description** | **string** | job description. | [optional] 
 **TeamOwner** | **string** | Team that owns the job. | [optional] 
 **Metadata** | [**Metadata**](Metadata.md) |  | [optional] 
+**Container** | [**InputJobContainer**](InputJob_container.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

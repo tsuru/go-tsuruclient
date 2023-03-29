@@ -23,6 +23,7 @@ type InputJob struct {
 	// job description.
 	Description string `json:"description,omitempty"`
 	// Team that owns the job.
-	TeamOwner string   `json:"teamOwner,omitempty"`
-	Metadata  Metadata `json:"metadata,omitempty"`
+	TeamOwner string            `json:"teamOwner,omitempty"`
+	Metadata  Metadata          `json:"metadata,omitempty"`
+	Container InputJobContainer `json:"container,omitempty"`
 }

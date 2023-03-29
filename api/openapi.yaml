@@ -6414,6 +6414,11 @@ components:
     InputJob:
       example:
         teamOwner: teamOwner
+        container:
+          image: image
+          command:
+          - command
+          - command
         schedule: schedule
         metadata:
           annotations:
@@ -6463,6 +6468,8 @@ components:
           type: string
         metadata:
           $ref: '#/components/schemas/Metadata'
+        container:
+          $ref: '#/components/schemas/InputJob_container'
       required:
       - name
       type: object
@@ -7172,6 +7179,19 @@ components:
         teamowner:
           type: string
       type: object
+    InputJob_container:
+      example:
+        image: image
+        command:
+        - command
+        - command
+      properties:
+        image:
+          type: string
+        command:
+          items:
+            type: string
+          type: array
     ServiceBroker:
       example:
         Config:

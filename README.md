@@ -210,6 +210,7 @@ Class | Method | HTTP request | Description
  - [EventTarget](docs/EventTarget.md)
  - [InputApp](docs/InputApp.md)
  - [InputJob](docs/InputJob.md)
+ - [InputJobContainer](docs/InputJobContainer.md)
  - [Lock](docs/Lock.md)
  - [Machine](docs/Machine.md)
  - [Metadata](docs/Metadata.md)
