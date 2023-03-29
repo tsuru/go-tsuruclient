@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **CreateJob**
-> JobCreateResponse CreateJob(ctx, inputJob)
+> CreateJob(ctx, inputJob)
 
 
 Create a job that runs periodically
@@ -22,7 +22,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JobCreateResponse**](JobCreateResponse.md)
+ (empty response body)
 
 ### Authorization
 

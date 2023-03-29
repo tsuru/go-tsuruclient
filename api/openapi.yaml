@@ -5359,10 +5359,7 @@ paths:
         required: true
       responses:
         201:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/JobCreateResponse'
+          content: {}
           description: Job created
         400:
           content:
