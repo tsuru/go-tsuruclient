@@ -94,6 +94,8 @@ Class | Method | HTTP request | Description
 *EventApi* | [**WebhookList**](docs/EventApi.md#webhooklist) | **Get** /1.6/events/webhooks | 
 *EventApi* | [**WebhookUpdate**](docs/EventApi.md#webhookupdate) | **Put** /1.6/events/webhooks/{name} | 
 *JobApi* | [**CreateJob**](docs/JobApi.md#createjob) | **Post** /1.13/jobs | 
+*JobApi* | [**GetJob**](docs/JobApi.md#getjob) | **Get** /1.13/jobs/{name} | 
+*JobApi* | [**ListJob**](docs/JobApi.md#listjob) | **Get** /1.13/jobs | 
 *NodeApi* | [**NodeAdd**](docs/NodeApi.md#nodeadd) | **Post** /1.2/node | 
 *NodeApi* | [**NodeDelete**](docs/NodeApi.md#nodedelete) | **Delete** /1.2/node/{address} | 
 *NodeApi* | [**NodeGet**](docs/NodeApi.md#nodeget) | **Get** /1.2/node/{address} | 
@@ -211,6 +213,9 @@ Class | Method | HTTP request | Description
  - [InputApp](docs/InputApp.md)
  - [InputJob](docs/InputJob.md)
  - [InputJobContainer](docs/InputJobContainer.md)
+ - [Job](docs/Job.md)
+ - [JobInfo](docs/JobInfo.md)
+ - [JobSpec](docs/JobSpec.md)
  - [Lock](docs/Lock.md)
  - [Machine](docs/Machine.md)
  - [Metadata](docs/Metadata.md)

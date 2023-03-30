@@ -5348,6 +5348,32 @@ paths:
       tags:
       - auth
   /1.13/jobs:
+    get:
+      description: List jobs that runs periodically
+      operationId: ListJob
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobList'
+          description: JobList.
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Not founds.
+      security:
+      - Bearer: []
+      tags:
+      - job
     post:
       description: Create a job that runs periodically
       operationId: CreateJob
@@ -5385,6 +5411,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: App already exists
+      security:
+      - Bearer: []
+      tags:
+      - job
+  /1.13/jobs/{name}:
+    get:
+      description: Get a job that runs periodically
+      operationId: GetJob
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobInfo'
+          description: JobInfo.
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Not founds.
       security:
       - Bearer: []
       tags:
@@ -6411,6 +6464,10 @@ components:
             type: string
           type: array
       type: object
+    JobList:
+      items:
+        $ref: '#/components/schemas/Job'
+      type: array
     InputJob:
       example:
         teamOwner: teamOwner
@@ -7094,6 +7151,19 @@ components:
       properties:
         token:
           type: string
+    Job_spec:
+      example:
+        container:
+          image: image
+          command:
+          - command
+          - command
+        schedule: schedule
+      properties:
+        container:
+          $ref: '#/components/schemas/InputJob_container'
+        schedule:
+          type: string
     Unit:
       example:
         address:
@@ -7192,6 +7262,27 @@ components:
           items:
             type: string
           type: array
+    JobInfo:
+      example:
+        job:
+          teamOwner: teamOwner
+          teams:
+          - teams
+          - teams
+          name: name
+          pool: pool
+          description: description
+          spec:
+            container:
+              image: image
+              command:
+              - command
+              - command
+            schedule: schedule
+      properties:
+        job:
+          $ref: '#/components/schemas/Job'
+      type: object
     ServiceBroker:
       example:
         Config:
@@ -7244,6 +7335,43 @@ components:
         volume:
           description: Volume name.
           type: string
+      type: object
+    Job:
+      example:
+        teamOwner: teamOwner
+        teams:
+        - teams
+        - teams
+        name: name
+        pool: pool
+        description: description
+        spec:
+          container:
+            image: image
+            command:
+            - command
+            - command
+          schedule: schedule
+      properties:
+        name:
+          description: Job name.
+          type: string
+        pool:
+          description: job pool name.
+          type: string
+        description:
+          description: job description.
+          type: string
+        teamOwner:
+          description: Team that owns the job.
+          type: string
+        teams:
+          description: Teams that have access to this job
+          items:
+            type: string
+          type: array
+        spec:
+          $ref: '#/components/schemas/Job_spec'
       type: object
     ServiceInstanceBoundUnit:
       example:
