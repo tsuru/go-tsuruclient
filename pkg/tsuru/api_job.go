@@ -11,6 +11,7 @@ package tsuru
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -153,10 +154,11 @@ func (a *JobApiService) CreateJob(ctx context.Context, inputJob InputJob) (*http
 JobApiService
 Get a job that runs periodically
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param name Name of job
 
 @return JobInfo
 */
-func (a *JobApiService) GetJob(ctx context.Context) (JobInfo, *http.Response, error) {
+func (a *JobApiService) GetJob(ctx context.Context, name string) (JobInfo, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -168,10 +170,14 @@ func (a *JobApiService) GetJob(ctx context.Context) (JobInfo, *http.Response, er
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/1.13/jobs/{name}"
+	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if strlen(name) < 1 {
+		return localVarReturnValue, nil, reportError("name must have at least 1 elements")
+	}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
