@@ -21,5 +21,6 @@ type Unit struct {
 	Routable    *bool  `json:"routable,omitempty"`
 	Ready       *bool  `json:"ready,omitempty"`
 	Restarts    *int   `json:"restarts,omitempty"`
+	CreatedAt   string `json:"createdAt,omitempty"`
 	Address     Url    `json:"address,omitempty"`
 }
