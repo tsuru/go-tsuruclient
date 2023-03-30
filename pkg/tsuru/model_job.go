@@ -16,9 +16,12 @@ type Job struct {
 	Pool string `json:"pool,omitempty"`
 	// job description.
 	Description string `json:"description,omitempty"`
+	// who created this job.
+	Owner string `json:"owner,omitempty"`
 	// Team that owns the job.
 	TeamOwner string `json:"teamOwner,omitempty"`
 	// Teams that have access to this job
 	Teams []string `json:"teams,omitempty"`
+	Plan  Plan     `json:"plan,omitempty"`
 	Spec  JobSpec  `json:"spec,omitempty"`
 }

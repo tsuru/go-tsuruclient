@@ -5567,13 +5567,11 @@ components:
           name: name
         plan:
           default: true
-          router: router
           memory: 0
           cpumilli: 0
-          swap: 0
           name: name
           override:
-            memory: 5
+            memory: 1
             cpumilli: 5
       properties:
         name:
@@ -6104,7 +6102,7 @@ components:
             value: value
             delete: true
         planoverride:
-          memory: 5
+          memory: 1
           cpumilli: 5
         noRestart: true
         imageReset: true
@@ -6629,13 +6627,11 @@ components:
       description: App plan.
       example:
         default: true
-        router: router
         memory: 0
         cpumilli: 0
-        swap: 0
         name: name
         override:
-          memory: 5
+          memory: 1
           cpumilli: 5
       properties:
         name:
@@ -6644,17 +6640,11 @@ components:
           format: int64
           minimum: 0
           type: integer
-        swap:
-          format: int64
-          minimum: 0
-          type: integer
         cpumilli:
           minimum: 0
           type: integer
         default:
           type: boolean
-        router:
-          type: string
         override:
           $ref: '#/components/schemas/PlanOverride'
       type: object
@@ -7009,13 +6999,11 @@ components:
         error: error
         plan:
           default: true
-          router: router
           memory: 0
           cpumilli: 0
-          swap: 0
           name: name
           override:
-            memory: 5
+            memory: 1
             cpumilli: 5
         routers:
         - address: address
@@ -7273,6 +7261,7 @@ components:
     JobInfo:
       example:
         job:
+          owner: owner
           teamOwner: teamOwner
           teams:
           - teams
@@ -7280,6 +7269,14 @@ components:
           name: name
           pool: pool
           description: description
+          plan:
+            default: true
+            memory: 0
+            cpumilli: 0
+            name: name
+            override:
+              memory: 1
+              cpumilli: 5
           spec:
             container:
               image: image
@@ -7317,7 +7314,7 @@ components:
     PlanOverride:
       description: App plan override.
       example:
-        memory: 5
+        memory: 1
         cpumilli: 5
       properties:
         memory:
@@ -7346,6 +7343,7 @@ components:
       type: object
     Job:
       example:
+        owner: owner
         teamOwner: teamOwner
         teams:
         - teams
@@ -7353,6 +7351,14 @@ components:
         name: name
         pool: pool
         description: description
+        plan:
+          default: true
+          memory: 0
+          cpumilli: 0
+          name: name
+          override:
+            memory: 1
+            cpumilli: 5
         spec:
           container:
             image: image
@@ -7370,6 +7376,9 @@ components:
         description:
           description: job description.
           type: string
+        owner:
+          description: who created this job.
+          type: string
         teamOwner:
           description: Team that owns the job.
           type: string
@@ -7378,6 +7387,8 @@ components:
           items:
             type: string
           type: array
+        plan:
+          $ref: '#/components/schemas/Plan'
         spec:
           $ref: '#/components/schemas/Job_spec'
       type: object
@@ -7780,13 +7791,11 @@ components:
             name: name
           plan:
             default: true
-            router: router
             memory: 0
             cpumilli: 0
-            swap: 0
             name: name
             override:
-              memory: 5
+              memory: 1
               cpumilli: 5
         - owner: owner
           cluster: cluster
@@ -7900,13 +7909,11 @@ components:
             name: name
           plan:
             default: true
-            router: router
             memory: 0
             cpumilli: 0
-            swap: 0
             name: name
             override:
-              memory: 5
+              memory: 1
               cpumilli: 5
       properties:
         name:
