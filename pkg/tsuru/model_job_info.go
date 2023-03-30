@@ -10,5 +10,6 @@
 package tsuru
 
 type JobInfo struct {
-	Job Job `json:"job,omitempty"`
+	Job   Job    `json:"job,omitempty"`
+	Units []Unit `json:"units,omitempty"`
 }

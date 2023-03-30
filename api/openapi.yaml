@@ -7260,6 +7260,35 @@ components:
           type: array
     JobInfo:
       example:
+        units:
+        - address:
+            scheme: scheme
+            host: host
+          appname: appname
+          routable: true
+          ready: true
+          processname: processname
+          ip: ip
+          name: name
+          id: id
+          type: type
+          version: 0
+          restarts: 6
+          status: status
+        - address:
+            scheme: scheme
+            host: host
+          appname: appname
+          routable: true
+          ready: true
+          processname: processname
+          ip: ip
+          name: name
+          id: id
+          type: type
+          version: 0
+          restarts: 6
+          status: status
         job:
           owner: owner
           teamOwner: teamOwner
@@ -7287,6 +7316,10 @@ components:
       properties:
         job:
           $ref: '#/components/schemas/Job'
+        units:
+          items:
+            $ref: '#/components/schemas/Unit'
+          type: array
       type: object
     ServiceBroker:
       example:
