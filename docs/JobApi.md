@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateJob**](JobApi.md#CreateJob) | **Post** /1.13/jobs | 
+[**DeleteJob**](JobApi.md#DeleteJob) | **Delete** /1.13/jobs/{name} | 
 [**GetJob**](JobApi.md#GetJob) | **Get** /1.13/jobs/{name} | 
 [**ListJob**](JobApi.md#ListJob) | **Get** /1.13/jobs | 
 
@@ -34,6 +35,34 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **DeleteJob**
+> DeleteJob(ctx, name)
+
+
+Remove a job
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **name** | **string**| Name of job | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

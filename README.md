@@ -94,6 +94,7 @@ Class | Method | HTTP request | Description
 *EventApi* | [**WebhookList**](docs/EventApi.md#webhooklist) | **Get** /1.6/events/webhooks | 
 *EventApi* | [**WebhookUpdate**](docs/EventApi.md#webhookupdate) | **Put** /1.6/events/webhooks/{name} | 
 *JobApi* | [**CreateJob**](docs/JobApi.md#createjob) | **Post** /1.13/jobs | 
+*JobApi* | [**DeleteJob**](docs/JobApi.md#deletejob) | **Delete** /1.13/jobs/{name} | 
 *JobApi* | [**GetJob**](docs/JobApi.md#getjob) | **Get** /1.13/jobs/{name} | 
 *JobApi* | [**ListJob**](docs/JobApi.md#listjob) | **Get** /1.13/jobs | 
 *NodeApi* | [**NodeAdd**](docs/NodeApi.md#nodeadd) | **Post** /1.2/node | 

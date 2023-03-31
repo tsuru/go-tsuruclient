@@ -5416,6 +5416,37 @@ paths:
       tags:
       - job
   /1.13/jobs/{name}:
+    delete:
+      description: Remove a job
+      operationId: DeleteJob
+      parameters:
+      - description: Name of job
+        in: path
+        name: name
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Job removed
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Plan not found
+      security:
+      - Bearer: []
+      tags:
+      - job
     get:
       description: Get a job that runs periodically
       operationId: GetJob
