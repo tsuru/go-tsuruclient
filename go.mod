@@ -3,7 +3,7 @@ module github.com/tsuru/go-tsuruclient
 require (
 	github.com/antihax/optional v0.0.0-20180407024304-ca021399b1a6
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/docker/docker v20.10.2+incompatible // indirect
+	github.com/docker/docker v20.10.24+incompatible // indirect
 	github.com/docker/go-units v0.3.3 // indirect
 	github.com/golang/protobuf v1.2.0 // indirect
 	github.com/hashicorp/go-version v0.0.0-20180716215031-270f2f71b1ee // indirect
