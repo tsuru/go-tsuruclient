@@ -7382,6 +7382,21 @@ components:
         job:
           owner: owner
           teamOwner: teamOwner
+          metadata:
+            annotations:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+            labels:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
           teams:
           - teams
           - teams
@@ -7468,6 +7483,21 @@ components:
       example:
         owner: owner
         teamOwner: teamOwner
+        metadata:
+          annotations:
+          - name: name
+            value: value
+            delete: true
+          - name: name
+            value: value
+            delete: true
+          labels:
+          - name: name
+            value: value
+            delete: true
+          - name: name
+            value: value
+            delete: true
         teams:
         - teams
         - teams
@@ -7512,6 +7542,8 @@ components:
           type: array
         plan:
           $ref: '#/components/schemas/Plan'
+        metadata:
+          $ref: '#/components/schemas/Metadata'
         spec:
           $ref: '#/components/schemas/Job_spec'
       type: object

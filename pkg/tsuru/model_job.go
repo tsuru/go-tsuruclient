@@ -21,7 +21,8 @@ type Job struct {
 	// Team that owns the job.
 	TeamOwner string `json:"teamOwner,omitempty"`
 	// Teams that have access to this job
-	Teams []string `json:"teams,omitempty"`
-	Plan  Plan     `json:"plan,omitempty"`
-	Spec  JobSpec  `json:"spec,omitempty"`
+	Teams    []string `json:"teams,omitempty"`
+	Plan     Plan     `json:"plan,omitempty"`
+	Metadata Metadata `json:"metadata,omitempty"`
+	Spec     JobSpec  `json:"spec,omitempty"`
 }
