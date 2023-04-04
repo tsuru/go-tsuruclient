@@ -5481,6 +5481,55 @@ paths:
       - Bearer: []
       tags:
       - job
+    put:
+      description: Update a job that runs periodically
+      operationId: UpdateJob
+      parameters:
+      - description: Name of job
+        in: path
+        name: name
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InputJob'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Job Updated
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        403:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Quota exceeded
+        409:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App already exists
+      security:
+      - Bearer: []
+      tags:
+      - job
 components:
   schemas:
     App:
