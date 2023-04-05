@@ -6561,6 +6561,17 @@ components:
         teamOwner: teamOwner
         container:
           image: image
+          envs:
+          - public: true
+            managedBy: managedBy
+            name: name
+            alias: alias
+            value: value
+          - public: true
+            managedBy: managedBy
+            name: name
+            alias: alias
+            value: value
           command:
           - command
           - command
@@ -7236,6 +7247,17 @@ components:
       example:
         container:
           image: image
+          envs:
+          - public: true
+            managedBy: managedBy
+            name: name
+            alias: alias
+            value: value
+          - public: true
+            managedBy: managedBy
+            name: name
+            alias: alias
+            value: value
           command:
           - command
           - command
@@ -7336,12 +7358,27 @@ components:
     InputJob_container:
       example:
         image: image
+        envs:
+        - public: true
+          managedBy: managedBy
+          name: name
+          alias: alias
+          value: value
+        - public: true
+          managedBy: managedBy
+          name: name
+          alias: alias
+          value: value
         command:
         - command
         - command
       properties:
         image:
           type: string
+        envs:
+          items:
+            $ref: '#/components/schemas/EnvVar'
+          type: array
         command:
           items:
             type: string
@@ -7414,6 +7451,17 @@ components:
           spec:
             container:
               image: image
+              envs:
+              - public: true
+                managedBy: managedBy
+                name: name
+                alias: alias
+                value: value
+              - public: true
+                managedBy: managedBy
+                name: name
+                alias: alias
+                value: value
               command:
               - command
               - command
@@ -7515,6 +7563,17 @@ components:
         spec:
           container:
             image: image
+            envs:
+            - public: true
+              managedBy: managedBy
+              name: name
+              alias: alias
+              value: value
+            - public: true
+              managedBy: managedBy
+              name: name
+              alias: alias
+              value: value
             command:
             - command
             - command

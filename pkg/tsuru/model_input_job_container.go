@@ -11,5 +11,6 @@ package tsuru
 
 type InputJobContainer struct {
 	Image   string   `json:"image,omitempty"`
+	Envs    []EnvVar `json:"envs,omitempty"`
 	Command []string `json:"command,omitempty"`
 }
