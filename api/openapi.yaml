@@ -5530,6 +5530,38 @@ paths:
       - Bearer: []
       tags:
       - job
+  /1.13/jobs/{name}/trigger:
+    post:
+      description: Trigger a job
+      operationId: TriggerJob
+      parameters:
+      - description: Name of job
+        in: path
+        name: name
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Job triggered
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Plan not found
+      security:
+      - Bearer: []
+      tags:
+      - job
 components:
   schemas:
     App:

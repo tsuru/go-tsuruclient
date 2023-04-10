@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**DeleteJob**](JobApi.md#DeleteJob) | **Delete** /1.13/jobs/{name} | 
 [**GetJob**](JobApi.md#GetJob) | **Get** /1.13/jobs/{name} | 
 [**ListJob**](JobApi.md#ListJob) | **Get** /1.13/jobs | 
+[**TriggerJob**](JobApi.md#TriggerJob) | **Post** /1.13/jobs/{name}/trigger | 
 [**UpdateJob**](JobApi.md#UpdateJob) | **Put** /1.13/jobs/{name} | 
 
 
@@ -116,6 +117,34 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **TriggerJob**
+> TriggerJob(ctx, name)
+
+
+Trigger a job
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **name** | **string**| Name of job | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

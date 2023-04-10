@@ -97,6 +97,7 @@ Class | Method | HTTP request | Description
 *JobApi* | [**DeleteJob**](docs/JobApi.md#deletejob) | **Delete** /1.13/jobs/{name} | 
 *JobApi* | [**GetJob**](docs/JobApi.md#getjob) | **Get** /1.13/jobs/{name} | 
 *JobApi* | [**ListJob**](docs/JobApi.md#listjob) | **Get** /1.13/jobs | 
+*JobApi* | [**TriggerJob**](docs/JobApi.md#triggerjob) | **Post** /1.13/jobs/{name}/trigger | 
 *JobApi* | [**UpdateJob**](docs/JobApi.md#updatejob) | **Put** /1.13/jobs/{name} | 
 *NodeApi* | [**NodeAdd**](docs/NodeApi.md#nodeadd) | **Post** /1.2/node | 
 *NodeApi* | [**NodeDelete**](docs/NodeApi.md#nodedelete) | **Delete** /1.2/node/{address} | 
