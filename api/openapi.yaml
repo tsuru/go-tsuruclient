@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   description: Open source, extensible and Docker-based Platform as a Service (PaaS)
   title: Tsuru
-  version: "1.14"
+  version: "1.15"
 servers:
 - url: /
 paths:
@@ -5558,6 +5558,44 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorMessage'
           description: Plan not found
+      security:
+      - Bearer: []
+      tags:
+      - job
+  /1.13/jobs/{name}/log:
+    get:
+      description: Retrieve logs from a job
+      operationId: JobLog
+      parameters:
+      - description: Name of job
+        in: path
+        name: name
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content: {}
+          description: OK
+        400:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        403:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Forbidden
+        404:
+          content:
+            application/x-json-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Job not found
       security:
       - Bearer: []
       tags:

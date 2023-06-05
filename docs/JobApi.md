@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**CreateJob**](JobApi.md#CreateJob) | **Post** /1.13/jobs | 
 [**DeleteJob**](JobApi.md#DeleteJob) | **Delete** /1.13/jobs/{name} | 
 [**GetJob**](JobApi.md#GetJob) | **Get** /1.13/jobs/{name} | 
+[**JobLog**](JobApi.md#JobLog) | **Get** /1.13/jobs/{name}/log | 
 [**ListJob**](JobApi.md#ListJob) | **Get** /1.13/jobs | 
 [**TriggerJob**](JobApi.md#TriggerJob) | **Post** /1.13/jobs/{name}/trigger | 
 [**UpdateJob**](JobApi.md#UpdateJob) | **Put** /1.13/jobs/{name} | 
@@ -93,6 +94,34 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **JobLog**
+> JobLog(ctx, name)
+
+
+Retrieve logs from a job
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **name** | **string**| Name of job | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/x-json-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
