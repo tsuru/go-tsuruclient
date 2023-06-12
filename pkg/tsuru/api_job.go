@@ -16,6 +16,8 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+
+	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -388,10 +390,17 @@ func (a *JobApiService) GetJob(ctx context.Context, name string) (JobInfo, *http
 /*
 JobApiService
 Retrieve logs from a job
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param name Name of job
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param name Name of job
+ * @param optional nil or *JobLogOpts - Optional Parameters:
+ * @param "Follow" (optional.Bool) -  attach logs to tty
 */
-func (a *JobApiService) JobLog(ctx context.Context, name string) (*http.Response, error) {
+
+type JobLogOpts struct {
+	Follow optional.Bool
+}
+
+func (a *JobApiService) JobLog(ctx context.Context, name string, localVarOptionals *JobLogOpts) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -411,6 +420,9 @@ func (a *JobApiService) JobLog(ctx context.Context, name string) (*http.Response
 		return nil, reportError("name must have at least 1 elements")
 	}
 
+	if localVarOptionals != nil && localVarOptionals.Follow.IsSet() {
+		localVarQueryParams.Add("follow", parameterToString(localVarOptionals.Follow.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 

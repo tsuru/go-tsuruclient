@@ -5574,6 +5574,11 @@ paths:
         schema:
           minLength: 1
           type: string
+      - description: attach logs to tty
+        in: query
+        name: follow
+        schema:
+          type: boolean
       responses:
         200:
           content: {}
