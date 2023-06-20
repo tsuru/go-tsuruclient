@@ -6669,6 +6669,7 @@ components:
         name: name
         pool: pool
         description: description
+        manual: true
         plan: plan
         tags:
         - tags
@@ -6699,6 +6700,9 @@ components:
           type: string
         metadata:
           $ref: '#/components/schemas/Metadata'
+        manual:
+          description: create a manual job.
+          type: boolean
         container:
           $ref: '#/components/schemas/InputJob_container'
       required:
