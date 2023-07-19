@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ServiceName** | **string** |  | [optional] 
 **PlanName** | **string** |  | [optional] 
 **Apps** | **[]string** |  | [optional] 
+**Jobs** | **[]string** |  | [optional] 
 **BoundUnits** | [**[]ServiceInstanceBoundUnit**](ServiceInstanceBoundUnit.md) |  | [optional] 
 **Teams** | **[]string** |  | [optional] 
 **TeamOwner** | **string** |  | [optional] 

@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Apps** | **[]string** |  | [optional] 
+**Jobs** | **[]string** |  | [optional] 
 **Teams** | **[]string** |  | [optional] 
 **Teamowner** | **string** |  | [optional] 
 **Description** | **string** |  | [optional] 

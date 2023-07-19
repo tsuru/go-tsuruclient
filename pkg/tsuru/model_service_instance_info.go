@@ -11,6 +11,7 @@ package tsuru
 
 type ServiceInstanceInfo struct {
 	Apps            []string          `json:"apps,omitempty"`
+	Jobs            []string          `json:"jobs,omitempty"`
 	Teams           []string          `json:"teams,omitempty"`
 	Teamowner       string            `json:"teamowner,omitempty"`
 	Description     string            `json:"description,omitempty"`

@@ -16,6 +16,7 @@ type ServiceInstance struct {
 	ServiceName string                     `json:"service_name,omitempty"`
 	PlanName    string                     `json:"plan_name,omitempty"`
 	Apps        []string                   `json:"apps,omitempty"`
+	Jobs        []string                   `json:"jobs,omitempty"`
 	BoundUnits  []ServiceInstanceBoundUnit `json:"bound_units,omitempty"`
 	Teams       []string                   `json:"teams,omitempty"`
 	TeamOwner   string                     `json:"team_owner,omitempty"`

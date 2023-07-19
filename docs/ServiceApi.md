@@ -9,6 +9,8 @@ Method | HTTP request | Description
 [**InstanceGet**](ServiceApi.md#InstanceGet) | **Get** /1.0/services/{service}/instances/{instance} | 
 [**InstanceUpdate**](ServiceApi.md#InstanceUpdate) | **Put** /1.0/services/{service}/instances/{instance} | 
 [**InstancesList**](ServiceApi.md#InstancesList) | **Get** /1.0/services/instances | 
+[**JobServiceInstanceBind**](ServiceApi.md#JobServiceInstanceBind) | **Put** /1.13/services/{service}/instances/{instance}/jobs/{job} | 
+[**JobServiceInstanceUnbind**](ServiceApi.md#JobServiceInstanceUnbind) | **Delete** /1.13/services/{service}/instances/{instance}/jobs/{job} | 
 [**ServiceAddDoc**](ServiceApi.md#ServiceAddDoc) | **Put** /1.0/services/{name}/doc | 
 [**ServiceBrokerCreate**](ServiceApi.md#ServiceBrokerCreate) | **Post** /1.7/brokers | 
 [**ServiceBrokerDelete**](ServiceApi.md#ServiceBrokerDelete) | **Delete** /1.7/brokers/{name} | 
@@ -19,11 +21,13 @@ Method | HTTP request | Description
 [**ServiceDoc**](ServiceApi.md#ServiceDoc) | **Get** /1.0/services/{name}/doc | 
 [**ServiceGrantTeam**](ServiceApi.md#ServiceGrantTeam) | **Put** /1.0/services/{service}/team/{team} | 
 [**ServiceInfo**](ServiceApi.md#ServiceInfo) | **Get** /1.0/services/{name} | 
-[**ServiceInstanceBind**](ServiceApi.md#ServiceInstanceBind) | **Put** /1.0/services/{service}/instances/{instance}/{app} | 
+[**ServiceInstanceBind**](ServiceApi.md#ServiceInstanceBind) | **Put** /1.13/services/{service}/instances/{instance}/apps/{app} | 
+[**ServiceInstanceBind10**](ServiceApi.md#ServiceInstanceBind10) | **Put** /1.0/services/{service}/instances/{instance}/{app} | 
 [**ServiceInstanceGrant**](ServiceApi.md#ServiceInstanceGrant) | **Put** /1.0/services/{service}/instances/permission/{instance}/{team} | 
 [**ServiceInstanceRevoke**](ServiceApi.md#ServiceInstanceRevoke) | **Delete** /1.0/services/{service}/instances/permission/{instance}/{team} | 
 [**ServiceInstanceStatus**](ServiceApi.md#ServiceInstanceStatus) | **Get** /1.0/services/{service}/instances/{instance}/status | 
-[**ServiceInstanceUnbind**](ServiceApi.md#ServiceInstanceUnbind) | **Delete** /1.0/services/{service}/instances/{instance}/{app} | 
+[**ServiceInstanceUnbind**](ServiceApi.md#ServiceInstanceUnbind) | **Delete** /1.13/services/{service}/instances/{instance}/apps/{app} | 
+[**ServiceInstanceUnbind10**](ServiceApi.md#ServiceInstanceUnbind10) | **Delete** /1.0/services/{service}/instances/{instance}/{app} | 
 [**ServicePlans**](ServiceApi.md#ServicePlans) | **Get** /1.0/services/{name}/plans | 
 [**ServiceRevokeTeam**](ServiceApi.md#ServiceRevokeTeam) | **Delete** /1.0/services/{service}/team/{team} | 
 [**ServiceUpdate**](ServiceApi.md#ServiceUpdate) | **Put** /1.0/services/{name} | 
@@ -180,6 +184,68 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **JobServiceInstanceBind**
+> JobServiceInstanceBind(ctx, service, instance, job, jobServiceInstanceBind)
+
+
+Bind the service instance to job
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **service** | **string**| Service name. | 
+  **instance** | **string**| Instance name. | 
+  **job** | **string**| Job name. | 
+  **jobServiceInstanceBind** | [**JobServiceInstanceBind**](JobServiceInstanceBind.md)|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/x-json-stream
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **JobServiceInstanceUnbind**
+> JobServiceInstanceUnbind(ctx, service, instance, job, jobServiceInstanceUnbind)
+
+
+Unbind the service instance from job
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **service** | **string**| Service name. | 
+  **instance** | **string**| Instance name. | 
+  **job** | **string**| Job name. | 
+  **jobServiceInstanceUnbind** | [**JobServiceInstanceUnbind**](JobServiceInstanceUnbind.md)|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/x-json-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -511,6 +577,37 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **ServiceInstanceBind10**
+> ServiceInstanceBind10(ctx, service, instance, app, serviceInstanceBind)
+
+
+Bind the service instance to app
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **service** | **string**| Service name. | 
+  **instance** | **string**| Instance name. | 
+  **app** | **string**| App name. | 
+  **serviceInstanceBind** | [**ServiceInstanceBind**](ServiceInstanceBind.md)|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/x-json-stream
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **ServiceInstanceGrant**
 > ServiceInstanceGrant(ctx, service, instance, team)
 
@@ -602,6 +699,37 @@ Name | Type | Description  | Notes
 
 # **ServiceInstanceUnbind**
 > ServiceInstanceUnbind(ctx, service, instance, app, serviceInstanceUnbind)
+
+
+Unbind the service instance from app
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **service** | **string**| Service name. | 
+  **instance** | **string**| Instance name. | 
+  **app** | **string**| App name. | 
+  **serviceInstanceUnbind** | [**ServiceInstanceUnbind**](ServiceInstanceUnbind.md)|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/x-json-stream
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ServiceInstanceUnbind10**
+> ServiceInstanceUnbind10(ctx, service, instance, app, serviceInstanceUnbind)
 
 
 Unbind the service instance from app

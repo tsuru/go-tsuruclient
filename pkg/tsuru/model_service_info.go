@@ -16,6 +16,7 @@ type ServiceInfo struct {
 	Teams       []string               `json:"teams,omitempty"`
 	Planname    string                 `json:"planname,omitempty"`
 	Apps        []string               `json:"apps,omitempty"`
+	Jobs        []string               `json:"jobs,omitempty"`
 	Servicename string                 `json:"servicename,omitempty"`
 	Info        map[string]interface{} `json:"info,omitempty"`
 	Teamowner   string                 `json:"teamowner,omitempty"`

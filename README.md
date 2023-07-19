@@ -96,6 +96,9 @@ Class | Method | HTTP request | Description
 *JobApi* | [**CreateJob**](docs/JobApi.md#createjob) | **Post** /1.13/jobs | 
 *JobApi* | [**DeleteJob**](docs/JobApi.md#deletejob) | **Delete** /1.13/jobs/{name} | 
 *JobApi* | [**GetJob**](docs/JobApi.md#getjob) | **Get** /1.13/jobs/{name} | 
+*JobApi* | [**JobEnvGet**](docs/JobApi.md#jobenvget) | **Get** /1.16/jobs/{name}/env | 
+*JobApi* | [**JobEnvSet**](docs/JobApi.md#jobenvset) | **Post** /1.13/jobs/{name}/env | 
+*JobApi* | [**JobEnvUnset**](docs/JobApi.md#jobenvunset) | **Delete** /1.13/jobs/{name}/env | 
 *JobApi* | [**JobLog**](docs/JobApi.md#joblog) | **Get** /1.13/jobs/{name}/log | 
 *JobApi* | [**ListJob**](docs/JobApi.md#listjob) | **Get** /1.13/jobs | 
 *JobApi* | [**TriggerJob**](docs/JobApi.md#triggerjob) | **Post** /1.13/jobs/{name}/trigger | 
@@ -131,6 +134,8 @@ Class | Method | HTTP request | Description
 *ServiceApi* | [**InstanceGet**](docs/ServiceApi.md#instanceget) | **Get** /1.0/services/{service}/instances/{instance} | 
 *ServiceApi* | [**InstanceUpdate**](docs/ServiceApi.md#instanceupdate) | **Put** /1.0/services/{service}/instances/{instance} | 
 *ServiceApi* | [**InstancesList**](docs/ServiceApi.md#instanceslist) | **Get** /1.0/services/instances | 
+*ServiceApi* | [**JobServiceInstanceBind**](docs/ServiceApi.md#jobserviceinstancebind) | **Put** /1.13/services/{service}/instances/{instance}/jobs/{job} | 
+*ServiceApi* | [**JobServiceInstanceUnbind**](docs/ServiceApi.md#jobserviceinstanceunbind) | **Delete** /1.13/services/{service}/instances/{instance}/jobs/{job} | 
 *ServiceApi* | [**ServiceAddDoc**](docs/ServiceApi.md#serviceadddoc) | **Put** /1.0/services/{name}/doc | 
 *ServiceApi* | [**ServiceBrokerCreate**](docs/ServiceApi.md#servicebrokercreate) | **Post** /1.7/brokers | 
 *ServiceApi* | [**ServiceBrokerDelete**](docs/ServiceApi.md#servicebrokerdelete) | **Delete** /1.7/brokers/{name} | 
@@ -141,11 +146,13 @@ Class | Method | HTTP request | Description
 *ServiceApi* | [**ServiceDoc**](docs/ServiceApi.md#servicedoc) | **Get** /1.0/services/{name}/doc | 
 *ServiceApi* | [**ServiceGrantTeam**](docs/ServiceApi.md#servicegrantteam) | **Put** /1.0/services/{service}/team/{team} | 
 *ServiceApi* | [**ServiceInfo**](docs/ServiceApi.md#serviceinfo) | **Get** /1.0/services/{name} | 
-*ServiceApi* | [**ServiceInstanceBind**](docs/ServiceApi.md#serviceinstancebind) | **Put** /1.0/services/{service}/instances/{instance}/{app} | 
+*ServiceApi* | [**ServiceInstanceBind**](docs/ServiceApi.md#serviceinstancebind) | **Put** /1.13/services/{service}/instances/{instance}/apps/{app} | 
+*ServiceApi* | [**ServiceInstanceBind10**](docs/ServiceApi.md#serviceinstancebind10) | **Put** /1.0/services/{service}/instances/{instance}/{app} | 
 *ServiceApi* | [**ServiceInstanceGrant**](docs/ServiceApi.md#serviceinstancegrant) | **Put** /1.0/services/{service}/instances/permission/{instance}/{team} | 
 *ServiceApi* | [**ServiceInstanceRevoke**](docs/ServiceApi.md#serviceinstancerevoke) | **Delete** /1.0/services/{service}/instances/permission/{instance}/{team} | 
 *ServiceApi* | [**ServiceInstanceStatus**](docs/ServiceApi.md#serviceinstancestatus) | **Get** /1.0/services/{service}/instances/{instance}/status | 
-*ServiceApi* | [**ServiceInstanceUnbind**](docs/ServiceApi.md#serviceinstanceunbind) | **Delete** /1.0/services/{service}/instances/{instance}/{app} | 
+*ServiceApi* | [**ServiceInstanceUnbind**](docs/ServiceApi.md#serviceinstanceunbind) | **Delete** /1.13/services/{service}/instances/{instance}/apps/{app} | 
+*ServiceApi* | [**ServiceInstanceUnbind10**](docs/ServiceApi.md#serviceinstanceunbind10) | **Delete** /1.0/services/{service}/instances/{instance}/{app} | 
 *ServiceApi* | [**ServicePlans**](docs/ServiceApi.md#serviceplans) | **Get** /1.0/services/{name}/plans | 
 *ServiceApi* | [**ServiceRevokeTeam**](docs/ServiceApi.md#servicerevoketeam) | **Delete** /1.0/services/{service}/team/{team} | 
 *ServiceApi* | [**ServiceUpdate**](docs/ServiceApi.md#serviceupdate) | **Put** /1.0/services/{name} | 
@@ -219,6 +226,8 @@ Class | Method | HTTP request | Description
  - [InputJobContainer](docs/InputJobContainer.md)
  - [Job](docs/Job.md)
  - [JobInfo](docs/JobInfo.md)
+ - [JobServiceInstanceBind](docs/JobServiceInstanceBind.md)
+ - [JobServiceInstanceUnbind](docs/JobServiceInstanceUnbind.md)
  - [JobSpec](docs/JobSpec.md)
  - [Lock](docs/Lock.md)
  - [Machine](docs/Machine.md)

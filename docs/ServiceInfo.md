@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Teams** | **[]string** |  | [optional] 
 **Planname** | **string** |  | [optional] 
 **Apps** | **[]string** |  | [optional] 
+**Jobs** | **[]string** |  | [optional] 
 **Servicename** | **string** |  | [optional] 
 **Info** | [**map[string]interface{}**](.md) |  | [optional] 
 **Teamowner** | **string** |  | [optional] 
