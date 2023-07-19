@@ -18,10 +18,19 @@ type App struct {
 	// CNames of App
 	Cname []string `json:"cname,omitempty"`
 	// Number of Deploys
-	Deploys           int64                  `json:"deploys,omitempty"`
-	Routers           []AppRouters           `json:"routers,omitempty"`
-	InternalAddresses []AppInternalAddresses `json:"internalAddresses,omitempty"`
-	VolumeBinds       []AppVolumeBinds       `json:"volumeBinds,omitempty"`
+	Deploys int64 `json:"deploys,omitempty"`
+	// Unit metrics.
+	UnitsMetrics []UnitMetrics `json:"unitsMetrics,omitempty"`
+	// Autoscale Recommendations
+	AutoscaleRecommendation []RecommendedResources `json:"autoscaleRecommendation,omitempty"`
+	// Errors during AppGet
+	Error string `json:"error,omitempty"`
+	Quota Quota  `json:"quota,omitempty"`
+	// Service instance binds on the app
+	ServiceInstanceBinds []AppServiceInstanceBinds `json:"serviceInstanceBinds,omitempty"`
+	Routers              []AppRouters              `json:"routers,omitempty"`
+	InternalAddresses    []AppInternalAddresses    `json:"internalAddresses,omitempty"`
+	VolumeBinds          []AppVolumeBinds          `json:"volumeBinds,omitempty"`
 	// App tags.
 	Tags     []string `json:"tags,omitempty"`
 	Metadata Metadata `json:"metadata,omitempty"`
@@ -30,6 +39,7 @@ type App struct {
 	// Custom router options.
 	Routeropts map[string]string `json:"routeropts,omitempty"`
 	Plan       Plan              `json:"plan,omitempty"`
+	Lock       AppLock           `json:"lock,omitempty"`
 	// App pool.
 	Pool string `json:"pool,omitempty"`
 	// App provisioner.

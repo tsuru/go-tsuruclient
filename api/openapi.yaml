@@ -5952,19 +5952,7 @@ components:
     App:
       description: Tsuru app.
       example:
-        owner: owner
         cluster: cluster
-        volumeBinds:
-        - ReadOnly: true
-          ID:
-            App: App
-            MountPoint: MountPoint
-            Volume: Volume
-        - ReadOnly: true
-          ID:
-            App: App
-            MountPoint: MountPoint
-            Volume: Volume
         metadata:
           annotations:
           - name: name
@@ -5980,15 +5968,9 @@ components:
           - name: name
             value: value
             delete: true
-        provisioner: provisioner
-        teams:
-        - teams
-        - teams
-        ip: ip
         cname:
         - cname
         - cname
-        pool: pool
         deploys: 0
         description: description
         units:
@@ -6022,37 +6004,47 @@ components:
           name: name
           id: id
           status: status
-        autoscale:
-        - process: process
-          averageCPU: averageCPU
-          maxUnits: 5
-          minUnits: 1
-          version: 5
-        - process: process
-          averageCPU: averageCPU
-          maxUnits: 5
-          minUnits: 1
-          version: 5
+        error: error
         platform: platform
         internalAddresses:
         - Version: Version
-          Port: 6
+          Port: 5
           Process: Process
           Domain: Domain
           Protocol: Protocol
         - Version: Version
-          Port: 6
+          Port: 5
           Process: Process
           Domain: Domain
           Protocol: Protocol
-        tags:
-        - tags
-        - tags
-        teamOwner: teamOwner
         router: router
-        name: name
+        autoscaleRecommendation:
+        - process: process
+          recommendations:
+          - memory: memory
+            cpu: cpu
+            type: type
+          - memory: memory
+            cpu: cpu
+            type: type
+        - process: process
+          recommendations:
+          - memory: memory
+            cpu: cpu
+            type: type
+          - memory: memory
+            cpu: cpu
+            type: type
+        quota:
+          limit: 1
+          inuse: 6
         routeropts:
           key: routeropts
+        lock:
+          owner: owner
+          reason: reason
+          acquireDate: 2000-01-23T04:56:07.000+00:00
+          locked: true
         routers:
         - addresses:
           - addresses
@@ -6072,6 +6064,54 @@ components:
           override:
             memory: 1
             cpumilli: 5
+        owner: owner
+        volumeBinds:
+        - ReadOnly: true
+          ID:
+            App: App
+            MountPoint: MountPoint
+            Volume: Volume
+        - ReadOnly: true
+          ID:
+            App: App
+            MountPoint: MountPoint
+            Volume: Volume
+        provisioner: provisioner
+        teams:
+        - teams
+        - teams
+        ip: ip
+        pool: pool
+        autoscale:
+        - process: process
+          averageCPU: averageCPU
+          maxUnits: 2
+          minUnits: 5
+          version: 7
+        - process: process
+          averageCPU: averageCPU
+          maxUnits: 2
+          minUnits: 5
+          version: 7
+        tags:
+        - tags
+        - tags
+        teamOwner: teamOwner
+        serviceInstanceBinds:
+        - instance: instance
+          service: service
+          plan: plan
+        - instance: instance
+          service: service
+          plan: plan
+        name: name
+        unitsMetrics:
+        - memory: memory
+          cpu: cpu
+          id: id
+        - memory: memory
+          cpu: cpu
+          id: id
       properties:
         name:
           description: App name.
@@ -6088,6 +6128,26 @@ components:
           description: Number of Deploys
           format: int64
           type: integer
+        unitsMetrics:
+          description: Unit metrics.
+          items:
+            $ref: '#/components/schemas/UnitMetrics'
+          type: array
+        autoscaleRecommendation:
+          description: Autoscale Recommendations
+          items:
+            $ref: '#/components/schemas/RecommendedResources'
+          type: array
+        error:
+          description: Errors during AppGet
+          type: string
+        quota:
+          $ref: '#/components/schemas/Quota'
+        serviceInstanceBinds:
+          description: Service instance binds on the app
+          items:
+            $ref: '#/components/schemas/App_serviceInstanceBinds'
+          type: array
         routers:
           items:
             $ref: '#/components/schemas/App_routers'
@@ -6117,6 +6177,8 @@ components:
           type: object
         plan:
           $ref: '#/components/schemas/Plan'
+        lock:
+          $ref: '#/components/schemas/AppLock'
         pool:
           description: App pool.
           type: string
@@ -6174,6 +6236,18 @@ components:
         force:
           type: boolean
       type: object
+    RecommendedResources_recommendations:
+      example:
+        memory: memory
+        cpu: cpu
+        type: type
+      properties:
+        memory:
+          type: string
+        cpu:
+          type: string
+        type:
+          type: string
     Platform:
       example:
         name: name
@@ -6501,6 +6575,42 @@ components:
       additionalProperties:
         $ref: '#/components/schemas/VolumePlan'
       description: Response returned by Volume Plans list.
+      type: object
+    AppLock:
+      description: Stores information about a lock hold on the app
+      example:
+        owner: owner
+        reason: reason
+        acquireDate: 2000-01-23T04:56:07.000+00:00
+        locked: true
+      properties:
+        locked:
+          type: boolean
+        reason:
+          type: string
+        owner:
+          type: string
+        acquireDate:
+          format: date-time
+          type: string
+      type: object
+    RecommendedResources:
+      example:
+        process: process
+        recommendations:
+        - memory: memory
+          cpu: cpu
+          type: type
+        - memory: memory
+          cpu: cpu
+          type: type
+      properties:
+        process:
+          type: string
+        recommendations:
+          items:
+            $ref: '#/components/schemas/RecommendedResources_recommendations'
+          type: array
       type: object
     Cluster_kubeConfig_user_exec_env:
       example:
@@ -7085,6 +7195,19 @@ components:
         context:
           type: string
       type: object
+    App_serviceInstanceBinds:
+      description: Service instance bind
+      example:
+        instance: instance
+        service: service
+        plan: plan
+      properties:
+        instance:
+          type: string
+        service:
+          type: string
+        plan:
+          type: string
     ServiceDoc:
       properties:
         doc:
@@ -7131,9 +7254,9 @@ components:
       example:
         process: process
         averageCPU: averageCPU
-        maxUnits: 5
-        minUnits: 1
-        version: 5
+        maxUnits: 2
+        minUnits: 5
+        version: 7
       properties:
         process:
           type: string
@@ -8351,19 +8474,7 @@ components:
         - tags
         - tags
         apps:
-        - owner: owner
-          cluster: cluster
-          volumeBinds:
-          - ReadOnly: true
-            ID:
-              App: App
-              MountPoint: MountPoint
-              Volume: Volume
-          - ReadOnly: true
-            ID:
-              App: App
-              MountPoint: MountPoint
-              Volume: Volume
+        - cluster: cluster
           metadata:
             annotations:
             - name: name
@@ -8379,15 +8490,9 @@ components:
             - name: name
               value: value
               delete: true
-          provisioner: provisioner
-          teams:
-          - teams
-          - teams
-          ip: ip
           cname:
           - cname
           - cname
-          pool: pool
           deploys: 0
           description: description
           units:
@@ -8421,37 +8526,47 @@ components:
             name: name
             id: id
             status: status
-          autoscale:
-          - process: process
-            averageCPU: averageCPU
-            maxUnits: 5
-            minUnits: 1
-            version: 5
-          - process: process
-            averageCPU: averageCPU
-            maxUnits: 5
-            minUnits: 1
-            version: 5
+          error: error
           platform: platform
           internalAddresses:
           - Version: Version
-            Port: 6
+            Port: 5
             Process: Process
             Domain: Domain
             Protocol: Protocol
           - Version: Version
-            Port: 6
+            Port: 5
             Process: Process
             Domain: Domain
             Protocol: Protocol
-          tags:
-          - tags
-          - tags
-          teamOwner: teamOwner
           router: router
-          name: name
+          autoscaleRecommendation:
+          - process: process
+            recommendations:
+            - memory: memory
+              cpu: cpu
+              type: type
+            - memory: memory
+              cpu: cpu
+              type: type
+          - process: process
+            recommendations:
+            - memory: memory
+              cpu: cpu
+              type: type
+            - memory: memory
+              cpu: cpu
+              type: type
+          quota:
+            limit: 1
+            inuse: 6
           routeropts:
             key: routeropts
+          lock:
+            owner: owner
+            reason: reason
+            acquireDate: 2000-01-23T04:56:07.000+00:00
+            locked: true
           routers:
           - addresses:
             - addresses
@@ -8471,8 +8586,7 @@ components:
             override:
               memory: 1
               cpumilli: 5
-        - owner: owner
-          cluster: cluster
+          owner: owner
           volumeBinds:
           - ReadOnly: true
             ID:
@@ -8484,6 +8598,43 @@ components:
               App: App
               MountPoint: MountPoint
               Volume: Volume
+          provisioner: provisioner
+          teams:
+          - teams
+          - teams
+          ip: ip
+          pool: pool
+          autoscale:
+          - process: process
+            averageCPU: averageCPU
+            maxUnits: 2
+            minUnits: 5
+            version: 7
+          - process: process
+            averageCPU: averageCPU
+            maxUnits: 2
+            minUnits: 5
+            version: 7
+          tags:
+          - tags
+          - tags
+          teamOwner: teamOwner
+          serviceInstanceBinds:
+          - instance: instance
+            service: service
+            plan: plan
+          - instance: instance
+            service: service
+            plan: plan
+          name: name
+          unitsMetrics:
+          - memory: memory
+            cpu: cpu
+            id: id
+          - memory: memory
+            cpu: cpu
+            id: id
+        - cluster: cluster
           metadata:
             annotations:
             - name: name
@@ -8499,15 +8650,9 @@ components:
             - name: name
               value: value
               delete: true
-          provisioner: provisioner
-          teams:
-          - teams
-          - teams
-          ip: ip
           cname:
           - cname
           - cname
-          pool: pool
           deploys: 0
           description: description
           units:
@@ -8541,37 +8686,47 @@ components:
             name: name
             id: id
             status: status
-          autoscale:
-          - process: process
-            averageCPU: averageCPU
-            maxUnits: 5
-            minUnits: 1
-            version: 5
-          - process: process
-            averageCPU: averageCPU
-            maxUnits: 5
-            minUnits: 1
-            version: 5
+          error: error
           platform: platform
           internalAddresses:
           - Version: Version
-            Port: 6
+            Port: 5
             Process: Process
             Domain: Domain
             Protocol: Protocol
           - Version: Version
-            Port: 6
+            Port: 5
             Process: Process
             Domain: Domain
             Protocol: Protocol
-          tags:
-          - tags
-          - tags
-          teamOwner: teamOwner
           router: router
-          name: name
+          autoscaleRecommendation:
+          - process: process
+            recommendations:
+            - memory: memory
+              cpu: cpu
+              type: type
+            - memory: memory
+              cpu: cpu
+              type: type
+          - process: process
+            recommendations:
+            - memory: memory
+              cpu: cpu
+              type: type
+            - memory: memory
+              cpu: cpu
+              type: type
+          quota:
+            limit: 1
+            inuse: 6
           routeropts:
             key: routeropts
+          lock:
+            owner: owner
+            reason: reason
+            acquireDate: 2000-01-23T04:56:07.000+00:00
+            locked: true
           routers:
           - addresses:
             - addresses
@@ -8591,6 +8746,54 @@ components:
             override:
               memory: 1
               cpumilli: 5
+          owner: owner
+          volumeBinds:
+          - ReadOnly: true
+            ID:
+              App: App
+              MountPoint: MountPoint
+              Volume: Volume
+          - ReadOnly: true
+            ID:
+              App: App
+              MountPoint: MountPoint
+              Volume: Volume
+          provisioner: provisioner
+          teams:
+          - teams
+          - teams
+          ip: ip
+          pool: pool
+          autoscale:
+          - process: process
+            averageCPU: averageCPU
+            maxUnits: 2
+            minUnits: 5
+            version: 7
+          - process: process
+            averageCPU: averageCPU
+            maxUnits: 2
+            minUnits: 5
+            version: 7
+          tags:
+          - tags
+          - tags
+          teamOwner: teamOwner
+          serviceInstanceBinds:
+          - instance: instance
+            service: service
+            plan: plan
+          - instance: instance
+            service: service
+            plan: plan
+          name: name
+          unitsMetrics:
+          - memory: memory
+            cpu: cpu
+            id: id
+          - memory: memory
+            cpu: cpu
+            id: id
       properties:
         name:
           type: string
@@ -8610,6 +8813,19 @@ components:
           items:
             $ref: '#/components/schemas/App'
           type: array
+      type: object
+    UnitMetrics:
+      example:
+        memory: memory
+        cpu: cpu
+        id: id
+      properties:
+        id:
+          type: string
+        cpu:
+          type: string
+        memory:
+          type: string
       type: object
     RoleInstance:
       description: Association between a role and a context value.
@@ -9001,7 +9217,7 @@ components:
     App_internalAddresses:
       example:
         Version: Version
-        Port: 6
+        Port: 5
         Process: Process
         Domain: Domain
         Protocol: Protocol
@@ -9284,8 +9500,8 @@ components:
       type: object
     Quota:
       example:
-        limit: 6
-        inuse: 0
+        limit: 1
+        inuse: 6
       properties:
         inuse:
           format: int64
