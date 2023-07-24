@@ -56,7 +56,7 @@ func Test_DoNotReadBodyForStreamingRequests(t *testing.T) {
 	cli := tsuru.NewAPIClient(&tsuru.Configuration{
 		BasePath: srv.URL,
 	})
-	rsp, err := cli.AppApi.AppRestart(context.Background(), "myapp", nil)
+	rsp, err := cli.AppApi.AppRestart(context.Background(), "myapp", tsuru.AppStartStop{})
 	require.NoError(t, err)
 	data, err := ioutil.ReadAll(rsp.Body)
 	require.NoError(t, err)
@@ -73,7 +73,7 @@ func Test_AcceptPlainTextErrorResponses(t *testing.T) {
 	cli := tsuru.NewAPIClient(&tsuru.Configuration{
 		BasePath: srv.URL,
 	})
-	_, err := cli.AppApi.AppRestart(context.Background(), "myapp", nil)
+	_, err := cli.AppApi.AppRestart(context.Background(), "myapp", tsuru.AppStartStop{})
 	require.Error(t, err)
 	apiErr, ok := err.(tsuru.GenericOpenAPIError)
 	require.Equal(t, true, ok)
@@ -89,7 +89,7 @@ func Test_HasStatusCodeInResponse(t *testing.T) {
 	cli := tsuru.NewAPIClient(&tsuru.Configuration{
 		BasePath: srv.URL,
 	})
-	_, err := cli.AppApi.AppRestart(context.Background(), "myapp", nil)
+	_, err := cli.AppApi.AppRestart(context.Background(), "myapp", tsuru.AppStartStop{})
 	require.Error(t, err)
 	apiErr, ok := err.(tsuru.GenericOpenAPIError)
 	require.Equal(t, true, ok)
