@@ -7,6 +7,7 @@ require (
 	github.com/stretchr/testify v1.8.4
 	github.com/tsuru/tsuru v0.0.0-20230721211340-f41fb455f8c3
 	golang.org/x/oauth2 v0.10.0
+	k8s.io/apimachinery v0.22.5
 )
 
 require (
@@ -14,6 +15,7 @@ require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/docker/docker v20.10.20+incompatible // indirect
 	github.com/docker/go-units v0.5.0 // indirect
+	github.com/go-logr/logr v1.2.2 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/hashicorp/go-version v0.0.0-20180716215031-270f2f71b1ee // indirect
 	github.com/howeyc/fsnotify v0.9.0 // indirect
@@ -35,4 +37,6 @@ require (
 	google.golang.org/protobuf v1.31.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
+	k8s.io/klog/v2 v2.50.2 // indirect
+	k8s.io/utils v0.0.0-20220210201930-3a6ce19ff2f9 // indirect
 )
