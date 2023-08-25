@@ -7,9 +7,11 @@ Method | HTTP request | Description
 [**TeamCreate**](TeamApi.md#TeamCreate) | **Post** /1.0/teams | 
 [**TeamDelete**](TeamApi.md#TeamDelete) | **Delete** /1.0/teams/{team} | 
 [**TeamGet**](TeamApi.md#TeamGet) | **Get** /1.4/teams/{team} | 
+[**TeamGroupList**](TeamApi.md#TeamGroupList) | **Get** /1.17/teams/{team}/groups | 
 [**TeamQuotaChange**](TeamApi.md#TeamQuotaChange) | **Put** /1.12/teams/{team}/quota | 
 [**TeamQuotaGet**](TeamApi.md#TeamQuotaGet) | **Get** /1.12/teams/{team}/quota | 
 [**TeamUpdate**](TeamApi.md#TeamUpdate) | **Put** /1.6/teams/{team} | 
+[**TeamUserList**](TeamApi.md#TeamUserList) | **Get** /1.17/teams/{team}/users | 
 [**TeamsList**](TeamApi.md#TeamsList) | **Get** /1.0/teams | 
 
 
@@ -85,6 +87,34 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TeamInfo**](TeamInfo.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **TeamGroupList**
+> []TeamGroup TeamGroupList(ctx, team)
+
+
+Get groups of a team
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **team** | **string**| Team name. | 
+
+### Return type
+
+[**[]TeamGroup**](TeamGroup.md)
 
 ### Authorization
 
@@ -180,6 +210,34 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **TeamUserList**
+> []TeamUser TeamUserList(ctx, team)
+
+
+Get users of a team
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **team** | **string**| Team name. | 
+
+### Return type
+
+[**[]TeamUser**](TeamUser.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

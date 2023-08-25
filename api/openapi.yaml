@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   description: Open source, extensible and Docker-based Platform as a Service (PaaS)
   title: Tsuru
-  version: "1.15"
+  version: "1.16"
 servers:
 - url: /
 paths:
@@ -3080,6 +3080,78 @@ paths:
               schema:
                 $ref: '#/components/schemas/TeamInfo'
           description: Team data
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Team not found
+      security:
+      - Bearer: []
+      tags:
+      - team
+  /1.17/teams/{team}/users:
+    get:
+      description: Get users of a team
+      operationId: TeamUserList
+      parameters:
+      - description: Team name.
+        in: path
+        name: team
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TeamUser'
+                type: array
+          description: User list
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Team not found
+      security:
+      - Bearer: []
+      tags:
+      - team
+  /1.17/teams/{team}/groups:
+    get:
+      description: Get groups of a team
+      operationId: TeamGroupList
+      parameters:
+      - description: Team name.
+        in: path
+        name: team
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TeamGroup'
+                type: array
+          description: Group list
         401:
           content:
             application/json:
@@ -7830,11 +7902,14 @@ components:
           - command
           - command
         schedule: schedule
+        manual: true
       properties:
         container:
           $ref: '#/components/schemas/InputJob_container'
         schedule:
           type: string
+        manual:
+          type: boolean
     Unit:
       example:
         address:
@@ -7882,6 +7957,20 @@ components:
           type: string
         address:
           $ref: '#/components/schemas/URL'
+      type: object
+    TeamUser:
+      example:
+        roles:
+        - roles
+        - roles
+        email: email
+      properties:
+        email:
+          type: string
+        roles:
+          items:
+            type: string
+          type: array
       type: object
     ServiceInfo:
       example:
@@ -8041,6 +8130,7 @@ components:
               - command
               - command
             schedule: schedule
+            manual: true
       properties:
         job:
           $ref: '#/components/schemas/Job'
@@ -8153,6 +8243,7 @@ components:
             - command
             - command
           schedule: schedule
+          manual: true
       properties:
         name:
           description: Job name.
@@ -8360,6 +8451,20 @@ components:
         service_instances:
           items:
             $ref: '#/components/schemas/ServiceInstance'
+          type: array
+      type: object
+    TeamGroup:
+      example:
+        roles:
+        - roles
+        - roles
+        group: group
+      properties:
+        group:
+          type: string
+        roles:
+          items:
+            type: string
           type: array
       type: object
     PoolUpdateData:
