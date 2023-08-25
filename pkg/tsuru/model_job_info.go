@@ -12,4 +12,6 @@ package tsuru
 type JobInfo struct {
 	Job   Job    `json:"job,omitempty"`
 	Units []Unit `json:"units,omitempty"`
+	// Service instance binds on the job
+	ServiceInstanceBinds []AppServiceInstanceBinds `json:"serviceInstanceBinds,omitempty"`
 }

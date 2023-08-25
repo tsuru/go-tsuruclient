@@ -8049,6 +8049,13 @@ components:
           type: array
     JobInfo:
       example:
+        serviceInstanceBinds:
+        - instance: instance
+          service: service
+          plan: plan
+        - instance: instance
+          service: service
+          plan: plan
         units:
         - address:
             scheme: scheme
@@ -8137,6 +8144,11 @@ components:
         units:
           items:
             $ref: '#/components/schemas/Unit'
+          type: array
+        serviceInstanceBinds:
+          description: Service instance binds on the job
+          items:
+            $ref: '#/components/schemas/App_serviceInstanceBinds'
           type: array
       type: object
     ServiceBroker:
