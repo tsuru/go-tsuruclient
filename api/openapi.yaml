@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   description: Open source, extensible and Docker-based Platform as a Service (PaaS)
   title: Tsuru
-  version: "1.16"
+  version: "1.18"
 servers:
 - url: /
 paths:
@@ -7219,6 +7219,7 @@ components:
         description: description
         manual: true
         plan: plan
+        activeDeadlineSeconds: 0
         tags:
         - tags
         - tags
@@ -7251,6 +7252,10 @@ components:
         manual:
           description: create a manual job.
           type: boolean
+        activeDeadlineSeconds:
+          description: job active deadline seconds.
+          format: int64
+          type: integer
         container:
           $ref: '#/components/schemas/InputJob_container'
       required:
@@ -7903,6 +7908,7 @@ components:
           - command
         schedule: schedule
         manual: true
+        activeDeadlineSeconds: 0
       properties:
         container:
           $ref: '#/components/schemas/InputJob_container'
@@ -7910,6 +7916,10 @@ components:
           type: string
         manual:
           type: boolean
+        activeDeadlineSeconds:
+          description: job active deadline seconds.
+          format: int64
+          type: integer
     Unit:
       example:
         address:
@@ -8138,6 +8148,7 @@ components:
               - command
             schedule: schedule
             manual: true
+            activeDeadlineSeconds: 0
       properties:
         job:
           $ref: '#/components/schemas/Job'
@@ -8256,6 +8267,7 @@ components:
             - command
           schedule: schedule
           manual: true
+          activeDeadlineSeconds: 0
       properties:
         name:
           description: Job name.
