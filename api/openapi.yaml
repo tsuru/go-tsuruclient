@@ -7256,6 +7256,7 @@ components:
           description: job active deadline seconds.
           format: int64
           type: integer
+          x-go-custom-type: '*int64'
         container:
           $ref: '#/components/schemas/InputJob_container'
       required:
