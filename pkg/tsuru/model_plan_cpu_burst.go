@@ -9,9 +9,7 @@
 
 package tsuru
 
-// App plan override.
-type PlanOverride struct {
-	Memory   *int64   `json:"memory,omitempty"`
-	Cpumilli *int     `json:"cpumilli,omitempty"`
-	CpuBurst *float64 `json:"cpuBurst,omitempty"`
+type PlanCpuBurst struct {
+	Default    float64 `json:"default,omitempty"`
+	MaxAllowed float64 `json:"maxAllowed,omitempty"`
 }
