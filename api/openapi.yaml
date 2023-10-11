@@ -6132,10 +6132,14 @@ components:
           default: true
           memory: 0
           cpumilli: 0
+          cpuBurst:
+            default: 1.46581298050294517310021547018550336360931396484375
+            maxAllowed: 5.962133916683182377482808078639209270477294921875
           name: name
           override:
-            memory: 1
-            cpumilli: 5
+            memory: 5
+            cpumilli: 2
+            cpuBurst: 7.061401241503109105224211816675961017608642578125
         owner: owner
         volumeBinds:
         - ReadOnly: true
@@ -6800,8 +6804,9 @@ components:
             value: value
             delete: true
         planoverride:
-          memory: 1
-          cpumilli: 5
+          memory: 5
+          cpumilli: 2
+          cpuBurst: 7.061401241503109105224211816675961017608642578125
         noRestart: true
         imageReset: true
         pool: pool
@@ -6853,6 +6858,17 @@ components:
         isRoutable:
           type: boolean
       type: object
+    Plan_cpuBurst:
+      example:
+        default: 1.46581298050294517310021547018550336360931396484375
+        maxAllowed: 5.962133916683182377482808078639209270477294921875
+      properties:
+        default:
+          type: number
+          x-go-custom-type: float64
+        maxAllowed:
+          type: number
+          x-go-custom-type: float64
     NodeListResponse:
       example:
         nodes:
@@ -7368,10 +7384,14 @@ components:
         default: true
         memory: 0
         cpumilli: 0
+        cpuBurst:
+          default: 1.46581298050294517310021547018550336360931396484375
+          maxAllowed: 5.962133916683182377482808078639209270477294921875
         name: name
         override:
-          memory: 1
-          cpumilli: 5
+          memory: 5
+          cpumilli: 2
+          cpuBurst: 7.061401241503109105224211816675961017608642578125
       properties:
         name:
           type: string
@@ -7382,6 +7402,8 @@ components:
         cpumilli:
           minimum: 0
           type: integer
+        cpuBurst:
+          $ref: '#/components/schemas/Plan_cpuBurst'
         default:
           type: boolean
         override:
@@ -7743,10 +7765,14 @@ components:
           default: true
           memory: 0
           cpumilli: 0
+          cpuBurst:
+            default: 1.46581298050294517310021547018550336360931396484375
+            maxAllowed: 5.962133916683182377482808078639209270477294921875
           name: name
           override:
-            memory: 1
-            cpumilli: 5
+            memory: 5
+            cpumilli: 2
+            cpuBurst: 7.061401241503109105224211816675961017608642578125
         routers:
         - address: address
           opts:
@@ -8126,10 +8152,14 @@ components:
             default: true
             memory: 0
             cpumilli: 0
+            cpuBurst:
+              default: 1.46581298050294517310021547018550336360931396484375
+              maxAllowed: 5.962133916683182377482808078639209270477294921875
             name: name
             override:
-              memory: 1
-              cpumilli: 5
+              memory: 5
+              cpumilli: 2
+              cpuBurst: 7.061401241503109105224211816675961017608642578125
           spec:
             container:
               image: image
@@ -8189,8 +8219,9 @@ components:
     PlanOverride:
       description: App plan override.
       example:
-        memory: 1
-        cpumilli: 5
+        memory: 5
+        cpumilli: 2
+        cpuBurst: 7.061401241503109105224211816675961017608642578125
       properties:
         memory:
           format: int64
@@ -8199,6 +8230,9 @@ components:
         cpumilli:
           type: integer
           x-go-custom-type: '*int'
+        cpuBurst:
+          type: number
+          x-go-custom-type: '*float64'
       type: object
     VolumeBindID:
       example:
@@ -8245,10 +8279,14 @@ components:
           default: true
           memory: 0
           cpumilli: 0
+          cpuBurst:
+            default: 1.46581298050294517310021547018550336360931396484375
+            maxAllowed: 5.962133916683182377482808078639209270477294921875
           name: name
           override:
-            memory: 1
-            cpumilli: 5
+            memory: 5
+            cpumilli: 2
+            cpuBurst: 7.061401241503109105224211816675961017608642578125
         spec:
           container:
             image: image
@@ -8712,10 +8750,14 @@ components:
             default: true
             memory: 0
             cpumilli: 0
+            cpuBurst:
+              default: 1.46581298050294517310021547018550336360931396484375
+              maxAllowed: 5.962133916683182377482808078639209270477294921875
             name: name
             override:
-              memory: 1
-              cpumilli: 5
+              memory: 5
+              cpumilli: 2
+              cpuBurst: 7.061401241503109105224211816675961017608642578125
           owner: owner
           volumeBinds:
           - ReadOnly: true
@@ -8872,10 +8914,14 @@ components:
             default: true
             memory: 0
             cpumilli: 0
+            cpuBurst:
+              default: 1.46581298050294517310021547018550336360931396484375
+              maxAllowed: 5.962133916683182377482808078639209270477294921875
             name: name
             override:
-              memory: 1
-              cpumilli: 5
+              memory: 5
+              cpumilli: 2
+              cpuBurst: 7.061401241503109105224211816675961017608642578125
           owner: owner
           volumeBinds:
           - ReadOnly: true

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | [optional] 
 **Memory** | **int64** |  | [optional] 
 **Cpumilli** | **int32** |  | [optional] 
+**CpuBurst** | [**PlanCpuBurst**](Plan_cpuBurst.md) |  | [optional] 
 **Default** | **bool** |  | [optional] 
 **Override** | [**PlanOverride**](PlanOverride.md) |  | [optional] 
 

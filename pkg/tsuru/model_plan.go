@@ -14,6 +14,7 @@ type Plan struct {
 	Name     string       `json:"name,omitempty"`
 	Memory   int64        `json:"memory,omitempty"`
 	Cpumilli int32        `json:"cpumilli,omitempty"`
+	CpuBurst PlanCpuBurst `json:"cpuBurst,omitempty"`
 	Default  bool         `json:"default,omitempty"`
 	Override PlanOverride `json:"override,omitempty"`
 }

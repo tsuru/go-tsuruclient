@@ -251,6 +251,7 @@ Class | Method | HTTP request | Description
  - [PermissionData](docs/PermissionData.md)
  - [PermissionUser](docs/PermissionUser.md)
  - [Plan](docs/Plan.md)
+ - [PlanCpuBurst](docs/PlanCpuBurst.md)
  - [PlanOverride](docs/PlanOverride.md)
  - [PlanRouter](docs/PlanRouter.md)
  - [Platform](docs/Platform.md)
