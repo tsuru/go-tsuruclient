@@ -6169,6 +6169,39 @@ components:
           maxUnits: 2
           minUnits: 5
           version: 7
+        processesTweak:
+        - metadata:
+            annotations:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+            labels:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+          name: name
+        - metadata:
+            annotations:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+            labels:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+          name: name
         tags:
         - tags
         - tags
@@ -6243,6 +6276,10 @@ components:
           type: array
         metadata:
           $ref: '#/components/schemas/Metadata'
+        processesTweak:
+          items:
+            $ref: '#/components/schemas/App_processesTweak'
+          type: array
         router:
           description: App router.
           type: string
@@ -8787,6 +8824,39 @@ components:
             maxUnits: 2
             minUnits: 5
             version: 7
+          processesTweak:
+          - metadata:
+              annotations:
+              - name: name
+                value: value
+                delete: true
+              - name: name
+                value: value
+                delete: true
+              labels:
+              - name: name
+                value: value
+                delete: true
+              - name: name
+                value: value
+                delete: true
+            name: name
+          - metadata:
+              annotations:
+              - name: name
+                value: value
+                delete: true
+              - name: name
+                value: value
+                delete: true
+              labels:
+              - name: name
+                value: value
+                delete: true
+              - name: name
+                value: value
+                delete: true
+            name: name
           tags:
           - tags
           - tags
@@ -8951,6 +9021,39 @@ components:
             maxUnits: 2
             minUnits: 5
             version: 7
+          processesTweak:
+          - metadata:
+              annotations:
+              - name: name
+                value: value
+                delete: true
+              - name: name
+                value: value
+                delete: true
+              labels:
+              - name: name
+                value: value
+                delete: true
+              - name: name
+                value: value
+                delete: true
+            name: name
+          - metadata:
+              annotations:
+              - name: name
+                value: value
+                delete: true
+              - name: name
+                value: value
+                delete: true
+              labels:
+              - name: name
+                value: value
+                delete: true
+              - name: name
+                value: value
+                delete: true
+            name: name
           tags:
           - tags
           - tags
@@ -9014,6 +9117,29 @@ components:
         contextvalue:
           type: string
       type: object
+    App_processesTweak:
+      example:
+        metadata:
+          annotations:
+          - name: name
+            value: value
+            delete: true
+          - name: name
+            value: value
+            delete: true
+          labels:
+          - name: name
+            value: value
+            delete: true
+          - name: name
+            value: value
+            delete: true
+        name: name
+      properties:
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        name:
+          type: string
     Cluster_kubeConfig:
       example:
         cluster:

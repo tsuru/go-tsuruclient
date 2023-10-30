@@ -198,6 +198,7 @@ Class | Method | HTTP request | Description
  - [AppId](docs/AppId.md)
  - [AppInternalAddresses](docs/AppInternalAddresses.md)
  - [AppLock](docs/AppLock.md)
+ - [AppProcessesTweak](docs/AppProcessesTweak.md)
  - [AppRouter](docs/AppRouter.md)
  - [AppRouters](docs/AppRouters.md)
  - [AppRunOpts](docs/AppRunOpts.md)
