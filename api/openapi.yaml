@@ -6186,6 +6186,7 @@ components:
               value: value
               delete: true
           name: name
+          plan: plan
         - metadata:
             annotations:
             - name: name
@@ -6202,6 +6203,7 @@ components:
               value: value
               delete: true
           name: name
+          plan: plan
         tags:
         - tags
         - tags
@@ -6278,7 +6280,7 @@ components:
           $ref: '#/components/schemas/Metadata'
         processesTweak:
           items:
-            $ref: '#/components/schemas/App_processesTweak'
+            $ref: '#/components/schemas/ProcessTweak'
           type: array
         router:
           description: App router.
@@ -8841,6 +8843,7 @@ components:
                 value: value
                 delete: true
             name: name
+            plan: plan
           - metadata:
               annotations:
               - name: name
@@ -8857,6 +8860,7 @@ components:
                 value: value
                 delete: true
             name: name
+            plan: plan
           tags:
           - tags
           - tags
@@ -9038,6 +9042,7 @@ components:
                 value: value
                 delete: true
             name: name
+            plan: plan
           - metadata:
               annotations:
               - name: name
@@ -9054,6 +9059,7 @@ components:
                 value: value
                 delete: true
             name: name
+            plan: plan
           tags:
           - tags
           - tags
@@ -9117,29 +9123,6 @@ components:
         contextvalue:
           type: string
       type: object
-    App_processesTweak:
-      example:
-        metadata:
-          annotations:
-          - name: name
-            value: value
-            delete: true
-          - name: name
-            value: value
-            delete: true
-          labels:
-          - name: name
-            value: value
-            delete: true
-          - name: name
-            value: value
-            delete: true
-        name: name
-      properties:
-        metadata:
-          $ref: '#/components/schemas/Metadata'
-        name:
-          type: string
     Cluster_kubeConfig:
       example:
         cluster:
@@ -9535,6 +9518,33 @@ components:
           type: string
         Protocol:
           type: string
+    ProcessTweak:
+      example:
+        metadata:
+          annotations:
+          - name: name
+            value: value
+            delete: true
+          - name: name
+            value: value
+            delete: true
+          labels:
+          - name: name
+            value: value
+            delete: true
+          - name: name
+            value: value
+            delete: true
+        name: name
+        plan: plan
+      properties:
+        name:
+          type: string
+        plan:
+          type: string
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+      type: object
     EnvSetData:
       description: Data sent to the environment set endpoint.
       example:
@@ -9897,6 +9907,41 @@ components:
         description: description
         plan: plan
         platform: platform
+        processesTweak:
+        - metadata:
+            annotations:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+            labels:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+          name: name
+          plan: plan
+        - metadata:
+            annotations:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+            labels:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+          name: name
+          plan: plan
         tags:
         - tags
         - tags
@@ -9934,6 +9979,10 @@ components:
           type: string
         metadata:
           $ref: '#/components/schemas/Metadata'
+        processesTweak:
+          items:
+            $ref: '#/components/schemas/ProcessTweak'
+          type: array
       required:
       - name
       type: object

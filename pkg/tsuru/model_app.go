@@ -32,9 +32,9 @@ type App struct {
 	InternalAddresses    []AppInternalAddresses    `json:"internalAddresses,omitempty"`
 	VolumeBinds          []AppVolumeBinds          `json:"volumeBinds,omitempty"`
 	// App tags.
-	Tags           []string            `json:"tags,omitempty"`
-	Metadata       Metadata            `json:"metadata,omitempty"`
-	ProcessesTweak []AppProcessesTweak `json:"processesTweak,omitempty"`
+	Tags           []string       `json:"tags,omitempty"`
+	Metadata       Metadata       `json:"metadata,omitempty"`
+	ProcessesTweak []ProcessTweak `json:"processesTweak,omitempty"`
 	// App router.
 	Router string `json:"router,omitempty"`
 	// Custom router options.

@@ -27,6 +27,7 @@ type InputApp struct {
 	// App description.
 	Description string `json:"description,omitempty"`
 	// Team that owns the app.
-	TeamOwner string   `json:"teamOwner,omitempty"`
-	Metadata  Metadata `json:"metadata,omitempty"`
+	TeamOwner      string         `json:"teamOwner,omitempty"`
+	Metadata       Metadata       `json:"metadata,omitempty"`
+	ProcessesTweak []ProcessTweak `json:"processesTweak,omitempty"`
 }
