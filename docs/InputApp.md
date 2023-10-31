@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Description** | **string** | App description. | [optional] 
 **TeamOwner** | **string** | Team that owns the app. | [optional] 
 **Metadata** | [**Metadata**](Metadata.md) |  | [optional] 
-**ProcessesTweak** | [**[]ProcessTweak**](ProcessTweak.md) |  | [optional] 
+**Processes** | [**[]AppProcess**](AppProcess.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

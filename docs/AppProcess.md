@@ -1,4 +1,4 @@
-# ProcessTweak
+# AppProcess
 
 ## Properties
 Name | Type | Description | Notes

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **NoRestart** | **bool** | Prevent app restart. | [optional] 
 **ImageReset** | **bool** | Reset app image to platform base image. | [optional] 
 **Metadata** | [**Metadata**](Metadata.md) |  | [optional] 
-**ProcessesTweak** | [**[]ProcessTweak**](ProcessTweak.md) |  | [optional] 
+**Processes** | [**[]AppProcess**](AppProcess.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

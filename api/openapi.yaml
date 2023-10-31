@@ -6152,6 +6152,41 @@ components:
             App: App
             MountPoint: MountPoint
             Volume: Volume
+        processes:
+        - metadata:
+            annotations:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+            labels:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+          name: name
+          plan: plan
+        - metadata:
+            annotations:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+            labels:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+          name: name
+          plan: plan
         provisioner: provisioner
         teams:
         - teams
@@ -6169,41 +6204,6 @@ components:
           maxUnits: 2
           minUnits: 5
           version: 7
-        processesTweak:
-        - metadata:
-            annotations:
-            - name: name
-              value: value
-              delete: true
-            - name: name
-              value: value
-              delete: true
-            labels:
-            - name: name
-              value: value
-              delete: true
-            - name: name
-              value: value
-              delete: true
-          name: name
-          plan: plan
-        - metadata:
-            annotations:
-            - name: name
-              value: value
-              delete: true
-            - name: name
-              value: value
-              delete: true
-            labels:
-            - name: name
-              value: value
-              delete: true
-            - name: name
-              value: value
-              delete: true
-          name: name
-          plan: plan
         tags:
         - tags
         - tags
@@ -6278,9 +6278,9 @@ components:
           type: array
         metadata:
           $ref: '#/components/schemas/Metadata'
-        processesTweak:
+        processes:
           items:
-            $ref: '#/components/schemas/ProcessTweak'
+            $ref: '#/components/schemas/AppProcess'
           type: array
         router:
           description: App router.
@@ -6842,6 +6842,41 @@ components:
           - name: name
             value: value
             delete: true
+        processes:
+        - metadata:
+            annotations:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+            labels:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+          name: name
+          plan: plan
+        - metadata:
+            annotations:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+            labels:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+          name: name
+          plan: plan
         planoverride:
           memory: 5
           cpumilli: 2
@@ -6852,41 +6887,6 @@ components:
         description: description
         plan: plan
         platform: platform
-        processesTweak:
-        - metadata:
-            annotations:
-            - name: name
-              value: value
-              delete: true
-            - name: name
-              value: value
-              delete: true
-            labels:
-            - name: name
-              value: value
-              delete: true
-            - name: name
-              value: value
-              delete: true
-          name: name
-          plan: plan
-        - metadata:
-            annotations:
-            - name: name
-              value: value
-              delete: true
-            - name: name
-              value: value
-              delete: true
-            labels:
-            - name: name
-              value: value
-              delete: true
-            - name: name
-              value: value
-              delete: true
-          name: name
-          plan: plan
         tags:
         - tags
         - tags
@@ -6921,9 +6921,9 @@ components:
           type: boolean
         metadata:
           $ref: '#/components/schemas/Metadata'
-        processesTweak:
+        processes:
           items:
-            $ref: '#/components/schemas/ProcessTweak'
+            $ref: '#/components/schemas/AppProcess'
           type: array
       type: object
     SetRoutableArgs:
@@ -8848,6 +8848,41 @@ components:
               App: App
               MountPoint: MountPoint
               Volume: Volume
+          processes:
+          - metadata:
+              annotations:
+              - name: name
+                value: value
+                delete: true
+              - name: name
+                value: value
+                delete: true
+              labels:
+              - name: name
+                value: value
+                delete: true
+              - name: name
+                value: value
+                delete: true
+            name: name
+            plan: plan
+          - metadata:
+              annotations:
+              - name: name
+                value: value
+                delete: true
+              - name: name
+                value: value
+                delete: true
+              labels:
+              - name: name
+                value: value
+                delete: true
+              - name: name
+                value: value
+                delete: true
+            name: name
+            plan: plan
           provisioner: provisioner
           teams:
           - teams
@@ -8865,41 +8900,6 @@ components:
             maxUnits: 2
             minUnits: 5
             version: 7
-          processesTweak:
-          - metadata:
-              annotations:
-              - name: name
-                value: value
-                delete: true
-              - name: name
-                value: value
-                delete: true
-              labels:
-              - name: name
-                value: value
-                delete: true
-              - name: name
-                value: value
-                delete: true
-            name: name
-            plan: plan
-          - metadata:
-              annotations:
-              - name: name
-                value: value
-                delete: true
-              - name: name
-                value: value
-                delete: true
-              labels:
-              - name: name
-                value: value
-                delete: true
-              - name: name
-                value: value
-                delete: true
-            name: name
-            plan: plan
           tags:
           - tags
           - tags
@@ -9047,6 +9047,41 @@ components:
               App: App
               MountPoint: MountPoint
               Volume: Volume
+          processes:
+          - metadata:
+              annotations:
+              - name: name
+                value: value
+                delete: true
+              - name: name
+                value: value
+                delete: true
+              labels:
+              - name: name
+                value: value
+                delete: true
+              - name: name
+                value: value
+                delete: true
+            name: name
+            plan: plan
+          - metadata:
+              annotations:
+              - name: name
+                value: value
+                delete: true
+              - name: name
+                value: value
+                delete: true
+              labels:
+              - name: name
+                value: value
+                delete: true
+              - name: name
+                value: value
+                delete: true
+            name: name
+            plan: plan
           provisioner: provisioner
           teams:
           - teams
@@ -9064,41 +9099,6 @@ components:
             maxUnits: 2
             minUnits: 5
             version: 7
-          processesTweak:
-          - metadata:
-              annotations:
-              - name: name
-                value: value
-                delete: true
-              - name: name
-                value: value
-                delete: true
-              labels:
-              - name: name
-                value: value
-                delete: true
-              - name: name
-                value: value
-                delete: true
-            name: name
-            plan: plan
-          - metadata:
-              annotations:
-              - name: name
-                value: value
-                delete: true
-              - name: name
-                value: value
-                delete: true
-              labels:
-              - name: name
-                value: value
-                delete: true
-              - name: name
-                value: value
-                delete: true
-            name: name
-            plan: plan
           tags:
           - tags
           - tags
@@ -9557,33 +9557,6 @@ components:
           type: string
         Protocol:
           type: string
-    ProcessTweak:
-      example:
-        metadata:
-          annotations:
-          - name: name
-            value: value
-            delete: true
-          - name: name
-            value: value
-            delete: true
-          labels:
-          - name: name
-            value: value
-            delete: true
-          - name: name
-            value: value
-            delete: true
-        name: name
-        plan: plan
-      properties:
-        name:
-          type: string
-        plan:
-          type: string
-        metadata:
-          $ref: '#/components/schemas/Metadata'
-      type: object
     EnvSetData:
       description: Data sent to the environment set endpoint.
       example:
@@ -9849,6 +9822,33 @@ components:
         reason:
           type: string
       type: object
+    AppProcess:
+      example:
+        metadata:
+          annotations:
+          - name: name
+            value: value
+            delete: true
+          - name: name
+            value: value
+            delete: true
+          labels:
+          - name: name
+            value: value
+            delete: true
+          - name: name
+            value: value
+            delete: true
+        name: name
+        plan: plan
+      properties:
+        name:
+          type: string
+        plan:
+          type: string
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+      type: object
     Quota:
       example:
         limit: 1
@@ -9939,6 +9939,41 @@ components:
           - name: name
             value: value
             delete: true
+        processes:
+        - metadata:
+            annotations:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+            labels:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+          name: name
+          plan: plan
+        - metadata:
+            annotations:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+            labels:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+          name: name
+          plan: plan
         name: name
         pool: pool
         routeropts:
@@ -9946,41 +9981,6 @@ components:
         description: description
         plan: plan
         platform: platform
-        processesTweak:
-        - metadata:
-            annotations:
-            - name: name
-              value: value
-              delete: true
-            - name: name
-              value: value
-              delete: true
-            labels:
-            - name: name
-              value: value
-              delete: true
-            - name: name
-              value: value
-              delete: true
-          name: name
-          plan: plan
-        - metadata:
-            annotations:
-            - name: name
-              value: value
-              delete: true
-            - name: name
-              value: value
-              delete: true
-            labels:
-            - name: name
-              value: value
-              delete: true
-            - name: name
-              value: value
-              delete: true
-          name: name
-          plan: plan
         tags:
         - tags
         - tags
@@ -10018,9 +10018,9 @@ components:
           type: string
         metadata:
           $ref: '#/components/schemas/Metadata'
-        processesTweak:
+        processes:
           items:
-            $ref: '#/components/schemas/ProcessTweak'
+            $ref: '#/components/schemas/AppProcess'
           type: array
       required:
       - name

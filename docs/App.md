@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **VolumeBinds** | [**[]AppVolumeBinds**](App_volumeBinds.md) |  | [optional] 
 **Tags** | **[]string** | App tags. | [optional] 
 **Metadata** | [**Metadata**](Metadata.md) |  | [optional] 
-**ProcessesTweak** | [**[]ProcessTweak**](ProcessTweak.md) |  | [optional] 
+**Processes** | [**[]AppProcess**](AppProcess.md) |  | [optional] 
 **Router** | **string** | App router. | [optional] 
 **Routeropts** | **map[string]string** | Custom router options. | [optional] 
 **Plan** | [**Plan**](Plan.md) |  | [optional] 

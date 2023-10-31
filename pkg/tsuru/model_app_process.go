@@ -9,7 +9,7 @@
 
 package tsuru
 
-type ProcessTweak struct {
+type AppProcess struct {
 	Name     string   `json:"name,omitempty"`
 	Plan     string   `json:"plan,omitempty"`
 	Metadata Metadata `json:"metadata,omitempty"`
