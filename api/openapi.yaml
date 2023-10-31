@@ -6852,6 +6852,41 @@ components:
         description: description
         plan: plan
         platform: platform
+        processesTweak:
+        - metadata:
+            annotations:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+            labels:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+          name: name
+          plan: plan
+        - metadata:
+            annotations:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+            labels:
+            - name: name
+              value: value
+              delete: true
+            - name: name
+              value: value
+              delete: true
+          name: name
+          plan: plan
         tags:
         - tags
         - tags
@@ -6886,6 +6921,10 @@ components:
           type: boolean
         metadata:
           $ref: '#/components/schemas/Metadata'
+        processesTweak:
+          items:
+            $ref: '#/components/schemas/ProcessTweak'
+          type: array
       type: object
     SetRoutableArgs:
       example:
