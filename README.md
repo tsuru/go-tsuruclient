@@ -103,12 +103,6 @@ Class | Method | HTTP request | Description
 *JobApi* | [**ListJob**](docs/JobApi.md#listjob) | **Get** /1.13/jobs | 
 *JobApi* | [**TriggerJob**](docs/JobApi.md#triggerjob) | **Post** /1.13/jobs/{name}/trigger | 
 *JobApi* | [**UpdateJob**](docs/JobApi.md#updatejob) | **Put** /1.13/jobs/{name} | 
-*NodeApi* | [**NodeAdd**](docs/NodeApi.md#nodeadd) | **Post** /1.2/node | 
-*NodeApi* | [**NodeDelete**](docs/NodeApi.md#nodedelete) | **Delete** /1.2/node/{address} | 
-*NodeApi* | [**NodeGet**](docs/NodeApi.md#nodeget) | **Get** /1.2/node/{address} | 
-*NodeApi* | [**NodeList**](docs/NodeApi.md#nodelist) | **Get** /1.2/node | 
-*NodeApi* | [**NodeUpdate**](docs/NodeApi.md#nodeupdate) | **Put** /1.2/node | 
-*NodecontainerApi* | [**NodeContainerCreate**](docs/NodecontainerApi.md#nodecontainercreate) | **Post** /1.2/nodecontainers | 
 *PlanApi* | [**DeletePlan**](docs/PlanApi.md#deleteplan) | **Delete** /1.0/plans/{plan} | 
 *PlanApi* | [**PlanCreate**](docs/PlanApi.md#plancreate) | **Post** /1.0/plans | 
 *PlanApi* | [**PlanList**](docs/PlanApi.md#planlist) | **Get** /1.0/plans | 
@@ -170,9 +164,6 @@ Class | Method | HTTP request | Description
 *UserApi* | [**APITokenRegenerate**](docs/UserApi.md#apitokenregenerate) | **Post** /1.0/users/api-key | 
 *UserApi* | [**ChangePassword**](docs/UserApi.md#changepassword) | **Put** /1.0/users/password | 
 *UserApi* | [**ResetPassword**](docs/UserApi.md#resetpassword) | **Post** /1.0/users/{email}/password | 
-*UserApi* | [**SSHKeyAdd**](docs/UserApi.md#sshkeyadd) | **Post** /1.0/users/keys | 
-*UserApi* | [**SSHKeyList**](docs/UserApi.md#sshkeylist) | **Get** /1.0/users/keys | 
-*UserApi* | [**SSHKeyRemove**](docs/UserApi.md#sshkeyremove) | **Delete** /1.0/users/keys/{key} | 
 *UserApi* | [**UserCreate**](docs/UserApi.md#usercreate) | **Post** /1.0/users | 
 *UserApi* | [**UserDelete**](docs/UserApi.md#userdelete) | **Delete** /1.0/users | 
 *UserApi* | [**UserGet**](docs/UserApi.md#userget) | **Get** /1.0/users/info | 
@@ -228,27 +219,16 @@ Class | Method | HTTP request | Description
  - [EventTarget](docs/EventTarget.md)
  - [InputApp](docs/InputApp.md)
  - [InputJob](docs/InputJob.md)
- - [InputJobContainer](docs/InputJobContainer.md)
  - [Job](docs/Job.md)
  - [JobInfo](docs/JobInfo.md)
  - [JobServiceInstanceBind](docs/JobServiceInstanceBind.md)
  - [JobServiceInstanceUnbind](docs/JobServiceInstanceUnbind.md)
  - [JobSpec](docs/JobSpec.md)
+ - [JobSpecContainer](docs/JobSpecContainer.md)
  - [Lock](docs/Lock.md)
- - [Machine](docs/Machine.md)
  - [Metadata](docs/Metadata.md)
  - [MetadataItem](docs/MetadataItem.md)
  - [MiniApp](docs/MiniApp.md)
- - [Node](docs/Node.md)
- - [NodeAddData](docs/NodeAddData.md)
- - [NodeCheck](docs/NodeCheck.md)
- - [NodeCheckResult](docs/NodeCheckResult.md)
- - [NodeContainer](docs/NodeContainer.md)
- - [NodeContainerConfig](docs/NodeContainerConfig.md)
- - [NodeGetResponse](docs/NodeGetResponse.md)
- - [NodeListResponse](docs/NodeListResponse.md)
- - [NodeStatus](docs/NodeStatus.md)
- - [NodeUpdateData](docs/NodeUpdateData.md)
  - [PermissionData](docs/PermissionData.md)
  - [PermissionUser](docs/PermissionUser.md)
  - [Plan](docs/Plan.md)
@@ -291,8 +271,6 @@ Class | Method | HTTP request | Description
  - [ServiceList](docs/ServiceList.md)
  - [ServicePlan](docs/ServicePlan.md)
  - [SetRoutableArgs](docs/SetRoutableArgs.md)
- - [SshKeyAddData](docs/SshKeyAddData.md)
- - [SshKeyListResponse](docs/SshKeyListResponse.md)
  - [Team](docs/Team.md)
  - [TeamCreateArgs](docs/TeamCreateArgs.md)
  - [TeamGroup](docs/TeamGroup.md)

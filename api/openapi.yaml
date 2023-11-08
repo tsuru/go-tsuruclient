@@ -3468,105 +3468,6 @@ paths:
       - Bearer: []
       tags:
       - user
-  /1.0/users/keys:
-    get:
-      description: Show the list of the ssh keys of logged user.
-      operationId: SSHKeyList
-      responses:
-        200:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SSHKeyListResponse'
-          description: OK
-        400:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Invalid data
-        401:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Unauthorized
-      security:
-      - Bearer: []
-      tags:
-      - user
-    post:
-      description: Add SSH key to logged user.
-      operationId: SSHKeyAdd
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SSHKeyAddData'
-        required: true
-      responses:
-        200:
-          content: {}
-          description: Ok
-        400:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Invalid data
-        401:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Unauthorized
-        409:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Key already exists
-      security:
-      - Bearer: []
-      tags:
-      - user
-  /1.0/users/keys/{key}:
-    delete:
-      description: Delete one ssh key of logged user.
-      operationId: SSHKeyRemove
-      parameters:
-      - in: path
-        name: key
-        required: true
-        schema:
-          minLength: 1
-          type: string
-      responses:
-        200:
-          content: {}
-          description: Ok
-        400:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Invalid data
-        401:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Unauthorized
-        404:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Not found
-      security:
-      - Bearer: []
-      tags:
-      - user
   /1.0/users/info:
     get:
       description: Get information on logged user.
@@ -3770,166 +3671,6 @@ paths:
       - Bearer: []
       tags:
       - user
-  /1.2/node:
-    get:
-      description: List nodes.
-      operationId: NodeList
-      responses:
-        200:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NodeListResponse'
-          description: Nodes List.
-        204:
-          content: {}
-          description: No content.
-      security:
-      - Bearer: []
-      tags:
-      - node
-    post:
-      description: Add a node.
-      operationId: NodeAdd
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/NodeAddData'
-        required: true
-      responses:
-        201:
-          content: {}
-          description: Ok
-        400:
-          content:
-            application/x-json-stream:
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Invalid parameters
-        401:
-          content:
-            application/x-json-stream:
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Unauthorized
-      security:
-      - Bearer: []
-      tags:
-      - node
-    put:
-      description: Update node.
-      operationId: NodeUpdate
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/NodeUpdateData'
-        required: true
-      responses:
-        200:
-          content: {}
-          description: Ok
-        400:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Invalid data
-        401:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Unauthorized
-        404:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Not found
-      security:
-      - Bearer: []
-      tags:
-      - node
-  /1.2/node/{address}:
-    delete:
-      description: Remove node.
-      operationId: NodeDelete
-      parameters:
-      - description: Node address.
-        in: path
-        name: address
-        required: true
-        schema:
-          minLength: 1
-          type: string
-      - description: Trigger node rebalance.
-        in: query
-        name: no-rebalance
-        required: true
-        schema:
-          type: boolean
-      - description: Remove machine from IaaS.
-        in: query
-        name: remove-iaas
-        required: true
-        schema:
-          type: boolean
-      responses:
-        200:
-          content: {}
-          description: Ok
-        401:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Unauthorized
-        404:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Not found
-      security:
-      - Bearer: []
-      tags:
-      - node
-    get:
-      description: Get node information.
-      operationId: NodeGet
-      parameters:
-      - description: Node address.
-        in: path
-        name: address
-        required: true
-        schema:
-          minLength: 1
-          type: string
-      responses:
-        200:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NodeGetResponse'
-          description: Ok
-        401:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Unauthorized
-        404:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Not found
-      security:
-      - Bearer: []
-      tags:
-      - node
   /1.4/volumes:
     get:
       description: List volumes.
@@ -5521,36 +5262,6 @@ paths:
       - Bearer: []
       tags:
       - router
-  /1.2/nodecontainers:
-    post:
-      description: Creates container that runs on every node
-      operationId: NodeContainerCreate
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/NodeContainer'
-        required: true
-      responses:
-        200:
-          content: {}
-          description: Node container created
-        400:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Wrong configuration
-        401:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Unauthorized.
-      security:
-      - Bearer: []
-      tags:
-      - nodecontainer
   /1.9/roles/{role_name}/group:
     post:
       description: Assigns a role to a group.
@@ -6373,31 +6084,6 @@ components:
         disabled:
           type: boolean
       type: object
-    Node:
-      example:
-        provisioner: provisioner
-        metadata:
-          key: metadata
-        address: address
-        iaasid: iaasid
-        pool: pool
-        status: status
-      properties:
-        address:
-          type: string
-        iaasid:
-          type: string
-        status:
-          type: string
-        pool:
-          type: string
-        provisioner:
-          type: string
-        metadata:
-          additionalProperties:
-            type: string
-          type: object
-      type: object
     TeamTokenCreateArgs:
       description: Arguments for creating a new team token.
       example:
@@ -6811,19 +6497,6 @@ components:
           description: Custom volume options.
           type: object
       type: object
-    NodeCheckResult:
-      example:
-        err: err
-        name: name
-        successful: true
-      properties:
-        name:
-          type: string
-        err:
-          type: string
-        successful:
-          type: boolean
-      type: object
     UpdateApp:
       example:
         teamOwner: teamOwner
@@ -6947,48 +6620,6 @@ components:
         maxAllowed:
           type: number
           x-go-custom-type: float64
-    NodeListResponse:
-      example:
-        nodes:
-        - provisioner: provisioner
-          metadata:
-            key: metadata
-          address: address
-          iaasid: iaasid
-          pool: pool
-          status: status
-        - provisioner: provisioner
-          metadata:
-            key: metadata
-          address: address
-          iaasid: iaasid
-          pool: pool
-          status: status
-        machines:
-        - protocol: protocol
-          address: address
-          port: 0
-          creationparams:
-            key: creationparams
-          id: id
-          iaas: iaas
-        - protocol: protocol
-          address: address
-          port: 0
-          creationparams:
-            key: creationparams
-          id: id
-          iaas: iaas
-      properties:
-        nodes:
-          items:
-            $ref: '#/components/schemas/Node'
-          type: array
-        machines:
-          items:
-            $ref: '#/components/schemas/Machine'
-          type: array
-      type: object
     ServiceBroker_Config_AuthConfig:
       example:
         BearerConfig:
@@ -7124,50 +6755,6 @@ components:
         noRestart:
           type: boolean
         parameters:
-          additionalProperties:
-            type: string
-          type: object
-      type: object
-    NodeContainer:
-      description: Data sent to set up a node container
-      example:
-        name: name
-        pool: pool
-        config:
-          env:
-          - env
-          - env
-      properties:
-        name:
-          type: string
-        pool:
-          type: string
-        config:
-          $ref: '#/components/schemas/NodeContainer_config'
-      required:
-      - name
-      type: object
-    Machine:
-      example:
-        protocol: protocol
-        address: address
-        port: 0
-        creationparams:
-          key: creationparams
-        id: id
-        iaas: iaas
-      properties:
-        id:
-          type: string
-        iaas:
-          type: string
-        address:
-          type: string
-        port:
-          type: integer
-        protocol:
-          type: string
-        creationparams:
           additionalProperties:
             type: string
           type: object
@@ -7352,7 +6939,7 @@ components:
           type: integer
           x-go-custom-type: '*int64'
         container:
-          $ref: '#/components/schemas/InputJob_container'
+          $ref: '#/components/schemas/Job_spec_container'
       required:
       - name
       type: object
@@ -7502,61 +7089,6 @@ components:
           type: string
         acquireDate:
           type: string
-      type: object
-    NodeGetResponse:
-      example:
-        node:
-          provisioner: provisioner
-          metadata:
-            key: metadata
-          address: address
-          iaasid: iaasid
-          pool: pool
-          status: status
-        units:
-          address:
-            scheme: scheme
-            host: host
-          routable: true
-          processname: processname
-          ip: ip
-          type: type
-          version: 0
-          restarts: 6
-          createdAt: createdAt
-          appname: appname
-          ready: true
-          name: name
-          id: id
-          status: status
-        status:
-          address: address
-          checks:
-          - checks:
-            - err: err
-              name: name
-              successful: true
-            - err: err
-              name: name
-              successful: true
-            time: 2000-01-23T04:56:07.000+00:00
-          - checks:
-            - err: err
-              name: name
-              successful: true
-            - err: err
-              name: name
-              successful: true
-            time: 2000-01-23T04:56:07.000+00:00
-          lastsuccess: 2000-01-23T04:56:07.000+00:00
-          lastupdate: 2000-01-23T04:56:07.000+00:00
-      properties:
-        node:
-          $ref: '#/components/schemas/Node'
-        status:
-          $ref: '#/components/schemas/NodeStatus'
-        units:
-          $ref: '#/components/schemas/Unit'
       type: object
     AppRouter:
       description: Application Router
@@ -7959,15 +7491,6 @@ components:
           type: string
         username:
           type: string
-    SSHKeyAddData:
-      properties:
-        force:
-          type: boolean
-        key:
-          type: string
-        keyname:
-          type: string
-      type: object
     CertificateSetData:
       example:
         cname: cname
@@ -7993,6 +7516,34 @@ components:
       properties:
         token:
           type: string
+    Job_spec_container:
+      example:
+        image: image
+        envs:
+        - public: true
+          managedBy: managedBy
+          name: name
+          alias: alias
+          value: value
+        - public: true
+          managedBy: managedBy
+          name: name
+          alias: alias
+          value: value
+        command:
+        - command
+        - command
+      properties:
+        image:
+          type: string
+        envs:
+          items:
+            $ref: '#/components/schemas/EnvVar'
+          type: array
+        command:
+          items:
+            type: string
+          type: array
     Job_spec:
       example:
         container:
@@ -8016,7 +7567,7 @@ components:
         activeDeadlineSeconds: 0
       properties:
         container:
-          $ref: '#/components/schemas/InputJob_container'
+          $ref: '#/components/schemas/Job_spec_container'
         schedule:
           type: string
         manual:
@@ -8134,34 +7685,6 @@ components:
         teamowner:
           type: string
       type: object
-    InputJob_container:
-      example:
-        image: image
-        envs:
-        - public: true
-          managedBy: managedBy
-          name: name
-          alias: alias
-          value: value
-        - public: true
-          managedBy: managedBy
-          name: name
-          alias: alias
-          value: value
-        command:
-        - command
-        - command
-      properties:
-        image:
-          type: string
-        envs:
-          items:
-            $ref: '#/components/schemas/EnvVar'
-          type: array
-        command:
-          items:
-            type: string
-          type: array
     JobInfo:
       example:
         serviceInstanceBinds:
@@ -8492,25 +8015,6 @@ components:
           type: boolean
         ID:
           $ref: '#/components/schemas/App_ID'
-    NodeCheck:
-      example:
-        checks:
-        - err: err
-          name: name
-          successful: true
-        - err: err
-          name: name
-          successful: true
-        time: 2000-01-23T04:56:07.000+00:00
-      properties:
-        time:
-          format: date-time
-          type: string
-        checks:
-          items:
-            $ref: '#/components/schemas/NodeCheckResult'
-          type: array
-      type: object
     ServiceList:
       example:
         instances:
@@ -9209,76 +8713,6 @@ components:
         command:
           type: string
       type: object
-    NodeAddData:
-      example:
-        metadata:
-          key: metadata
-        address: address
-        clientcert: clientcert
-        clientkey: clientkey
-        cacert: cacert
-        waitto: 0
-        register: true
-      properties:
-        address:
-          type: string
-        cacert:
-          description: Docker API CA certificate.
-          type: string
-        clientcert:
-          description: Docker API client certificate.
-          type: string
-        clientkey:
-          description: Docker API client key.
-          type: string
-        register:
-          description: Register an existing node.
-          type: boolean
-        waitto:
-          description: Timeout in nanoseconds.
-          format: int64
-          type: integer
-        metadata:
-          additionalProperties:
-            type: string
-          type: object
-      type: object
-    NodeStatus:
-      example:
-        address: address
-        checks:
-        - checks:
-          - err: err
-            name: name
-            successful: true
-          - err: err
-            name: name
-            successful: true
-          time: 2000-01-23T04:56:07.000+00:00
-        - checks:
-          - err: err
-            name: name
-            successful: true
-          - err: err
-            name: name
-            successful: true
-          time: 2000-01-23T04:56:07.000+00:00
-        lastsuccess: 2000-01-23T04:56:07.000+00:00
-        lastupdate: 2000-01-23T04:56:07.000+00:00
-      properties:
-        address:
-          type: string
-        checks:
-          items:
-            $ref: '#/components/schemas/NodeCheck'
-          type: array
-        lastsuccess:
-          format: date-time
-          type: string
-        lastupdate:
-          format: date-time
-          type: string
-      type: object
     PermissionData:
       description: Add a permission
       example:
@@ -9443,25 +8877,6 @@ components:
         managedBy:
           type: string
       type: object
-    SSHKeyListResponse:
-      description: Response returned by User SSH Key List.
-      example:
-        keyname: keyname
-      properties:
-        keyname:
-          description: keyvalue
-          type: string
-      type: object
-    NodeContainer_config:
-      example:
-        env:
-        - env
-        - env
-      properties:
-        env:
-          items:
-            type: string
-          type: array
     ServiceBroker_Config:
       example:
         Context:
@@ -9882,28 +9297,6 @@ components:
             type: string
           type: array
         Blacklist:
-          type: boolean
-      type: object
-    NodeUpdateData:
-      example:
-        metadata:
-          key: metadata
-        address: address
-        enable: true
-        disable: true
-        pool: pool
-      properties:
-        address:
-          type: string
-        pool:
-          type: string
-        metadata:
-          additionalProperties:
-            type: string
-          type: object
-        enable:
-          type: boolean
-        disable:
           type: boolean
       type: object
     RoleAddData:

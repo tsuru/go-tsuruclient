@@ -9,8 +9,8 @@
 
 package tsuru
 
-type SshKeyAddData struct {
-	Force   bool   `json:"force,omitempty"`
-	Key     string `json:"key,omitempty"`
-	Keyname string `json:"keyname,omitempty"`
+type JobSpecContainer struct {
+	Image   string   `json:"image,omitempty"`
+	Envs    []EnvVar `json:"envs,omitempty"`
+	Command []string `json:"command,omitempty"`
 }

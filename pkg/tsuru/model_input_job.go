@@ -28,6 +28,6 @@ type InputJob struct {
 	// create a manual job.
 	Manual bool `json:"manual,omitempty"`
 	// job active deadline seconds.
-	ActiveDeadlineSeconds *int64            `json:"activeDeadlineSeconds,omitempty"`
-	Container             InputJobContainer `json:"container,omitempty"`
+	ActiveDeadlineSeconds *int64           `json:"activeDeadlineSeconds,omitempty"`
+	Container             JobSpecContainer `json:"container,omitempty"`
 }

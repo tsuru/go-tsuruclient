@@ -8,9 +8,6 @@ Method | HTTP request | Description
 [**APITokenRegenerate**](UserApi.md#APITokenRegenerate) | **Post** /1.0/users/api-key | 
 [**ChangePassword**](UserApi.md#ChangePassword) | **Put** /1.0/users/password | 
 [**ResetPassword**](UserApi.md#ResetPassword) | **Post** /1.0/users/{email}/password | 
-[**SSHKeyAdd**](UserApi.md#SSHKeyAdd) | **Post** /1.0/users/keys | 
-[**SSHKeyList**](UserApi.md#SSHKeyList) | **Get** /1.0/users/keys | 
-[**SSHKeyRemove**](UserApi.md#SSHKeyRemove) | **Delete** /1.0/users/keys/{key} | 
 [**UserCreate**](UserApi.md#UserCreate) | **Post** /1.0/users | 
 [**UserDelete**](UserApi.md#UserDelete) | **Delete** /1.0/users | 
 [**UserGet**](UserApi.md#UserGet) | **Get** /1.0/users/info | 
@@ -129,86 +126,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **SSHKeyAdd**
-> SSHKeyAdd(ctx, sshKeyAddData)
-
-
-Add SSH key to logged user.
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **sshKeyAddData** | [**SshKeyAddData**](SshKeyAddData.md)|  | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **SSHKeyList**
-> SshKeyListResponse SSHKeyList(ctx, )
-
-
-Show the list of the ssh keys of logged user.
-
-### Required Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**SshKeyListResponse**](SSHKeyListResponse.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **SSHKeyRemove**
-> SSHKeyRemove(ctx, key)
-
-
-Delete one ssh key of logged user.
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **key** | **string**|  | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

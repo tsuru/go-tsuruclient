@@ -10,9 +10,9 @@
 package tsuru
 
 type JobSpec struct {
-	Container InputJobContainer `json:"container,omitempty"`
-	Schedule  string            `json:"schedule,omitempty"`
-	Manual    bool              `json:"manual,omitempty"`
+	Container JobSpecContainer `json:"container,omitempty"`
+	Schedule  string           `json:"schedule,omitempty"`
+	Manual    bool             `json:"manual,omitempty"`
 	// job active deadline seconds.
 	ActiveDeadlineSeconds int64 `json:"activeDeadlineSeconds,omitempty"`
 }
