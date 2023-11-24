@@ -1,4 +1,4 @@
-# JobSpecContainer
+# InputJobContainer
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,12 +1,12 @@
-# JobSpec
+# AutoScaleSchedule
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Container** | [**InputJobContainer**](InputJob_container.md) |  | [optional] 
-**Schedule** | **string** |  | [optional] 
-**Manual** | **bool** |  | [optional] 
-**ActiveDeadlineSeconds** | **int64** | job active deadline seconds. | [optional] 
+**MinReplicas** | **int32** |  | [optional] 
+**Start** | **string** |  | [optional] 
+**End** | **string** |  | [optional] 
+**Timezone** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
