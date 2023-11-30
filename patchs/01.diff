@@ -5,8 +5,9 @@ index f4d70f3..a8704c2 100644
 @@ -14,7 +14,7 @@ type ClusterKubeConfigUser struct {
  	ClientCertificateData string                            `json:"client-certificate-data,omitempty"`
  	ClientKeyData         string                            `json:"client-key-data,omitempty"`
- 	AuthProvider          ClusterKubeConfigUserAuthprovider `json:"auth-provider,omitempty"`
+-	AuthProvider          ClusterKubeConfigUserAuthprovider `json:"auth-provider,omitempty"`
 -	Exec                  ClusterKubeConfigUserExec         `json:"exec,omitempty"`
++	AuthProvider          *ClusterKubeConfigUserAuthprovider `json:"auth-provider,omitempty"`
 +	Exec                  *ClusterKubeConfigUserExec        `json:"exec,omitempty"`
  	Token                 string                            `json:"token,omitempty"`
  	Username              string                            `json:"username,omitempty"`

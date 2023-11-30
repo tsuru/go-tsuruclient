@@ -6851,6 +6851,7 @@ components:
         - args
         - args
         apiVersion: apiVersion
+        interactiveMode: interactiveMode
         env:
         - name: name
           value: value
@@ -6863,6 +6864,8 @@ components:
             type: string
           type: array
         apiVersion:
+          type: string
+        interactiveMode:
           type: string
         env:
           items:
@@ -7516,6 +7519,7 @@ components:
           - args
           - args
           apiVersion: apiVersion
+          interactiveMode: interactiveMode
           env:
           - name: name
             value: value
@@ -8770,6 +8774,7 @@ components:
             - args
             - args
             apiVersion: apiVersion
+            interactiveMode: interactiveMode
             env:
             - name: name
               value: value
@@ -9197,6 +9202,7 @@ components:
               - args
               - args
               apiVersion: apiVersion
+              interactiveMode: interactiveMode
               env:
               - name: name
                 value: value

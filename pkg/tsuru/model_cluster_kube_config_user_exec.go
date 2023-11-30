@@ -10,8 +10,9 @@
 package tsuru
 
 type ClusterKubeConfigUserExec struct {
-	Args       []string                       `json:"args,omitempty"`
-	ApiVersion string                         `json:"apiVersion,omitempty"`
-	Env        []ClusterKubeConfigUserExecEnv `json:"env,omitempty"`
-	Command    string                         `json:"command,omitempty"`
+	Args            []string                       `json:"args,omitempty"`
+	ApiVersion      string                         `json:"apiVersion,omitempty"`
+	InteractiveMode string                         `json:"interactiveMode,omitempty"`
+	Env             []ClusterKubeConfigUserExecEnv `json:"env,omitempty"`
+	Command         string                         `json:"command,omitempty"`
 }

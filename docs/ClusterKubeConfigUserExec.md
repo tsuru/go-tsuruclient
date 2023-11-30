@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Args** | **[]string** |  | [optional] 
 **ApiVersion** | **string** |  | [optional] 
+**InteractiveMode** | **string** |  | [optional] 
 **Env** | [**[]ClusterKubeConfigUserExecEnv**](Cluster_kubeConfig_user_exec_env.md) |  | [optional] 
 **Command** | **string** |  | [optional] 
 
