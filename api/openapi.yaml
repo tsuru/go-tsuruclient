@@ -7592,6 +7592,7 @@ components:
           - command
           - command
         schedule: schedule
+        concurrencyPolicy: concurrencyPolicy
         manual: true
         activeDeadlineSeconds: 0
       properties:
@@ -7599,6 +7600,10 @@ components:
           $ref: '#/components/schemas/InputJob_container'
         schedule:
           type: string
+        concurrencyPolicy:
+          description: concurrency policy.
+          type: string
+          x-go-custom-type: '*string'
         manual:
           type: boolean
         activeDeadlineSeconds:
@@ -7836,6 +7841,7 @@ components:
               - command
               - command
             schedule: schedule
+            concurrencyPolicy: concurrencyPolicy
             manual: true
             activeDeadlineSeconds: 0
       properties:
@@ -7963,6 +7969,7 @@ components:
             - command
             - command
           schedule: schedule
+          concurrencyPolicy: concurrencyPolicy
           manual: true
           activeDeadlineSeconds: 0
       properties:

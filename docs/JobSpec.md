@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Container** | [**InputJobContainer**](InputJob_container.md) |  | [optional] 
 **Schedule** | **string** |  | [optional] 
+**ConcurrencyPolicy** | **string** | concurrency policy. | [optional] 
 **Manual** | **bool** |  | [optional] 
 **ActiveDeadlineSeconds** | **int64** | job active deadline seconds. | [optional] 
 
