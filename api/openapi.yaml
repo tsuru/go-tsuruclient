@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   description: Open source, extensible and Docker-based Platform as a Service (PaaS)
   title: Tsuru
-  version: "1.19"
+  version: "1.20"
 servers:
 - url: /
 paths:
@@ -6936,6 +6936,7 @@ components:
         name: name
         pool: pool
         description: description
+        concurrencyPolicy: concurrencyPolicy
         manual: true
         plan: plan
         activeDeadlineSeconds: 0
@@ -6976,6 +6977,10 @@ components:
           format: int64
           type: integer
           x-go-custom-type: '*int64'
+        concurrencyPolicy:
+          description: concurrency policy.
+          type: string
+          x-go-custom-type: '*string'
         container:
           $ref: '#/components/schemas/InputJob_container'
       required:
