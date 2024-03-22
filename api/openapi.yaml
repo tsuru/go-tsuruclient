@@ -7610,6 +7610,7 @@ components:
           description: job active deadline seconds.
           format: int64
           type: integer
+          x-go-custom-type: '*int64'
     Unit:
       example:
         address:

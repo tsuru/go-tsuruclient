@@ -16,5 +16,5 @@ type JobSpec struct {
 	ConcurrencyPolicy *string `json:"concurrencyPolicy,omitempty"`
 	Manual            bool    `json:"manual,omitempty"`
 	// job active deadline seconds.
-	ActiveDeadlineSeconds int64 `json:"activeDeadlineSeconds,omitempty"`
+	ActiveDeadlineSeconds *int64 `json:"activeDeadlineSeconds,omitempty"`
 }
