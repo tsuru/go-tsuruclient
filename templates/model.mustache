@@ -28,6 +28,14 @@ const (
 	{{/allowableValues}}
 ){{/isEnum}}{{^isEnum}}{{#description}}
 // {{{description}}}{{/description}}
+{{#vendorExtensions.x-go-custom-import}}
+import (
+	"{{{ . }}}"
+)
+
+type {{classname}} {{{ vendorExtensions.x-go-custom-type }}}
+{{/vendorExtensions.x-go-custom-import}}
+{{^vendorExtensions.x-go-custom-import}}
 type {{classname}} struct {
 {{#vars}}
 {{^-first}}
@@ -38,6 +46,7 @@ type {{classname}} struct {
 	{{name}} {{#vendorExtensions.x-go-custom-type}}{{{.}}}{{/vendorExtensions.x-go-custom-type}}{{^vendorExtensions.x-go-custom-type}}{{{dataType}}}{{/vendorExtensions.x-go-custom-type}} `json:"{{baseName}}{{^required}},omitempty{{/required}}"{{#withXml}} xml:"{{baseName}}{{#isXmlAttribute}},attr{{/isXmlAttribute}}"{{/withXml}}{{#vendorExtensions.x-go-custom-tag}} {{{.}}}{{/vendorExtensions.x-go-custom-tag}}`
 {{/vars}}
 }
+{{/vendorExtensions.x-go-custom-import}}
 {{/isEnum}}
 {{/model}}
 {{/models}}
