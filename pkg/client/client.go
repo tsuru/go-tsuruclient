@@ -1,8 +1,11 @@
 package client
 
 import (
+	"net/http"
+
 	"github.com/tsuru/go-tsuruclient/pkg/config"
 	"github.com/tsuru/go-tsuruclient/pkg/tsuru"
+	"golang.org/x/oauth2"
 )
 
 func ClientFromEnvironment(cfg *tsuru.Configuration) (*tsuru.APIClient, error) {
@@ -27,4 +30,26 @@ func ClientFromEnvironment(cfg *tsuru.Configuration) (*tsuru.APIClient, error) {
 	}
 	cli := tsuru.NewAPIClient(cfg)
 	return cli, nil
+}
+
+func RoundTripperAndTokenProvider() (http.RoundTripper, config.TokenProvider, error) {
+	tokenV2, err := config.ReadTokenV2()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	teamToken := config.ReadTeamToken()
+	if tokenV2 != nil && tokenV2.Scheme == "oidc" && teamToken == "" {
+		oidcTokenSource := NewOIDCTokenSource(tokenV2)
+		tokenProvider := &OIDCTokenProvider{OAuthTokenSource: oidcTokenSource}
+
+		roundTripper := &oauth2.Transport{
+			Base:   http.DefaultTransport,
+			Source: oidcTokenSource,
+		}
+
+		return roundTripper, tokenProvider, nil
+	}
+
+	return NewTokenV1RoundTripper(), config.TokenProviderV1(), nil
 }
