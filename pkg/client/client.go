@@ -1,8 +1,8 @@
 package client
 
 import (
+	"github.com/tsuru/go-tsuruclient/pkg/config"
 	"github.com/tsuru/go-tsuruclient/pkg/tsuru"
-	"github.com/tsuru/tsuru/cmd"
 )
 
 func ClientFromEnvironment(cfg *tsuru.Configuration) (*tsuru.APIClient, error) {
@@ -11,7 +11,7 @@ func ClientFromEnvironment(cfg *tsuru.Configuration) (*tsuru.APIClient, error) {
 	}
 	var err error
 	if cfg.BasePath == "" {
-		cfg.BasePath, err = cmd.GetTarget()
+		cfg.BasePath, err = config.GetTarget()
 		if err != nil {
 			return nil, err
 		}
@@ -20,7 +20,8 @@ func ClientFromEnvironment(cfg *tsuru.Configuration) (*tsuru.APIClient, error) {
 		cfg.DefaultHeader = map[string]string{}
 	}
 	if _, authSet := cfg.DefaultHeader["Authorization"]; !authSet {
-		if token, tokenErr := cmd.ReadToken(); tokenErr == nil && token != "" {
+		// TODO: use transport instead of token v1
+		if token, tokenErr := config.ReadTokenV1(); tokenErr == nil && token != "" {
 			cfg.DefaultHeader["Authorization"] = "bearer " + token
 		}
 	}
