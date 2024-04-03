@@ -23,8 +23,23 @@ func ClientFromEnvironment(cfg *tsuru.Configuration) (*tsuru.APIClient, error) {
 		cfg.DefaultHeader = map[string]string{}
 	}
 	if _, authSet := cfg.DefaultHeader["Authorization"]; !authSet {
-		// TODO: use transport instead of token v1
-		if token, tokenErr := config.ReadTokenV1(); tokenErr == nil && token != "" {
+		tokenV2, err := config.ReadTokenV2()
+		if err != nil {
+			return nil, err
+		}
+
+		teamToken := config.ReadTeamToken()
+		if tokenV2 != nil && tokenV2.Scheme == "oidc" && teamToken == "" {
+			oidcTokenSource := NewOIDCTokenSource(tokenV2)
+			config.DefaultTokenProvider = &OIDCTokenProvider{OAuthTokenSource: oidcTokenSource}
+
+			cfg.HTTPClient = &http.Client{
+				Transport: &oauth2.Transport{
+					Base:   http.DefaultTransport,
+					Source: oidcTokenSource,
+				},
+			}
+		} else if token, tokenErr := config.ReadTokenV1(); tokenErr == nil && token != "" {
 			cfg.DefaultHeader["Authorization"] = "bearer " + token
 		}
 	}
