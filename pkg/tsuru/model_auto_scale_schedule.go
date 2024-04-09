@@ -11,6 +11,7 @@ package tsuru
 
 // Auto Scale schedules struct
 type AutoScaleSchedule struct {
+	Name        string `json:"name,omitempty"`
 	MinReplicas int32  `json:"minReplicas,omitempty"`
 	Start       string `json:"start,omitempty"`
 	End         string `json:"end,omitempty"`

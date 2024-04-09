@@ -198,6 +198,7 @@ Class | Method | HTTP request | Description
  - [AppVolumeBinds](docs/AppVolumeBinds.md)
  - [AssignGroupArgs](docs/AssignGroupArgs.md)
  - [AssignTokenArgs](docs/AssignTokenArgs.md)
+ - [AutoScalePrometheus](docs/AutoScalePrometheus.md)
  - [AutoScaleSchedule](docs/AutoScaleSchedule.md)
  - [AutoScaleSpec](docs/AutoScaleSpec.md)
  - [CertificateSetData](docs/CertificateSetData.md)
