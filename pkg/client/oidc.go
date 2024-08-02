@@ -30,7 +30,8 @@ func (t *TokenSourceFSStorage) Token() (*oauth2.Token, error) {
 	}
 
 	if !reflect.DeepEqual(t.LastToken.OAuth2Token, newToken) {
-		fmt.Fprintf(os.Stderr, "The OIDC token was refreshed and expiry in %s\n", time.Since(newToken.Expiry)*-1)
+		tokenExpiry := time.Since(newToken.Expiry) * -1
+		fmt.Fprintf(os.Stderr, "The OIDC token was refreshed and expiry in %s\n", tokenExpiry.Round(time.Second))
 
 		t.LastToken.OAuth2Token = newToken
 		err = config.WriteTokenV2(*t.LastToken)
