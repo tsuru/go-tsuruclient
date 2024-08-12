@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   description: Open source, extensible and Docker-based Platform as a Service (PaaS)
   title: Tsuru
-  version: "1.20"
+  version: "1.22"
 servers:
 - url: /
 paths:
@@ -5899,6 +5899,7 @@ components:
           name: name
           plan: plan
         provisioner: provisioner
+        dashboardURL: dashboardURL
         teams:
         - teams
         - teams
@@ -6080,6 +6081,8 @@ components:
           items:
             $ref: '#/components/schemas/AutoScaleSpec'
           type: array
+        dashboardURL:
+          type: string
       required:
       - name
       type: object
@@ -7796,6 +7799,7 @@ components:
           type: array
     JobInfo:
       example:
+        dashboardURL: dashboardURL
         serviceInstanceBinds:
         - instance: instance
           service: service
@@ -7898,6 +7902,8 @@ components:
           items:
             $ref: '#/components/schemas/Unit'
           type: array
+        dashboardURL:
+          type: string
         serviceInstanceBinds:
           description: Service instance binds on the job
           items:
@@ -8499,6 +8505,7 @@ components:
             name: name
             plan: plan
           provisioner: provisioner
+          dashboardURL: dashboardURL
           teams:
           - teams
           - teams
@@ -8742,6 +8749,7 @@ components:
             name: name
             plan: plan
           provisioner: provisioner
+          dashboardURL: dashboardURL
           teams:
           - teams
           - teams

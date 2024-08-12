@@ -32,6 +32,7 @@ Name | Type | Description | Notes
 **Ip** | **string** |  | [optional] 
 **Owner** | **string** |  | [optional] 
 **Autoscale** | [**[]AutoScaleSpec**](AutoScaleSpec.md) |  | [optional] 
+**DashboardURL** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
