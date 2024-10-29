@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Schedules** | [**[]AutoScaleSchedule**](AutoScaleSchedule.md) |  | [optional] 
 **Prometheus** | [**[]AutoScalePrometheus**](AutoScalePrometheus.md) |  | [optional] 
 **Version** | **int32** |  | [optional] 
+**Behavior** | [**AutoScaleSpecBehavior**](AutoScaleSpec_behavior.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

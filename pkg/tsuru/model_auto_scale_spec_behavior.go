@@ -9,8 +9,7 @@
 
 package tsuru
 
-// App metadata such as custom labels and annotations.
-type Metadata struct {
-	Annotations []MetadataItem `json:"annotations,omitempty"`
-	Labels      []MetadataItem `json:"labels,omitempty"`
+// Behavior settings for scaling actions
+type AutoScaleSpecBehavior struct {
+	ScaleDown AutoScaleSpecBehaviorScaleDown `json:"scaleDown,omitempty"`
 }
