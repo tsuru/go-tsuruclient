@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   description: Open source, extensible and Docker-based Platform as a Service (PaaS)
   title: Tsuru
-  version: "1.22"
+  version: "1.24"
 servers:
 - url: /
 paths:
@@ -5932,6 +5932,11 @@ components:
             name: name
             threshold: 9.301444243932575517419536481611430644989013671875
             activationThreshold: 3.61607674925191080461672754609026014804840087890625
+          behavior:
+            scaleDown:
+              stabilizationWindow: 4
+              unitsPolicyValue: 7
+              percentagePolicyValue: 1
           version: 2
         - process: process
           averageCPU: averageCPU
@@ -5959,6 +5964,11 @@ components:
             name: name
             threshold: 9.301444243932575517419536481611430644989013671875
             activationThreshold: 3.61607674925191080461672754609026014804840087890625
+          behavior:
+            scaleDown:
+              stabilizationWindow: 4
+              unitsPolicyValue: 7
+              percentagePolicyValue: 1
           version: 2
         tags:
         - tags
@@ -6564,6 +6574,21 @@ components:
           description: Custom volume options.
           type: object
       type: object
+    AutoScaleSpec_behavior_scaleDown:
+      example:
+        stabilizationWindow: 4
+        unitsPolicyValue: 7
+        percentagePolicyValue: 1
+      properties:
+        stabilizationWindow:
+          description: Time in seconds for stabilization before scaling down
+          type: integer
+        unitsPolicyValue:
+          description: Minimum number of units to scale down
+          type: integer
+        percentagePolicyValue:
+          description: Percentage threshold for scaling down
+          type: integer
     UpdateApp:
       example:
         teamOwner: teamOwner
@@ -7112,6 +7137,11 @@ components:
           name: name
           threshold: 9.301444243932575517419536481611430644989013671875
           activationThreshold: 3.61607674925191080461672754609026014804840087890625
+        behavior:
+          scaleDown:
+            stabilizationWindow: 4
+            unitsPolicyValue: 7
+            percentagePolicyValue: 1
         version: 2
       properties:
         process:
@@ -7132,6 +7162,8 @@ components:
           type: array
         version:
           type: integer
+        behavior:
+          $ref: '#/components/schemas/AutoScaleSpec_behavior'
       type: object
     Provisioner:
       example:
@@ -8538,6 +8570,11 @@ components:
               name: name
               threshold: 9.301444243932575517419536481611430644989013671875
               activationThreshold: 3.61607674925191080461672754609026014804840087890625
+            behavior:
+              scaleDown:
+                stabilizationWindow: 4
+                unitsPolicyValue: 7
+                percentagePolicyValue: 1
             version: 2
           - process: process
             averageCPU: averageCPU
@@ -8565,6 +8602,11 @@ components:
               name: name
               threshold: 9.301444243932575517419536481611430644989013671875
               activationThreshold: 3.61607674925191080461672754609026014804840087890625
+            behavior:
+              scaleDown:
+                stabilizationWindow: 4
+                unitsPolicyValue: 7
+                percentagePolicyValue: 1
             version: 2
           tags:
           - tags
@@ -8782,6 +8824,11 @@ components:
               name: name
               threshold: 9.301444243932575517419536481611430644989013671875
               activationThreshold: 3.61607674925191080461672754609026014804840087890625
+            behavior:
+              scaleDown:
+                stabilizationWindow: 4
+                unitsPolicyValue: 7
+                percentagePolicyValue: 1
             version: 2
           - process: process
             averageCPU: averageCPU
@@ -8809,6 +8856,11 @@ components:
               name: name
               threshold: 9.301444243932575517419536481611430644989013671875
               activationThreshold: 3.61607674925191080461672754609026014804840087890625
+            behavior:
+              scaleDown:
+                stabilizationWindow: 4
+                unitsPolicyValue: 7
+                percentagePolicyValue: 1
             version: 2
           tags:
           - tags
@@ -9507,6 +9559,16 @@ components:
           format: int64
           type: integer
       type: object
+    AutoScaleSpec_behavior:
+      description: Behavior settings for scaling actions
+      example:
+        scaleDown:
+          stabilizationWindow: 4
+          unitsPolicyValue: 7
+          percentagePolicyValue: 1
+      properties:
+        scaleDown:
+          $ref: '#/components/schemas/AutoScaleSpec_behavior_scaleDown'
     PoolConstraintSet:
       example:
         Field: Field
