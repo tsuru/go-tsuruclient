@@ -6583,12 +6583,15 @@ components:
         stabilizationWindow:
           description: Time in seconds for stabilization before scaling down
           type: integer
+          x-go-custom-type: '*int32'
         unitsPolicyValue:
           description: Minimum number of units to scale down
           type: integer
+          x-go-custom-type: '*int32'
         percentagePolicyValue:
           description: Percentage threshold for scaling down
           type: integer
+          x-go-custom-type: '*int32'
     UpdateApp:
       example:
         teamOwner: teamOwner

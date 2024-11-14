@@ -11,9 +11,9 @@ package tsuru
 
 type AutoScaleSpecBehaviorScaleDown struct {
 	// Time in seconds for stabilization before scaling down
-	StabilizationWindow int32 `json:"stabilizationWindow,omitempty"`
+	StabilizationWindow *int32 `json:"stabilizationWindow,omitempty"`
 	// Minimum number of units to scale down
-	UnitsPolicyValue int32 `json:"unitsPolicyValue,omitempty"`
+	UnitsPolicyValue *int32 `json:"unitsPolicyValue,omitempty"`
 	// Percentage threshold for scaling down
-	PercentagePolicyValue int32 `json:"percentagePolicyValue,omitempty"`
+	PercentagePolicyValue *int32 `json:"percentagePolicyValue,omitempty"`
 }
