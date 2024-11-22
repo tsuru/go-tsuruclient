@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**AppDelete**](AppApi.md#AppDelete) | **Delete** /1.0/apps/{app} | 
 [**AppDeploy**](AppApi.md#AppDeploy) | **Post** /1.0/apps/{app}/deploy | 
 [**AppGet**](AppApi.md#AppGet) | **Get** /1.0/apps/{app} | 
+[**AppGetCertificates**](AppApi.md#AppGetCertificates) | **Get** /1.24/apps/{app}/certificate | 
 [**AppList**](AppApi.md#AppList) | **Get** /1.0/apps | 
 [**AppQuotaChange**](AppApi.md#AppQuotaChange) | **Put** /1.0/apps/{app}/quota | 
 [**AppQuotaGet**](AppApi.md#AppQuotaGet) | **Get** /1.0/apps/{app}/quota | 
@@ -256,6 +257,34 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**App**](App.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AppGetCertificates**
+> AppCertificates AppGetCertificates(ctx, app)
+
+
+Get the certificate for the app.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **app** | **string**| Application name | 
+
+### Return type
+
+[**AppCertificates**](AppCertificates.md)
 
 ### Authorization
 

@@ -9,7 +9,6 @@
 
 package tsuru
 
-type AppSetCertIssuer struct {
-	Cname  string `json:"cname,omitempty"`
-	Issuer string `json:"issuer,omitempty"`
+type AppCertificates struct {
+	Routers map[string]AppCertificatesRouters `json:"routers"`
 }

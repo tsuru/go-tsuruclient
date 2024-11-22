@@ -37,6 +37,7 @@ Class | Method | HTTP request | Description
 *AppApi* | [**AppDelete**](docs/AppApi.md#appdelete) | **Delete** /1.0/apps/{app} | 
 *AppApi* | [**AppDeploy**](docs/AppApi.md#appdeploy) | **Post** /1.0/apps/{app}/deploy | 
 *AppApi* | [**AppGet**](docs/AppApi.md#appget) | **Get** /1.0/apps/{app} | 
+*AppApi* | [**AppGetCertificates**](docs/AppApi.md#appgetcertificates) | **Get** /1.24/apps/{app}/certificate | 
 *AppApi* | [**AppList**](docs/AppApi.md#applist) | **Get** /1.0/apps | 
 *AppApi* | [**AppQuotaChange**](docs/AppApi.md#appquotachange) | **Put** /1.0/apps/{app}/quota | 
 *AppApi* | [**AppQuotaGet**](docs/AppApi.md#appquotaget) | **Get** /1.0/apps/{app}/quota | 
@@ -187,6 +188,9 @@ Class | Method | HTTP request | Description
 
  - [App](docs/App.md)
  - [AppCName](docs/AppCName.md)
+ - [AppCertificates](docs/AppCertificates.md)
+ - [AppCertificatesCnames](docs/AppCertificatesCnames.md)
+ - [AppCertificatesRouters](docs/AppCertificatesRouters.md)
  - [AppCreateResponse](docs/AppCreateResponse.md)
  - [AppId](docs/AppId.md)
  - [AppInternalAddresses](docs/AppInternalAddresses.md)

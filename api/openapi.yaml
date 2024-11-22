@@ -1577,6 +1577,40 @@ paths:
       - Bearer: []
       tags:
       - app
+  /1.24/apps/{app}/certificate:
+    get:
+      description: Get the certificate for the app.
+      operationId: AppGetCertificates
+      parameters:
+      - description: Application name
+        in: path
+        name: app
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppCertificates'
+          description: Certificate found
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
   /1.24/apps/{app}/certissuer:
     delete:
       description: Unset the certificate issuer for the app.
@@ -6665,6 +6699,22 @@ components:
           description: Percentage threshold for scaling down
           type: integer
           x-go-custom-type: '*int32'
+    AppCertificates:
+      example:
+        routers:
+          key:
+            cnames:
+              key:
+                certificate: certificate
+                issuer: issuer
+      properties:
+        routers:
+          additionalProperties:
+            $ref: '#/components/schemas/AppCertificates_routers'
+          type: object
+      required:
+      - routers
+      type: object
     CertIssuerSetData:
       example:
         cname: cname
@@ -6983,6 +7033,19 @@ components:
         ip:
           type: string
       type: object
+    AppCertificates_routers:
+      example:
+        cnames:
+          key:
+            certificate: certificate
+            issuer: issuer
+      properties:
+        cnames:
+          additionalProperties:
+            $ref: '#/components/schemas/AppCertificates_cnames'
+          type: object
+      required:
+      - cnames
     AppRouterList:
       description: Application Router
       items:
@@ -9432,6 +9495,18 @@ components:
             type: string
           type: object
       type: object
+    AppCertificates_cnames:
+      example:
+        certificate: certificate
+        issuer: issuer
+      properties:
+        certificate:
+          type: string
+        issuer:
+          type: string
+      required:
+      - certificate
+      - issuer
     Service:
       properties:
         id:
