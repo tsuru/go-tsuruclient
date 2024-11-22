@@ -46,11 +46,13 @@ Class | Method | HTTP request | Description
 *AppApi* | [**AppRouterList**](docs/AppApi.md#approuterlist) | **Get** /1.5/apps/{app}/routers | 
 *AppApi* | [**AppRouterUpdate**](docs/AppApi.md#approuterupdate) | **Put** /1.5/apps/{app}/routers/{router} | 
 *AppApi* | [**AppRun**](docs/AppApi.md#apprun) | **Post** /1.0/apps/{app}/run | 
+*AppApi* | [**AppSetCertIssuer**](docs/AppApi.md#appsetcertissuer) | **Put** /1.24/apps/{app}/certissuer | 
 *AppApi* | [**AppSetRoutable**](docs/AppApi.md#appsetroutable) | **Post** /1.8/apps/{app}/routable | 
 *AppApi* | [**AppStart**](docs/AppApi.md#appstart) | **Post** /1.0/apps/{app}/start | 
 *AppApi* | [**AppStop**](docs/AppApi.md#appstop) | **Post** /1.0/apps/{app}/stop | 
 *AppApi* | [**AppTeamGrant**](docs/AppApi.md#appteamgrant) | **Put** /1.0/apps/{app}/teams/{team} | 
 *AppApi* | [**AppTeamRevoke**](docs/AppApi.md#appteamrevoke) | **Delete** /1.0/apps/{app}/teams/{team} | 
+*AppApi* | [**AppUnsetCertIssuer**](docs/AppApi.md#appunsetcertissuer) | **Delete** /1.24/apps/{app}/certissuer | 
 *AppApi* | [**AppUpdate**](docs/AppApi.md#appupdate) | **Put** /1.0/apps/{app} | 
 *AppApi* | [**AutoScaleAdd**](docs/AppApi.md#autoscaleadd) | **Post** /1.9/apps/{app}/units/autoscale | 
 *AppApi* | [**AutoScaleInfo**](docs/AppApi.md#autoscaleinfo) | **Get** /1.9/apps/{app}/units/autoscale | 
@@ -203,6 +205,7 @@ Class | Method | HTTP request | Description
  - [AutoScaleSpec](docs/AutoScaleSpec.md)
  - [AutoScaleSpecBehavior](docs/AutoScaleSpecBehavior.md)
  - [AutoScaleSpecBehaviorScaleDown](docs/AutoScaleSpecBehaviorScaleDown.md)
+ - [CertIssuerSetData](docs/CertIssuerSetData.md)
  - [CertificateSetData](docs/CertificateSetData.md)
  - [ChangePasswordData](docs/ChangePasswordData.md)
  - [Cluster](docs/Cluster.md)

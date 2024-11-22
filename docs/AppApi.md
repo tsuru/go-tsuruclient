@@ -20,11 +20,13 @@ Method | HTTP request | Description
 [**AppRouterList**](AppApi.md#AppRouterList) | **Get** /1.5/apps/{app}/routers | 
 [**AppRouterUpdate**](AppApi.md#AppRouterUpdate) | **Put** /1.5/apps/{app}/routers/{router} | 
 [**AppRun**](AppApi.md#AppRun) | **Post** /1.0/apps/{app}/run | 
+[**AppSetCertIssuer**](AppApi.md#AppSetCertIssuer) | **Put** /1.24/apps/{app}/certissuer | 
 [**AppSetRoutable**](AppApi.md#AppSetRoutable) | **Post** /1.8/apps/{app}/routable | 
 [**AppStart**](AppApi.md#AppStart) | **Post** /1.0/apps/{app}/start | 
 [**AppStop**](AppApi.md#AppStop) | **Post** /1.0/apps/{app}/stop | 
 [**AppTeamGrant**](AppApi.md#AppTeamGrant) | **Put** /1.0/apps/{app}/teams/{team} | 
 [**AppTeamRevoke**](AppApi.md#AppTeamRevoke) | **Delete** /1.0/apps/{app}/teams/{team} | 
+[**AppUnsetCertIssuer**](AppApi.md#AppUnsetCertIssuer) | **Delete** /1.24/apps/{app}/certissuer | 
 [**AppUpdate**](AppApi.md#AppUpdate) | **Put** /1.0/apps/{app} | 
 [**AutoScaleAdd**](AppApi.md#AutoScaleAdd) | **Post** /1.9/apps/{app}/units/autoscale | 
 [**AutoScaleInfo**](AppApi.md#AutoScaleInfo) | **Get** /1.9/apps/{app}/units/autoscale | 
@@ -540,6 +542,35 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **AppSetCertIssuer**
+> AppSetCertIssuer(ctx, app, certIssuerSetData)
+
+
+Set the certificate issuer for the app.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **app** | **string**| Application name | 
+  **certIssuerSetData** | [**CertIssuerSetData**](CertIssuerSetData.md)|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **AppSetRoutable**
 > AppSetRoutable(ctx, app, setRoutableArgs)
 
@@ -682,6 +713,35 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AppUnsetCertIssuer**
+> AppUnsetCertIssuer(ctx, app, cname)
+
+
+Unset the certificate issuer for the app.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **app** | **string**| Application name | 
+  **cname** | **string**| Certificate CNAME | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

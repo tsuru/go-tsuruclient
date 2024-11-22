@@ -1577,6 +1577,79 @@ paths:
       - Bearer: []
       tags:
       - app
+  /1.24/apps/{app}/certissuer:
+    delete:
+      description: Unset the certificate issuer for the app.
+      operationId: AppUnsetCertIssuer
+      parameters:
+      - description: Application name
+        in: path
+        name: app
+        required: true
+        schema:
+          type: string
+      - description: Certificate CNAME
+        in: query
+        name: cname
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Certificate issuer unset
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
+    put:
+      description: Set the certificate issuer for the app.
+      operationId: AppSetCertIssuer
+      parameters:
+      - description: Application name
+        in: path
+        name: app
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CertIssuerSetData'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Certificate issuer set
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
   /1.5/apps/{app}/build:
     post:
       description: Build a Tsuru app image (a regular container image) following the deploy's workflow but don't roll it out to the provisioner. That ends up with a container image that can be pulled by the user or used to deploy the app later.
@@ -6592,6 +6665,16 @@ components:
           description: Percentage threshold for scaling down
           type: integer
           x-go-custom-type: '*int32'
+    CertIssuerSetData:
+      example:
+        cname: cname
+        issuer: issuer
+      properties:
+        cname:
+          type: string
+        issuer:
+          type: string
+      type: object
     UpdateApp:
       example:
         teamOwner: teamOwner
