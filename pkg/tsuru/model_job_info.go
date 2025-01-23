@@ -10,6 +10,7 @@
 package tsuru
 
 type JobInfo struct {
+	Cluster      string `json:"cluster,omitempty"`
 	Job          Job    `json:"job,omitempty"`
 	Units        []Unit `json:"units,omitempty"`
 	DashboardURL string `json:"dashboardURL,omitempty"`

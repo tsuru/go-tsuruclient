@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Cluster** | **string** |  | [optional] 
 **Job** | [**Job**](Job.md) |  | [optional] 
 **Units** | [**[]Unit**](Unit.md) |  | [optional] 
 **DashboardURL** | **string** |  | [optional] 

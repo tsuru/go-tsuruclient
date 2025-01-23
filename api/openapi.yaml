@@ -7980,6 +7980,7 @@ components:
           type: array
     JobInfo:
       example:
+        cluster: cluster
         dashboardURL: dashboardURL
         serviceInstanceBinds:
         - instance: instance
@@ -8077,6 +8078,8 @@ components:
             manual: true
             activeDeadlineSeconds: 0
       properties:
+        cluster:
+          type: string
         job:
           $ref: '#/components/schemas/Job'
         units:
