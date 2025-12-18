@@ -10,7 +10,7 @@ require (
 	github.com/tsuru/tsuru v0.0.0-20240325190920-410c71393b77
 	golang.org/x/oauth2 v0.10.0
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c
-	k8s.io/apimachinery v0.26.2
+	k8s.io/apimachinery v0.27.4
 )
 
 require (
@@ -32,5 +32,5 @@ require (
 	google.golang.org/protobuf v1.31.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	k8s.io/klog/v2 v2.90.1 // indirect
-	k8s.io/utils v0.0.0-20230726121419-3b25d923346b // indirect
+	k8s.io/utils v0.0.0-20240502163921-fe8a2dddb1d0 // indirect
 )

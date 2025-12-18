@@ -68,7 +68,7 @@ func RetryWithBackoff(ctx context.Context, backoff wait.Backoff, retriable IsRet
 	}
 
 	var lastError error
-	err := wait.ExponentialBackoffWithContext(ctx, backoff, func() (bool, error) {
+	err := wait.ExponentialBackoffWithContext(ctx, backoff, func(ctx context.Context) (bool, error) {
 		response, err := fn()
 		switch {
 		case err == nil:
