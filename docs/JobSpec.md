@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Container** | [**InputJobContainer**](InputJob_container.md) |  | [optional] 
+**Container** | [**JobSpecContainer**](Job_spec_container.md) |  | [optional] 
 **Schedule** | **string** |  | [optional] 
 **ConcurrencyPolicy** | **string** | concurrency policy. | [optional] 
 **Manual** | **bool** |  | [optional] 

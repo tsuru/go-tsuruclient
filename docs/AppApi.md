@@ -315,7 +315,6 @@ Optional parameters are passed through a pointer to a AppListOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **locked** | **optional.Bool**| Filter applications by lock status. | 
  **name** | **optional.String**| Filter applications by name. | 
  **owner** | **optional.String**| Filter applications by owner. | 
  **platform** | **optional.String**| Filter applications by platform. | 

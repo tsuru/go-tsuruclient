@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   description: Open source, extensible and Docker-based Platform as a Service (PaaS)
   title: Tsuru
-  version: "1.24"
+  version: "1.27"
 servers:
 - url: /
 paths:
@@ -1045,145 +1045,6 @@ paths:
       - Bearer: []
       tags:
       - service
-  /1.7/brokers:
-    get:
-      description: List service brokers
-      operationId: ServiceBrokerList
-      responses:
-        200:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ServiceBrokerList'
-          description: List service brokers
-        204:
-          content: {}
-          description: No content
-        401:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Unauthorized
-      security:
-      - Bearer: []
-      tags:
-      - service
-    post:
-      description: Create service broker
-      operationId: ServiceBrokerCreate
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ServiceBroker'
-        required: true
-      responses:
-        200:
-          content: {}
-          description: Service Broker created.
-        400:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Invalid data
-        401:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Unauthorized.
-        409:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Service Broker already exists.
-      security:
-      - Bearer: []
-      tags:
-      - service
-  /1.7/brokers/{name}:
-    delete:
-      operationId: ServiceBrokerDelete
-      parameters:
-      - description: Service Broker name.
-        in: path
-        name: name
-        required: true
-        schema:
-          minLength: 1
-          type: string
-      responses:
-        200:
-          content: {}
-          description: Service Broker deleted.
-        400:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Invalid data
-        401:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Unauthorized.
-        404:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Service Broker not found.
-      security:
-      - Bearer: []
-      tags:
-      - service
-    put:
-      description: Update service broker
-      operationId: ServiceBrokerUpdate
-      parameters:
-      - description: Service Broker name.
-        in: path
-        name: name
-        required: true
-        schema:
-          minLength: 1
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ServiceBroker'
-        required: true
-      responses:
-        200:
-          content: {}
-          description: Service Broker updated.
-        400:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Invalid data
-        401:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Unauthorized.
-        404:
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorMessage'
-          description: Service Broker not found.
-      security:
-      - Bearer: []
-      tags:
-      - service
   /1.0/plans:
     get:
       description: List plans.
@@ -1278,11 +1139,6 @@ paths:
       description: List apps.
       operationId: AppList
       parameters:
-      - description: Filter applications by lock status.
-        in: query
-        name: locked
-        schema:
-          type: boolean
       - description: Filter applications by name.
         in: query
         name: name
@@ -5897,12 +5753,14 @@ components:
         error: error
         platform: platform
         internalAddresses:
-        - Version: Version
+        - TargetPort: 5
+          Version: Version
           Port: 5
           Process: Process
           Domain: Domain
           Protocol: Protocol
-        - Version: Version
+        - TargetPort: 5
+          Version: Version
           Port: 5
           Process: Process
           Domain: Domain
@@ -5930,11 +5788,6 @@ components:
           inuse: 6
         routeropts:
           key: routeropts
-        lock:
-          owner: owner
-          reason: reason
-          acquireDate: 2000-01-23T04:56:07.000+00:00
-          locked: true
         routers:
         - addresses:
           - addresses
@@ -6016,67 +5869,67 @@ components:
         - process: process
           averageCPU: averageCPU
           schedules:
-          - minReplicas: 7
+          - minReplicas: 9
             timezone: timezone
             name: name
             start: start
             end: end
-          - minReplicas: 7
+          - minReplicas: 9
             timezone: timezone
             name: name
             start: start
             end: end
-          maxUnits: 2
-          minUnits: 5
+          maxUnits: 7
+          minUnits: 2
           prometheus:
           - prometheusAddress: prometheusAddress
             query: query
             name: name
-            threshold: 9.301444243932575517419536481611430644989013671875
-            activationThreshold: 3.61607674925191080461672754609026014804840087890625
+            threshold: 3.61607674925191080461672754609026014804840087890625
+            activationThreshold: 2.027123023002321833274663731572218239307403564453125
           - prometheusAddress: prometheusAddress
             query: query
             name: name
-            threshold: 9.301444243932575517419536481611430644989013671875
-            activationThreshold: 3.61607674925191080461672754609026014804840087890625
+            threshold: 3.61607674925191080461672754609026014804840087890625
+            activationThreshold: 2.027123023002321833274663731572218239307403564453125
           behavior:
             scaleDown:
-              stabilizationWindow: 4
-              unitsPolicyValue: 7
+              stabilizationWindow: 7
+              unitsPolicyValue: 1
               percentagePolicyValue: 1
-          version: 2
+          version: 4
         - process: process
           averageCPU: averageCPU
           schedules:
-          - minReplicas: 7
+          - minReplicas: 9
             timezone: timezone
             name: name
             start: start
             end: end
-          - minReplicas: 7
+          - minReplicas: 9
             timezone: timezone
             name: name
             start: start
             end: end
-          maxUnits: 2
-          minUnits: 5
+          maxUnits: 7
+          minUnits: 2
           prometheus:
           - prometheusAddress: prometheusAddress
             query: query
             name: name
-            threshold: 9.301444243932575517419536481611430644989013671875
-            activationThreshold: 3.61607674925191080461672754609026014804840087890625
+            threshold: 3.61607674925191080461672754609026014804840087890625
+            activationThreshold: 2.027123023002321833274663731572218239307403564453125
           - prometheusAddress: prometheusAddress
             query: query
             name: name
-            threshold: 9.301444243932575517419536481611430644989013671875
-            activationThreshold: 3.61607674925191080461672754609026014804840087890625
+            threshold: 3.61607674925191080461672754609026014804840087890625
+            activationThreshold: 2.027123023002321833274663731572218239307403564453125
           behavior:
             scaleDown:
-              stabilizationWindow: 4
-              unitsPolicyValue: 7
+              stabilizationWindow: 7
+              unitsPolicyValue: 1
               percentagePolicyValue: 1
-          version: 2
+          version: 4
         tags:
         - tags
         - tags
@@ -6165,8 +6018,6 @@ components:
           type: object
         plan:
           $ref: '#/components/schemas/Plan'
-        lock:
-          $ref: '#/components/schemas/AppLock'
         pool:
           description: App pool.
           type: string
@@ -6251,7 +6102,7 @@ components:
     AutoScaleSchedule:
       description: Auto Scale schedules struct
       example:
-        minReplicas: 7
+        minReplicas: 9
         timezone: timezone
         name: name
         start: start
@@ -6561,24 +6412,6 @@ components:
         $ref: '#/components/schemas/VolumePlan'
       description: Response returned by Volume Plans list.
       type: object
-    AppLock:
-      description: Stores information about a lock hold on the app
-      example:
-        owner: owner
-        reason: reason
-        acquireDate: 2000-01-23T04:56:07.000+00:00
-        locked: true
-      properties:
-        locked:
-          type: boolean
-        reason:
-          type: string
-        owner:
-          type: string
-        acquireDate:
-          format: date-time
-          type: string
-      type: object
     RecommendedResources:
       example:
         process: process
@@ -6683,8 +6516,8 @@ components:
       type: object
     AutoScaleSpec_behavior_scaleDown:
       example:
-        stabilizationWindow: 4
-        unitsPolicyValue: 7
+        stabilizationWindow: 7
+        unitsPolicyValue: 1
         percentagePolicyValue: 1
       properties:
         stabilizationWindow:
@@ -6848,18 +6681,6 @@ components:
         maxAllowed:
           type: number
           x-go-custom-type: float64
-    ServiceBroker_Config_AuthConfig:
-      example:
-        BearerConfig:
-          token: token
-        BasicAuthConfig:
-          password: password
-          username: username
-      properties:
-        BearerConfig:
-          $ref: '#/components/schemas/ServiceBroker_Config_AuthConfig_BearerConfig'
-        BasicAuthConfig:
-          $ref: '#/components/schemas/ServiceBroker_Config_AuthConfig_BasicAuthConfig'
     App_routers:
       example:
         addresses:
@@ -7188,7 +7009,7 @@ components:
           type: string
           x-go-custom-type: '*string'
         container:
-          $ref: '#/components/schemas/InputJob_container'
+          $ref: '#/components/schemas/Job_spec_container'
       required:
       - name
       type: object
@@ -7263,35 +7084,35 @@ components:
         process: process
         averageCPU: averageCPU
         schedules:
-        - minReplicas: 7
+        - minReplicas: 9
           timezone: timezone
           name: name
           start: start
           end: end
-        - minReplicas: 7
+        - minReplicas: 9
           timezone: timezone
           name: name
           start: start
           end: end
-        maxUnits: 2
-        minUnits: 5
+        maxUnits: 7
+        minUnits: 2
         prometheus:
         - prometheusAddress: prometheusAddress
           query: query
           name: name
-          threshold: 9.301444243932575517419536481611430644989013671875
-          activationThreshold: 3.61607674925191080461672754609026014804840087890625
+          threshold: 3.61607674925191080461672754609026014804840087890625
+          activationThreshold: 2.027123023002321833274663731572218239307403564453125
         - prometheusAddress: prometheusAddress
           query: query
           name: name
-          threshold: 9.301444243932575517419536481611430644989013671875
-          activationThreshold: 3.61607674925191080461672754609026014804840087890625
+          threshold: 3.61607674925191080461672754609026014804840087890625
+          activationThreshold: 2.027123023002321833274663731572218239307403564453125
         behavior:
           scaleDown:
-            stabilizationWindow: 4
-            unitsPolicyValue: 7
+            stabilizationWindow: 7
+            unitsPolicyValue: 1
             percentagePolicyValue: 1
-        version: 2
+        version: 4
       properties:
         process:
           type: string
@@ -7359,22 +7180,6 @@ components:
           type: boolean
         override:
           $ref: '#/components/schemas/PlanOverride'
-      type: object
-    Lock:
-      example:
-        owner: owner
-        reason: reason
-        acquireDate: acquireDate
-        locked: true
-      properties:
-        locked:
-          type: boolean
-        reason:
-          type: string
-        owner:
-          type: string
-        acquireDate:
-          type: string
       type: object
     AppRouter:
       description: Application Router
@@ -7503,15 +7308,6 @@ components:
         Running:
           type: boolean
       type: object
-    ServiceBroker_Config_AuthConfig_BasicAuthConfig:
-      example:
-        password: password
-        username: username
-      properties:
-        password:
-          type: string
-        username:
-          type: string
     Webhook:
       example:
         team_owner: team_owner
@@ -7620,11 +7416,6 @@ components:
         cname:
         - cname
         - cname
-        lock:
-          owner: owner
-          reason: reason
-          acquireDate: acquireDate
-          locked: true
         units:
         - address:
             scheme: scheme
@@ -7710,8 +7501,6 @@ components:
           items:
             $ref: '#/components/schemas/Router'
           type: array
-        lock:
-          $ref: '#/components/schemas/Lock'
         tags:
           items:
             type: string
@@ -7797,12 +7586,34 @@ components:
           type: string
           x-go-custom-type: '[]byte'
       type: object
-    ServiceBroker_Config_AuthConfig_BearerConfig:
+    Job_spec_container:
       example:
-        token: token
+        image: image
+        envs:
+        - public: true
+          managedBy: managedBy
+          name: name
+          alias: alias
+          value: value
+        - public: true
+          managedBy: managedBy
+          name: name
+          alias: alias
+          value: value
+        command:
+        - command
+        - command
       properties:
-        token:
+        image:
           type: string
+        envs:
+          items:
+            $ref: '#/components/schemas/EnvVar'
+          type: array
+        command:
+          items:
+            type: string
+          type: array
     Job_spec:
       example:
         container:
@@ -7827,7 +7638,7 @@ components:
         activeDeadlineSeconds: 0
       properties:
         container:
-          $ref: '#/components/schemas/InputJob_container'
+          $ref: '#/components/schemas/Job_spec_container'
         schedule:
           type: string
         concurrencyPolicy:
@@ -7950,34 +7761,6 @@ components:
         teamowner:
           type: string
       type: object
-    InputJob_container:
-      example:
-        image: image
-        envs:
-        - public: true
-          managedBy: managedBy
-          name: name
-          alias: alias
-          value: value
-        - public: true
-          managedBy: managedBy
-          name: name
-          alias: alias
-          value: value
-        command:
-        - command
-        - command
-      properties:
-        image:
-          type: string
-        envs:
-          items:
-            $ref: '#/components/schemas/EnvVar'
-          type: array
-        command:
-          items:
-            type: string
-          type: array
     JobInfo:
       example:
         cluster: cluster
@@ -8093,29 +7876,6 @@ components:
           items:
             $ref: '#/components/schemas/App_serviceInstanceBinds'
           type: array
-      type: object
-    ServiceBroker:
-      example:
-        Config:
-          Context:
-            key: Context
-          Insecure: true
-          CacheExpirationSeconds: 0
-          AuthConfig:
-            BearerConfig:
-              token: token
-            BasicAuthConfig:
-              password: password
-              username: username
-        URL: URL
-        Name: Name
-      properties:
-        Name:
-          type: string
-        URL:
-          type: string
-        Config:
-          $ref: '#/components/schemas/ServiceBroker_Config'
       type: object
     PlanOverride:
       description: App plan override.
@@ -8580,12 +8340,14 @@ components:
           error: error
           platform: platform
           internalAddresses:
-          - Version: Version
+          - TargetPort: 5
+            Version: Version
             Port: 5
             Process: Process
             Domain: Domain
             Protocol: Protocol
-          - Version: Version
+          - TargetPort: 5
+            Version: Version
             Port: 5
             Process: Process
             Domain: Domain
@@ -8613,11 +8375,6 @@ components:
             inuse: 6
           routeropts:
             key: routeropts
-          lock:
-            owner: owner
-            reason: reason
-            acquireDate: 2000-01-23T04:56:07.000+00:00
-            locked: true
           routers:
           - addresses:
             - addresses
@@ -8699,67 +8456,67 @@ components:
           - process: process
             averageCPU: averageCPU
             schedules:
-            - minReplicas: 7
+            - minReplicas: 9
               timezone: timezone
               name: name
               start: start
               end: end
-            - minReplicas: 7
+            - minReplicas: 9
               timezone: timezone
               name: name
               start: start
               end: end
-            maxUnits: 2
-            minUnits: 5
+            maxUnits: 7
+            minUnits: 2
             prometheus:
             - prometheusAddress: prometheusAddress
               query: query
               name: name
-              threshold: 9.301444243932575517419536481611430644989013671875
-              activationThreshold: 3.61607674925191080461672754609026014804840087890625
+              threshold: 3.61607674925191080461672754609026014804840087890625
+              activationThreshold: 2.027123023002321833274663731572218239307403564453125
             - prometheusAddress: prometheusAddress
               query: query
               name: name
-              threshold: 9.301444243932575517419536481611430644989013671875
-              activationThreshold: 3.61607674925191080461672754609026014804840087890625
+              threshold: 3.61607674925191080461672754609026014804840087890625
+              activationThreshold: 2.027123023002321833274663731572218239307403564453125
             behavior:
               scaleDown:
-                stabilizationWindow: 4
-                unitsPolicyValue: 7
+                stabilizationWindow: 7
+                unitsPolicyValue: 1
                 percentagePolicyValue: 1
-            version: 2
+            version: 4
           - process: process
             averageCPU: averageCPU
             schedules:
-            - minReplicas: 7
+            - minReplicas: 9
               timezone: timezone
               name: name
               start: start
               end: end
-            - minReplicas: 7
+            - minReplicas: 9
               timezone: timezone
               name: name
               start: start
               end: end
-            maxUnits: 2
-            minUnits: 5
+            maxUnits: 7
+            minUnits: 2
             prometheus:
             - prometheusAddress: prometheusAddress
               query: query
               name: name
-              threshold: 9.301444243932575517419536481611430644989013671875
-              activationThreshold: 3.61607674925191080461672754609026014804840087890625
+              threshold: 3.61607674925191080461672754609026014804840087890625
+              activationThreshold: 2.027123023002321833274663731572218239307403564453125
             - prometheusAddress: prometheusAddress
               query: query
               name: name
-              threshold: 9.301444243932575517419536481611430644989013671875
-              activationThreshold: 3.61607674925191080461672754609026014804840087890625
+              threshold: 3.61607674925191080461672754609026014804840087890625
+              activationThreshold: 2.027123023002321833274663731572218239307403564453125
             behavior:
               scaleDown:
-                stabilizationWindow: 4
-                unitsPolicyValue: 7
+                stabilizationWindow: 7
+                unitsPolicyValue: 1
                 percentagePolicyValue: 1
-            version: 2
+            version: 4
           tags:
           - tags
           - tags
@@ -8834,12 +8591,14 @@ components:
           error: error
           platform: platform
           internalAddresses:
-          - Version: Version
+          - TargetPort: 5
+            Version: Version
             Port: 5
             Process: Process
             Domain: Domain
             Protocol: Protocol
-          - Version: Version
+          - TargetPort: 5
+            Version: Version
             Port: 5
             Process: Process
             Domain: Domain
@@ -8867,11 +8626,6 @@ components:
             inuse: 6
           routeropts:
             key: routeropts
-          lock:
-            owner: owner
-            reason: reason
-            acquireDate: 2000-01-23T04:56:07.000+00:00
-            locked: true
           routers:
           - addresses:
             - addresses
@@ -8953,67 +8707,67 @@ components:
           - process: process
             averageCPU: averageCPU
             schedules:
-            - minReplicas: 7
+            - minReplicas: 9
               timezone: timezone
               name: name
               start: start
               end: end
-            - minReplicas: 7
+            - minReplicas: 9
               timezone: timezone
               name: name
               start: start
               end: end
-            maxUnits: 2
-            minUnits: 5
+            maxUnits: 7
+            minUnits: 2
             prometheus:
             - prometheusAddress: prometheusAddress
               query: query
               name: name
-              threshold: 9.301444243932575517419536481611430644989013671875
-              activationThreshold: 3.61607674925191080461672754609026014804840087890625
+              threshold: 3.61607674925191080461672754609026014804840087890625
+              activationThreshold: 2.027123023002321833274663731572218239307403564453125
             - prometheusAddress: prometheusAddress
               query: query
               name: name
-              threshold: 9.301444243932575517419536481611430644989013671875
-              activationThreshold: 3.61607674925191080461672754609026014804840087890625
+              threshold: 3.61607674925191080461672754609026014804840087890625
+              activationThreshold: 2.027123023002321833274663731572218239307403564453125
             behavior:
               scaleDown:
-                stabilizationWindow: 4
-                unitsPolicyValue: 7
+                stabilizationWindow: 7
+                unitsPolicyValue: 1
                 percentagePolicyValue: 1
-            version: 2
+            version: 4
           - process: process
             averageCPU: averageCPU
             schedules:
-            - minReplicas: 7
+            - minReplicas: 9
               timezone: timezone
               name: name
               start: start
               end: end
-            - minReplicas: 7
+            - minReplicas: 9
               timezone: timezone
               name: name
               start: start
               end: end
-            maxUnits: 2
-            minUnits: 5
+            maxUnits: 7
+            minUnits: 2
             prometheus:
             - prometheusAddress: prometheusAddress
               query: query
               name: name
-              threshold: 9.301444243932575517419536481611430644989013671875
-              activationThreshold: 3.61607674925191080461672754609026014804840087890625
+              threshold: 3.61607674925191080461672754609026014804840087890625
+              activationThreshold: 2.027123023002321833274663731572218239307403564453125
             - prometheusAddress: prometheusAddress
               query: query
               name: name
-              threshold: 9.301444243932575517419536481611430644989013671875
-              activationThreshold: 3.61607674925191080461672754609026014804840087890625
+              threshold: 3.61607674925191080461672754609026014804840087890625
+              activationThreshold: 2.027123023002321833274663731572218239307403564453125
             behavior:
               scaleDown:
-                stabilizationWindow: 4
-                unitsPolicyValue: 7
+                stabilizationWindow: 7
+                unitsPolicyValue: 1
                 percentagePolicyValue: 1
-            version: 2
+            version: 4
           tags:
           - tags
           - tags
@@ -9234,41 +8988,6 @@ components:
           description: Volume plan opts.
           type: object
       type: object
-    ServiceBrokerList:
-      example:
-        brokers:
-        - Config:
-            Context:
-              key: Context
-            Insecure: true
-            CacheExpirationSeconds: 0
-            AuthConfig:
-              BearerConfig:
-                token: token
-              BasicAuthConfig:
-                password: password
-                username: username
-          URL: URL
-          Name: Name
-        - Config:
-            Context:
-              key: Context
-            Insecure: true
-            CacheExpirationSeconds: 0
-            AuthConfig:
-              BearerConfig:
-                token: token
-              BasicAuthConfig:
-                password: password
-                username: username
-          URL: URL
-          Name: Name
-      properties:
-        brokers:
-          items:
-            $ref: '#/components/schemas/ServiceBroker'
-          type: array
-      type: object
     Env:
       description: Environment variable.
       example:
@@ -9289,29 +9008,6 @@ components:
         managedBy:
           type: string
       type: object
-    ServiceBroker_Config:
-      example:
-        Context:
-          key: Context
-        Insecure: true
-        CacheExpirationSeconds: 0
-        AuthConfig:
-          BearerConfig:
-            token: token
-          BasicAuthConfig:
-            password: password
-            username: username
-      properties:
-        Context:
-          additionalProperties:
-            type: string
-          type: object
-        Insecure:
-          type: boolean
-        CacheExpirationSeconds:
-          type: integer
-        AuthConfig:
-          $ref: '#/components/schemas/ServiceBroker_Config_AuthConfig'
     PermissionUser:
       description: Permission of an user.
       example:
@@ -9367,12 +9063,17 @@ components:
       type: object
     App_internalAddresses:
       example:
+        TargetPort: 5
         Version: Version
         Port: 5
         Process: Process
         Domain: Domain
         Protocol: Protocol
       properties:
+        TargetPort:
+          format: int64
+          type: integer
+          x-go-custom-type: '*int64'
         Version:
           type: string
         Port:
@@ -9423,8 +9124,8 @@ components:
         prometheusAddress: prometheusAddress
         query: query
         name: name
-        threshold: 9.301444243932575517419536481611430644989013671875
-        activationThreshold: 3.61607674925191080461672754609026014804840087890625
+        threshold: 3.61607674925191080461672754609026014804840087890625
+        activationThreshold: 2.027123023002321833274663731572218239307403564453125
       properties:
         name:
           type: string
@@ -9727,8 +9428,8 @@ components:
       description: Behavior settings for scaling actions
       example:
         scaleDown:
-          stabilizationWindow: 4
-          unitsPolicyValue: 7
+          stabilizationWindow: 7
+          unitsPolicyValue: 1
           percentagePolicyValue: 1
       properties:
         scaleDown:

@@ -21,7 +21,6 @@ Name | Type | Description | Notes
 **Router** | **string** | App router. | [optional] 
 **Routeropts** | **map[string]string** | Custom router options. | [optional] 
 **Plan** | [**Plan**](Plan.md) |  | [optional] 
-**Lock** | [**AppLock**](AppLock.md) |  | [optional] 
 **Pool** | **string** | App pool. | [optional] 
 **Provisioner** | **string** | App provisioner. | [optional] 
 **Platform** | **string** | App platform. | [optional] 

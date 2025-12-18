@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**TargetPort** | **int64** |  | [optional] 
 **Version** | **string** |  | [optional] 
 **Port** | **int64** |  | [optional] 
 **Process** | **string** |  | [optional] 

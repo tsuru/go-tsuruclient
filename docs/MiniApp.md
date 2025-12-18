@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **Cname** | **[]string** |  | [optional] 
 **Ip** | **string** |  | [optional] 
 **Routers** | [**[]Router**](Router.md) |  | [optional] 
-**Lock** | [**Lock**](Lock.md) |  | [optional] 
 **Tags** | **[]string** |  | [optional] 
 **Error** | **string** |  | [optional] 
 
