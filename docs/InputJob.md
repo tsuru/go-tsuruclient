@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Manual** | **bool** | create a manual job. | [optional] 
 **ActiveDeadlineSeconds** | **int64** | job active deadline seconds. | [optional] 
 **ConcurrencyPolicy** | **string** | concurrency policy. | [optional] 
-**Container** | [**JobSpecContainer**](Job_spec_container.md) |  | [optional] 
+**Container** | [**JobSpecContainer**](JobSpecContainer.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

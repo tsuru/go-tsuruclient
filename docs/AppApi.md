@@ -32,6 +32,7 @@ Method | HTTP request | Description
 [**AutoScaleAdd**](AppApi.md#AutoScaleAdd) | **Post** /1.9/apps/{app}/units/autoscale | 
 [**AutoScaleInfo**](AppApi.md#AutoScaleInfo) | **Get** /1.9/apps/{app}/units/autoscale | 
 [**AutoScaleRemove**](AppApi.md#AutoScaleRemove) | **Delete** /1.9/apps/{app}/units/autoscale | 
+[**AutoScaleSwap**](AppApi.md#AutoScaleSwap) | **Post** /1.29/apps/{app}/units/autoscale/swap | 
 [**CertificatUnset**](AppApi.md#CertificatUnset) | **Delete** /1.0/apps/{app}/certificate | 
 [**CertificateSet**](AppApi.md#CertificateSet) | **Put** /1.0/apps/{app}/certificate | 
 [**EnvGet**](AppApi.md#EnvGet) | **Get** /1.0/apps/{app}/env | 
@@ -884,6 +885,35 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AutoScaleSwap**
+> AutoScaleSwap(ctx, app, swapAutoScaleSpec)
+
+
+Swap autoscale to another version.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **app** | **string**| App name. | 
+  **swapAutoScaleSpec** | [**SwapAutoScaleSpec**](SwapAutoScaleSpec.md)|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
