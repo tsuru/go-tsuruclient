@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   description: Open source, extensible and Docker-based Platform as a Service (PaaS)
   title: Tsuru
-  version: "1.27"
+  version: "1.29"
 servers:
 - url: /
 paths:
@@ -2690,6 +2690,50 @@ paths:
         200:
           content: {}
           description: AutoScale updated
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found
+      security:
+      - Bearer: []
+      tags:
+      - app
+  /1.29/apps/{app}/units/autoscale/swap:
+    post:
+      description: Swap autoscale to another version.
+      operationId: AutoScaleSwap
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SwapAutoScaleSpec'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: AutoScale swapped
         400:
           content:
             '*/*':
@@ -6660,6 +6704,16 @@ components:
             $ref: '#/components/schemas/AppProcess'
           type: array
       type: object
+    SwapAutoScaleSpec:
+      description: Swap Units Auto Scale spec
+      example:
+        version: version
+      properties:
+        version:
+          type: string
+      required:
+      - version
+      type: object
     SetRoutableArgs:
       example:
         isRoutable: true
@@ -7009,7 +7063,7 @@ components:
           type: string
           x-go-custom-type: '*string'
         container:
-          $ref: '#/components/schemas/Job_spec_container'
+          $ref: '#/components/schemas/JobSpecContainer'
       required:
       - name
       type: object
@@ -7875,6 +7929,35 @@ components:
           description: Service instance binds on the job
           items:
             $ref: '#/components/schemas/App_serviceInstanceBinds'
+          type: array
+      type: object
+    JobSpecContainer:
+      example:
+        image: image
+        envs:
+        - public: true
+          managedBy: managedBy
+          name: name
+          alias: alias
+          value: value
+        - public: true
+          managedBy: managedBy
+          name: name
+          alias: alias
+          value: value
+        command:
+        - command
+        - command
+      properties:
+        image:
+          type: string
+        command:
+          items:
+            type: string
+          type: array
+        envs:
+          items:
+            $ref: '#/components/schemas/EnvVar'
           type: array
       type: object
     PlanOverride:

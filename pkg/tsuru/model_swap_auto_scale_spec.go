@@ -9,8 +9,7 @@
 
 package tsuru
 
-type ChangePasswordData struct {
-	Confirm string `json:"confirm,omitempty"`
-	New     string `json:"new,omitempty"`
-	Old     string `json:"old,omitempty"`
+// Swap Units Auto Scale spec
+type SwapAutoScaleSpec struct {
+	Version string `json:"version"`
 }
