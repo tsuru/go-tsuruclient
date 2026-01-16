@@ -16,6 +16,8 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+
+	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -221,6 +223,197 @@ func (a *EventApiService) EventInfo(ctx context.Context, eventid string) (Event,
 
 		if localVarHttpResponse.StatusCode == 200 {
 			var v Event
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 401 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 404 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		return localVarReturnValue, localVarHttpResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:       localVarBody,
+			error:      err.Error(),
+			statusCode: localVarHttpResponse.StatusCode,
+		}
+		return localVarReturnValue, localVarHttpResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHttpResponse, nil
+}
+
+/*
+EventApiService
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param optional nil or *EventListOpts - Optional Parameters:
+ * @param "TargetType" (optional.String) -  Filter by target type
+ * @param "TargetValue" (optional.String) -  Filter by target value
+ * @param "KindType" (optional.String) -  Filter by kind type
+ * @param "KindNames" (optional.Interface of []string) -  Filter by kind names
+ * @param "OwnerType" (optional.String) -  Filter by owner type
+ * @param "OwnerName" (optional.String) -  Filter by owner name
+ * @param "Since" (optional.Time) -  Filter events since this date
+ * @param "Until" (optional.Time) -  Filter events until this date
+ * @param "Running" (optional.Bool) -  Filter by running status
+ * @param "ErrorOnly" (optional.Bool) -  Filter only events with errors
+ * @param "Limit" (optional.Int32) -  Limit number of results
+ * @param "Skip" (optional.Int32) -  Skip number of results
+ * @param "Sort" (optional.String) -  Sort order
+@return []Event
+*/
+
+type EventListOpts struct {
+	TargetType  optional.String
+	TargetValue optional.String
+	KindType    optional.String
+	KindNames   optional.Interface
+	OwnerType   optional.String
+	OwnerName   optional.String
+	Since       optional.Time
+	Until       optional.Time
+	Running     optional.Bool
+	ErrorOnly   optional.Bool
+	Limit       optional.Int32
+	Skip        optional.Int32
+	Sort        optional.String
+}
+
+func (a *EventApiService) EventList(ctx context.Context, localVarOptionals *EventListOpts) ([]Event, *http.Response, error) {
+	var (
+		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  []Event
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/1.1/events"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if localVarOptionals != nil && localVarOptionals.TargetType.IsSet() {
+		localVarQueryParams.Add("target.type", parameterToString(localVarOptionals.TargetType.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.TargetValue.IsSet() {
+		localVarQueryParams.Add("target.value", parameterToString(localVarOptionals.TargetValue.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.KindType.IsSet() {
+		localVarQueryParams.Add("kindType", parameterToString(localVarOptionals.KindType.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.KindNames.IsSet() {
+		localVarQueryParams.Add("kindNames", parameterToString(localVarOptionals.KindNames.Value(), "multi"))
+	}
+	if localVarOptionals != nil && localVarOptionals.OwnerType.IsSet() {
+		localVarQueryParams.Add("ownerType", parameterToString(localVarOptionals.OwnerType.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.OwnerName.IsSet() {
+		localVarQueryParams.Add("ownerName", parameterToString(localVarOptionals.OwnerName.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Since.IsSet() {
+		localVarQueryParams.Add("since", parameterToString(localVarOptionals.Since.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Until.IsSet() {
+		localVarQueryParams.Add("until", parameterToString(localVarOptionals.Until.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Running.IsSet() {
+		localVarQueryParams.Add("running", parameterToString(localVarOptionals.Running.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.ErrorOnly.IsSet() {
+		localVarQueryParams.Add("errorOnly", parameterToString(localVarOptionals.ErrorOnly.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Limit.IsSet() {
+		localVarQueryParams.Add("limit", parameterToString(localVarOptionals.Limit.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Skip.IsSet() {
+		localVarQueryParams.Add("skip", parameterToString(localVarOptionals.Skip.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Sort.IsSet() {
+		localVarQueryParams.Add("sort", parameterToString(localVarOptionals.Sort.Value(), ""))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+			localVarHeaderParams["Authorization"] = key
+		}
+	}
+
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarHttpResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
+
+	if localVarHttpResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:       localVarBody,
+			error:      localVarHttpResponse.Status,
+			statusCode: localVarHttpResponse.StatusCode,
+		}
+
+		if localVarHttpResponse.StatusCode == 200 {
+			var v []Event
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
