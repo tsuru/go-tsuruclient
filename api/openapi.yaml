@@ -4828,6 +4828,106 @@ paths:
       - Bearer: []
       tags:
       - auth
+  /1.1/events:
+    get:
+      operationId: EventList
+      parameters:
+      - description: Filter by target type
+        in: query
+        name: target.type
+        schema:
+          type: string
+      - description: Filter by target value
+        in: query
+        name: target.value
+        schema:
+          type: string
+      - description: Filter by kind type
+        in: query
+        name: kindType
+        schema:
+          type: string
+      - description: Filter by kind names
+        explode: true
+        in: query
+        name: kindNames
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: Filter by owner type
+        in: query
+        name: ownerType
+        schema:
+          type: string
+      - description: Filter by owner name
+        in: query
+        name: ownerName
+        schema:
+          type: string
+      - description: Filter events since this date
+        in: query
+        name: since
+        schema:
+          format: date-time
+          type: string
+      - description: Filter events until this date
+        in: query
+        name: until
+        schema:
+          format: date-time
+          type: string
+      - description: Filter by running status
+        in: query
+        name: running
+        schema:
+          type: boolean
+      - description: Filter only events with errors
+        in: query
+        name: errorOnly
+        schema:
+          type: boolean
+      - description: Limit number of results
+        in: query
+        name: limit
+        schema:
+          type: integer
+      - description: Skip number of results
+        in: query
+        name: skip
+        schema:
+          type: integer
+      - description: Sort order
+        in: query
+        name: sort
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Event'
+                type: array
+          description: Event list.
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Team token not found.
+      security:
+      - Bearer: []
+      tags:
+      - event
   /1.1/events/{eventid}:
     get:
       operationId: EventInfo

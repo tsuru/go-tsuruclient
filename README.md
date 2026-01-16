@@ -92,6 +92,7 @@ Class | Method | HTTP request | Description
 *ClusterApi* | [**ProvisionerList**](docs/ClusterApi.md#provisionerlist) | **Get** /1.7/provisioner | 
 *EventApi* | [**EventCancel**](docs/EventApi.md#eventcancel) | **Post** /1.1/events/{eventid}/cancel | 
 *EventApi* | [**EventInfo**](docs/EventApi.md#eventinfo) | **Get** /1.1/events/{eventid} | 
+*EventApi* | [**EventList**](docs/EventApi.md#eventlist) | **Get** /1.1/events | 
 *EventApi* | [**WebhookCreate**](docs/EventApi.md#webhookcreate) | **Post** /1.6/events/webhooks | 
 *EventApi* | [**WebhookDelete**](docs/EventApi.md#webhookdelete) | **Delete** /1.6/events/webhooks/{name} | 
 *EventApi* | [**WebhookGet**](docs/EventApi.md#webhookget) | **Get** /1.6/events/webhooks/{name} | 
