@@ -16,13 +16,27 @@ import (
 // Tsuru event
 type Event struct {
 	UniqueID        string               `json:"UniqueID,omitempty"`
+	Lock            EventLock            `json:"Lock,omitempty"`
 	StartTime       time.Time            `json:"StartTime,omitempty"`
 	EndTime         time.Time            `json:"EndTime,omitempty"`
-	Target          EventTarget          `json:"Target,omitempty"`
+	ExpireAt        time.Time            `json:"ExpireAt,omitempty"`
+	Target          EventLock            `json:"Target,omitempty"`
+	ExtraTargets    []EventExtraTargets  `json:"ExtraTargets,omitempty"`
+	Kind            EventKind            `json:"Kind,omitempty"`
+	Owner           EventKind            `json:"Owner,omitempty"`
+	SourceIP        string               `json:"SourceIP,omitempty"`
+	LockUpdateTime  time.Time            `json:"LockUpdateTime,omitempty"`
+	Error           string               `json:"Error,omitempty"`
+	Log             string               `json:"Log,omitempty"`
+	StructuredLog   []EventStructuredLog `json:"StructuredLog,omitempty"`
+	CancelInfo      EventCancelInfo      `json:"CancelInfo,omitempty"`
+	Cancelable      bool                 `json:"Cancelable,omitempty"`
+	Running         bool                 `json:"Running,omitempty"`
+	Allowed         EventAllowed         `json:"Allowed,omitempty"`
+	AllowedCancel   EventAllowed         `json:"AllowedCancel,omitempty"`
+	Instance        EventInstance        `json:"Instance,omitempty"`
 	StartCustomData EventStartCustomData `json:"StartCustomData,omitempty"`
 	EndCustomData   EventStartCustomData `json:"EndCustomData,omitempty"`
 	OtherCustomData EventStartCustomData `json:"OtherCustomData,omitempty"`
-	Error           string               `json:"Error,omitempty"`
-	Log             string               `json:"Log,omitempty"`
-	Running         bool                 `json:"Running,omitempty"`
+	CustomData      EventCustomData      `json:"CustomData,omitempty"`
 }
