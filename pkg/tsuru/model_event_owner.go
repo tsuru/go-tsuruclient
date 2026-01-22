@@ -9,8 +9,8 @@
 
 package tsuru
 
-// Event kind
-type EventKind struct {
+// Event owner
+type EventOwner struct {
 	Type string `json:"Type,omitempty"`
 	Name string `json:"Name,omitempty"`
 }

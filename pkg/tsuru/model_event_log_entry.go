@@ -9,7 +9,12 @@
 
 package tsuru
 
-type EventStartCustomData struct {
-	Kind float32 `json:"Kind,omitempty"`
-	Data string  `json:"Data,omitempty"`
+import (
+	"time"
+)
+
+// Event structured log entry
+type EventLogEntry struct {
+	Date    time.Time `json:"Date,omitempty"`
+	Message string    `json:"Message,omitempty"`
 }

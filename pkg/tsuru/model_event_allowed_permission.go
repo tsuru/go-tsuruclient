@@ -9,7 +9,8 @@
 
 package tsuru
 
-type EventAllowedContexts struct {
-	CtxType string `json:"CtxType,omitempty"`
-	Value   string `json:"Value,omitempty"`
+// Allowed permission
+type EventAllowedPermission struct {
+	Scheme   string                   `json:"Scheme,omitempty"`
+	Contexts []EventPermissionContext `json:"Contexts,omitempty"`
 }

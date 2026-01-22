@@ -9,7 +9,8 @@
 
 package tsuru
 
-type EventLock struct {
-	Type  string `json:"Type,omitempty"`
-	Value string `json:"Value,omitempty"`
+// Raw custom data (BSON encoded)
+type EventCustomDataRaw struct {
+	Kind float32 `json:"Kind,omitempty"`
+	Data string  `json:"Data,omitempty"`
 }

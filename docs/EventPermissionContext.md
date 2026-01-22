@@ -1,4 +1,4 @@
-# EventAllowedContexts
+# EventPermissionContext
 
 ## Properties
 Name | Type | Description | Notes
