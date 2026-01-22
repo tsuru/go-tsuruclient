@@ -6421,15 +6421,6 @@ components:
             type: string
           type: object
       type: object
-    Event_Target:
-      example:
-        Type: Type
-        Value: Value
-      properties:
-        Type:
-          type: string
-        Value:
-          type: string
     PoolConstraint:
       example:
         Field: Field
@@ -6593,6 +6584,15 @@ components:
             type: string
           type: object
       type: object
+    Event_Kind:
+      example:
+        Type: Type
+        Name: Name
+      properties:
+        Type:
+          type: string
+        Name:
+          type: string
     RoleDefaultData:
       description: Default a role
       example:
@@ -7304,6 +7304,15 @@ components:
         cluster_help:
           $ref: '#/components/schemas/ClusterHelp'
       type: object
+    Event_Allowed_Contexts:
+      example:
+        CtxType: CtxType
+        Value: Value
+      properties:
+        CtxType:
+          type: string
+        Value:
+          type: string
     Plan:
       description: App plan.
       example:
@@ -7421,46 +7430,146 @@ components:
       description: Tsuru event
       example:
         UniqueID: UniqueID
-        Target:
+        ExtraTargets:
+        - Target:
+            Type: Type
+            Value: Value
+          Lock: true
+        - Target:
+            Type: Type
+            Value: Value
+          Lock: true
+        Owner:
           Type: Type
-          Value: Value
+          Name: Name
         EndTime: 2000-01-23T04:56:07.000+00:00
-        StartCustomData:
-          Kind: 0.80082819046101150206595775671303272247314453125
-          Data: Data
         Log: Log
+        Instance:
+          Addresses:
+          - Addresses
+          - Addresses
+          LastUpdate: 2000-01-23T04:56:07.000+00:00
+          Port: Port
+          Name: Name
+          TLSPort: TLSPort
         StartTime: 2000-01-23T04:56:07.000+00:00
-        Running: true
+        Error: Error
         EndCustomData:
           Kind: 0.80082819046101150206595775671303272247314453125
           Data: Data
-        Error: Error
+        ExpireAt: 2000-01-23T04:56:07.000+00:00
         OtherCustomData:
           Kind: 0.80082819046101150206595775671303272247314453125
           Data: Data
+        Allowed:
+          Scheme: Scheme
+          Contexts:
+          - CtxType: CtxType
+            Value: Value
+          - CtxType: CtxType
+            Value: Value
+        Lock:
+          Type: Type
+          Value: Value
+        Target:
+          Type: Type
+          Value: Value
+        StructuredLog:
+        - Message: Message
+          Date: 2000-01-23T04:56:07.000+00:00
+        - Message: Message
+          Date: 2000-01-23T04:56:07.000+00:00
+        SourceIP: SourceIP
+        StartCustomData:
+          Kind: 0.80082819046101150206595775671303272247314453125
+          Data: Data
+        Kind:
+          Type: Type
+          Name: Name
+        CancelInfo:
+          Asked: true
+          Owner: Owner
+          AckTime: 2000-01-23T04:56:07.000+00:00
+          StartTime: 2000-01-23T04:56:07.000+00:00
+          Canceled: true
+          Reason: Reason
+        Running: true
+        CustomData:
+          Start:
+          - '{}'
+          - '{}'
+          End:
+          - '{}'
+          - '{}'
+          Other:
+          - '{}'
+          - '{}'
+        AllowedCancel:
+          Scheme: Scheme
+          Contexts:
+          - CtxType: CtxType
+            Value: Value
+          - CtxType: CtxType
+            Value: Value
+        Cancelable: true
+        LockUpdateTime: 2000-01-23T04:56:07.000+00:00
       properties:
         UniqueID:
           type: string
+        Lock:
+          $ref: '#/components/schemas/Event_Lock'
         StartTime:
           format: date-time
           type: string
         EndTime:
           format: date-time
           type: string
+        ExpireAt:
+          format: date-time
+          type: string
         Target:
-          $ref: '#/components/schemas/Event_Target'
+          $ref: '#/components/schemas/Event_Lock'
+        ExtraTargets:
+          items:
+            $ref: '#/components/schemas/Event_ExtraTargets'
+          type: array
+        Kind:
+          $ref: '#/components/schemas/Event_Kind'
+        Owner:
+          $ref: '#/components/schemas/Event_Kind'
+        SourceIP:
+          type: string
+        LockUpdateTime:
+          format: date-time
+          type: string
+        Error:
+          type: string
+        Log:
+          type: string
+        StructuredLog:
+          items:
+            $ref: '#/components/schemas/Event_StructuredLog'
+          type: array
+        CancelInfo:
+          $ref: '#/components/schemas/Event_CancelInfo'
+        Cancelable:
+          type: boolean
+        Running:
+          type: boolean
+        Allowed:
+          $ref: '#/components/schemas/Event_Allowed'
+        AllowedCancel:
+          $ref: '#/components/schemas/Event_Allowed'
+        Instance:
+          $ref: '#/components/schemas/Event_Instance'
         StartCustomData:
           $ref: '#/components/schemas/Event_StartCustomData'
         EndCustomData:
           $ref: '#/components/schemas/Event_StartCustomData'
         OtherCustomData:
           $ref: '#/components/schemas/Event_StartCustomData'
-        Error:
-          type: string
-        Log:
-          type: string
-        Running:
-          type: boolean
+        CustomData:
+          $ref: '#/components/schemas/Event_CustomData'
       type: object
     Webhook:
       example:
@@ -7682,6 +7791,8 @@ components:
         Kind:
           type: number
         Data:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
           type: string
     Cluster_kubeConfig_user:
       example:
@@ -8094,6 +8205,15 @@ components:
           description: Volume name.
           type: string
       type: object
+    Event_Lock:
+      example:
+        Type: Type
+        Value: Value
+      properties:
+        Type:
+          type: string
+        Value:
+          type: string
     Job:
       example:
         owner: owner
@@ -8990,6 +9110,29 @@ components:
             $ref: '#/components/schemas/App'
           type: array
       type: object
+    Event_CancelInfo:
+      example:
+        Asked: true
+        Owner: Owner
+        AckTime: 2000-01-23T04:56:07.000+00:00
+        StartTime: 2000-01-23T04:56:07.000+00:00
+        Canceled: true
+        Reason: Reason
+      properties:
+        Asked:
+          type: boolean
+        Owner:
+          type: string
+        AckTime:
+          format: date-time
+          type: string
+        StartTime:
+          format: date-time
+          type: string
+        Canceled:
+          type: boolean
+        Reason:
+          type: string
     UnitMetrics:
       example:
         memory: memory
@@ -9014,6 +9157,21 @@ components:
         contextvalue:
           type: string
       type: object
+    Event_Allowed:
+      example:
+        Scheme: Scheme
+        Contexts:
+        - CtxType: CtxType
+          Value: Value
+        - CtxType: CtxType
+          Value: Value
+      properties:
+        Scheme:
+          type: string
+        Contexts:
+          items:
+            $ref: '#/components/schemas/Event_Allowed_Contexts'
+          type: array
     Cluster_kubeConfig:
       example:
         cluster:
@@ -9208,6 +9366,17 @@ components:
         group:
           type: string
       type: object
+    Event_ExtraTargets:
+      example:
+        Target:
+          Type: Type
+          Value: Value
+        Lock: true
+      properties:
+        Target:
+          $ref: '#/components/schemas/Event_Lock'
+        Lock:
+          type: boolean
     AppCName:
       description: Application CNames
       example:
@@ -9323,6 +9492,33 @@ components:
         prometheusAddress:
           type: string
       type: object
+    Event_CustomData:
+      example:
+        Start:
+        - '{}'
+        - '{}'
+        End:
+        - '{}'
+        - '{}'
+        Other:
+        - '{}'
+        - '{}'
+      properties:
+        Start:
+          items:
+            properties: {}
+            type: object
+          type: array
+        End:
+          items:
+            properties: {}
+            type: object
+          type: array
+        Other:
+          items:
+            properties: {}
+            type: object
+          type: array
     ServiceInstanceInfo:
       example:
         teams:
@@ -9617,6 +9813,16 @@ components:
       properties:
         scaleDown:
           $ref: '#/components/schemas/AutoScaleSpec_behavior_scaleDown'
+    Event_StructuredLog:
+      example:
+        Message: Message
+        Date: 2000-01-23T04:56:07.000+00:00
+      properties:
+        Message:
+          type: string
+        Date:
+          format: date-time
+          type: string
     PoolConstraintSet:
       example:
         Field: Field
@@ -9640,6 +9846,29 @@ components:
         Blacklist:
           type: boolean
       type: object
+    Event_Instance:
+      example:
+        Addresses:
+        - Addresses
+        - Addresses
+        LastUpdate: 2000-01-23T04:56:07.000+00:00
+        Port: Port
+        Name: Name
+        TLSPort: TLSPort
+      properties:
+        Addresses:
+          items:
+            type: string
+          type: array
+        LastUpdate:
+          format: date-time
+          type: string
+        Port:
+          type: string
+        Name:
+          type: string
+        TLSPort:
+          type: string
     RoleAddData:
       description: Role of an user.
       example:

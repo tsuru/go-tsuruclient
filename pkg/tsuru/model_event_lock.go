@@ -9,7 +9,7 @@
 
 package tsuru
 
-type EventTarget struct {
+type EventLock struct {
 	Type  string `json:"Type,omitempty"`
 	Value string `json:"Value,omitempty"`
 }
