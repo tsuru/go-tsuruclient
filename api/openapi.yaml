@@ -6263,6 +6263,31 @@ components:
         timezone:
           type: string
       type: object
+    EventCancelInfo:
+      description: Event cancellation information
+      example:
+        Asked: true
+        Owner: Owner
+        AckTime: 2000-01-23T04:56:07.000+00:00
+        StartTime: 2000-01-23T04:56:07.000+00:00
+        Canceled: true
+        Reason: Reason
+      properties:
+        Owner:
+          type: string
+        StartTime:
+          format: date-time
+          type: string
+        AckTime:
+          format: date-time
+          type: string
+        Reason:
+          type: string
+        Asked:
+          type: boolean
+        Canceled:
+          type: boolean
+      type: object
     TeamTokenCreateArgs:
       description: Arguments for creating a new team token.
       example:
@@ -6466,6 +6491,31 @@ components:
             type: string
           type: object
       type: object
+    EventTrackedInstance:
+      description: Tracked instance information
+      example:
+        Addresses:
+        - Addresses
+        - Addresses
+        LastUpdate: 2000-01-23T04:56:07.000+00:00
+        Port: Port
+        Name: Name
+        TLSPort: TLSPort
+      properties:
+        Name:
+          type: string
+        Port:
+          type: string
+        TLSPort:
+          type: string
+        Addresses:
+          items:
+            type: string
+          type: array
+        LastUpdate:
+          format: date-time
+          type: string
+      type: object
     TeamToken:
       description: An authorization token associated to a team.
       example:
@@ -6542,6 +6592,19 @@ components:
         status-detail:
           type: string
       type: object
+    EventCustomDataRaw:
+      description: Raw custom data (BSON encoded)
+      example:
+        Kind: 0.80082819046101150206595775671303272247314453125
+        Data: Data
+      properties:
+        Kind:
+          type: number
+        Data:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+      type: object
     VolumePlansListResponse:
       additionalProperties:
         $ref: '#/components/schemas/VolumePlan'
@@ -6584,15 +6647,6 @@ components:
             type: string
           type: object
       type: object
-    Event_Kind:
-      example:
-        Type: Type
-        Name: Name
-      properties:
-        Type:
-          type: string
-        Name:
-          type: string
     RoleDefaultData:
       description: Default a role
       example:
@@ -6835,6 +6889,18 @@ components:
         maxAllowed:
           type: number
           x-go-custom-type: float64
+    EventLogEntry:
+      description: Event structured log entry
+      example:
+        Message: Message
+        Date: 2000-01-23T04:56:07.000+00:00
+      properties:
+        Date:
+          format: date-time
+          type: string
+        Message:
+          type: string
+      type: object
     App_routers:
       example:
         addresses:
@@ -7021,6 +7087,23 @@ components:
           type: object
       required:
       - cnames
+    EventAllowedPermission:
+      description: Allowed permission
+      example:
+        Scheme: Scheme
+        Contexts:
+        - CtxType: CtxType
+          Value: Value
+        - CtxType: CtxType
+          Value: Value
+      properties:
+        Scheme:
+          type: string
+        Contexts:
+          items:
+            $ref: '#/components/schemas/EventPermissionContext'
+          type: array
+      type: object
     AppRouterList:
       description: Application Router
       items:
@@ -7178,6 +7261,35 @@ components:
         context:
           type: string
       type: object
+    EventCustomData:
+      description: Parsed custom data
+      example:
+        Start:
+        - '{}'
+        - '{}'
+        End:
+        - '{}'
+        - '{}'
+        Other:
+        - '{}'
+        - '{}'
+      properties:
+        Start:
+          items:
+            properties: {}
+            type: object
+          type: array
+        End:
+          items:
+            properties: {}
+            type: object
+          type: array
+        Other:
+          items:
+            properties: {}
+            type: object
+          type: array
+      type: object
     App_serviceInstanceBinds:
       description: Service instance bind
       example:
@@ -7214,6 +7326,17 @@ components:
           additionalProperties:
             type: string
           type: object
+      type: object
+    EventKind:
+      description: Event kind
+      example:
+        Type: Type
+        Name: Name
+      properties:
+        Type:
+          type: string
+        Name:
+          type: string
       type: object
     RoleUpdateData:
       description: Role of an user.
@@ -7304,15 +7427,6 @@ components:
         cluster_help:
           $ref: '#/components/schemas/ClusterHelp'
       type: object
-    Event_Allowed_Contexts:
-      example:
-        CtxType: CtxType
-        Value: Value
-      properties:
-        CtxType:
-          type: string
-        Value:
-          type: string
     Plan:
       description: App plan.
       example:
@@ -7517,7 +7631,7 @@ components:
         UniqueID:
           type: string
         Lock:
-          $ref: '#/components/schemas/Event_Lock'
+          $ref: '#/components/schemas/EventTarget'
         StartTime:
           format: date-time
           type: string
@@ -7528,15 +7642,15 @@ components:
           format: date-time
           type: string
         Target:
-          $ref: '#/components/schemas/Event_Lock'
+          $ref: '#/components/schemas/EventTarget'
         ExtraTargets:
           items:
-            $ref: '#/components/schemas/Event_ExtraTargets'
+            $ref: '#/components/schemas/EventExtraTarget'
           type: array
         Kind:
-          $ref: '#/components/schemas/Event_Kind'
+          $ref: '#/components/schemas/EventKind'
         Owner:
-          $ref: '#/components/schemas/Event_Kind'
+          $ref: '#/components/schemas/EventOwner'
         SourceIP:
           type: string
         LockUpdateTime:
@@ -7548,28 +7662,28 @@ components:
           type: string
         StructuredLog:
           items:
-            $ref: '#/components/schemas/Event_StructuredLog'
+            $ref: '#/components/schemas/EventLogEntry'
           type: array
         CancelInfo:
-          $ref: '#/components/schemas/Event_CancelInfo'
+          $ref: '#/components/schemas/EventCancelInfo'
         Cancelable:
           type: boolean
         Running:
           type: boolean
         Allowed:
-          $ref: '#/components/schemas/Event_Allowed'
+          $ref: '#/components/schemas/EventAllowedPermission'
         AllowedCancel:
-          $ref: '#/components/schemas/Event_Allowed'
+          $ref: '#/components/schemas/EventAllowedPermission'
         Instance:
-          $ref: '#/components/schemas/Event_Instance'
+          $ref: '#/components/schemas/EventTrackedInstance'
         StartCustomData:
-          $ref: '#/components/schemas/Event_StartCustomData'
+          $ref: '#/components/schemas/EventCustomDataRaw'
         EndCustomData:
-          $ref: '#/components/schemas/Event_StartCustomData'
+          $ref: '#/components/schemas/EventCustomDataRaw'
         OtherCustomData:
-          $ref: '#/components/schemas/Event_StartCustomData'
+          $ref: '#/components/schemas/EventCustomDataRaw'
         CustomData:
-          $ref: '#/components/schemas/Event_CustomData'
+          $ref: '#/components/schemas/EventCustomData'
       type: object
     Webhook:
       example:
@@ -7783,17 +7897,6 @@ components:
           additionalProperties:
             type: string
           type: object
-    Event_StartCustomData:
-      example:
-        Kind: 0.80082819046101150206595775671303272247314453125
-        Data: Data
-      properties:
-        Kind:
-          type: number
-        Data:
-          format: byte
-          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
-          type: string
     Cluster_kubeConfig_user:
       example:
         password: password
@@ -8205,15 +8308,6 @@ components:
           description: Volume name.
           type: string
       type: object
-    Event_Lock:
-      example:
-        Type: Type
-        Value: Value
-      properties:
-        Type:
-          type: string
-        Value:
-          type: string
     Job:
       example:
         owner: owner
@@ -9110,29 +9204,6 @@ components:
             $ref: '#/components/schemas/App'
           type: array
       type: object
-    Event_CancelInfo:
-      example:
-        Asked: true
-        Owner: Owner
-        AckTime: 2000-01-23T04:56:07.000+00:00
-        StartTime: 2000-01-23T04:56:07.000+00:00
-        Canceled: true
-        Reason: Reason
-      properties:
-        Asked:
-          type: boolean
-        Owner:
-          type: string
-        AckTime:
-          format: date-time
-          type: string
-        StartTime:
-          format: date-time
-          type: string
-        Canceled:
-          type: boolean
-        Reason:
-          type: string
     UnitMetrics:
       example:
         memory: memory
@@ -9157,21 +9228,6 @@ components:
         contextvalue:
           type: string
       type: object
-    Event_Allowed:
-      example:
-        Scheme: Scheme
-        Contexts:
-        - CtxType: CtxType
-          Value: Value
-        - CtxType: CtxType
-          Value: Value
-      properties:
-        Scheme:
-          type: string
-        Contexts:
-          items:
-            $ref: '#/components/schemas/Event_Allowed_Contexts'
-          type: array
     Cluster_kubeConfig:
       example:
         cluster:
@@ -9303,6 +9359,17 @@ components:
             $ref: '#/components/schemas/PermissionUser'
           type: array
       type: object
+    EventOwner:
+      description: Event owner
+      example:
+        Type: Type
+        Name: Name
+      properties:
+        Type:
+          type: string
+        Name:
+          type: string
+      type: object
     UserData:
       example:
         password: password
@@ -9328,6 +9395,17 @@ components:
             type: string
           description: Volume plan opts.
           type: object
+      type: object
+    EventPermissionContext:
+      description: Permission context
+      example:
+        CtxType: CtxType
+        Value: Value
+      properties:
+        CtxType:
+          type: string
+        Value:
+          type: string
       type: object
     Env:
       description: Environment variable.
@@ -9366,17 +9444,6 @@ components:
         group:
           type: string
       type: object
-    Event_ExtraTargets:
-      example:
-        Target:
-          Type: Type
-          Value: Value
-        Lock: true
-      properties:
-        Target:
-          $ref: '#/components/schemas/Event_Lock'
-        Lock:
-          type: boolean
     AppCName:
       description: Application CNames
       example:
@@ -9437,6 +9504,30 @@ components:
           type: string
         Protocol:
           type: string
+    EventTarget:
+      description: Event target
+      example:
+        Type: Type
+        Value: Value
+      properties:
+        Type:
+          type: string
+        Value:
+          type: string
+      type: object
+    EventExtraTarget:
+      description: Event extra target
+      example:
+        Target:
+          Type: Type
+          Value: Value
+        Lock: true
+      properties:
+        Target:
+          $ref: '#/components/schemas/EventTarget'
+        Lock:
+          type: boolean
+      type: object
     EnvSetData:
       description: Data sent to the environment set endpoint.
       example:
@@ -9492,33 +9583,6 @@ components:
         prometheusAddress:
           type: string
       type: object
-    Event_CustomData:
-      example:
-        Start:
-        - '{}'
-        - '{}'
-        End:
-        - '{}'
-        - '{}'
-        Other:
-        - '{}'
-        - '{}'
-      properties:
-        Start:
-          items:
-            properties: {}
-            type: object
-          type: array
-        End:
-          items:
-            properties: {}
-            type: object
-          type: array
-        Other:
-          items:
-            properties: {}
-            type: object
-          type: array
     ServiceInstanceInfo:
       example:
         teams:
@@ -9813,16 +9877,6 @@ components:
       properties:
         scaleDown:
           $ref: '#/components/schemas/AutoScaleSpec_behavior_scaleDown'
-    Event_StructuredLog:
-      example:
-        Message: Message
-        Date: 2000-01-23T04:56:07.000+00:00
-      properties:
-        Message:
-          type: string
-        Date:
-          format: date-time
-          type: string
     PoolConstraintSet:
       example:
         Field: Field
@@ -9846,29 +9900,6 @@ components:
         Blacklist:
           type: boolean
       type: object
-    Event_Instance:
-      example:
-        Addresses:
-        - Addresses
-        - Addresses
-        LastUpdate: 2000-01-23T04:56:07.000+00:00
-        Port: Port
-        Name: Name
-        TLSPort: TLSPort
-      properties:
-        Addresses:
-          items:
-            type: string
-          type: array
-        LastUpdate:
-          format: date-time
-          type: string
-        Port:
-          type: string
-        Name:
-          type: string
-        TLSPort:
-          type: string
     RoleAddData:
       description: Role of an user.
       example:

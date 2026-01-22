@@ -13,10 +13,11 @@ import (
 	"time"
 )
 
-type EventInstance struct {
+// Tracked instance information
+type EventTrackedInstance struct {
+	Name       string    `json:"Name,omitempty"`
+	Port       string    `json:"Port,omitempty"`
+	TLSPort    string    `json:"TLSPort,omitempty"`
 	Addresses  []string  `json:"Addresses,omitempty"`
 	LastUpdate time.Time `json:"LastUpdate,omitempty"`
-	Port       string    `json:"Port,omitempty"`
-	Name       string    `json:"Name,omitempty"`
-	TLSPort    string    `json:"TLSPort,omitempty"`
 }

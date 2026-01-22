@@ -9,7 +9,8 @@
 
 package tsuru
 
-type EventExtraTargets struct {
-	Target EventLock `json:"Target,omitempty"`
-	Lock   bool      `json:"Lock,omitempty"`
+// Event target
+type EventTarget struct {
+	Type  string `json:"Type,omitempty"`
+	Value string `json:"Value,omitempty"`
 }

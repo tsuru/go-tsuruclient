@@ -13,11 +13,12 @@ import (
 	"time"
 )
 
+// Event cancellation information
 type EventCancelInfo struct {
-	Asked     bool      `json:"Asked,omitempty"`
 	Owner     string    `json:"Owner,omitempty"`
-	AckTime   time.Time `json:"AckTime,omitempty"`
 	StartTime time.Time `json:"StartTime,omitempty"`
-	Canceled  bool      `json:"Canceled,omitempty"`
+	AckTime   time.Time `json:"AckTime,omitempty"`
 	Reason    string    `json:"Reason,omitempty"`
+	Asked     bool      `json:"Asked,omitempty"`
+	Canceled  bool      `json:"Canceled,omitempty"`
 }

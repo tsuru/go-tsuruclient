@@ -9,11 +9,8 @@
 
 package tsuru
 
-import (
-	"time"
-)
-
-type EventStructuredLog struct {
-	Message string    `json:"Message,omitempty"`
-	Date    time.Time `json:"Date,omitempty"`
+// Event extra target
+type EventExtraTarget struct {
+	Target EventTarget `json:"Target,omitempty"`
+	Lock   bool        `json:"Lock,omitempty"`
 }
