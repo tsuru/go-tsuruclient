@@ -10,7 +10,7 @@
 package tsuru
 
 // Raw custom data (BSON encoded)
-type EventCustomDataRaw struct {
+type EventStartCustomData struct {
 	Kind float32 `json:"Kind,omitempty"`
 	Data string  `json:"Data,omitempty"`
 }
