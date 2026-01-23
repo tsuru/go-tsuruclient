@@ -23,9 +23,9 @@ Name | Type | Description | Notes
 **Allowed** | [**EventAllowedPermission**](EventAllowedPermission.md) |  | [optional] 
 **AllowedCancel** | [**EventAllowedPermission**](EventAllowedPermission.md) |  | [optional] 
 **Instance** | [**EventTrackedInstance**](EventTrackedInstance.md) |  | [optional] 
-**StartCustomData** | [**EventCustomDataRaw**](EventCustomDataRaw.md) |  | [optional] 
-**EndCustomData** | [**EventCustomDataRaw**](EventCustomDataRaw.md) |  | [optional] 
-**OtherCustomData** | [**EventCustomDataRaw**](EventCustomDataRaw.md) |  | [optional] 
+**StartCustomData** | [**EventStartCustomData**](EventStartCustomData.md) |  | [optional] 
+**EndCustomData** | [**EventStartCustomData**](EventStartCustomData.md) |  | [optional] 
+**OtherCustomData** | [**EventStartCustomData**](EventStartCustomData.md) |  | [optional] 
 **CustomData** | [**EventCustomData**](EventCustomData.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

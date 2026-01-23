@@ -35,8 +35,8 @@ type Event struct {
 	Allowed         EventAllowedPermission `json:"Allowed,omitempty"`
 	AllowedCancel   EventAllowedPermission `json:"AllowedCancel,omitempty"`
 	Instance        EventTrackedInstance   `json:"Instance,omitempty"`
-	StartCustomData EventCustomDataRaw     `json:"StartCustomData,omitempty"`
-	EndCustomData   EventCustomDataRaw     `json:"EndCustomData,omitempty"`
-	OtherCustomData EventCustomDataRaw     `json:"OtherCustomData,omitempty"`
+	StartCustomData EventStartCustomData   `json:"StartCustomData,omitempty"`
+	EndCustomData   EventStartCustomData   `json:"EndCustomData,omitempty"`
+	OtherCustomData EventStartCustomData   `json:"OtherCustomData,omitempty"`
 	CustomData      EventCustomData        `json:"CustomData,omitempty"`
 }
