@@ -1358,6 +1358,58 @@ paths:
       - Bearer: []
       tags:
       - app
+  /1.0/apps/{app}/log:
+    get:
+      description: Retrieve logs from an app
+      operationId: AppLog
+      parameters:
+      - description: App name.
+        in: path
+        name: app
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      - description: Number of log lines to retrieve.
+        in: query
+        name: lines
+        schema:
+          type: string
+      - description: Filter logs by source.
+        in: query
+        name: source
+        schema:
+          type: string
+      - description: Filter logs by unit.
+        in: query
+        name: unit
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AppLog'
+                type: array
+          description: App logs
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: App not found.
+      security:
+      - Bearer: []
+      tags:
+      - app
   /1.0/apps/{app}/certificate:
     delete:
       description: Unset app certificate.
@@ -9405,6 +9457,30 @@ components:
         CtxType:
           type: string
         Value:
+          type: string
+      type: object
+    AppLog:
+      description: App log.
+      example:
+        date: 2000-01-23T04:56:07.000+00:00
+        unit: unit
+        name: name
+        source: source
+        message: message
+        type: type
+      properties:
+        date:
+          format: date-time
+          type: string
+        name:
+          type: string
+        source:
+          type: string
+        message:
+          type: string
+        unit:
+          type: string
+        type:
           type: string
       type: object
     Env:
