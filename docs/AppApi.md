@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**AppGet**](AppApi.md#AppGet) | **Get** /1.0/apps/{app} | 
 [**AppGetCertificates**](AppApi.md#AppGetCertificates) | **Get** /1.24/apps/{app}/certificate | 
 [**AppList**](AppApi.md#AppList) | **Get** /1.0/apps | 
+[**AppLog**](AppApi.md#AppLog) | **Get** /1.0/apps/{app}/log | 
 [**AppQuotaChange**](AppApi.md#AppQuotaChange) | **Put** /1.0/apps/{app}/quota | 
 [**AppQuotaGet**](AppApi.md#AppQuotaGet) | **Get** /1.0/apps/{app}/quota | 
 [**AppRestart**](AppApi.md#AppRestart) | **Post** /1.0/apps/{app}/restart | 
@@ -328,6 +329,45 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]MiniApp**](MiniApp.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AppLog**
+> []AppLog AppLog(ctx, app, optional)
+
+
+Retrieve logs from an app
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **app** | **string**| App name. | 
+ **optional** | ***AppLogOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a AppLogOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **lines** | **optional.String**| Number of log lines to retrieve. | 
+ **source** | **optional.String**| Filter logs by source. | 
+ **unit** | **optional.String**| Filter logs by unit. | 
+
+### Return type
+
+[**[]AppLog**](AppLog.md)
 
 ### Authorization
 

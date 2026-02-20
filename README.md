@@ -39,6 +39,7 @@ Class | Method | HTTP request | Description
 *AppApi* | [**AppGet**](docs/AppApi.md#appget) | **Get** /1.0/apps/{app} | 
 *AppApi* | [**AppGetCertificates**](docs/AppApi.md#appgetcertificates) | **Get** /1.24/apps/{app}/certificate | 
 *AppApi* | [**AppList**](docs/AppApi.md#applist) | **Get** /1.0/apps | 
+*AppApi* | [**AppLog**](docs/AppApi.md#applog) | **Get** /1.0/apps/{app}/log | 
 *AppApi* | [**AppQuotaChange**](docs/AppApi.md#appquotachange) | **Put** /1.0/apps/{app}/quota | 
 *AppApi* | [**AppQuotaGet**](docs/AppApi.md#appquotaget) | **Get** /1.0/apps/{app}/quota | 
 *AppApi* | [**AppRestart**](docs/AppApi.md#apprestart) | **Post** /1.0/apps/{app}/restart | 
@@ -192,6 +193,7 @@ Class | Method | HTTP request | Description
  - [AppCreateResponse](docs/AppCreateResponse.md)
  - [AppId](docs/AppId.md)
  - [AppInternalAddresses](docs/AppInternalAddresses.md)
+ - [AppLog](docs/AppLog.md)
  - [AppProcess](docs/AppProcess.md)
  - [AppRouter](docs/AppRouter.md)
  - [AppRouters](docs/AppRouters.md)
