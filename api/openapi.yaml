@@ -9744,6 +9744,12 @@ components:
           type: string
         team:
           type: string
+        encoding:
+          description: Encoding format used to communicate with the service API backend. Valid options are "form" (default) and "json".
+          enum:
+          - form
+          - json
+          type: string
       type: object
     Cluster:
       example:

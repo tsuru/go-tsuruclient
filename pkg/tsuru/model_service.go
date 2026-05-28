@@ -16,4 +16,6 @@ type Service struct {
 	Endpoint     string `json:"endpoint,omitempty"`
 	MultiCluster string `json:"multi-cluster,omitempty"`
 	Team         string `json:"team,omitempty"`
+	// Encoding format used to communicate with the service API backend. Valid options are \"form\" (default) and \"json\".
+	Encoding string `json:"encoding,omitempty"`
 }

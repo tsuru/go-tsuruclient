@@ -306,6 +306,7 @@ Name | Type | Description  | Notes
  **endpoint** | **optional.String**|  | 
  **multiCluster** | **optional.String**|  | 
  **team** | **optional.String**|  | 
+ **encoding** | **optional.String**| Encoding format used to communicate with the service API backend. Valid options are \\\&quot;form\\\&quot; (default) and \\\&quot;json\\\&quot;. | 
 
 ### Return type
 
@@ -740,6 +741,7 @@ Name | Type | Description  | Notes
  **endpoint** | **optional.String**|  | 
  **multiCluster** | **optional.String**|  | 
  **team** | **optional.String**|  | 
+ **encoding** | **optional.String**| Encoding format used to communicate with the service API backend. Valid options are \\\&quot;form\\\&quot; (default) and \\\&quot;json\\\&quot;. | 
 
 ### Return type
 

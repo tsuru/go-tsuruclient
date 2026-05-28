@@ -999,6 +999,7 @@ Creates a new service
  * @param "Endpoint" (optional.String) -
  * @param "MultiCluster" (optional.String) -
  * @param "Team" (optional.String) -
+ * @param "Encoding" (optional.String) -  Encoding format used to communicate with the service API backend. Valid options are \\\"form\\\" (default) and \\\"json\\\".
 */
 
 type ServiceCreateOpts struct {
@@ -1008,6 +1009,7 @@ type ServiceCreateOpts struct {
 	Endpoint     optional.String
 	MultiCluster optional.String
 	Team         optional.String
+	Encoding     optional.String
 }
 
 func (a *ServiceApiService) ServiceCreate(ctx context.Context, localVarOptionals *ServiceCreateOpts) (*http.Response, error) {
@@ -1060,6 +1062,9 @@ func (a *ServiceApiService) ServiceCreate(ctx context.Context, localVarOptionals
 	}
 	if localVarOptionals != nil && localVarOptionals.Team.IsSet() {
 		localVarFormParams.Add("team", parameterToString(localVarOptionals.Team.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Encoding.IsSet() {
+		localVarFormParams.Add("encoding", parameterToString(localVarOptionals.Encoding.Value(), ""))
 	}
 	if ctx != nil {
 		// API Key Authentication
@@ -2726,6 +2731,7 @@ Updates a service
  * @param "Endpoint" (optional.String) -
  * @param "MultiCluster" (optional.String) -
  * @param "Team" (optional.String) -
+ * @param "Encoding" (optional.String) -  Encoding format used to communicate with the service API backend. Valid options are \\\"form\\\" (default) and \\\"json\\\".
 */
 
 type ServiceUpdateOpts struct {
@@ -2735,6 +2741,7 @@ type ServiceUpdateOpts struct {
 	Endpoint     optional.String
 	MultiCluster optional.String
 	Team         optional.String
+	Encoding     optional.String
 }
 
 func (a *ServiceApiService) ServiceUpdate(ctx context.Context, name string, localVarOptionals *ServiceUpdateOpts) (*http.Response, error) {
@@ -2791,6 +2798,9 @@ func (a *ServiceApiService) ServiceUpdate(ctx context.Context, name string, loca
 	}
 	if localVarOptionals != nil && localVarOptionals.Team.IsSet() {
 		localVarFormParams.Add("team", parameterToString(localVarOptionals.Team.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Encoding.IsSet() {
+		localVarFormParams.Add("encoding", parameterToString(localVarOptionals.Encoding.Value(), ""))
 	}
 	if ctx != nil {
 		// API Key Authentication
