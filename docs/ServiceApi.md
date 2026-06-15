@@ -303,7 +303,7 @@ Name | Type | Description  | Notes
  **id** | **optional.String**|  | 
  **username** | **optional.String**|  | 
  **password** | **optional.String**|  | 
- **endpoint** | **optional.String**|  | 
+ **endpoint** | **optional.String**| Single service endpoint URL. When set without \\\&quot;endpoints\\\&quot;, it is stored as endpoints[\\\&quot;production\\\&quot;]. Mutually exclusive in practice with \\\&quot;endpoints\\\&quot; (if both are sent, \\\&quot;endpoints\\\&quot; wins). | 
  **multiCluster** | **optional.String**|  | 
  **team** | **optional.String**|  | 
  **encoding** | **optional.String**| Encoding format used to communicate with the service API backend. Valid options are \\\&quot;form\\\&quot; (default) and \\\&quot;json\\\&quot;. | 
@@ -738,7 +738,7 @@ Name | Type | Description  | Notes
  **id** | **optional.String**|  | 
  **username** | **optional.String**|  | 
  **password** | **optional.String**|  | 
- **endpoint** | **optional.String**|  | 
+ **endpoint** | **optional.String**| Single service endpoint URL. When set without \\\&quot;endpoints\\\&quot;, it is stored as endpoints[\\\&quot;production\\\&quot;]. Mutually exclusive in practice with \\\&quot;endpoints\\\&quot; (if both are sent, \\\&quot;endpoints\\\&quot; wins). | 
  **multiCluster** | **optional.String**|  | 
  **team** | **optional.String**|  | 
  **encoding** | **optional.String**| Encoding format used to communicate with the service API backend. Valid options are \\\&quot;form\\\&quot; (default) and \\\&quot;json\\\&quot;. | 

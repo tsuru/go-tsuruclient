@@ -10,12 +10,15 @@
 package tsuru
 
 type Service struct {
-	Id           string `json:"id,omitempty"`
-	Username     string `json:"username,omitempty"`
-	Password     string `json:"password,omitempty"`
-	Endpoint     string `json:"endpoint,omitempty"`
-	MultiCluster string `json:"multi-cluster,omitempty"`
-	Team         string `json:"team,omitempty"`
+	Id       string `json:"id,omitempty"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+	// Single service endpoint URL. When set without \"endpoints\", it is stored as endpoints[\"production\"]. Mutually exclusive in practice with \"endpoints\" (if both are sent, \"endpoints\" wins).
+	Endpoint string `json:"endpoint,omitempty"`
+	// Map of endpoint name to URL, allowing multiple endpoints per service (e.g. one per cluster). Sent as form fields with keys \"endpoints.<name>\". When provided, it overrides \"endpoint\".
+	Endpoints    map[string]string `json:"endpoints,omitempty"`
+	MultiCluster string            `json:"multi-cluster,omitempty"`
+	Team         string            `json:"team,omitempty"`
 	// Encoding format used to communicate with the service API backend. Valid options are \"form\" (default) and \"json\".
 	Encoding string `json:"encoding,omitempty"`
 }

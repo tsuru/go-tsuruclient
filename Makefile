@@ -21,6 +21,7 @@ process-files:
 	gofmt -s -w pkg/tsuru/
 	git apply patchs/01.diff
 	git apply patchs/02.diff
+	git apply patchs/03.diff
 	goimports -w pkg/tsuru/
 	go mod tidy
 

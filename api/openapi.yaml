@@ -9739,7 +9739,13 @@ components:
         password:
           type: string
         endpoint:
+          description: Single service endpoint URL. When set without "endpoints", it is stored as endpoints["production"]. Mutually exclusive in practice with "endpoints" (if both are sent, "endpoints" wins).
           type: string
+        endpoints:
+          additionalProperties:
+            type: string
+          description: Map of endpoint name to URL, allowing multiple endpoints per service (e.g. one per cluster). Sent as form fields with keys "endpoints.<name>". When provided, it overrides "endpoint".
+          type: object
         multi-cluster:
           type: string
         team:

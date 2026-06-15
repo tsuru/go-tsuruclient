@@ -996,7 +996,8 @@ Creates a new service
  * @param "Id" (optional.String) -
  * @param "Username" (optional.String) -
  * @param "Password" (optional.String) -
- * @param "Endpoint" (optional.String) -
+ * @param "Endpoint" (optional.String) -  Single service endpoint URL. When set without \\\"endpoints\\\", it is stored as endpoints[\\\"production\\\"]. Mutually exclusive in practice with \\\"endpoints\\\" (if both are sent, \\\"endpoints\\\" wins).
+ * @param "Endpoints" (optional map[string]string) -  Multiple endpoints keyed by name. Each entry is sent as endpoints.<key>=<url>. A nil or empty map is treated as unset.
  * @param "MultiCluster" (optional.String) -
  * @param "Team" (optional.String) -
  * @param "Encoding" (optional.String) -  Encoding format used to communicate with the service API backend. Valid options are \\\"form\\\" (default) and \\\"json\\\".
@@ -1007,6 +1008,7 @@ type ServiceCreateOpts struct {
 	Username     optional.String
 	Password     optional.String
 	Endpoint     optional.String
+	Endpoints    map[string]string
 	MultiCluster optional.String
 	Team         optional.String
 	Encoding     optional.String
@@ -1056,6 +1058,11 @@ func (a *ServiceApiService) ServiceCreate(ctx context.Context, localVarOptionals
 	}
 	if localVarOptionals != nil && localVarOptionals.Endpoint.IsSet() {
 		localVarFormParams.Add("endpoint", parameterToString(localVarOptionals.Endpoint.Value(), ""))
+	}
+	if localVarOptionals != nil {
+		for k, v := range localVarOptionals.Endpoints {
+			localVarFormParams.Add("endpoints."+k, parameterToString(v, ""))
+		}
 	}
 	if localVarOptionals != nil && localVarOptionals.MultiCluster.IsSet() {
 		localVarFormParams.Add("multi-cluster", parameterToString(localVarOptionals.MultiCluster.Value(), ""))
@@ -2728,7 +2735,8 @@ Updates a service
  * @param "Id" (optional.String) -
  * @param "Username" (optional.String) -
  * @param "Password" (optional.String) -
- * @param "Endpoint" (optional.String) -
+ * @param "Endpoint" (optional.String) -  Single service endpoint URL. When set without \\\"endpoints\\\", it is stored as endpoints[\\\"production\\\"]. Mutually exclusive in practice with \\\"endpoints\\\" (if both are sent, \\\"endpoints\\\" wins).
+ * @param "Endpoints" (optional map[string]string) -  Multiple endpoints keyed by name. Each entry is sent as endpoints.<key>=<url>. A nil or empty map is treated as unset.
  * @param "MultiCluster" (optional.String) -
  * @param "Team" (optional.String) -
  * @param "Encoding" (optional.String) -  Encoding format used to communicate with the service API backend. Valid options are \\\"form\\\" (default) and \\\"json\\\".
@@ -2739,6 +2747,7 @@ type ServiceUpdateOpts struct {
 	Username     optional.String
 	Password     optional.String
 	Endpoint     optional.String
+	Endpoints    map[string]string
 	MultiCluster optional.String
 	Team         optional.String
 	Encoding     optional.String
@@ -2792,6 +2801,11 @@ func (a *ServiceApiService) ServiceUpdate(ctx context.Context, name string, loca
 	}
 	if localVarOptionals != nil && localVarOptionals.Endpoint.IsSet() {
 		localVarFormParams.Add("endpoint", parameterToString(localVarOptionals.Endpoint.Value(), ""))
+	}
+	if localVarOptionals != nil {
+		for k, v := range localVarOptionals.Endpoints {
+			localVarFormParams.Add("endpoints."+k, parameterToString(v, ""))
+		}
 	}
 	if localVarOptionals != nil && localVarOptionals.MultiCluster.IsSet() {
 		localVarFormParams.Add("multi-cluster", parameterToString(localVarOptionals.MultiCluster.Value(), ""))
