@@ -19,6 +19,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/antihax/optional"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -132,6 +133,174 @@ func TestServiceApiService_InstanceProxy(t *testing.T) {
 			r, err := a.InstanceProxy(context.TODO(), tt.service, tt.instance, tt.pr)
 			require.NotNil(t, tt.assert)
 			tt.assert(t, r, err)
+		})
+	}
+}
+
+func TestServiceApiService_ServiceCreate_Endpoints(t *testing.T) {
+	tests := []struct {
+		name       string
+		opts       *ServiceCreateOpts
+		wantForm   map[string][]string
+		wantAbsent []string
+	}{
+		{
+			name: "single legacy endpoint",
+			opts: &ServiceCreateOpts{
+				Id:       optional.NewString("my-service"),
+				Endpoint: optional.NewString("https://api.example.com"),
+				Team:     optional.NewString("team-a"),
+			},
+			wantForm: map[string][]string{
+				"id":       {"my-service"},
+				"endpoint": {"https://api.example.com"},
+				"team":     {"team-a"},
+			},
+			wantAbsent: []string{"endpoints.production"},
+		},
+		{
+			name: "multiple endpoints map",
+			opts: &ServiceCreateOpts{
+				Id:   optional.NewString("my-service"),
+				Team: optional.NewString("team-a"),
+				Endpoints: map[string]string{
+					"production": "https://prod.example.com",
+					"cluster1":   "https://c1.example.com",
+				},
+			},
+			wantForm: map[string][]string{
+				"id":                   {"my-service"},
+				"team":                 {"team-a"},
+				"endpoints.production": {"https://prod.example.com"},
+				"endpoints.cluster1":   {"https://c1.example.com"},
+			},
+			wantAbsent: []string{"endpoint"},
+		},
+		{
+			name: "endpoint and endpoints together",
+			opts: &ServiceCreateOpts{
+				Id:       optional.NewString("my-service"),
+				Endpoint: optional.NewString("https://api.example.com"),
+				Endpoints: map[string]string{
+					"cluster1": "https://c1.example.com",
+				},
+			},
+			wantForm: map[string][]string{
+				"id":                 {"my-service"},
+				"endpoint":           {"https://api.example.com"},
+				"endpoints.cluster1": {"https://c1.example.com"},
+			},
+		},
+		{
+			name: "empty endpoints map sends nothing",
+			opts: &ServiceCreateOpts{
+				Id:        optional.NewString("my-service"),
+				Endpoints: map[string]string{},
+			},
+			wantForm: map[string][]string{
+				"id": {"my-service"},
+			},
+			wantAbsent: []string{"endpoint", "endpoints.production"},
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			var gotForm map[string][]string
+			srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				assert.Equal(t, http.MethodPost, r.Method)
+				assert.Equal(t, "/1.0/services", r.URL.Path)
+				require.NoError(t, r.ParseForm())
+				gotForm = r.PostForm
+				w.WriteHeader(http.StatusCreated)
+			}))
+			defer srv.Close()
+
+			a := &ServiceApiService{
+				client: &APIClient{
+					cfg: &Configuration{BasePath: srv.URL, HTTPClient: http.DefaultClient},
+				},
+			}
+
+			_, err := a.ServiceCreate(context.TODO(), tt.opts)
+			require.NoError(t, err)
+
+			for k, want := range tt.wantForm {
+				assert.ElementsMatchf(t, want, gotForm[k], "form key %q", k)
+			}
+			for _, k := range tt.wantAbsent {
+				assert.Emptyf(t, gotForm[k], "form key %q should be absent", k)
+			}
+		})
+	}
+}
+
+func TestServiceApiService_ServiceUpdate_Endpoints(t *testing.T) {
+	tests := []struct {
+		name       string
+		opts       *ServiceUpdateOpts
+		wantForm   map[string][]string
+		wantAbsent []string
+	}{
+		{
+			name: "single legacy endpoint",
+			opts: &ServiceUpdateOpts{
+				Id:       optional.NewString("my-service"),
+				Endpoint: optional.NewString("https://api.example.com"),
+				Team:     optional.NewString("team-a"),
+			},
+			wantForm: map[string][]string{
+				"id":       {"my-service"},
+				"endpoint": {"https://api.example.com"},
+				"team":     {"team-a"},
+			},
+			wantAbsent: []string{"endpoints.production"},
+		},
+		{
+			name: "multiple endpoints map",
+			opts: &ServiceUpdateOpts{
+				Endpoints: map[string]string{
+					"production": "https://prod.example.com",
+					"cluster1":   "https://c1.example.com",
+					"cluster2":   "https://c2.example.com",
+				},
+			},
+			wantForm: map[string][]string{
+				"endpoints.production": {"https://prod.example.com"},
+				"endpoints.cluster1":   {"https://c1.example.com"},
+				"endpoints.cluster2":   {"https://c2.example.com"},
+			},
+			wantAbsent: []string{"endpoint"},
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			var gotForm map[string][]string
+			srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				assert.Equal(t, http.MethodPut, r.Method)
+				assert.Equal(t, "/1.0/services/my-service", r.URL.Path)
+				require.NoError(t, r.ParseForm())
+				gotForm = r.PostForm
+				w.WriteHeader(http.StatusOK)
+			}))
+			defer srv.Close()
+
+			a := &ServiceApiService{
+				client: &APIClient{
+					cfg: &Configuration{BasePath: srv.URL, HTTPClient: http.DefaultClient},
+				},
+			}
+
+			_, err := a.ServiceUpdate(context.TODO(), "my-service", tt.opts)
+			require.NoError(t, err)
+
+			for k, want := range tt.wantForm {
+				assert.ElementsMatchf(t, want, gotForm[k], "form key %q", k)
+			}
+			for _, k := range tt.wantAbsent {
+				assert.Emptyf(t, gotForm[k], "form key %q should be absent", k)
+			}
 		})
 	}
 }
