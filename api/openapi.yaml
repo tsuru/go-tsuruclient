@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   description: Open source, extensible and Docker-based Platform as a Service (PaaS)
   title: Tsuru
-  version: "1.29"
+  version: "1.30"
 servers:
 - url: /
 paths:
@@ -8133,15 +8133,12 @@ components:
         pool: pool
         planname: planname
         servicename: servicename
-        id: id
         apps:
         - apps
         - apps
         info: '{}'
         teamowner: teamowner
       properties:
-        id:
-          type: string
         name:
           type: string
         pool:

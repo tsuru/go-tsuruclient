@@ -3,7 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | [optional] 
 **Name** | **string** |  | [optional] 
 **Pool** | **string** |  | [optional] 
 **Teams** | **[]string** |  | [optional] 
