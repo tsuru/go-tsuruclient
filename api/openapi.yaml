@@ -407,6 +407,90 @@ paths:
       - Bearer: []
       tags:
       - service
+  /1.31/services/{service}/manifest:
+    get:
+      description: Get the service manifest
+      operationId: ServiceManifestGet
+      parameters:
+      - description: Service name.
+        in: path
+        name: service
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceManifest'
+          description: Stored manifest
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Service not found
+      security:
+      - Bearer: []
+      tags:
+      - service
+    put:
+      description: Set the service manifest
+      operationId: ServiceManifestSet
+      parameters:
+      - description: Service name.
+        in: path
+        name: service
+        required: true
+        schema:
+          minLength: 1
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceManifest'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Manifest applied
+        400:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Invalid data
+        401:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Unauthorized
+        404:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Service not found
+        409:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ServiceManifestConflict'
+          description: Manifest would orphan dynamic grants
+      security:
+      - Bearer: []
+      tags:
+      - service
   /1.0/services/instances:
     get:
       description: List service instances
@@ -7099,6 +7183,30 @@ components:
         version:
           type: string
       type: object
+    ServiceManifest:
+      example:
+        legacy_compat: true
+        operations:
+        - path: path
+          method: DELETE
+          action: action
+        - path: path
+          method: DELETE
+          action: action
+        strict_actions: true
+        enabled: true
+      properties:
+        enabled:
+          type: boolean
+        strict_actions:
+          type: boolean
+        legacy_compat:
+          type: boolean
+        operations:
+          items:
+            $ref: '#/components/schemas/ServiceManifestOperation'
+          type: array
+      type: object
     AppCreateResponse:
       description: Newly created app information.
       example:
@@ -7579,6 +7687,15 @@ components:
           description: Custom volume options.
           type: object
       type: object
+    ServiceManifestGrantConflict:
+      properties:
+        action:
+          type: string
+        roles:
+          items:
+            type: string
+          type: array
+      type: object
     Event:
       description: Tsuru event
       example:
@@ -7974,6 +8091,27 @@ components:
           type: string
         username:
           type: string
+    ServiceManifestOperation:
+      example:
+        path: path
+        method: DELETE
+        action: action
+      properties:
+        method:
+          enum:
+          - DELETE
+          - GET
+          - HEAD
+          - OPTIONS
+          - PATCH
+          - POST
+          - PUT
+          type: string
+        path:
+          type: string
+        action:
+          type: string
+      type: object
     CertificateSetData:
       example:
         cname: cname
@@ -9655,6 +9793,15 @@ components:
           x-go-custom-type: float64
         prometheusAddress:
           type: string
+      type: object
+    ServiceManifestConflict:
+      properties:
+        service:
+          type: string
+        conflicts:
+          items:
+            $ref: '#/components/schemas/ServiceManifestGrantConflict'
+          type: array
       type: object
     ServiceInstanceInfo:
       example:

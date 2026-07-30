@@ -149,6 +149,8 @@ Class | Method | HTTP request | Description
 *ServiceApi* | [**ServiceInstanceStatus**](docs/ServiceApi.md#serviceinstancestatus) | **Get** /1.0/services/{service}/instances/{instance}/status | 
 *ServiceApi* | [**ServiceInstanceUnbind**](docs/ServiceApi.md#serviceinstanceunbind) | **Delete** /1.13/services/{service}/instances/{instance}/apps/{app} | 
 *ServiceApi* | [**ServiceInstanceUnbind10**](docs/ServiceApi.md#serviceinstanceunbind10) | **Delete** /1.0/services/{service}/instances/{instance}/{app} | 
+*ServiceApi* | [**ServiceManifestGet**](docs/ServiceApi.md#servicemanifestget) | **Get** /1.31/services/{service}/manifest | 
+*ServiceApi* | [**ServiceManifestSet**](docs/ServiceApi.md#servicemanifestset) | **Put** /1.31/services/{service}/manifest | 
 *ServiceApi* | [**ServicePlans**](docs/ServiceApi.md#serviceplans) | **Get** /1.0/services/{name}/plans | 
 *ServiceApi* | [**ServiceRevokeTeam**](docs/ServiceApi.md#servicerevoketeam) | **Delete** /1.0/services/{service}/team/{team} | 
 *ServiceApi* | [**ServiceUpdate**](docs/ServiceApi.md#serviceupdate) | **Put** /1.0/services/{name} | 
@@ -281,6 +283,10 @@ Class | Method | HTTP request | Description
  - [ServiceInstanceUnbind](docs/ServiceInstanceUnbind.md)
  - [ServiceInstanceUpdateData](docs/ServiceInstanceUpdateData.md)
  - [ServiceList](docs/ServiceList.md)
+ - [ServiceManifest](docs/ServiceManifest.md)
+ - [ServiceManifestConflict](docs/ServiceManifestConflict.md)
+ - [ServiceManifestGrantConflict](docs/ServiceManifestGrantConflict.md)
+ - [ServiceManifestOperation](docs/ServiceManifestOperation.md)
  - [ServicePlan](docs/ServicePlan.md)
  - [SetRoutableArgs](docs/SetRoutableArgs.md)
  - [SwapAutoScaleSpec](docs/SwapAutoScaleSpec.md)

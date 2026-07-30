@@ -24,6 +24,8 @@ Method | HTTP request | Description
 [**ServiceInstanceStatus**](ServiceApi.md#ServiceInstanceStatus) | **Get** /1.0/services/{service}/instances/{instance}/status | 
 [**ServiceInstanceUnbind**](ServiceApi.md#ServiceInstanceUnbind) | **Delete** /1.13/services/{service}/instances/{instance}/apps/{app} | 
 [**ServiceInstanceUnbind10**](ServiceApi.md#ServiceInstanceUnbind10) | **Delete** /1.0/services/{service}/instances/{instance}/{app} | 
+[**ServiceManifestGet**](ServiceApi.md#ServiceManifestGet) | **Get** /1.31/services/{service}/manifest | 
+[**ServiceManifestSet**](ServiceApi.md#ServiceManifestSet) | **Put** /1.31/services/{service}/manifest | 
 [**ServicePlans**](ServiceApi.md#ServicePlans) | **Get** /1.0/services/{name}/plans | 
 [**ServiceRevokeTeam**](ServiceApi.md#ServiceRevokeTeam) | **Delete** /1.0/services/{service}/team/{team} | 
 [**ServiceUpdate**](ServiceApi.md#ServiceUpdate) | **Put** /1.0/services/{name} | 
@@ -646,6 +648,63 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/x-json-stream
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ServiceManifestGet**
+> ServiceManifest ServiceManifestGet(ctx, service)
+
+
+Get the service manifest
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **service** | **string**| Service name. | 
+
+### Return type
+
+[**ServiceManifest**](ServiceManifest.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ServiceManifestSet**
+> ServiceManifestSet(ctx, service, serviceManifest)
+
+
+Set the service manifest
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **service** | **string**| Service name. | 
+  **serviceManifest** | [**ServiceManifest**](ServiceManifest.md)|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
