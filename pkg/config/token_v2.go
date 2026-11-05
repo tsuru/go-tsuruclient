@@ -24,6 +24,9 @@ const (
 )
 
 func WriteTokenV2(token TokenV2) error {
+	if err := Filesystem().MkdirAll(JoinWithUserDir(".tsuru"), 0700); err != nil {
+		return err
+	}
 	tokenPaths := []string{
 		JoinWithUserDir(".tsuru", tokenV2Filename),
 	}
@@ -37,7 +40,7 @@ func WriteTokenV2(token TokenV2) error {
 	}
 
 	for _, tokenPath := range tokenPaths {
-		file, err := Filesystem().Create(tokenPath)
+		file, err := openPrivateFile(tokenPath)
 		if err != nil {
 			return err
 		}

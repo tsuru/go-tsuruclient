@@ -7,6 +7,8 @@ package config
 import (
 	"io"
 	"os"
+	"path/filepath"
+	"runtime"
 
 	"github.com/tsuru/tsuru/fs/fstest"
 	"gopkg.in/check.v1"
@@ -21,7 +23,8 @@ func (s *S) TestWriteToken(c *check.C) {
 	err := WriteTokenV1("abc")
 	c.Assert(err, check.IsNil)
 	tokenPath := JoinWithUserDir(".tsuru", "token")
-	c.Assert(rfs.HasAction("create "+tokenPath), check.Equals, true)
+	c.Assert(rfs.HasAction("mkdirall "+JoinWithUserDir(".tsuru")+" with mode 0700"), check.Equals, true)
+	c.Assert(rfs.HasAction("openfile "+tokenPath+" with mode 0600"), check.Equals, true)
 	fil, _ := Filesystem().Open(tokenPath)
 	b, _ := io.ReadAll(fil)
 	c.Assert(string(b), check.Equals, "abc")
@@ -38,15 +41,52 @@ func (s *S) TestWriteTokenWithTarget(c *check.C) {
 	err := WriteTokenV1("abc")
 	c.Assert(err, check.IsNil)
 	tokenPath1 := JoinWithUserDir(".tsuru", "token")
-	c.Assert(rfs.HasAction("create "+tokenPath1), check.Equals, true)
+	c.Assert(rfs.HasAction("openfile "+tokenPath1+" with mode 0600"), check.Equals, true)
 	tokenPath2 := JoinWithUserDir(".tsuru", "token.d", "test")
-	c.Assert(rfs.HasAction("create "+tokenPath2), check.Equals, true)
+	c.Assert(rfs.HasAction("openfile "+tokenPath2+" with mode 0600"), check.Equals, true)
 	fil, _ := Filesystem().Open(tokenPath1)
 	b, _ := io.ReadAll(fil)
 	c.Assert(string(b), check.Equals, "abc")
 	fil, _ = Filesystem().Open(tokenPath2)
 	b, _ = io.ReadAll(fil)
 	c.Assert(string(b), check.Equals, "abc")
+}
+
+func (s *S) TestWriteTokenFileMode(c *check.C) {
+	if runtime.GOOS == "windows" {
+		c.Skip("unix file modes")
+	}
+	home := c.MkDir()
+	defer os.Setenv("HOME", os.Getenv("HOME"))
+	os.Setenv("HOME", home)
+	tokenPath := filepath.Join(home, ".tsuru", "token")
+	c.Assert(os.MkdirAll(filepath.Dir(tokenPath), 0755), check.IsNil)
+	c.Assert(os.WriteFile(tokenPath, []byte("old"), 0644), check.IsNil)
+	err := WriteTokenV1("abc")
+	c.Assert(err, check.IsNil)
+	info, err := os.Stat(tokenPath)
+	c.Assert(err, check.IsNil)
+	c.Assert(info.Mode().Perm(), check.Equals, os.FileMode(0600))
+	b, err := os.ReadFile(tokenPath)
+	c.Assert(err, check.IsNil)
+	c.Assert(string(b), check.Equals, "abc")
+}
+
+func (s *S) TestWriteTokenCreatesTsuruDir(c *check.C) {
+	if runtime.GOOS == "windows" {
+		c.Skip("unix file modes")
+	}
+	home := c.MkDir()
+	defer os.Setenv("HOME", os.Getenv("HOME"))
+	os.Setenv("HOME", home)
+	err := WriteTokenV1("abc")
+	c.Assert(err, check.IsNil)
+	info, err := os.Stat(filepath.Join(home, ".tsuru"))
+	c.Assert(err, check.IsNil)
+	c.Assert(info.Mode().Perm(), check.Equals, os.FileMode(0700))
+	info, err = os.Stat(filepath.Join(home, ".tsuru", "token"))
+	c.Assert(err, check.IsNil)
+	c.Assert(info.Mode().Perm(), check.Equals, os.FileMode(0600))
 }
 
 func (s *S) TestReadToken(c *check.C) {
