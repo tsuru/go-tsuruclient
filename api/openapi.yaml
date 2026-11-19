@@ -2941,11 +2941,11 @@ paths:
             schema:
               properties:
                 dockerfile_content:
+                  description: Dockerfile to build the new version from. When omitted and disabled is not set, the platform is rebuilt from the Dockerfile it was last built from.
                   format: binary
                   type: string
-              required:
-              - dockerfile_content
-        required: true
+                disabled:
+                  type: string
       responses:
         200:
           content: {}
@@ -6104,7 +6104,20 @@ components:
             MountPoint: MountPoint
             Volume: Volume
         processes:
-        - metadata:
+        - healthcheck:
+            headers:
+              key: headers
+            path: path
+            scheme: scheme
+            allowed_failures: 0
+            interval_seconds: 6
+            deploy_timeout_seconds: 5
+            force_restart: true
+            timeout_seconds: 1
+            command:
+            - command
+            - command
+          metadata:
             annotations:
             - name: name
               value: value
@@ -6119,9 +6132,33 @@ components:
             - name: name
               value: value
               delete: true
+          startupcheck:
+            headers:
+              key: headers
+            path: path
+            scheme: scheme
+            allowed_failures: 5
+            interval_seconds: 2
+            timeout_seconds: 7
+            command:
+            - command
+            - command
           name: name
           plan: plan
-        - metadata:
+        - healthcheck:
+            headers:
+              key: headers
+            path: path
+            scheme: scheme
+            allowed_failures: 0
+            interval_seconds: 6
+            deploy_timeout_seconds: 5
+            force_restart: true
+            timeout_seconds: 1
+            command:
+            - command
+            - command
+          metadata:
             annotations:
             - name: name
               value: value
@@ -6136,6 +6173,17 @@ components:
             - name: name
               value: value
               delete: true
+          startupcheck:
+            headers:
+              key: headers
+            path: path
+            scheme: scheme
+            allowed_failures: 5
+            interval_seconds: 2
+            timeout_seconds: 7
+            command:
+            - command
+            - command
           name: name
           plan: plan
         provisioner: provisioner
@@ -6373,11 +6421,15 @@ components:
       example:
         name: name
         disabled: true
+        source: source
       properties:
         name:
           type: string
         disabled:
           type: boolean
+        source:
+          description: Dockerfile the platform was last built from, empty after a rollback. Only returned to users allowed to create or update platforms.
+          type: string
       type: object
     AutoScaleSchedule:
       description: Auto Scale schedules struct
@@ -6898,7 +6950,20 @@ components:
             value: value
             delete: true
         processes:
-        - metadata:
+        - healthcheck:
+            headers:
+              key: headers
+            path: path
+            scheme: scheme
+            allowed_failures: 0
+            interval_seconds: 6
+            deploy_timeout_seconds: 5
+            force_restart: true
+            timeout_seconds: 1
+            command:
+            - command
+            - command
+          metadata:
             annotations:
             - name: name
               value: value
@@ -6913,9 +6978,33 @@ components:
             - name: name
               value: value
               delete: true
+          startupcheck:
+            headers:
+              key: headers
+            path: path
+            scheme: scheme
+            allowed_failures: 5
+            interval_seconds: 2
+            timeout_seconds: 7
+            command:
+            - command
+            - command
           name: name
           plan: plan
-        - metadata:
+        - healthcheck:
+            headers:
+              key: headers
+            path: path
+            scheme: scheme
+            allowed_failures: 0
+            interval_seconds: 6
+            deploy_timeout_seconds: 5
+            force_restart: true
+            timeout_seconds: 1
+            command:
+            - command
+            - command
+          metadata:
             annotations:
             - name: name
               value: value
@@ -6930,6 +7019,17 @@ components:
             - name: name
               value: value
               delete: true
+          startupcheck:
+            headers:
+              key: headers
+            path: path
+            scheme: scheme
+            allowed_failures: 5
+            interval_seconds: 2
+            timeout_seconds: 7
+            command:
+            - command
+            - command
           name: name
           plan: plan
         planoverride:
@@ -7000,6 +7100,38 @@ components:
           type: string
         isRoutable:
           type: boolean
+      type: object
+    Startupcheck:
+      example:
+        headers:
+          key: headers
+        path: path
+        scheme: scheme
+        allowed_failures: 5
+        interval_seconds: 2
+        timeout_seconds: 7
+        command:
+        - command
+        - command
+      properties:
+        headers:
+          additionalProperties:
+            type: string
+          type: object
+        path:
+          type: string
+        scheme:
+          type: string
+        command:
+          items:
+            type: string
+          type: array
+        allowed_failures:
+          type: integer
+        interval_seconds:
+          type: integer
+        timeout_seconds:
+          type: integer
       type: object
     Plan_cpuBurst:
       example:
@@ -8982,7 +9114,20 @@ components:
               MountPoint: MountPoint
               Volume: Volume
           processes:
-          - metadata:
+          - healthcheck:
+              headers:
+                key: headers
+              path: path
+              scheme: scheme
+              allowed_failures: 0
+              interval_seconds: 6
+              deploy_timeout_seconds: 5
+              force_restart: true
+              timeout_seconds: 1
+              command:
+              - command
+              - command
+            metadata:
               annotations:
               - name: name
                 value: value
@@ -8997,9 +9142,33 @@ components:
               - name: name
                 value: value
                 delete: true
+            startupcheck:
+              headers:
+                key: headers
+              path: path
+              scheme: scheme
+              allowed_failures: 5
+              interval_seconds: 2
+              timeout_seconds: 7
+              command:
+              - command
+              - command
             name: name
             plan: plan
-          - metadata:
+          - healthcheck:
+              headers:
+                key: headers
+              path: path
+              scheme: scheme
+              allowed_failures: 0
+              interval_seconds: 6
+              deploy_timeout_seconds: 5
+              force_restart: true
+              timeout_seconds: 1
+              command:
+              - command
+              - command
+            metadata:
               annotations:
               - name: name
                 value: value
@@ -9014,6 +9183,17 @@ components:
               - name: name
                 value: value
                 delete: true
+            startupcheck:
+              headers:
+                key: headers
+              path: path
+              scheme: scheme
+              allowed_failures: 5
+              interval_seconds: 2
+              timeout_seconds: 7
+              command:
+              - command
+              - command
             name: name
             plan: plan
           provisioner: provisioner
@@ -9233,7 +9413,20 @@ components:
               MountPoint: MountPoint
               Volume: Volume
           processes:
-          - metadata:
+          - healthcheck:
+              headers:
+                key: headers
+              path: path
+              scheme: scheme
+              allowed_failures: 0
+              interval_seconds: 6
+              deploy_timeout_seconds: 5
+              force_restart: true
+              timeout_seconds: 1
+              command:
+              - command
+              - command
+            metadata:
               annotations:
               - name: name
                 value: value
@@ -9248,9 +9441,33 @@ components:
               - name: name
                 value: value
                 delete: true
+            startupcheck:
+              headers:
+                key: headers
+              path: path
+              scheme: scheme
+              allowed_failures: 5
+              interval_seconds: 2
+              timeout_seconds: 7
+              command:
+              - command
+              - command
             name: name
             plan: plan
-          - metadata:
+          - healthcheck:
+              headers:
+                key: headers
+              path: path
+              scheme: scheme
+              allowed_failures: 0
+              interval_seconds: 6
+              deploy_timeout_seconds: 5
+              force_restart: true
+              timeout_seconds: 1
+              command:
+              - command
+              - command
+            metadata:
               annotations:
               - name: name
                 value: value
@@ -9265,6 +9482,17 @@ components:
               - name: name
                 value: value
                 delete: true
+            startupcheck:
+              headers:
+                key: headers
+              path: path
+              scheme: scheme
+              allowed_failures: 5
+              interval_seconds: 2
+              timeout_seconds: 7
+              command:
+              - command
+              - command
             name: name
             plan: plan
           provisioner: provisioner
@@ -9377,6 +9605,44 @@ components:
           items:
             $ref: '#/components/schemas/App'
           type: array
+      type: object
+    Healthcheck:
+      example:
+        headers:
+          key: headers
+        path: path
+        scheme: scheme
+        allowed_failures: 0
+        interval_seconds: 6
+        deploy_timeout_seconds: 5
+        force_restart: true
+        timeout_seconds: 1
+        command:
+        - command
+        - command
+      properties:
+        headers:
+          additionalProperties:
+            type: string
+          type: object
+        path:
+          type: string
+        scheme:
+          type: string
+        command:
+          items:
+            type: string
+          type: array
+        allowed_failures:
+          type: integer
+        interval_seconds:
+          type: integer
+        timeout_seconds:
+          type: integer
+        deploy_timeout_seconds:
+          type: integer
+        force_restart:
+          type: boolean
       type: object
     UnitMetrics:
       example:
@@ -10018,6 +10284,7 @@ components:
         platform:
           name: name
           disabled: true
+          source: source
       properties:
         platform:
           $ref: '#/components/schemas/Platform'
@@ -10062,6 +10329,19 @@ components:
       type: object
     AppProcess:
       example:
+        healthcheck:
+          headers:
+            key: headers
+          path: path
+          scheme: scheme
+          allowed_failures: 0
+          interval_seconds: 6
+          deploy_timeout_seconds: 5
+          force_restart: true
+          timeout_seconds: 1
+          command:
+          - command
+          - command
         metadata:
           annotations:
           - name: name
@@ -10077,6 +10357,17 @@ components:
           - name: name
             value: value
             delete: true
+        startupcheck:
+          headers:
+            key: headers
+          path: path
+          scheme: scheme
+          allowed_failures: 5
+          interval_seconds: 2
+          timeout_seconds: 7
+          command:
+          - command
+          - command
         name: name
         plan: plan
       properties:
@@ -10086,6 +10377,10 @@ components:
           type: string
         metadata:
           $ref: '#/components/schemas/Metadata'
+        healthcheck:
+          $ref: '#/components/schemas/Healthcheck'
+        startupcheck:
+          $ref: '#/components/schemas/Startupcheck'
       type: object
     Quota:
       example:
@@ -10166,7 +10461,20 @@ components:
             value: value
             delete: true
         processes:
-        - metadata:
+        - healthcheck:
+            headers:
+              key: headers
+            path: path
+            scheme: scheme
+            allowed_failures: 0
+            interval_seconds: 6
+            deploy_timeout_seconds: 5
+            force_restart: true
+            timeout_seconds: 1
+            command:
+            - command
+            - command
+          metadata:
             annotations:
             - name: name
               value: value
@@ -10181,9 +10489,33 @@ components:
             - name: name
               value: value
               delete: true
+          startupcheck:
+            headers:
+              key: headers
+            path: path
+            scheme: scheme
+            allowed_failures: 5
+            interval_seconds: 2
+            timeout_seconds: 7
+            command:
+            - command
+            - command
           name: name
           plan: plan
-        - metadata:
+        - healthcheck:
+            headers:
+              key: headers
+            path: path
+            scheme: scheme
+            allowed_failures: 0
+            interval_seconds: 6
+            deploy_timeout_seconds: 5
+            force_restart: true
+            timeout_seconds: 1
+            command:
+            - command
+            - command
+          metadata:
             annotations:
             - name: name
               value: value
@@ -10198,6 +10530,17 @@ components:
             - name: name
               value: value
               delete: true
+          startupcheck:
+            headers:
+              key: headers
+            path: path
+            scheme: scheme
+            allowed_failures: 5
+            interval_seconds: 2
+            timeout_seconds: 7
+            command:
+            - command
+            - command
           name: name
           plan: plan
         name: name

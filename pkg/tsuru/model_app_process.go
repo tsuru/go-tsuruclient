@@ -10,7 +10,9 @@
 package tsuru
 
 type AppProcess struct {
-	Name     string   `json:"name,omitempty"`
-	Plan     string   `json:"plan,omitempty"`
-	Metadata Metadata `json:"metadata,omitempty"`
+	Name         string       `json:"name,omitempty"`
+	Plan         string       `json:"plan,omitempty"`
+	Metadata     Metadata     `json:"metadata,omitempty"`
+	Healthcheck  Healthcheck  `json:"healthcheck,omitempty"`
+	Startupcheck Startupcheck `json:"startupcheck,omitempty"`
 }
