@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PlatformUpdate**
-> PlatformUpdate(ctx, platform, dockerfileContent)
+> PlatformUpdate(ctx, platform, optional)
 
 
 Update platform.
@@ -162,7 +162,16 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **platform** | **string**| Platform name. | 
-  **dockerfileContent** | ***os.File*****os.File**|  | 
+ **optional** | ***PlatformUpdateOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a PlatformUpdateOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **dockerfileContent** | **optional.Interface of *os.File****optional.*os.File**| Dockerfile to build the new version from. When omitted and disabled is not set, the platform is rebuilt from the Dockerfile it was last built from. | 
+ **disabled** | **optional.String**|  | 
 
 ### Return type
 

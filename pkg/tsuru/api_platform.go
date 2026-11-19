@@ -17,6 +17,8 @@ import (
 	"net/url"
 	"os"
 	"strings"
+
+	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -609,11 +611,19 @@ func (a *PlatformApiService) PlatformRollback(ctx context.Context, platform stri
 /*
 PlatformApiService
 Update platform.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param platform Platform name.
-  - @param dockerfileContent
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param platform Platform name.
+ * @param optional nil or *PlatformUpdateOpts - Optional Parameters:
+ * @param "DockerfileContent" (optional.Interface of *os.File) -  Dockerfile to build the new version from. When omitted and disabled is not set, the platform is rebuilt from the Dockerfile it was last built from.
+ * @param "Disabled" (optional.String) -
 */
-func (a *PlatformApiService) PlatformUpdate(ctx context.Context, platform string, dockerfileContent *os.File) (*http.Response, error) {
+
+type PlatformUpdateOpts struct {
+	DockerfileContent optional.Interface
+	Disabled          optional.String
+}
+
+func (a *PlatformApiService) PlatformUpdate(ctx context.Context, platform string, localVarOptionals *PlatformUpdateOpts) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -651,12 +661,22 @@ func (a *PlatformApiService) PlatformUpdate(ctx context.Context, platform string
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	localVarFormFileName = "dockerfile_content"
-	localVarFile := dockerfileContent
+	var localVarFile *os.File
+	if localVarOptionals != nil && localVarOptionals.DockerfileContent.IsSet() {
+		localVarFileOk := false
+		localVarFile, localVarFileOk = localVarOptionals.DockerfileContent.Value().(*os.File)
+		if !localVarFileOk {
+			return nil, reportError("dockerfileContent should be *os.File")
+		}
+	}
 	if localVarFile != nil {
 		fbs, _ := ioutil.ReadAll(localVarFile)
 		localVarFileBytes = fbs
 		localVarFileName = localVarFile.Name()
 		localVarFile.Close()
+	}
+	if localVarOptionals != nil && localVarOptionals.Disabled.IsSet() {
+		localVarFormParams.Add("disabled", parameterToString(localVarOptionals.Disabled.Value(), ""))
 	}
 	if ctx != nil {
 		// API Key Authentication

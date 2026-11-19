@@ -12,4 +12,6 @@ package tsuru
 type Platform struct {
 	Name     string `json:"name,omitempty"`
 	Disabled bool   `json:"disabled,omitempty"`
+	// Dockerfile the platform was last built from, empty after a rollback. Only returned to users allowed to create or update platforms.
+	Source string `json:"source,omitempty"`
 }
