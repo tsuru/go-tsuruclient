@@ -46,3 +46,19 @@ func JoinWithUserDir(p ...string) string {
 	paths = append(paths, p...)
 	return filepath.Join(paths...)
 }
+
+// openPrivateFile opens path for writing, truncating it, and keeps it
+// readable only by its owner, including files created with a wider mode.
+func openPrivateFile(path string) (fs.File, error) {
+	file, err := Filesystem().OpenFile(path, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0600)
+	if err != nil {
+		return nil, err
+	}
+	if f, ok := file.(*os.File); ok {
+		if err := f.Chmod(0600); err != nil {
+			f.Close()
+			return nil, err
+		}
+	}
+	return file, nil
+}
